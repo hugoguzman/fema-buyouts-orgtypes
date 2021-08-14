@@ -10,6 +10,7 @@ class MyMap extends React.Component {
   center={position} 
   zoom={13} 
   scrollWheelZoom={false}>
+  style={{ height: 500, width: "100%" }}
   
     <TileLayer
       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
