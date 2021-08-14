@@ -1,5 +1,6 @@
 import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import buyoutsCounty from './Data/buyoutsCounty.json'
 
 const position = [51.505, -0.09]
 
