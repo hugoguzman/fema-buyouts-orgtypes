@@ -1,5 +1,5 @@
 import React from "react";
-import { MapContainer, TileLayer, CircleMarker } from "react-leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import harrisBuyouts from './Data/harrisBuyouts.json'
 
 const position = [37, -95]
@@ -20,10 +20,10 @@ class MyMap extends React.Component {
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
 {harrisBuyoutsArray.map(buyouts => (
-      <CircleMarker 
+      <Marker 
       key={harrisBuyoutsArray.TAXIDNO}
-      position={[harrisBuyoutsArray.latitude, harrisBuyoutsArray.longitude]}>
-      </CircleMarker>
+      position={[harrisBuyoutsArray.lat, harrisBuyoutsArray.long]}>
+      </Marker>
 ))}
   </MapContainer>
   );
