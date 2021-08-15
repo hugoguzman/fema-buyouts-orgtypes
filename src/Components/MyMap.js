@@ -1,10 +1,10 @@
 import React from "react";
-import { MapContainer, TileLayer, Polygon } from "react-leaflet";
-import buyoutsCounty from './Data/buyoutsCounty.json'
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import harrisBuyouts from './Data/harrisBuyoutsJson.json'
 
 const position = [37, -95]
 
-const buyoutsCountyArray = Array.from(buyoutsCounty);
+const harrisBuyoutsArray = Array.from(harrisBuyouts);
 
 class MyMap extends React.Component {
   render()  {
@@ -19,10 +19,10 @@ class MyMap extends React.Component {
       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-{buyoutsCountyArray.map(buyouts => (
+{harrisBuyoutsArray.map(buyouts => (
       <Marker 
-      key={buyoutsCountyArray.features.properties.group}
-      position={buyoutsCountyArray.features.geometry.coordinates}>
+      key={harrisBuyouts.TAXIDNO}
+      position={harrisBuyouts.lat,harrisBuyouts.long}>
       </Marker>
 ))}
   </MapContainer>
