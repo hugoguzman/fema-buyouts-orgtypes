@@ -8,7 +8,6 @@ const harrisBuyoutsArray = Array.from(harrisBuyouts);
 
 class MyMap extends React.Component {
   render()  {
-  console.log(harrisBuyouts.lat);
   return (
 <MapContainer 
   center={position} 
