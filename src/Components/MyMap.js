@@ -4,7 +4,7 @@ import harrisBuyouts from './Data/harrisBuyoutsJson.json'
 
 const position = [37, -95]
 
-const harrisBuyoutsArray = Array.from(harrisBuyouts);
+const harrisBuyoutsArray = Array.from(harrisBuyouts.slice(1,3));
 
 class MyMap extends React.Component {
   render()  {
@@ -22,7 +22,7 @@ class MyMap extends React.Component {
 {harrisBuyoutsArray.map(buyouts => (
       <Marker 
       key={harrisBuyouts.TAXIDNO}
-      position={harrisBuyouts.lat,harrisBuyouts.long}>
+      position={[harrisBuyouts.lat, harrisBuyouts.long]}>
       </Marker>
 ))}
   </MapContainer>
