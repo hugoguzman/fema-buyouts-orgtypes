@@ -20,10 +20,10 @@ class MyMap extends React.Component {
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
 {buyoutsCountyArray.map(buyouts => (
-      <Polygon 
+      <Marker 
       key={buyoutsCountyArray.features.properties.group}
       position={buyoutsCountyArray.features.geometry.coordinates}>
-      </Polygon>
+      </Marker>
 ))}
   </MapContainer>
   );
