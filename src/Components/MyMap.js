@@ -22,7 +22,7 @@ class MyMap extends React.Component {
 {harrisBuyoutsArray.map(buyouts => (
       <Marker 
       key={harrisBuyoutsArray.TAXIDNO}
-      position={[harrisBuyoutsArray.lat, harrisBuyoutsArray.long]}>
+      position={[harrisBuyoutsArray.latitude, harrisBuyoutsArray.latitude]}>
       </Marker>
 ))}
   </MapContainer>
