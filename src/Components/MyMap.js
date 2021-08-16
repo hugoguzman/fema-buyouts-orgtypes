@@ -1,7 +1,8 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { MapContainer, TileLayer, CircleMarker } from "react-leaflet";
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import harrisBuyouts from './Data/harrisBuyouts.json'
+
 
 const position = [30, -95.3103]
 
@@ -22,10 +23,11 @@ class MyMap extends React.Component {
     />
     <MarkerClusterGroup>
 {harrisBuyoutsArray.map(buyouts => (
-      <Marker 
+      <CircleMarker 
       key={buyouts.TAXIDNO}
+      center={[buyouts.lat, buyouts.long]}
       position={[buyouts.lat, buyouts.long]}>
-      </Marker>
+      </CircleMarker>
 ))}
     </MarkerClusterGroup>
   </MapContainer>
