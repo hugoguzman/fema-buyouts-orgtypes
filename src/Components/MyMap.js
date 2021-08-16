@@ -1,5 +1,5 @@
 import React from "react";
-import { MapContainer, TileLayer, CircleMarker } from "react-leaflet";
+import { MapContainer, TileLayer, CircleMarker, Tooltip } from "react-leaflet";
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import harrisBuyouts from './Data/harrisBuyouts.json'
 
@@ -27,6 +27,7 @@ class MyMap extends React.Component {
       key={buyouts.TAXIDNO}
       center={[buyouts.lat, buyouts.long]}
       position={[buyouts.lat, buyouts.long]}>
+      <Tooltip>Year: {buyouts.year}</Tooltip>
       </CircleMarker>
 ))}
     </MarkerClusterGroup>
