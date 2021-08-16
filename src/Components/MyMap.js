@@ -14,7 +14,6 @@ class MyMap extends React.Component {
 <MapContainer 
   center={position} 
   zoom={9} 
-  scrollWheelZoom={false}
   style={{ height: 500, width: "100%" }}>
   
     <TileLayer
