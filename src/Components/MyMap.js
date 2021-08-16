@@ -21,8 +21,8 @@ class MyMap extends React.Component {
     />
 {harrisBuyoutsArray.map(buyouts => (
       <Marker 
-      key={harrisBuyoutsArray.TAXIDNO}
-      position={[harrisBuyoutsArray.latitude, harrisBuyoutsArray.latitude]}>
+      key={buyouts.TAXIDNO}
+      position={[buyouts.lat, buyouts.long]}>
       </Marker>
 ))}
   </MapContainer>
