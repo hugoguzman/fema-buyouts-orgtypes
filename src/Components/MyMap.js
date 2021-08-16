@@ -1,5 +1,6 @@
 import React from "react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import MarkerClusterGroup from 'react-leaflet-markercluster';
 import harrisBuyouts from './Data/harrisBuyouts.json'
 
 const position = [30, -95.3103]
@@ -20,10 +21,12 @@ class MyMap extends React.Component {
       url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png"
     />
 {harrisBuyoutsArray.map(buyouts => (
-      <Marker 
-      key={buyouts.TAXIDNO}
-      position={[buyouts.lat, buyouts.long]}>
-      </Marker>
+      <MarkerClusterGroup>
+        <Marker 
+        key={buyouts.TAXIDNO}
+        position={[buyouts.lat, buyouts.long]}>
+        </Marker>
+      </MarkerClusterGroup>
 ))}
   </MapContainer>
   );
