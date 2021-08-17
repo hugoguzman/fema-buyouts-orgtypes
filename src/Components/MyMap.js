@@ -1,5 +1,5 @@
 import React from "react";
-import { MapContainer, TileLayer, CircleMarker, Tooltip, LayersControl } from "react-leaflet";
+import { MapContainer, TileLayer, CircleMarker, Tooltip, LayersControl, LayerGroup } from "react-leaflet";
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import harrisBuyouts from './Data/harrisBuyouts.json'
 
@@ -21,10 +21,11 @@ class MyMap extends React.Component {
     url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png"
   />
     <LayersControl position="topright">
-      <LayersControl.Overlay checked name="Buyout Clusters">
+      <LayersControl.BaseLayer checked name="Buyout Clusters">
         <MarkerClusterGroup>
           {harrisBuyoutsArray.map(buyouts => (
             <CircleMarker 
+            radius={5}
             key={buyouts.TAXIDNO}
             center={[buyouts.lat, buyouts.long]}
             position={[buyouts.lat, buyouts.long]}>
@@ -32,7 +33,20 @@ class MyMap extends React.Component {
             </CircleMarker>
           ))}
         </MarkerClusterGroup>
-      </LayersControl.Overlay>
+      </LayersControl.BaseLayer>
+      <LayersControl.BaseLayer name="Buyout Coordinates">
+        <LayerGroup>
+          {harrisBuyoutsArray.map(buyouts => (
+            <CircleMarker 
+            radius={2}
+            key={buyouts.TAXIDNO}
+            center={[buyouts.lat, buyouts.long]}
+            position={[buyouts.lat, buyouts.long]}>
+            <Tooltip>Year: {buyouts.year}</Tooltip>
+            </CircleMarker>
+          ))}
+        </LayerGroup>
+      </LayersControl.BaseLayer>
     </LayersControl>
   </MapContainer>
   );
