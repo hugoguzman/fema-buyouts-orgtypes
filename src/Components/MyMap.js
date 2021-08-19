@@ -1,48 +1,48 @@
 import React from "react";
 import { MapContainer, TileLayer, CircleMarker, Tooltip, LayersControl, LayerGroup } from "react-leaflet";
 import MarkerClusterGroup from 'react-leaflet-markercluster';
-import harrisBuyouts from './Data/harrisBuyouts.json'
+import allBuyouts from './Data/allBuyouts.json'
 
 
-const position = [30, -95.3103]
+const position = [37.1, -95.7]
 
-const harrisBuyoutsArray = Array.from(harrisBuyouts);
+const allBuyoutsArray = Array.from(allBuyouts);
 
 class MyMap extends React.Component {
   render()  {
   return (
 <MapContainer 
   center={position} 
-  zoom={9} 
+  zoom={4} 
   style={{ height: 500, width: "100%" }}>
   
   <TileLayer
-    attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-    url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png"
+    attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png"
   />
     <LayersControl position="topright">
       <LayersControl.BaseLayer checked name="Buyout Clusters">
         <MarkerClusterGroup>
-          {harrisBuyoutsArray.map(buyouts => (
+          {allBuyoutsArray.map(buyouts => (
             <CircleMarker 
             radius={5}
-            key={buyouts.TAXIDNO}
+            key={buyouts.ID}
             center={[buyouts.lat, buyouts.long]}
             position={[buyouts.lat, buyouts.long]}>
-            <Tooltip>Year: {buyouts.year}</Tooltip>
+            <Tooltip>Year: {buyouts.Year}<br></br>City: {buyouts.City}</Tooltip>
             </CircleMarker>
           ))}
         </MarkerClusterGroup>
       </LayersControl.BaseLayer>
       <LayersControl.BaseLayer name="Buyout Coordinates">
         <LayerGroup>
-          {harrisBuyoutsArray.map(buyouts => (
+          {allBuyoutsArray.map(buyouts => (
             <CircleMarker 
-            radius={2}
-            key={buyouts.TAXIDNO}
+            radius={1}
+            key={buyouts.ID}
             center={[buyouts.lat, buyouts.long]}
             position={[buyouts.lat, buyouts.long]}>
-            <Tooltip>Year: {buyouts.year}</Tooltip>
+            <Tooltip>Year: {buyouts.Year}<br></br>City: {buyouts.City}</Tooltip>
             </CircleMarker>
           ))}
         </LayerGroup>
