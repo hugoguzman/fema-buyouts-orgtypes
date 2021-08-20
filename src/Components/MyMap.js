@@ -10,42 +10,24 @@ class MyMap extends Component {
   componentDidMount() {
     console.log(mapData);
   }
-  
+
   countryStyle = {
-    fillColor: "red",
+    fillColor: "blue",
     fillOpacity: 1,
     color: "black",
-    weight: 2,
+    weight: .1,
   };
 
-  printMesssageToConsole = (event) => {
-    console.log("Clicked");
-  };
 
-  changeCountryColor = (event) => {
-    event.target.setStyle({
-      color: "green",
-      fillColor: this.state.color,
-      fillOpacity: 1,
-    });
-  };
 
   onEachCountry = (country, layer) => {
     const countryName = country.properties.ADMIN;
     console.log(countryName);
-    layer.bindPopup(countryName);
 
     layer.options.fillOpacity = Math.random(); //0-1 (0.1, 0.2, 0.3)
     // const colorIndex = Math.floor(Math.random() * this.colors.length);
     // layer.options.fillColor = this.colors[colorIndex]; //0
-
-    layer.on({
-      click: this.changeCountryColor,
-    });
-  };
-
-  colorChange = (event) => {
-    this.setState({ color: event.target.value });
+ 
   };
 
   render() {
@@ -66,11 +48,7 @@ class MyMap extends Component {
             onEachFeature={this.onEachCountry}
           />
       </MapContainer>
-      <input
-        type="color"
-        value={this.state.color}
-        onChange={this.colorChange}
-      />
+
     </div>
     );
   }
