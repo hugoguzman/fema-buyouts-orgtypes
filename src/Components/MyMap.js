@@ -10,24 +10,33 @@ class MyMap extends Component {
   componentDidMount() {
     console.log(mapData);
   }
-
-  countryStyle = {
+    countyStyle = {
     fillColor: "blue",
-    fillOpacity: 1,
+    fillOpacity: .1,
     color: "black",
     weight: .1,
   };
 
+  printMesssageToConsole = (event) => {
+    console.log("Clicked");
+  };
 
 
-  onEachCountry = (country, layer) => {
-    const countryName = country.properties.ADMIN;
-    console.log(countryName);
+
+  onEachcounty = (county, layer) => {
+    const countyName = county.properties.county;
+    console.log(countyName);
+    layer.bindPopup(countyName);
 
     layer.options.fillOpacity = Math.random(); //0-1 (0.1, 0.2, 0.3)
     // const colorIndex = Math.floor(Math.random() * this.colors.length);
     // layer.options.fillColor = this.colors[colorIndex]; //0
- 
+
+
+  };
+
+  colorChange = (event) => {
+    this.setState({ color: event.target.value });
   };
 
   render() {
@@ -43,12 +52,16 @@ class MyMap extends Component {
         url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png"
         />
           <GeoJSON
-            style={this.countryStyle}
+            style={this.countyStyle}
             data={mapData.features}
-            onEachFeature={this.onEachCountry}
+            onEachFeature={this.onEachcounty}
           />
       </MapContainer>
-
+      <input
+        type="color"
+        value={this.state.color}
+        onChange={this.colorChange}
+      />
     </div>
     );
   }
