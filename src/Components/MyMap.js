@@ -2,6 +2,9 @@ import React, {Component} from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import mapData from './Data/countyBuyouts.json'
 
+
+
+
 const position = [37.1, -95.7]
 
 class MyMap extends Component {
@@ -38,16 +41,11 @@ class MyMap extends Component {
     + "<br>Dollar Amount: " + buyoutDollaramount;
     console.log(countyName);
     layer.bindPopup(countyName);
-
-    layer.options.fillOpacity = Math.random(); //0-1 (0.1, 0.2, 0.3)
+    
+    layer.options.fillOpacity = this.buyoutDollaramount; //0-1 (0.1, 0.2, 0.3)
     // const colorIndex = Math.floor(Math.random() * this.colors.length);
     // layer.options.fillColor = this.colors[colorIndex]; //0
 
-
-  };
-
-  colorChange = (event) => {
-    this.setState({ color: event.target.value });
   };
 
   render() {
