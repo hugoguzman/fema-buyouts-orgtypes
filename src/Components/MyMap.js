@@ -13,7 +13,7 @@ class MyMap extends Component {
   componentDidMount() {
     console.log(mapData);
   }
-    countyStyle = {
+  countyStyle = {
     fillColor: "blue",
     fillOpacity: .1,
     color: "black",
@@ -66,11 +66,6 @@ class MyMap extends Component {
             onEachFeature={this.onEachcounty}
           />
       </MapContainer>
-      <input
-        type="color"
-        value={this.state.color}
-        onChange={this.colorChange}
-      />
     </div>
     );
   }
