@@ -22,9 +22,20 @@ class MyMap extends Component {
   };
 
 
-
   onEachcounty = (county, layer) => {
-    const countyName = county.properties.county;
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    });
+    const buyoutCounty = county.properties.county
+    const buyoutState = county.properties.state
+    const buyoutGrantcount = county.properties.grantcount
+    const buyoutDollaramount = formatter.format(county.properties.dollaramount)
+
+    const countyName = "County:" + buyoutCounty 
+    + "<br>State: " + buyoutState
+    + "<br>Grant Count: " + buyoutGrantcount
+    + "<br>Dollar Amount: " + buyoutDollaramount;
     console.log(countyName);
     layer.bindPopup(countyName);
 
