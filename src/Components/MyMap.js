@@ -3,10 +3,7 @@ import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import mapData from './Data/countyBuyouts.json'
 
 
-
-
 const position = [37.1, -95.7]
-
 class MyMap extends Component {
   state = {};
 
@@ -15,17 +12,28 @@ class MyMap extends Component {
   }
   countyStyle = {
     fillColor: "blue",
-    fillOpacity: .1,
+    fillOpacity: .9,
     color: "black",
     weight: .1,
+  
   };
-
+  
   printMesssageToConsole = (event) => {
     console.log("Clicked");
   };
 
 
   onEachcounty = (county, layer) => {
+    function getColor(d) {
+      return d > 50 ? '#800026' :
+             d > 25  ? '#BD0026' :
+             d > 10  ? '#E31A1C' :
+             d > 5  ? '#FC4E2A' :
+             d > 2   ? '#FD8D3C' :
+             d > 1   ? '#FEB24C' :
+             d > 0   ? '#FED976' :
+                        '#FFEDA0';
+  }
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
@@ -42,7 +50,7 @@ class MyMap extends Component {
     console.log(countyName);
     layer.bindPopup(countyName);
     
-    layer.options.fillOpacity = this.buyoutDollaramount; //0-1 (0.1, 0.2, 0.3)
+    layer.options.fillColor = getColor(county.properties.grantcount); //0-1 (0.1, 0.2, 0.3)
     // const colorIndex = Math.floor(Math.random() * this.colors.length);
     // layer.options.fillColor = this.colors[colorIndex]; //0
 
