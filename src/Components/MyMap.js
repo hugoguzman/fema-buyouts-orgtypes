@@ -11,10 +11,9 @@ class MyMap extends Component {
     console.log(mapData);
   }
   countyStyle = {
-    fillColor: "blue",
-    fillOpacity: .9,
+    fillOpacity: .8,
     color: "black",
-    weight: .1,
+    weight: .15,
   
   };
   
@@ -25,14 +24,11 @@ class MyMap extends Component {
 
   onEachcounty = (county, layer) => {
     function getColor(d) {
-      return d > 50 ? '#800026' :
-             d > 25  ? '#BD0026' :
-             d > 10  ? '#E31A1C' :
-             d > 5  ? '#FC4E2A' :
-             d > 2   ? '#FD8D3C' :
-             d > 1   ? '#FEB24C' :
-             d > 0   ? '#FED976' :
-                        '#FFEDA0';
+      return d > 50  ? '#005a32' :
+             d > 15  ? '#74c476' :
+             d > 5   ? '#a1d99b' :
+             d > 2   ? '#c7e9c0' :
+                        '#edf8e9';
   }
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -65,8 +61,8 @@ class MyMap extends Component {
         zoom={4} 
         style={{ height: 500, width: "100%" }}>
         <TileLayer
-        attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
         />
           <GeoJSON
             style={this.countyStyle}
