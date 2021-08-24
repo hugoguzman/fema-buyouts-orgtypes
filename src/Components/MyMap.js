@@ -33,6 +33,8 @@ class MyMap extends Component {
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
     });
     const buyoutCounty = county.properties.county
     const buyoutState = county.properties.state
