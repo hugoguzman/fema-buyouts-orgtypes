@@ -1,0 +1,131 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "subgrantee_clean": "Chickasaw",
+                "orgtype": "tribal nation",
+                "state": "Alabama",
+                "grantcount": 1,
+                "dollaramount": 30952,
+                "propertycount": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.0747222,
+                    30.7637991
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "subgrantee_clean": "Eastern Cherokee",
+                "orgtype": "tribal nation",
+                "state": "North Carolina",
+                "grantcount": 2,
+                "dollaramount": 299888,
+                "propertycount": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.2499442,
+                    35.5477045
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "subgrantee_clean": "Lower Elwah",
+                "orgtype": "tribal nation",
+                "state": "Washington",
+                "grantcount": 1,
+                "dollaramount": 190192,
+                "propertycount": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.5540782,
+                    48.1458715
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "subgrantee_clean": "Lummi",
+                "orgtype": "tribal nation",
+                "state": "Washington",
+                "grantcount": 2,
+                "dollaramount": 2540518,
+                "propertycount": 7
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.6137862,
+                    48.7948309
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "subgrantee_clean": "Pyramid Lake Paiute",
+                "orgtype": "tribal nation",
+                "state": "Nevada",
+                "grantcount": 1,
+                "dollaramount": 276960,
+                "propertycount": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.5383581,
+                    40.0825251
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "subgrantee_clean": "Rocky Boy's",
+                "orgtype": "tribal nation",
+                "state": "Montana",
+                "grantcount": 2,
+                "dollaramount": 279950,
+                "propertycount": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.7782628,
+                    48.257157
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "subgrantee_clean": "Turtle Mountain Chippewa",
+                "orgtype": "tribal nation",
+                "state": "North Dakota",
+                "grantcount": 1,
+                "dollaramount": 299307,
+                "propertycount": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.7885165,
+                    48.848865
+                ]
+            }
+        }
+    ]
+}
