@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
-import mapData from './Data/countyBuyouts.json'
+import { MapContainer, TileLayer, GeoJSON, LayersControl } from "react-leaflet";
+import countyData from './Data/countyBuyouts.json'
+import regionData from './Data/regionalBuyouts.json'
 
 
 const position = [37.1, -95.7]
@@ -8,12 +9,19 @@ class MyMap extends Component {
   state = {};
 
   componentDidMount() {
-    console.log(mapData);
+    console.log(countyData, regionData);
   }
   countyStyle = {
-    fillOpacity: .8,
-    color: "black",
-    weight: .15,
+    fillOpacity: 1,
+    color: "green",
+    weight: .5,
+  
+  };
+
+  regionStyle = {
+    fillOpacity: 1,
+    color: "purple",
+    weight: .5,
   
   };
   
@@ -22,7 +30,7 @@ class MyMap extends Component {
   };
 
 
-  onEachcounty = (county, layer) => {
+  onEachCounty = (county, layer) => {
     function getColor(d) {
       return d > 50  ? '#005a32' :
              d > 15  ? '#74c476' :
@@ -41,16 +49,46 @@ class MyMap extends Component {
     const buyoutGrantcount = county.properties.grantcount
     const buyoutDollaramount = formatter.format(county.properties.dollaramount)
 
-    const countyName = "County:" + buyoutCounty 
-    + "<br>State: " + buyoutState
-    + "<br>Grant Count: " + buyoutGrantcount
-    + "<br>Dollar Amount: " + buyoutDollaramount;
+    const countyName = "<b>County: </b>" + buyoutCounty 
+    + "<br><b>State: </b>" + buyoutState
+    + "<br><b>Grant Count: </b>" + buyoutGrantcount
+    + "<br><b>Dollar Amount: </b>" + buyoutDollaramount;
     console.log(countyName);
     layer.bindPopup(countyName);
     
-    layer.options.fillColor = getColor(county.properties.grantcount); //0-1 (0.1, 0.2, 0.3)
-    // const colorIndex = Math.floor(Math.random() * this.colors.length);
-    // layer.options.fillColor = this.colors[colorIndex]; //0
+    layer.options.fillColor = getColor(county.properties.grantcount);
+
+  };
+
+  onEachRegion = (region, layer) => {
+    function getColor(d) {
+      return d > 50  ? '#dadaeb' :
+             d > 15  ? '#bcbddc' :
+             d > 5   ? '#9e9ac8' :
+             d > 2   ? '#dadaeb' :
+                        '#f2f0f7';
+  }
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+    const buyoutCounty = region.properties.county
+    const buyoutSubgrantee = region.properties.subgrantee_clean
+    const buyoutState = region.properties.state
+    const buyoutGrantcount = region.properties.grantcount
+    const buyoutDollaramount = formatter.format(region.properties.dollaramount)
+
+    const countyName = "<b>County: </b>" + buyoutCounty 
+    + "<br><b>Entity: </b>" + buyoutSubgrantee
+    + "<br><b>State: </b>" + buyoutState
+    + "<br><b>Grant Count: </b>" + buyoutGrantcount
+    + "<br><b>Dollar Amount: </b>" + buyoutDollaramount;
+    console.log(countyName);
+    layer.bindPopup(countyName);
+    
+    layer.options.fillColor = getColor(region.properties.grantcount);
 
   };
 
@@ -62,15 +100,26 @@ class MyMap extends Component {
         center={position} 
         zoom={4} 
         style={{ height: 500, width: "100%" }}>
-        <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
-        />
-          <GeoJSON
-            style={this.countyStyle}
-            data={mapData.features}
-            onEachFeature={this.onEachcounty}
-          />
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+              url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+            />
+        <LayersControl position="topright">
+          <LayersControl.Overlay checked name="Counties">
+                <GeoJSON
+                  style={this.countyStyle}
+                  data={countyData.features}
+                  onEachFeature={this.onEachCounty}
+                />
+          </LayersControl.Overlay>
+          <LayersControl.Overlay checked name="Regional Entities">
+                <GeoJSON
+                  style={this.regionStyle}
+                  data={regionData.features}
+                  onEachFeature={this.onEachRegion}
+                />
+          </LayersControl.Overlay>
+        </LayersControl>
       </MapContainer>
     </div>
     );
