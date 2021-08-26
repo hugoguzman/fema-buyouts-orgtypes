@@ -129,7 +129,7 @@ class MyMap extends Component {
     layer.bindPopup(muniName);
     
     layer.options.fillColor = getColor(muni.properties.grantcount);
-
+    
   };
   render() {
     return (
