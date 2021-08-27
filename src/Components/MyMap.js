@@ -15,7 +15,7 @@ class MyMap extends Component {
   }
   countyStyle = {
     fillOpacity: 1,
-    color: "green",
+    color: "blue",
     weight: .5,
   
   };
@@ -23,13 +23,6 @@ class MyMap extends Component {
   regionStyle = {
     fillOpacity: 1,
     color: "purple",
-    weight: .5,
-  
-  };
-
-  muniStyle = {
-    fillOpacity: 1,
-    color: "red",
     weight: .5,
   
   };
@@ -41,11 +34,11 @@ class MyMap extends Component {
 
   onEachCounty = (county, layer) => {
     function getColor(d) {
-      return d > 50  ? '#005a32' :
-             d > 15  ? '#74c476' :
-             d > 5   ? '#a1d99b' :
-             d > 2   ? '#c7e9c0' :
-                        '#edf8e9';
+      return d > 50  ? '#084594' :
+             d > 15  ? '#6baed6' :
+             d > 5   ? '#9ecae1' :
+             d > 2   ? '#c6dbef' :
+                        '#eff3ff';
   }
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -63,7 +56,7 @@ class MyMap extends Component {
     + "<br><b>Grant Count: </b>" + buyoutGrantcount
     + "<br><b>Dollar Amount: </b>" + buyoutDollaramount;
     console.log(countyName);
-    layer.bindPopup(countyName);
+    layer.bindTooltip(countyName);
     
     layer.options.fillColor = getColor(county.properties.grantcount);
 
@@ -95,7 +88,7 @@ class MyMap extends Component {
     + "<br><b>Grant Count: </b>" + buyoutGrantcount
     + "<br><b>Dollar Amount: </b>" + buyoutDollaramount;
     console.log(countyName);
-    layer.bindPopup(countyName);
+    layer.bindTooltip(countyName);
     
     layer.options.fillColor = getColor(region.properties.grantcount);
 
@@ -127,7 +120,7 @@ class MyMap extends Component {
     + "<br><b>Grant Count: </b>" + buyoutGrantcount
     + "<br><b>Dollar Amount: </b>" + buyoutDollaramount;
     console.log(muniName);
-    layer.bindPopup(muniName);
+    layer.bindTooltip(muniName);
     
     layer.options.fillColor = getColor(muni.properties.grantcount);
     
@@ -163,11 +156,14 @@ class MyMap extends Component {
             <LayerGroup>
               {muniDataArray.map(buyouts => (
                 <CircleMarker 
-                radius={2}
-                key={buyouts.properties.dollaramount}
-                center={buyouts.features.geometry.coordinates}
-                position={buyouts.features.geometry.coordinates}>
-                <Tooltip>Municipality: {buyouts.properties.subgrantee_clean}</Tooltip>
+                radius={1}
+                weight={2}
+                color={"#ef3b2c"}
+                fillOpacity={.5}
+                key={buyouts.dollaramount}
+                center={[buyouts.lat, buyouts.long]}
+                position={[buyouts.lat, buyouts.long]}>
+                <Tooltip>Municipality: {buyouts.subgrantee_clean}</Tooltip>
                 </CircleMarker>
               ))}
             </LayerGroup>
