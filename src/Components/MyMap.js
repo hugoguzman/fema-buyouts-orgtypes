@@ -1,11 +1,12 @@
 import React, {Component} from "react";
-import { MapContainer, TileLayer, GeoJSON, LayersControl } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON, LayersControl, LayerGroup, CircleMarker, Tooltip } from "react-leaflet";
 import countyData from './Data/countyBuyouts.json'
 import regionData from './Data/regionalBuyouts.json'
 import muniData from './Data/muniBuyouts.json'
 
-
 const position = [37.1, -95.7]
+
+const muniDataArray = Array.from(muniData);
 class MyMap extends Component {
   state = {};
 
@@ -158,12 +159,18 @@ class MyMap extends Component {
                   onEachFeature={this.onEachRegion}
                 />
           </LayersControl.Overlay>
-          <LayersControl.Overlay checked name="Regional Entities">
-                <GeoJSON
-                  style={this.muniStyle}
-                  data={muniData.features}
-                  onEachFeature={this.onEachMuni}
-                />
+          <LayersControl.Overlay checked name="Municipal Entities">
+            <LayerGroup>
+              {muniDataArray.map(buyouts => (
+                <CircleMarker 
+                radius={2}
+                key={buyouts.properties.dollaramount}
+                center={buyouts.features.geometry.coordinates}
+                position={buyouts.features.geometry.coordinates}>
+                <Tooltip>Municipality: {buyouts.properties.subgrantee_clean}</Tooltip>
+                </CircleMarker>
+              ))}
+            </LayerGroup>
           </LayersControl.Overlay>
         </LayersControl>
       </MapContainer>
