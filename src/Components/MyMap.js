@@ -108,11 +108,11 @@ class MyMap extends Component {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     });
-    const buyoutCounty = muni.properties.county
-    const buyoutSubgrantee = muni.properties.subgrantee_clean
-    const buyoutState = muni.properties.state
-    const buyoutGrantcount = muni.properties.grantcount
-    const buyoutDollaramount = formatter.format(muni.properties.dollaramount)
+    const buyoutCounty = muni.county
+    const buyoutSubgrantee = muni.subgrantee_clean
+    const buyoutState = muni.state
+    const buyoutGrantcount = muni.grantcount
+    const buyoutDollaramount = formatter.format(muni.dollaramount)
 
     const muniName = "<b>County: </b>" + buyoutCounty 
     + "<br><b>Municipality: </b>" + buyoutSubgrantee
@@ -122,7 +122,7 @@ class MyMap extends Component {
     console.log(muniName);
     layer.bindTooltip(muniName);
     
-    layer.options.fillColor = getColor(muni.properties.grantcount);
+    layer.options.color = getColor(muni.grantcount);
     
   };
   render() {
@@ -156,10 +156,10 @@ class MyMap extends Component {
             <LayerGroup>
               {muniDataArray.map(buyouts => (
                 <CircleMarker 
+                color="red"
                 radius={1}
-                weight={2}
-                color={"#ef3b2c"}
-                fillOpacity={.5}
+                weight={1}
+                fillOpacity={.4}
                 key={buyouts.dollaramount}
                 center={[buyouts.lat, buyouts.long]}
                 position={[buyouts.lat, buyouts.long]}>
