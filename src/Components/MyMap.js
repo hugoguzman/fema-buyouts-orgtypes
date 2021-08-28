@@ -30,8 +30,8 @@ class MyMap extends Component {
 
   muniStyle = {
     fillOpacity: 1,
-    color: "red",
-    weight: .5,
+    color: "black",
+    weight: .2,
   
   };
   
@@ -116,11 +116,11 @@ class MyMap extends Component {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     });
-    const buyoutCounty = muni.county
-    const buyoutSubgrantee = muni.subgrantee_clean
-    const buyoutState = muni.state
-    const buyoutGrantcount = muni.grantcount
-    const buyoutDollaramount = formatter.format(muni.dollaramount)
+    const buyoutCounty = muni.properties.county
+    const buyoutSubgrantee = muni.properties.subgrantee_clean
+    const buyoutState = muni.properties.state
+    const buyoutGrantcount = muni.properties.grantcount
+    const buyoutDollaramount = formatter.format(muni.properties.dollaramount)
 
     const muniName = "<b>County: </b>" + buyoutCounty 
     + "<br><b>Municipality: </b>" + buyoutSubgrantee
@@ -130,18 +130,15 @@ class MyMap extends Component {
     console.log(muniName);
     layer.bindTooltip(muniName);
     
-    layer.options.color = getColor(muni.grantcount);
     layer.options.fillColor = getColor(muni.grantcount);
     
   };
 
   pointToLayer(feature, latlng) {
     return L.circleMarker(latlng, {
-      color: 'red',
-      fillColor: 'red',
-      fillOpacity: .8,
+      fillOpacity: 1,
       radius: 3,
-      stroke: false
+      stroke: true
     }).bindPopup("MESSAGE") // Change marker to circle
   }
 
@@ -176,7 +173,7 @@ class MyMap extends Component {
                 <GeoJSON
                   style={this.muniStyle}
                   data={muniData.features}
-                  onEachFeature={this.onEachRegion}
+                  onEachFeature={this.onEachMuni}
                   pointToLayer={this.pointToLayer.bind(this)}
                 /> 
           </LayersControl.Overlay>
