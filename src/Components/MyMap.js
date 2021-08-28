@@ -1,12 +1,13 @@
 import React, {Component} from "react";
-import { MapContainer, TileLayer, GeoJSON, LayersControl, LayerGroup, CircleMarker, Tooltip } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON, LayersControl } from "react-leaflet";
 import countyData from './Data/countyBuyouts.json'
 import regionData from './Data/regionalBuyouts.json'
-import muniData from './Data/muniBuyouts.json'
+import muniData from './Data/munigeojson.json'
+import L from 'leaflet';
 
 const position = [37.1, -95.7]
 
-const muniDataArray = Array.from(muniData);
+//const muniDataArray = Array.from(muniData);
 class MyMap extends Component {
   state = {};
 
@@ -23,6 +24,13 @@ class MyMap extends Component {
   regionStyle = {
     fillOpacity: 1,
     color: "purple",
+    weight: .5,
+  
+  };
+
+  muniStyle = {
+    fillOpacity: 1,
+    color: "red",
     weight: .5,
   
   };
@@ -96,8 +104,8 @@ class MyMap extends Component {
 
   onEachMuni = (muni, layer) => {
     function getColor(d) {
-      return d > 50  ? '#dadaeb' :
-             d > 15  ? '#bcbddc' :
+      return d > 25  ? '#dadaeb' :
+             d > 10  ? '#bcbddc' :
              d > 5   ? '#9e9ac8' :
              d > 2   ? '#dadaeb' :
                         '#f2f0f7';
@@ -123,8 +131,20 @@ class MyMap extends Component {
     layer.bindTooltip(muniName);
     
     layer.options.color = getColor(muni.grantcount);
+    layer.options.fillColor = getColor(muni.grantcount);
     
   };
+
+  pointToLayer(feature, latlng) {
+    return L.circleMarker(latlng, {
+      color: 'red',
+      fillColor: 'red',
+      fillOpacity: .8,
+      radius: 3,
+      stroke: false
+    }).bindPopup("MESSAGE") // Change marker to circle
+  }
+
   render() {
     return (
       <div>
@@ -153,20 +173,12 @@ class MyMap extends Component {
                 />
           </LayersControl.Overlay>
           <LayersControl.Overlay checked name="Municipal Entities">
-            <LayerGroup>
-              {muniDataArray.map(buyouts => (
-                <CircleMarker 
-                color="red"
-                radius={1}
-                weight={1}
-                fillOpacity={.4}
-                key={buyouts.dollaramount}
-                center={[buyouts.lat, buyouts.long]}
-                position={[buyouts.lat, buyouts.long]}>
-                <Tooltip>Municipality: {buyouts.subgrantee_clean}</Tooltip>
-                </CircleMarker>
-              ))}
-            </LayerGroup>
+                <GeoJSON
+                  style={this.muniStyle}
+                  data={muniData.features}
+                  onEachFeature={this.onEachRegion}
+                  pointToLayer={this.pointToLayer.bind(this)}
+                /> 
           </LayersControl.Overlay>
         </LayersControl>
       </MapContainer>
