@@ -12,18 +12,18 @@ class MyMap extends Component {
   state = {};
 
   componentDidMount() {
-    console.log(countyData, regionData);
+    console.log(countyData, regionData, muniData);
   }
   countyStyle = {
     fillOpacity: 1,
-    color: "blue",
+    color: "black",
     weight: .5,
   
   };
 
   regionStyle = {
     fillOpacity: 1,
-    color: "purple",
+    color: "black",
     weight: .5,
   
   };
@@ -31,7 +31,7 @@ class MyMap extends Component {
   muniStyle = {
     fillOpacity: 1,
     color: "black",
-    weight: .2,
+    weight: .5,
   
   };
   
@@ -42,11 +42,11 @@ class MyMap extends Component {
 
   onEachCounty = (county, layer) => {
     function getColor(d) {
-      return d > 50  ? '#084594' :
-             d > 15  ? '#6baed6' :
-             d > 5   ? '#9ecae1' :
-             d > 2   ? '#c6dbef' :
-                        '#eff3ff';
+      return d > 50  ? '#08306b' :
+             d > 15  ? '#2171b5' :
+             d > 5   ? '#6baed6' :
+             d > 1   ? '#deebf7' :
+                        '#f7fbff';
   }
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -72,11 +72,8 @@ class MyMap extends Component {
 
   onEachRegion = (region, layer) => {
     function getColor(d) {
-      return d > 50  ? '#dadaeb' :
-             d > 15  ? '#bcbddc' :
-             d > 5   ? '#9e9ac8' :
-             d > 2   ? '#dadaeb' :
-                        '#f2f0f7';
+      return d > 1  ? '#7f2704' :
+                        '#fff5eb';
   }
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -104,11 +101,11 @@ class MyMap extends Component {
 
   onEachMuni = (muni, layer) => {
     function getColor(d) {
-      return d > 25  ? '#dadaeb' :
-             d > 10  ? '#bcbddc' :
-             d > 5   ? '#9e9ac8' :
-             d > 2   ? '#dadaeb' :
-                        '#f2f0f7';
+      return d > 4  ? '#67000d' :
+             d > 3  ? '#bcbddc' :
+             d > 2   ? '#fcbba1' :
+             d > 1   ? '#fc9272' :
+                        '#fff5f0';
   }
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -130,7 +127,7 @@ class MyMap extends Component {
     console.log(muniName);
     layer.bindTooltip(muniName);
     
-    layer.options.fillColor = getColor(muni.grantcount);
+    layer.options.fillColor = getColor(muni.properties.grantcount);
     
   };
 
@@ -139,7 +136,7 @@ class MyMap extends Component {
       fillOpacity: 1,
       radius: 3,
       stroke: true
-    }).bindPopup("MESSAGE") // Change marker to circle
+    })
   }
 
   render() {
@@ -162,13 +159,6 @@ class MyMap extends Component {
                   onEachFeature={this.onEachCounty}
                 />
           </LayersControl.Overlay>
-          <LayersControl.Overlay checked name="Regional Entities">
-                <GeoJSON
-                  style={this.regionStyle}
-                  data={regionData.features}
-                  onEachFeature={this.onEachRegion}
-                />
-          </LayersControl.Overlay>
           <LayersControl.Overlay checked name="Municipal Entities">
                 <GeoJSON
                   style={this.muniStyle}
@@ -176,6 +166,13 @@ class MyMap extends Component {
                   onEachFeature={this.onEachMuni}
                   pointToLayer={this.pointToLayer.bind(this)}
                 /> 
+          </LayersControl.Overlay>
+          <LayersControl.Overlay checked name="Regional Entities">
+                <GeoJSON
+                  style={this.regionStyle}
+                  data={regionData.features}
+                  onEachFeature={this.onEachRegion}
+                />
           </LayersControl.Overlay>
         </LayersControl>
       </MapContainer>
