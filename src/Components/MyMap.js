@@ -109,10 +109,10 @@ class MyMap extends Component {
 
   onEachMuni = (muni, layer) => {
     function getColor(d) {
-      return d > 4  ? '#67000d' :
-             d > 3  ? '#bcbddc' :
+      return d > 20  ? '#67000d' :
+             d > 10  ? '#ef3b2c' :
              d > 2   ? '#fcbba1' :
-             d > 1   ? '#fc9272' :
+             d > 1   ? '#fcbba1' :
                         '#fff5f0';
   }
     const formatter = new Intl.NumberFormat('en-US', {
