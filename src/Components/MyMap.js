@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, GeoJSON, LayersControl } from "react-leaflet";
 import countyData from './Data/countyBuyouts.json'
 import regionData from './Data/regionalBuyouts.json'
 import muniData from './Data/munigeojson.json'
+import tribalData from './Data/tribalgeojson.json'
 import L from 'leaflet';
 
 const position = [37.1, -95.7]
@@ -29,6 +30,13 @@ class MyMap extends Component {
   };
 
   muniStyle = {
+    fillOpacity: 1,
+    color: "black",
+    weight: .5,
+  
+  };
+
+  tribalStyle = {
     fillOpacity: 1,
     color: "black",
     weight: .5,
@@ -131,6 +139,35 @@ class MyMap extends Component {
     
   };
 
+  onEachTribal = (tribal, layer) => {
+    function getColor(d) {
+      return d > 1  ? '#00441b' :
+                        '#f7fcf5';
+  }
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+    const buyoutCounty = tribal.properties.county
+    const buyoutSubgrantee = tribal.properties.subgrantee_clean
+    const buyoutState = tribal.properties.state
+    const buyoutGrantcount = tribal.properties.grantcount
+    const buyoutDollaramount = formatter.format(tribal.properties.dollaramount)
+
+    const tribalName = "<b>County: </b>" + buyoutCounty 
+    + "<br><b>Tribal Nation: </b>" + buyoutSubgrantee
+    + "<br><b>State: </b>" + buyoutState
+    + "<br><b>Grant Count: </b>" + buyoutGrantcount
+    + "<br><b>Dollar Amount: </b>" + buyoutDollaramount;
+    console.log(tribalName);
+    layer.bindTooltip(tribalName);
+    
+    layer.options.fillColor = getColor(tribal.properties.grantcount);
+    
+  };
+
   pointToLayer(feature, latlng) {
     return L.circleMarker(latlng, {
       fillOpacity: 1,
@@ -159,7 +196,7 @@ class MyMap extends Component {
                   onEachFeature={this.onEachCounty}
                 />
           </LayersControl.Overlay>
-          <LayersControl.Overlay checked name="Municipal Entities">
+          <LayersControl.Overlay checked name="Municipalities">
                 <GeoJSON
                   style={this.muniStyle}
                   data={muniData.features}
@@ -173,6 +210,14 @@ class MyMap extends Component {
                   data={regionData.features}
                   onEachFeature={this.onEachRegion}
                 />
+          </LayersControl.Overlay>
+          <LayersControl.Overlay checked name="Tribal Nations">
+                <GeoJSON
+                  style={this.tribalStyle}
+                  data={tribalData.features}
+                  onEachFeature={this.onEachTribal}
+                  pointToLayer={this.pointToLayer.bind(this)}
+                /> 
           </LayersControl.Overlay>
         </LayersControl>
       </MapContainer>
