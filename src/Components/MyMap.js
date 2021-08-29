@@ -5,6 +5,7 @@ import regionData from './Data/regionalBuyouts.json'
 import muniData from './Data/munigeojson.json'
 import tribalData from './Data/tribalgeojson.json'
 import L from 'leaflet';
+import '@fontsource/roboto';
 
 const position = [37.1, -95.7]
 
