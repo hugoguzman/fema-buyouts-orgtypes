@@ -10,37 +10,38 @@ import '@fontsource/roboto';
 const position = [37.1, -95.7]
 
 //const muniDataArray = Array.from(muniData);
-class MyMap extends Component {
+function MyMap() {
 
-  countyStyle = {
+  const countyStyle = {
     fillOpacity: 1,
     color: "black",
     weight: .5,
   
   };
 
-  regionStyle = {
+  const regionStyle = {
     fillOpacity: 1,
     color: "black",
     weight: .5,
   
   };
 
-  muniStyle = {
+  const muniStyle = {
     fillOpacity: 1,
     color: "black",
     weight: .5,
   
   };
 
-  tribalStyle = {
+  const tribalStyle = {
     fillOpacity: 1,
     color: "black",
     weight: .5,
   
   };
 
-  onEachCounty = (county, layer) => {
+
+  const onEachCounty = (county, layer) => {
     function getColor(d) {
       return d > 50  ? '#08306b' :
              d > 15  ? '#2171b5' :
@@ -70,7 +71,7 @@ class MyMap extends Component {
 
   };
 
-  onEachRegion = (region, layer) => {
+  const onEachRegion = (region, layer) => {
     function getColor(d) {
       return d > 1  ? '#7f2704' :
                         '#fff5eb';
@@ -99,7 +100,7 @@ class MyMap extends Component {
 
   };
 
-  onEachMuni = (muni, layer) => {
+  const onEachMuni = (muni, layer) => {
     function getColor(d) {
       return d > 20  ? '#67000d' :
              d > 10  ? '#ef3b2c' :
@@ -131,7 +132,7 @@ class MyMap extends Component {
     
   };
 
-  onEachTribal = (tribal, layer) => {
+  const onEachTribal = (tribal, layer) => {
     function getColor(d) {
       return d > 1  ? '#00441b' :
                         '#f7fcf5';
@@ -160,7 +161,7 @@ class MyMap extends Component {
     
   };
 
-  pointToLayer(feature, latlng) {
+  function pointToLayer(feature, latlng) {
     return L.circleMarker(latlng, {
       fillOpacity: 1,
       radius: 3,
@@ -168,7 +169,6 @@ class MyMap extends Component {
     })
   }
 
-  render() {
     return (
       <div>
       <h1 style={{ textAlign: "center" }}>FEMA Buyouts by Organizational Type</h1>
@@ -183,32 +183,32 @@ class MyMap extends Component {
         <LayersControl position="topright">
           <LayersControl.Overlay checked name="Counties">
                 <GeoJSON
-                  style={this.countyStyle}
+                  style={countyStyle}
                   data={countyData.features}
-                  onEachFeature={this.onEachCounty}
+                  onEachFeature={onEachCounty}
                 />
           </LayersControl.Overlay>
           <LayersControl.Overlay checked name="Municipalities">
                 <GeoJSON
-                  style={this.muniStyle}
+                  style={muniStyle}
                   data={muniData.features}
-                  onEachFeature={this.onEachMuni}
-                  pointToLayer={this.pointToLayer.bind(this)}
+                  onEachFeature={onEachMuni}
+                  pointToLayer={pointToLayer.bind(this)}
                 /> 
           </LayersControl.Overlay>
           <LayersControl.Overlay checked name="Regional Entities">
                 <GeoJSON
-                  style={this.regionStyle}
+                  style={regionStyle}
                   data={regionData.features}
-                  onEachFeature={this.onEachRegion}
+                  onEachFeature={onEachRegion}
                 />
           </LayersControl.Overlay>
           <LayersControl.Overlay checked name="Tribal Nations">
                 <GeoJSON
-                  style={this.tribalStyle}
+                  style={tribalStyle}
                   data={tribalData.features}
-                  onEachFeature={this.onEachTribal}
-                  pointToLayer={this.pointToLayer.bind(this)}
+                  onEachFeature={onEachTribal}
+                  pointToLayer={pointToLayer.bind(this)}
                 /> 
           </LayersControl.Overlay>
         </LayersControl>
@@ -216,6 +216,6 @@ class MyMap extends Component {
     </div>
     );
   }
-}
+
 
 export default MyMap;
