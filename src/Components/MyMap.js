@@ -1,4 +1,3 @@
-import React, {Component} from "react";
 import { MapContainer, TileLayer, GeoJSON, LayersControl } from "react-leaflet";
 import countyData from './Data/countyBuyouts.json'
 import regionData from './Data/regionalBuyouts.json'
@@ -9,7 +8,6 @@ import '@fontsource/roboto';
 
 const position = [37.1, -95.7]
 
-//const muniDataArray = Array.from(muniData);
 function MyMap() {
 
   const countyStyle = {
