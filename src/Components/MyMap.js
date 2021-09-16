@@ -11,11 +11,7 @@ const position = [37.1, -95.7]
 
 //const muniDataArray = Array.from(muniData);
 class MyMap extends Component {
-  state = {};
 
-  componentDidMount() {
-    console.log(countyData, regionData, muniData);
-  }
   countyStyle = {
     fillOpacity: 1,
     color: "black",
@@ -43,11 +39,6 @@ class MyMap extends Component {
     weight: .5,
   
   };
-  
-  printMesssageToConsole = (event) => {
-    console.log("Clicked");
-  };
-
 
   onEachCounty = (county, layer) => {
     function getColor(d) {
@@ -180,7 +171,7 @@ class MyMap extends Component {
   render() {
     return (
       <div>
-      <h1 style={{ textAlign: "center" }}>FEMA Buyouts by County</h1>
+      <h1 style={{ textAlign: "center" }}>FEMA Buyouts by Organizational Type</h1>
       <MapContainer 
         center={position} 
         zoom={4} 
