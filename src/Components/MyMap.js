@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import { MapContainer, TileLayer, GeoJSON, LayersControl } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON, LayersControl, LayerGroup } from "react-leaflet";
 import countyData from './Data/countyBuyouts.json'
 import regionData from './Data/regionalBuyouts.json'
 import muniData from './Data/munigeojson.json'
@@ -12,6 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Counties from './Counties';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -29,6 +30,7 @@ function MyMap() {
   const [from,setFrom] = useState(1);
   const [to,setTo] = useState(51);
   const classes = useStyles();
+  const fromto = from+to;
 
   const handleFrom = e => {
     setFrom(e.target.value);
@@ -208,13 +210,11 @@ function MyMap() {
             />
         <LayersControl position="topright">
           <LayersControl.Overlay checked name="Counties">
-                <GeoJSON
-                  style={countyStyle}
-                  data={countyData.features}
-                  onEachFeature={onEachCounty}
-                />
+              <LayerGroup key={fromto}>
+                <Counties from={from} to={to}/>
+              </LayerGroup>
           </LayersControl.Overlay>
-          <LayersControl.Overlay checked name="Municipalities">
+          <LayersControl.Overlay name="Municipalities">
                 <GeoJSON
                   style={muniStyle}
                   data={muniData.features}
@@ -222,14 +222,14 @@ function MyMap() {
                   pointToLayer={pointToLayer.bind(this)}
                 /> 
           </LayersControl.Overlay>
-          <LayersControl.Overlay checked name="Regional Entities">
+          <LayersControl.Overlay name="Regional Entities">
                 <GeoJSON
                   style={regionStyle}
                   data={regionData.features}
                   onEachFeature={onEachRegion}
                 />
           </LayersControl.Overlay>
-          <LayersControl.Overlay checked name="Tribal Nations">
+          <LayersControl.Overlay name="Tribal Nations">
                 <GeoJSON
                   style={tribalStyle}
                   data={tribalData.features}
