@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
 const position = [37.1, -95.7]
 
 function MyMap() {
-  const [from,setFrom] = useState(2000);
-  const [to,setTo] = useState(2020);
+  const [from,setFrom] = useState(1);
+  const [to,setTo] = useState(51);
   const classes = useStyles();
 
   const handleFrom = e => {
@@ -240,68 +240,128 @@ function MyMap() {
         </LayersControl>
       </MapContainer>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">From</InputLabel>
+        <InputLabel id="demo-simple-select-label">Minimum</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={from}
           onChange={handleFrom}
         >
-          <MenuItem value={2000}>2000</MenuItem>
-          <MenuItem value={2001}>2001</MenuItem>
-          <MenuItem value={2002}>2002</MenuItem>
-          <MenuItem value={2003}>2003</MenuItem>
-          <MenuItem value={2004}>2004</MenuItem>
-          <MenuItem value={2005}>2005</MenuItem>
-          <MenuItem value={2006}>2006</MenuItem>
-          <MenuItem value={2007}>2007</MenuItem>
-          <MenuItem value={2008}>2008</MenuItem>          
-          <MenuItem value={2009}>2009</MenuItem>
-          <MenuItem value={2010}>2010</MenuItem>          
-          <MenuItem value={2011}>2011</MenuItem>
-          <MenuItem value={2012}>2012</MenuItem>          
-          <MenuItem value={2013}>2013</MenuItem>
-          <MenuItem value={2014}>2014</MenuItem>
-          <MenuItem value={2015}>2015</MenuItem>
-          <MenuItem value={2016}>2016</MenuItem>
-          <MenuItem value={2017}>2017</MenuItem>
-          <MenuItem value={2018}>2018</MenuItem>
-          <MenuItem value={2019}>2019</MenuItem>
-          <MenuItem value={2020}>2020</MenuItem>
+          <MenuItem value={1}>1</MenuItem>
+          <MenuItem value={2}>2</MenuItem>
+          <MenuItem value={3}>3</MenuItem>
+          <MenuItem value={4}>4</MenuItem>
+          <MenuItem value={5}>5</MenuItem>
+          <MenuItem value={6}>6</MenuItem>
+          <MenuItem value={7}>7</MenuItem>
+          <MenuItem value={8}>8</MenuItem>
+          <MenuItem value={9}>9</MenuItem>          
+          <MenuItem value={10}>10</MenuItem>
+          <MenuItem value={11}>11</MenuItem>          
+          <MenuItem value={12}>12</MenuItem>
+          <MenuItem value={13}>13</MenuItem>          
+          <MenuItem value={14}>14</MenuItem>
+          <MenuItem value={15}>15</MenuItem>
+          <MenuItem value={16}>16</MenuItem>
+          <MenuItem value={17}>17</MenuItem>
+          <MenuItem value={18}>18</MenuItem>
+          <MenuItem value={19}>19</MenuItem>
+          <MenuItem value={20}>20</MenuItem>
+          <MenuItem value={21}>21</MenuItem>
+          <MenuItem value={22}>22</MenuItem>
+          <MenuItem value={23}>23</MenuItem>
+          <MenuItem value={24}>24</MenuItem>
+          <MenuItem value={25}>25</MenuItem>
+          <MenuItem value={26}>26</MenuItem>
+          <MenuItem value={27}>27</MenuItem>
+          <MenuItem value={28}>28</MenuItem>
+          <MenuItem value={29}>29</MenuItem>
+          <MenuItem value={30}>30</MenuItem>          
+          <MenuItem value={31}>31</MenuItem>        
+          <MenuItem value={32}>32</MenuItem>
+          <MenuItem value={33}>33</MenuItem>          
+          <MenuItem value={34}>34</MenuItem>
+          <MenuItem value={35}>35</MenuItem>
+          <MenuItem value={36}>36</MenuItem>
+          <MenuItem value={37}>37</MenuItem>
+          <MenuItem value={38}>38</MenuItem>
+          <MenuItem value={39}>39</MenuItem>
+          <MenuItem value={40}>40</MenuItem>
+          <MenuItem value={41}>41</MenuItem>          
+          <MenuItem value={42}>42</MenuItem>
+          <MenuItem value={43}>43</MenuItem>          
+          <MenuItem value={44}>44</MenuItem>
+          <MenuItem value={45}>45</MenuItem>
+          <MenuItem value={46}>46</MenuItem>
+          <MenuItem value={47}>47</MenuItem>
+          <MenuItem value={48}>48</MenuItem>
+          <MenuItem value={49}>49</MenuItem>
+          <MenuItem value={50}>50</MenuItem>
+          <MenuItem value={51}>51</MenuItem>
         </Select>
-        <FormHelperText>Select starting year for analysis.</FormHelperText>
+        <FormHelperText>Select minimum number of awarded grants.</FormHelperText>
       </FormControl>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">To</InputLabel>
+        <InputLabel id="demo-simple-select-label">Maximum</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={to}
           onChange={handleTo}
         >
-          <MenuItem value={2000}>2000</MenuItem>
-          <MenuItem value={2001}>2001</MenuItem>
-          <MenuItem value={2002}>2002</MenuItem>
-          <MenuItem value={2003}>2003</MenuItem>
-          <MenuItem value={2004}>2004</MenuItem>
-          <MenuItem value={2005}>2005</MenuItem>
-          <MenuItem value={2006}>2006</MenuItem>
-          <MenuItem value={2007}>2007</MenuItem>
-          <MenuItem value={2008}>2008</MenuItem>          
-          <MenuItem value={2009}>2009</MenuItem>
-          <MenuItem value={2010}>2010</MenuItem>          
-          <MenuItem value={2011}>2011</MenuItem>
-          <MenuItem value={2012}>2012</MenuItem>          
-          <MenuItem value={2013}>2013</MenuItem>
-          <MenuItem value={2014}>2014</MenuItem>
-          <MenuItem value={2015}>2015</MenuItem>
-          <MenuItem value={2016}>2016</MenuItem>
-          <MenuItem value={2017}>2017</MenuItem>
-          <MenuItem value={2018}>2018</MenuItem>
-          <MenuItem value={2019}>2019</MenuItem>
-          <MenuItem value={2020}>2020</MenuItem>
+       <MenuItem value={1}>1</MenuItem>
+          <MenuItem value={2}>2</MenuItem>
+          <MenuItem value={3}>3</MenuItem>
+          <MenuItem value={4}>4</MenuItem>
+          <MenuItem value={5}>5</MenuItem>
+          <MenuItem value={6}>6</MenuItem>
+          <MenuItem value={7}>7</MenuItem>
+          <MenuItem value={8}>8</MenuItem>
+          <MenuItem value={9}>9</MenuItem>          
+          <MenuItem value={10}>10</MenuItem>
+          <MenuItem value={11}>11</MenuItem>          
+          <MenuItem value={12}>12</MenuItem>
+          <MenuItem value={13}>13</MenuItem>          
+          <MenuItem value={14}>14</MenuItem>
+          <MenuItem value={15}>15</MenuItem>
+          <MenuItem value={16}>16</MenuItem>
+          <MenuItem value={17}>17</MenuItem>
+          <MenuItem value={18}>18</MenuItem>
+          <MenuItem value={19}>19</MenuItem>
+          <MenuItem value={20}>20</MenuItem>
+          <MenuItem value={21}>21</MenuItem>
+          <MenuItem value={22}>22</MenuItem>
+          <MenuItem value={23}>23</MenuItem>
+          <MenuItem value={24}>24</MenuItem>
+          <MenuItem value={25}>25</MenuItem>
+          <MenuItem value={26}>26</MenuItem>
+          <MenuItem value={27}>27</MenuItem>
+          <MenuItem value={28}>28</MenuItem>
+          <MenuItem value={29}>29</MenuItem>
+          <MenuItem value={30}>30</MenuItem>          
+          <MenuItem value={31}>31</MenuItem>        
+          <MenuItem value={32}>32</MenuItem>
+          <MenuItem value={33}>33</MenuItem>          
+          <MenuItem value={34}>34</MenuItem>
+          <MenuItem value={35}>35</MenuItem>
+          <MenuItem value={36}>36</MenuItem>
+          <MenuItem value={37}>37</MenuItem>
+          <MenuItem value={38}>38</MenuItem>
+          <MenuItem value={39}>39</MenuItem>
+          <MenuItem value={40}>40</MenuItem>
+          <MenuItem value={41}>41</MenuItem>          
+          <MenuItem value={42}>42</MenuItem>
+          <MenuItem value={43}>43</MenuItem>          
+          <MenuItem value={44}>44</MenuItem>
+          <MenuItem value={45}>45</MenuItem>
+          <MenuItem value={46}>46</MenuItem>
+          <MenuItem value={47}>47</MenuItem>
+          <MenuItem value={48}>48</MenuItem>
+          <MenuItem value={49}>49</MenuItem>
+          <MenuItem value={50}>50</MenuItem>
+          <MenuItem value={51}>51</MenuItem>
         </Select>
-        <FormHelperText>Select ending year for analysis.</FormHelperText>
+        <FormHelperText>Select maximum number of awarded grants.</FormHelperText>
       </FormControl>
     </div>
     );
