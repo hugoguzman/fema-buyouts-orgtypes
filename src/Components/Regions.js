@@ -51,6 +51,7 @@ function Regions(props) {
     style={regionStyle}
     data={regionData.features}
     onEachFeature={onEachRegion}
+    filter={filter}
     />
   )
 }
