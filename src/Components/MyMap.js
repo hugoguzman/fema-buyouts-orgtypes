@@ -212,17 +212,17 @@ function MyMap() {
               url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
             />
         <LayersControl position="topright">
-          <LayersControl.Overlay name="Counties">
+          <LayersControl.Overlay checked name="Counties">
               <LayerGroup key={fromto}>
                 <Counties from={from} to={to}/>
               </LayerGroup>
           </LayersControl.Overlay>
-          <LayersControl.Overlay name="Municipalities">
+          <LayersControl.Overlay checked name="Municipalities">
                 <LayerGroup key={fromto}>
                   <Municipalities from={from} to={to}/>
                 </LayerGroup>
           </LayersControl.Overlay>
-          <LayersControl.Overlay name="Regional Entities">
+          <LayersControl.Overlay checked name="Regional Entities">
           <LayerGroup key={fromto}>
                   <Regions from={from} to={to}/>
                 </LayerGroup>
