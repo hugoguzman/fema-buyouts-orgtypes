@@ -12,8 +12,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Counties from './Counties';
+import Counties from "./Counties";
 import Municipalities from "./Municipalities";
+import Regions from "./Regions";
+import TribalNations from "./TribalNations";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -215,25 +217,20 @@ function MyMap() {
                 <Counties from={from} to={to}/>
               </LayerGroup>
           </LayersControl.Overlay>
-          <LayersControl.Overlay checked name="Municipalities">
+          <LayersControl.Overlay name="Municipalities">
                 <LayerGroup key={fromto}>
                   <Municipalities from={from} to={to}/>
                 </LayerGroup>
           </LayersControl.Overlay>
           <LayersControl.Overlay name="Regional Entities">
-                <GeoJSON
-                  style={regionStyle}
-                  data={regionData.features}
-                  onEachFeature={onEachRegion}
-                />
+          <LayerGroup key={fromto}>
+                  <Regions from={from} to={to}/>
+                </LayerGroup>
           </LayersControl.Overlay>
-          <LayersControl.Overlay name="Tribal Nations">
-                <GeoJSON
-                  style={tribalStyle}
-                  data={tribalData.features}
-                  onEachFeature={onEachTribal}
-                  pointToLayer={pointToLayer.bind(this)}
-                /> 
+          <LayersControl.Overlay checked name="Tribal Nations">
+          <LayerGroup key={fromto}>
+                  <TribalNations from={from} to={to}/>
+                </LayerGroup>
           </LayersControl.Overlay>
         </LayersControl>
       </MapContainer>
