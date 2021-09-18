@@ -13,6 +13,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Counties from './Counties';
+import Municipalities from "./Municipalities";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -209,18 +210,15 @@ function MyMap() {
               url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
             />
         <LayersControl position="topright">
-          <LayersControl.Overlay checked name="Counties">
+          <LayersControl.Overlay name="Counties">
               <LayerGroup key={fromto}>
                 <Counties from={from} to={to}/>
               </LayerGroup>
           </LayersControl.Overlay>
-          <LayersControl.Overlay name="Municipalities">
-                <GeoJSON
-                  style={muniStyle}
-                  data={muniData.features}
-                  onEachFeature={onEachMuni}
-                  pointToLayer={pointToLayer.bind(this)}
-                /> 
+          <LayersControl.Overlay checked name="Municipalities">
+                <LayerGroup key={fromto}>
+                  <Municipalities from={from} to={to}/>
+                </LayerGroup>
           </LayersControl.Overlay>
           <LayersControl.Overlay name="Regional Entities">
                 <GeoJSON

@@ -43,9 +43,6 @@ function Counties(props) {
 
   };
 
-  console.log(from);
-  console.log(to);
-
   function filter (buyoutCounty) {
     if (buyoutCounty.properties.grantcount >= from && buyoutCounty.properties.grantcount <= to) return true;
 }
