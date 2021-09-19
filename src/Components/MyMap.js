@@ -83,7 +83,7 @@ function MyMap() {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
               url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
             />
-        <LayersControl position="topright">
+        <LayersControl collapsed={false} position="topright">
           <LayersControl.Overlay checked name="Counties">
               <LayerGroup key={fromto}>
                 <Counties from={from} to={to}/>
