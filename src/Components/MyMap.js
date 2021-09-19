@@ -15,7 +15,7 @@ import TribalNations from "./TribalNations";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    width:150
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
