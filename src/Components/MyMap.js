@@ -107,7 +107,7 @@ function MyMap() {
         </LayersControl>
       </MapContainer>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Min</InputLabel>
+        <InputLabel id="demo-simple-select-label">Min Grants: Counties</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -166,10 +166,10 @@ function MyMap() {
           <MenuItem value={50}>50</MenuItem>
           <MenuItem value={51}>51</MenuItem>
         </Select>
-        <FormHelperText>Select Minimum number of awarded grants.</FormHelperText>
+        <FormHelperText>Select minimum number of awarded grants.</FormHelperText>
       </FormControl>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Max</InputLabel>
+        <InputLabel id="demo-simple-select-label">Max Grants: Counties</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -228,7 +228,7 @@ function MyMap() {
           <MenuItem value={50}>50</MenuItem>
           <MenuItem value={51}>51</MenuItem>
         </Select>
-        <FormHelperText>Select Maximum number of awarded grants.</FormHelperText>
+        <FormHelperText>Select maximum number of awarded grants.</FormHelperText>
       </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel id="muni-from">Min Grants: Municipalities</InputLabel>
@@ -264,7 +264,7 @@ function MyMap() {
           <MenuItem value={24}>24</MenuItem>
           <MenuItem value={25}>25</MenuItem>
         </Select>
-        <FormHelperText>Select Minimum number of awarded grants.</FormHelperText>
+        <FormHelperText>Select minimum number of awarded grants.</FormHelperText>
       </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel id="muni-to">Max Grants: Municipalities</InputLabel>
@@ -300,7 +300,7 @@ function MyMap() {
           <MenuItem value={24}>24</MenuItem>
           <MenuItem value={25}>25</MenuItem>
         </Select>
-        <FormHelperText>Select Maximum number of awarded grants.</FormHelperText>
+        <FormHelperText>Select maximum number of awarded grants.</FormHelperText>
       </FormControl>
       <br />
       <FormControl className={classes.formControl}>
@@ -315,7 +315,7 @@ function MyMap() {
           <MenuItem value={2}>2</MenuItem>
           <MenuItem value={3}>3</MenuItem>
         </Select>
-        <FormHelperText>Select Minimum number of awarded grants.</FormHelperText>
+        <FormHelperText>Select minimum number of awarded grants.</FormHelperText>
       </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel id="regional-to">Max Grants: Regional Entities</InputLabel>
@@ -329,7 +329,7 @@ function MyMap() {
           <MenuItem value={2}>2</MenuItem>
           <MenuItem value={3}>3</MenuItem>
         </Select>
-        <FormHelperText>Select Maximum number of awarded grants.</FormHelperText>
+        <FormHelperText>Select maximum number of awarded grants.</FormHelperText>
       </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel id="tribal-from">Min Grants: Tribal Nations</InputLabel>
@@ -342,7 +342,7 @@ function MyMap() {
           <MenuItem value={1}>1</MenuItem>
           <MenuItem value={2}>2</MenuItem>
         </Select>
-        <FormHelperText>Select Minimum number of awarded grants.</FormHelperText>
+        <FormHelperText>Select minimum number of awarded grants.</FormHelperText>
       </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel id="tribal-to">Max Grants: Tribal Entities</InputLabel>
@@ -355,7 +355,7 @@ function MyMap() {
        <MenuItem value={1}>1</MenuItem>
           <MenuItem value={2}>2</MenuItem>
         </Select>
-        <FormHelperText>Select Maximum number of awarded grants.</FormHelperText>
+        <FormHelperText>Select maximum number of awarded grants.</FormHelperText>
       </FormControl>
     </div>
     );
