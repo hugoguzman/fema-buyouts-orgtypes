@@ -1,16 +1,16 @@
 import React, { useState} from "react";
 import { MapContainer, TileLayer, LayersControl, LayerGroup } from "react-leaflet";
 import '@fontsource/roboto';
-import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import {
   Grid,
   Card,
   CardContent,
   Typography,
+  makeStyles,
+  InputLabel,
+  FormControl,
+  MenuItem,
+  Select
 } from "@material-ui/core/";
 import Counties from "./Counties";
 import Municipalities from "./Municipalities";
@@ -30,8 +30,8 @@ const useStyles = makeStyles((theme) => ({
 const position = [37.1, -95.7]
 
 function MyMap() {
-  const [from,setFrom] = useState(1);
-  const [to,setTo] = useState(51);
+  const [countyFrom,setCountyFrom] = useState(1);
+  const [countyTo,setCountyTo] = useState(51);
   const [muniFrom,setMuniFrom] = useState(1);
   const [muniTo,setMuniTo] = useState(25);
   const [regionalFrom,setRegionalFrom] = useState(1);
@@ -39,18 +39,18 @@ function MyMap() {
   const [tribalFrom,setTribalFrom] = useState(1);
   const [tribalTo,setTribalTo] = useState(2);
   const classes = useStyles();
-  const fromto = from+to;
+  const countyFromTo = countyFrom+countyTo;
   const muniFromTo = muniFrom+muniTo;
   const regionalFromTo = regionalFrom+regionalTo;
   const tribalFromTo = tribalFrom+tribalTo;
 
 
-  const handleFrom = e => {
-    setFrom(e.target.value);
+  const handleCountyFrom = e => {
+    setCountyFrom(e.target.value);
   }
 
-  const handleTo = e => {
-    setTo(e.target.value);
+  const handleCountyTo = e => {
+    setCountyTo(e.target.value);
   }
 
   const handleMuniFrom = e => {
@@ -90,8 +90,8 @@ function MyMap() {
             />
         <LayersControl collapsed={true} position="topright">
           <LayersControl.Overlay checked name="Counties">
-              <LayerGroup key={fromto}>
-                <Counties from={from} to={to}/>
+              <LayerGroup key={countyFromTo}>
+                <Counties from={countyFrom} to={countyTo}/>
               </LayerGroup>
           </LayersControl.Overlay>
           <LayersControl.Overlay checked name="Municipalities">
@@ -130,8 +130,8 @@ function MyMap() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={from}
-          onChange={handleFrom}
+          value={countyFrom}
+          onChange={handleCountyFrom}
         >
           <MenuItem value={1}>1</MenuItem>
           <MenuItem value={2}>2</MenuItem>
@@ -191,8 +191,8 @@ function MyMap() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={to}
-          onChange={handleTo}
+          value={countyTo}
+          onChange={handleCountyTo}
         >
        <MenuItem value={1}>1</MenuItem>
           <MenuItem value={2}>2</MenuItem>
