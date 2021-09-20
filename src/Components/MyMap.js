@@ -88,7 +88,7 @@ function MyMap() {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
               url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
             />
-        <LayersControl collapsed={false} position="topright">
+        <LayersControl collapsed={true} position="topright">
           <LayersControl.Overlay checked name="Counties">
               <LayerGroup key={fromto}>
                 <Counties from={from} to={to}/>
@@ -115,10 +115,11 @@ function MyMap() {
       <div className={classes.root}>
       <Grid 
         container 
-        spacing={.5}
+        rowSpacing={{xs:1, md:2}}
+        columnSpacing={{xs:1,md:2}}
         justifyContent="center"
         alignItems="center">
-        <Grid item xs={6} md={3}>
+        <Grid item xs={12} md={3}>
           <Card raised={true}>
           <CardContent>
         <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -249,7 +250,7 @@ function MyMap() {
       </CardContent>
       </Card>
       </Grid>
-      <Grid item xs={6} md={3}>
+      <Grid item xs={12} md={3}>
           <Card raised={true}>
           <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -328,7 +329,7 @@ function MyMap() {
       </CardContent>
       </Card>
       </Grid>
-      <Grid item xs={6} md={3}>
+      <Grid item xs={12} md={3}>
           <Card raised={true}>
           <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -363,7 +364,7 @@ function MyMap() {
       </CardContent>
       </Card>
       </Grid>
-      <Grid item xs={6} md={3}>
+      <Grid item xs={12} md={3}>
           <Card raised={true}>
           <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
