@@ -4,9 +4,14 @@ import '@fontsource/roboto';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import {
+  Grid,
+  Card,
+  CardContent,
+  Typography,
+} from "@material-ui/core/";
 import Counties from "./Counties";
 import Municipalities from "./Municipalities";
 import Regions from "./Regions";
@@ -14,12 +19,12 @@ import TribalNations from "./TribalNations";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
-    width:150
+    margin: theme.spacing(0),
+    width:134
   },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
+  root: {
+    flexGrow: 1,
+  }
 }));
 
 const position = [37.1, -95.7]
@@ -74,11 +79,11 @@ function MyMap() {
 
     return (
       <div>
-      <h1 style={{ textAlign: "center" }}>FEMA Buyouts by Organizational Type</h1>
+      <h3 style={{ textAlign: "center" }}>FEMA Buyouts by Organizational Type</h3>
       <MapContainer 
         center={position} 
         zoom={4} 
-        style={{ height: 450, width: "100%" }}>
+        style={{ height: 425, width: "100%" }}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
               url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
@@ -106,8 +111,21 @@ function MyMap() {
           </LayersControl.Overlay>
         </LayersControl>
       </MapContainer>
+      <br />
+      <div className={classes.root}>
+      <Grid 
+        container 
+        spacing={1}
+        justifyContent="center"
+        alignItems="center">
+        <Grid item xs={3}>
+          <Card raised={true}>
+          <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Counties
+        </Typography>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Min Grants: Counties</InputLabel>
+        <InputLabel id="demo-simple-select-label">Min Grant Awards</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -166,10 +184,9 @@ function MyMap() {
           <MenuItem value={50}>50</MenuItem>
           <MenuItem value={51}>51</MenuItem>
         </Select>
-        <FormHelperText>Select minimum number of awarded grants.</FormHelperText>
       </FormControl>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Max Grants: Counties</InputLabel>
+        <InputLabel id="demo-simple-select-label">Max Grant Awards</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -228,10 +245,18 @@ function MyMap() {
           <MenuItem value={50}>50</MenuItem>
           <MenuItem value={51}>51</MenuItem>
         </Select>
-        <FormHelperText>Select maximum number of awarded grants.</FormHelperText>
       </FormControl>
+      </CardContent>
+      </Card>
+      </Grid>
+      <Grid item xs={3}>
+          <Card raised={true}>
+          <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Municipalities
+        </Typography>
       <FormControl className={classes.formControl}>
-        <InputLabel id="muni-from">Min Grants: Municipalities</InputLabel>
+        <InputLabel id="muni-from">Min Grant Awards</InputLabel>
         <Select
           labelId="muni-from"
           id="muni-from"
@@ -264,10 +289,9 @@ function MyMap() {
           <MenuItem value={24}>24</MenuItem>
           <MenuItem value={25}>25</MenuItem>
         </Select>
-        <FormHelperText>Select minimum number of awarded grants.</FormHelperText>
       </FormControl>
       <FormControl className={classes.formControl}>
-        <InputLabel id="muni-to">Max Grants: Municipalities</InputLabel>
+        <InputLabel id="muni-to">Max Grant Awards</InputLabel>
         <Select
           labelId="muni-to"
           id="muni-to"
@@ -300,11 +324,18 @@ function MyMap() {
           <MenuItem value={24}>24</MenuItem>
           <MenuItem value={25}>25</MenuItem>
         </Select>
-        <FormHelperText>Select maximum number of awarded grants.</FormHelperText>
       </FormControl>
-      <br />
+      </CardContent>
+      </Card>
+      </Grid>
+      <Grid item xs={3}>
+          <Card raised={true}>
+          <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Regional Entities
+        </Typography>
       <FormControl className={classes.formControl}>
-        <InputLabel id="regional-from">Min Grants: Regional Entities</InputLabel>
+        <InputLabel id="regional-from">Min Grant Awards</InputLabel>
         <Select
           labelId="regional-from"
           id="regional-from"
@@ -315,10 +346,9 @@ function MyMap() {
           <MenuItem value={2}>2</MenuItem>
           <MenuItem value={3}>3</MenuItem>
         </Select>
-        <FormHelperText>Select minimum number of awarded grants.</FormHelperText>
       </FormControl>
       <FormControl className={classes.formControl}>
-        <InputLabel id="regional-to">Max Grants: Regional Entities</InputLabel>
+        <InputLabel id="regional-to">Max Grant Awards</InputLabel>
         <Select
           labelId="regional-to"
           id="regional-to"
@@ -329,10 +359,18 @@ function MyMap() {
           <MenuItem value={2}>2</MenuItem>
           <MenuItem value={3}>3</MenuItem>
         </Select>
-        <FormHelperText>Select maximum number of awarded grants.</FormHelperText>
       </FormControl>
+      </CardContent>
+      </Card>
+      </Grid>
+      <Grid item xs={3}>
+          <Card raised={true}>
+          <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Tribal Nations
+        </Typography>
       <FormControl className={classes.formControl}>
-        <InputLabel id="tribal-from">Min Grants: Tribal Nations</InputLabel>
+        <InputLabel id="tribal-from">Min Grant Awards</InputLabel>
         <Select
             labelId="tribal-from"
             id="tribal-from"
@@ -342,10 +380,9 @@ function MyMap() {
             <MenuItem value={1}>1</MenuItem>
             <MenuItem value={2}>2</MenuItem>
         </Select>
-        <FormHelperText>Select minimum number of awarded grants.</FormHelperText>
         </FormControl>
         <FormControl className={classes.formControl}>
-        <InputLabel id="tribal-to">Max Grants: Tribal Entities</InputLabel>
+        <InputLabel id="tribal-to">Max Grant Awards</InputLabel>
         <Select
             labelId="tribal-to"
             id="tribal-to"
@@ -355,9 +392,12 @@ function MyMap() {
         <MenuItem value={1}>1</MenuItem>
             <MenuItem value={2}>2</MenuItem>
         </Select>
-        <FormHelperText>Select maximum number of awarded grants.</FormHelperText>
         </FormControl>
-
+        </CardContent>
+      </Card>
+      </Grid>
+        </Grid>
+        </div>
     </div>
     );
   }
