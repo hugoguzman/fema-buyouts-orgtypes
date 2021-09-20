@@ -15,8 +15,9 @@ function Regions(props) {
 
       const onEachRegion = (region, layer) => {
         function getColor(d) {
-          return d > 1  ? '#7f2704' :
-                            '#fff5eb';
+          return d > 2  ? '#4a1486' :
+                 d > 1  ? '#9e9ac8' :
+                          '#f2f0f7' ;
       }
         const formatter = new Intl.NumberFormat('en-US', {
           style: 'currency',

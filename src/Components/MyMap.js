@@ -79,7 +79,7 @@ function MyMap() {
 
     return (
       <div>
-      <h3 style={{ textAlign: "center" }}>FEMA Buyouts by Organizational Type</h3>
+      <h3 style={{ textAlign: "center" }}>FEMA Buyouts by Organizational Class</h3>
       <MapContainer 
         center={position} 
         zoom={4} 
