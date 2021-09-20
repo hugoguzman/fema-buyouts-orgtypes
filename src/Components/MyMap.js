@@ -115,13 +115,13 @@ function MyMap() {
       <div className={classes.root}>
       <Grid 
         container 
-        spacing={1}
+        spacing={.5}
         justifyContent="center"
         alignItems="center">
-        <Grid item xs={3}>
+        <Grid item xs={6} md={3}>
           <Card raised={true}>
           <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Counties
         </Typography>
       <FormControl className={classes.formControl}>
@@ -249,7 +249,7 @@ function MyMap() {
       </CardContent>
       </Card>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={6} md={3}>
           <Card raised={true}>
           <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -328,7 +328,7 @@ function MyMap() {
       </CardContent>
       </Card>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={6} md={3}>
           <Card raised={true}>
           <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -363,7 +363,7 @@ function MyMap() {
       </CardContent>
       </Card>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={6} md={3}>
           <Card raised={true}>
           <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
