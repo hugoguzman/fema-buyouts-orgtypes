@@ -23,7 +23,10 @@ const useStyles = makeStyles((theme) => ({
     width:134
   },
   root: {
-    flexGrow: 1,
+    padding: 0,
+    '&:last-child': {
+      paddingBottom: 0,
+    },
   }
 }));
 
@@ -79,7 +82,21 @@ function MyMap() {
 
     return (
       <div>
-      <h3 style={{ textAlign: "center" }}>FEMA Buyouts by Organizational Class</h3>
+      <Grid 
+        container 
+        className={classes.root}
+        rowSpacing={{xs:1, md:2}}
+        columnSpacing={{xs:1,md:2}}
+        justifyContent="center"
+        alignItems="center">
+        <Grid item xs={12} md={12}>
+          <Card raised={false} className={classes.root}>
+          <CardContent className={classes.root}>
+          <h3 style={{ textAlign: "center" }}>FEMA Buyouts by Organizational Class</h3>
+          </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
       <MapContainer 
         center={position} 
         zoom={4} 
@@ -111,7 +128,6 @@ function MyMap() {
           </LayersControl.Overlay>
         </LayersControl>
       </MapContainer>
-      <br />
       <div className={classes.root}>
       <Grid 
         container 
