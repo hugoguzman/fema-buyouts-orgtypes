@@ -97,6 +97,9 @@ function MyMap() {
           </Card>
         </Grid>
       </Grid>
+      <Grid item xs={12} md={9}>
+      <Card raised={false} className={classes.root}>
+      <CardContent className={classes.root}>
       <MapContainer 
         center={position} 
         zoom={4} 
@@ -128,6 +131,9 @@ function MyMap() {
           </LayersControl.Overlay>
         </LayersControl>
       </MapContainer>
+      </CardContent>
+      </Card>
+      </Grid>
       <div className={classes.root}>
       <Grid 
         container 
@@ -136,7 +142,7 @@ function MyMap() {
         justifyContent="center"
         alignItems="center">
         <Grid item xs={12} md={3}>
-          <Card raised={true}>
+          <Card raised={false}>
           <CardContent>
         <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Counties
@@ -267,7 +273,7 @@ function MyMap() {
       </Card>
       </Grid>
       <Grid item xs={12} md={3}>
-          <Card raised={true}>
+          <Card raised={false}>
           <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Municipalities
@@ -346,7 +352,7 @@ function MyMap() {
       </Card>
       </Grid>
       <Grid item xs={12} md={3}>
-          <Card raised={true}>
+          <Card raised={false}>
           <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Regional Entities
@@ -381,7 +387,7 @@ function MyMap() {
       </Card>
       </Grid>
       <Grid item xs={12} md={3}>
-          <Card raised={true}>
+          <Card raised={false}>
           <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Tribal Nations
