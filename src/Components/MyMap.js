@@ -108,7 +108,7 @@ function MyMap() {
         columnSpacing={{ xs: 1, md: 2 }}
         justifyContent="center"
         alignItems="center">
-        <Grid item xs={9} md={9}>
+        <Grid item xs={12} md={9}>
           <Card raised={false} className={classes.root}>
             <CardContent className={classes.root}>
               <MapContainer
@@ -145,7 +145,7 @@ function MyMap() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={3} md={3}>
+        <Grid item xs={12} md={3}>
           <Card raised={false}>
               <CardContent className={classes.root}>
                 <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
