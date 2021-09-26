@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     justifyContent: "center",
     margin: theme.spacing(0),
-    width: 110,
+    width: 105,
     padding: 2,
     '&:last-child': {
       paddingBottom: 30,
@@ -49,9 +49,9 @@ function MyMap() {
   const [tribalFrom, setTribalFrom] = useState(1);
   const [tribalTo, setTribalTo] = useState(2);
   const [regionalDollarsFrom, setRegionalDollarsFrom] = useState(35228);
-  const [regionalDollarsTo, setRegionalDollarsTo] = useState(4309473);
+  const [regionalDollarsTo, setRegionalDollarsTo] = useState(4309474);
   const [tribalDollarsFrom, setTribalDollarsFrom] = useState(30952);
-  const [tribalDollarsTo, setTribalDollarsTo] = useState(300000);
+  const [tribalDollarsTo, setTribalDollarsTo] = useState(299888);
   const classes = useStyles();
   const countyFromTo = countyFrom + countyTo;
   const muniFromTo = muniFrom + muniTo;
@@ -373,7 +373,11 @@ function MyMap() {
                     value={regionalDollarsFrom}
                     onChange={handleRegionalDollarsFrom}>
                     <MenuItem value={35228}>$35,228</MenuItem>
+                    <MenuItem value={250000}>$250,000</MenuItem>
+                    <MenuItem value={500000}>$500,000</MenuItem>
                     <MenuItem value={1000000}>$1,000,000</MenuItem>
+                    <MenuItem value={2000000}>$2,000,000</MenuItem>
+                    <MenuItem value={3000000}>$3,000,000</MenuItem>
                     <MenuItem value={4309473}>$4,309,473</MenuItem>
                   </Select>
                 </FormControl>
@@ -389,8 +393,12 @@ function MyMap() {
                     onChange={handleRegionalDollarsTo}
                   >
                     <MenuItem value={35228}>$35,228</MenuItem>
+                    <MenuItem value={250000}>$250,000</MenuItem>
+                    <MenuItem value={500000}>$500,000</MenuItem>
                     <MenuItem value={1000000}>$1,000,000</MenuItem>
-                    <MenuItem value={4309473}>$4,309,473</MenuItem>
+                    <MenuItem value={2000000}>$2,000,000</MenuItem>
+                    <MenuItem value={3000000}>$3,000,000</MenuItem>
+                    <MenuItem value={4309474}>$4,309,473</MenuItem>
                   </Select>
                 </FormControl>
               </CardContent>
@@ -413,7 +421,9 @@ function MyMap() {
                     onChange={handleTribalDollarsFrom}
                   >
                     <MenuItem value={30952}>$30,952</MenuItem>
-                    <MenuItem value={300000}>$300,000</MenuItem>
+                    <MenuItem value={100000}>$100,000</MenuItem>
+                    <MenuItem value={200000}>$200,000</MenuItem>
+                    <MenuItem value={299888}>$299,888</MenuItem>
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
@@ -429,7 +439,9 @@ function MyMap() {
                     onChange={handleTribalDollarsTo}
                   >
                     <MenuItem value={30952}>$30,952</MenuItem>
-                    <MenuItem value={300000}>$300,000</MenuItem>
+                    <MenuItem value={100000}>$100,000</MenuItem>
+                    <MenuItem value={200000}>$200,000</MenuItem>
+                    <MenuItem value={299888}>$299,888</MenuItem>
                   </Select>
                 </FormControl>
               </CardContent>
