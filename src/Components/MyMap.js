@@ -51,7 +51,7 @@ function MyMap() {
   const [regionalDollarsFrom, setRegionalDollarsFrom] = useState(35228);
   const [regionalDollarsTo, setRegionalDollarsTo] = useState(4309474);
   const [tribalDollarsFrom, setTribalDollarsFrom] = useState(30952);
-  const [tribalDollarsTo, setTribalDollarsTo] = useState(299888);
+  const [tribalDollarsTo, setTribalDollarsTo] = useState(2540518);
   const classes = useStyles();
   const countyFromTo = countyFrom + countyTo;
   const muniFromTo = muniFrom + muniTo;
@@ -421,9 +421,9 @@ function MyMap() {
                     onChange={handleTribalDollarsFrom}
                   >
                     <MenuItem value={30952}>$30,952</MenuItem>
-                    <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={200000}>$200,000</MenuItem>
-                    <MenuItem value={299888}>$299,888</MenuItem>
+                    <MenuItem value={250000}>$250,000</MenuItem>
+                    <MenuItem value={500000}>$500,000</MenuItem>
+                    <MenuItem value={2540518}>$2,540,518</MenuItem>
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
@@ -439,9 +439,9 @@ function MyMap() {
                     onChange={handleTribalDollarsTo}
                   >
                     <MenuItem value={30952}>$30,952</MenuItem>
-                    <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={200000}>$200,000</MenuItem>
-                    <MenuItem value={299888}>$299,888</MenuItem>
+                    <MenuItem value={250000}>$250,000</MenuItem>
+                    <MenuItem value={500000}>$500,000</MenuItem>
+                    <MenuItem value={2540518}>$2,540,518</MenuItem>
                   </Select>
                 </FormControl>
               </CardContent>
@@ -479,7 +479,7 @@ function MyMap() {
                       <TribalNations from={tribalFrom} to={tribalTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Regiona Dollars">
+                  <LayersControl.Overlay name="Regiona Dollars">
                     <LayerGroup key={regionalDollarsFromTo}>
                       <RegionalDollars from={regionalDollarsFrom} to={regionalDollarsTo} />
                     </LayerGroup>

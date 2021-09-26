@@ -15,9 +15,14 @@ function RegionalDollars(props) {
 
       const onEachRegion = (region, layer) => {
         function getColor(d) {
-          return d > 2  ? '#4a1486' :
-                 d > 1  ? '#9e9ac8' :
-                          '#f2f0f7' ;
+          return d > 3999999  ? '#4a1486' :
+                 d > 2999999  ? '#6a51a3' :
+                 d > 1999999  ? '#807dba' :
+                 d > 999999  ? '#9e9ac8' :
+                 d > 499999  ? '#bcbddc' :
+                 d > 249999  ? '#dadaeb' :
+                 d > 35227  ? '#efedf5' :
+                          '#fcfbfd' ;
       }
         const formatter = new Intl.NumberFormat('en-US', {
           style: 'currency',
@@ -39,7 +44,7 @@ function RegionalDollars(props) {
         console.log(countyName);
         layer.bindTooltip(countyName);
         
-        layer.options.fillColor = getColor(region.properties.grantcount);
+        layer.options.fillColor = getColor(region.properties.dollaramount);
     
       };
 

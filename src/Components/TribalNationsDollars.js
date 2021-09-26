@@ -17,7 +17,9 @@ function TribalNationsDollars(props) {
 
       const onEachTribal = (tribal, layer) => {
         function getColor(d) {
-          return d > 1  ? '#00441b' :
+          return d > 1000000  ? '#00441b' :
+                 d > 250000  ? '#238b45' :
+                 d > 30952  ? '#a1d99b' :
                             '#f7fcf5';
       }
         const formatter = new Intl.NumberFormat('en-US', {
@@ -40,7 +42,7 @@ function TribalNationsDollars(props) {
         console.log(tribalName);
         layer.bindTooltip(tribalName);
         
-        layer.options.fillColor = getColor(tribal.properties.grantcount);
+        layer.options.fillColor = getColor(tribal.properties.dollaramount);
         
       };
 
