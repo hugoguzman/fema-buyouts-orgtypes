@@ -17,14 +17,16 @@ import Municipalities from "./Municipalities";
 import Regions from "./Regions";
 import TribalNations from "./TribalNations";
 import TribalNationsDollars from "./TribalNationsDollars";
+import RegionalDollars from "./RegionalDollars";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
+    justifyContent: "center",
     margin: theme.spacing(0),
-    width: 134,
-    padding: 12,
+    width: 110,
+    padding: 2,
     '&:last-child': {
-      paddingBottom: 12,
+      paddingBottom: 30,
     },
   },
   root: {
@@ -46,13 +48,16 @@ function MyMap() {
   const [regionalTo, setRegionalTo] = useState(3);
   const [tribalFrom, setTribalFrom] = useState(1);
   const [tribalTo, setTribalTo] = useState(2);
-  const [tribalDollarsFrom, setTribalDollarsFrom] = useState(1);
-  const [tribalDollarsTo, setTribalDollarsTo] = useState(2);
+  const [regionalDollarsFrom, setRegionalDollarsFrom] = useState(35228);
+  const [regionalDollarsTo, setRegionalDollarsTo] = useState(4309473);
+  const [tribalDollarsFrom, setTribalDollarsFrom] = useState(30952);
+  const [tribalDollarsTo, setTribalDollarsTo] = useState(300000);
   const classes = useStyles();
   const countyFromTo = countyFrom + countyTo;
   const muniFromTo = muniFrom + muniTo;
   const regionalFromTo = regionalFrom + regionalTo;
   const tribalFromTo = tribalFrom + tribalTo;
+  const regionalDollarsFromTo = regionalDollarsFrom + regionalDollarsTo;
   const tribalDollarsFromTo = tribalDollarsFrom + tribalDollarsTo;
 
 
@@ -96,6 +101,14 @@ function MyMap() {
     setTribalDollarsTo(e.target.value);
   }
 
+  const handleRegionalDollarsFrom = e => {
+    setRegionalDollarsFrom(e.target.value);
+  }
+
+  const handleRegionalDollarsTo = e => {
+    setRegionalDollarsTo(e.target.value);
+  }
+
   return (
     <div>
       <Grid
@@ -120,14 +133,18 @@ function MyMap() {
         columnSpacing={{ xs: 1, md: 2 }}
         justifyContent="center"
         alignItems="center">
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={2}>
         <Card raised={false}>
               <CardContent className={classes.root}>
                 <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  Counties
+                  County Dollar Amount
                 </Typography>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="countydollars-from">Min County Dollars</InputLabel>
+                  <InputLabel 
+                  id="countydollars-from"
+                  className={classes.formControl}>
+                  Min Dollars
+                  </InputLabel>
                   <Select
                     labelId="countydollars-from"
                     id="countydollars-from"
@@ -188,7 +205,11 @@ function MyMap() {
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="demo-simple-select-label">Max County Dollars</InputLabel>
+                  <InputLabel 
+                  id="demo-simple-select-label"
+                  className={classes.formControl}>
+                  Max Dollars
+                  </InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -253,10 +274,14 @@ function MyMap() {
             <Card raised={false}>
               <CardContent className={classes.root}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  Municipalities
+                  Municipality Dollar Amount
                 </Typography>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="muni-from">Min Grant Awards</InputLabel>
+                  <InputLabel 
+                  id="muni-from"
+                  className={classes.formControl}>
+                  Min Dollars
+                  </InputLabel>
                   <Select
                     labelId="muni-from"
                     id="muni-from"
@@ -291,7 +316,11 @@ function MyMap() {
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="muni-to">Max Grant Awards</InputLabel>
+                  <InputLabel 
+                  id="muni-to"
+                  className={classes.formControl}>
+                  Max Dollars
+                  </InputLabel>
                   <Select
                     labelId="muni-to"
                     id="muni-to"
@@ -330,32 +359,38 @@ function MyMap() {
             <Card raised={false}>
               <CardContent className={classes.root}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  Regional Entities
+                  Regional Dollar Amount
                 </Typography>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="regional-from">Min Grant Awards</InputLabel>
+                  <InputLabel 
+                  id="regional-from"
+                  className={classes.formControl}>
+                  Min Dollars
+                  </InputLabel>
                   <Select
                     labelId="regional-from"
                     id="regional-from"
-                    value={regionalFrom}
-                    onChange={handleRegionalFrom}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
+                    value={regionalDollarsFrom}
+                    onChange={handleRegionalDollarsFrom}>
+                    <MenuItem value={35228}>$35,228</MenuItem>
+                    <MenuItem value={1000000}>$1,000,000</MenuItem>
+                    <MenuItem value={4309473}>$4,309,473</MenuItem>
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="regional-to">Max Grant Awards</InputLabel>
+                  <InputLabel id="regional-to"
+                  className={classes.formControl}>
+                  Max Dollars
+                  </InputLabel>
                   <Select
                     labelId="regional-to"
                     id="regional-to"
-                    value={regionalTo}
-                    onChange={handleRegionalTo}
+                    value={regionalDollarsTo}
+                    onChange={handleRegionalDollarsTo}
                   >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
+                    <MenuItem value={35228}>$35,228</MenuItem>
+                    <MenuItem value={1000000}>$1,000,000</MenuItem>
+                    <MenuItem value={4309473}>$4,309,473</MenuItem>
                   </Select>
                 </FormControl>
               </CardContent>
@@ -366,7 +401,11 @@ function MyMap() {
                   Tribal Dollar Amount
                 </Typography>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="tribaldollars-from">Min Tribal Dollars</InputLabel>
+                  <InputLabel 
+                  id="tribaldollars-from"
+                  className={classes.formControl}>
+                  Min Dollars
+                  </InputLabel>
                   <Select
                     labelId="tribaldollars-from"
                     id="tribaldollars-from"
@@ -378,7 +417,11 @@ function MyMap() {
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="tribaldollars-to">Max Tribal Dollars</InputLabel>
+                  <InputLabel 
+                  id="tribaldollars-to"
+                  className={classes.formControl}>
+                  Max Dollars
+                  </InputLabel>
                   <Select
                     labelId="tribaldollars-to"
                     id="tribaldollars-to"
@@ -392,39 +435,44 @@ function MyMap() {
               </CardContent>
             </Card>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={8}>
           <Card raised={false} className={classes.root}>
             <CardContent className={classes.root}>
               <MapContainer
                 center={position}
                 zoom={4}
-                style={{ height: 415, width: "100%" }}>
+                style={{ height: 446, width: "100%" }}>
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
                   url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
                 />
                 <LayersControl collapsed={true} position="topright">
-                  <LayersControl.Overlay checked name="Counties">
+                  <LayersControl.Overlay name="Counties">
                     <LayerGroup key={countyFromTo}>
                       <Counties from={countyFrom} to={countyTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Municipalities">
+                  <LayersControl.Overlay name="Municipalities">
                     <LayerGroup key={muniFromTo}>
                       <Municipalities from={muniFrom} to={muniTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Regional Entities">
+                  <LayersControl.Overlay name="Regional Entities">
                     <LayerGroup key={regionalFromTo}>
                       <Regions from={regionalFrom} to={regionalTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Tribal Nations">
+                  <LayersControl.Overlay name="Tribal Nations">
                     <LayerGroup key={tribalFromTo}>
                       <TribalNations from={tribalFrom} to={tribalTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Tribal Dollars">
+                  <LayersControl.Overlay checked name="Regiona Dollars">
+                    <LayerGroup key={regionalDollarsFromTo}>
+                      <RegionalDollars from={regionalDollarsFrom} to={regionalDollarsTo} />
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                  <LayersControl.Overlay name="Tribal Dollars">
                     <LayerGroup key={tribalDollarsFromTo}>
                       <TribalNationsDollars from={tribalDollarsFrom} to={tribalDollarsTo} />
                     </LayerGroup>
@@ -434,14 +482,18 @@ function MyMap() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={2}>
           <Card raised={false}>
               <CardContent className={classes.root}>
                 <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  Counties
+                  County Grant Count
                 </Typography>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="demo-simple-select-label">Min Grant Awards</InputLabel>
+                  <InputLabel 
+                  id="demo-simple-select-label"
+                  className={classes.formControl}>
+                  Min Grants
+                  </InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -502,7 +554,11 @@ function MyMap() {
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="demo-simple-select-label">Max Grant Awards</InputLabel>
+                  <InputLabel 
+                  id="demo-simple-select-label"
+                  className={classes.formControl}>
+                  Max Grants
+                  </InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -567,10 +623,14 @@ function MyMap() {
             <Card raised={false}>
               <CardContent className={classes.root}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  Municipalities
+                  Municipality Grant Count
                 </Typography>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="muni-from">Min Grant Awards</InputLabel>
+                  <InputLabel 
+                  id="muni-from"
+                  className={classes.formControl}>
+                  Min Grants
+                  </InputLabel>
                   <Select
                     labelId="muni-from"
                     id="muni-from"
@@ -605,7 +665,11 @@ function MyMap() {
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="muni-to">Max Grant Awards</InputLabel>
+                  <InputLabel 
+                  id="muni-to"
+                  className={classes.formControl}>
+                  Max Grants
+                  </InputLabel>
                   <Select
                     labelId="muni-to"
                     id="muni-to"
@@ -644,10 +708,14 @@ function MyMap() {
             <Card raised={false}>
               <CardContent className={classes.root}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  Regional Entities
+                  Regional Entity Grant Count
                 </Typography>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="regional-from">Min Grant Awards</InputLabel>
+                  <InputLabel 
+                  id="regional-from"
+                  className={classes.formControl}>
+                  Min Grants
+                  </InputLabel>
                   <Select
                     labelId="regional-from"
                     id="regional-from"
@@ -660,7 +728,11 @@ function MyMap() {
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="regional-to">Max Grant Awards</InputLabel>
+                  <InputLabel 
+                  id="regional-to"
+                  className={classes.formControl}>
+                  Max Grants
+                  </InputLabel>
                   <Select
                     labelId="regional-to"
                     id="regional-to"
@@ -677,10 +749,14 @@ function MyMap() {
             <Card raised={false}>
               <CardContent className={classes.root}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  Tribal Nations
+                  Tribal Nation Grant Count
                 </Typography>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="tribal-from">Min Grant Awards</InputLabel>
+                  <InputLabel 
+                  id="tribal-from"
+                  className={classes.formControl}>
+                  Min Grants
+                  </InputLabel>
                   <Select
                     labelId="tribal-from"
                     id="tribal-from"
@@ -692,7 +768,11 @@ function MyMap() {
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
-                  <InputLabel id="tribal-to">Max Grant Awards</InputLabel>
+                  <InputLabel 
+                  id="tribal-to"
+                  className={classes.formControl}>
+                  Max Grants
+                  </InputLabel>
                   <Select
                     labelId="tribal-to"
                     id="tribal-to"
