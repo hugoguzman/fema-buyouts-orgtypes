@@ -19,6 +19,7 @@ import TribalNations from "./TribalNations";
 import TribalNationsDollars from "./TribalNationsDollars";
 import RegionalDollars from "./RegionalDollars";
 import MunicipalDollars from "./MunicipalDollars";
+import CountyDollars from "./CountyDollars";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -41,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 const position = [37.1, -95.7]
 
 function MyMap() {
+  const classes = useStyles();
   const [countyFrom, setCountyFrom] = useState(1);
   const [countyTo, setCountyTo] = useState(51);
   const [muniFrom, setMuniFrom] = useState(1);
@@ -49,17 +51,19 @@ function MyMap() {
   const [regionalTo, setRegionalTo] = useState(3);
   const [tribalFrom, setTribalFrom] = useState(1);
   const [tribalTo, setTribalTo] = useState(2);
+  const [countyDollarsFrom, setCountyDollarsFrom] = useState(579);
+  const [countyDollarsTo, setCountyDollarsTo] = useState(441696754);
   const [municipalDollarsFrom, setMunicipalDollarsFrom] = useState(274);
   const [municipalDollarsTo, setMunicipalDollarsTo] = useState(119652131);
   const [regionalDollarsFrom, setRegionalDollarsFrom] = useState(35228);
   const [regionalDollarsTo, setRegionalDollarsTo] = useState(4309474);
   const [tribalDollarsFrom, setTribalDollarsFrom] = useState(30952);
   const [tribalDollarsTo, setTribalDollarsTo] = useState(2540518);
-  const classes = useStyles();
   const countyFromTo = countyFrom + countyTo;
   const muniFromTo = muniFrom + muniTo;
   const regionalFromTo = regionalFrom + regionalTo;
   const tribalFromTo = tribalFrom + tribalTo;
+  const countyDollarsFromTo = countyDollarsFrom + countyDollarsTo;
   const municipalDollarsFromTo = municipalDollarsFrom + municipalDollarsTo;
   const regionalDollarsFromTo = regionalDollarsFrom + regionalDollarsTo;
   const tribalDollarsFromTo = tribalDollarsFrom + tribalDollarsTo;
@@ -95,6 +99,14 @@ function MyMap() {
 
   const handleTribalTo = e => {
     setTribalTo(e.target.value);
+  }
+
+  const handleCountyDollarsFrom = e => {
+    setCountyDollarsFrom(e.target.value);
+  }
+
+  const handleCountyDollarsTo = e => {
+    setCountyDollarsTo(e.target.value);
   }
 
   const handleMunicipalDollarsFrom = e => {
@@ -160,60 +172,17 @@ function MyMap() {
                   <Select
                     labelId="countydollars-from"
                     id="countydollars-from"
-                    value={countyFrom}
-                    onChange={handleCountyFrom}
+                    value={countyDollarsFrom}
+                    onChange={handleCountyDollarsFrom}
                   >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={4}>4</MenuItem>
-                    <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={6}>6</MenuItem>
-                    <MenuItem value={7}>7</MenuItem>
-                    <MenuItem value={8}>8</MenuItem>
-                    <MenuItem value={9}>9</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={11}>11</MenuItem>
-                    <MenuItem value={12}>12</MenuItem>
-                    <MenuItem value={13}>13</MenuItem>
-                    <MenuItem value={14}>14</MenuItem>
-                    <MenuItem value={15}>15</MenuItem>
-                    <MenuItem value={16}>16</MenuItem>
-                    <MenuItem value={17}>17</MenuItem>
-                    <MenuItem value={18}>18</MenuItem>
-                    <MenuItem value={19}>19</MenuItem>
-                    <MenuItem value={20}>20</MenuItem>
-                    <MenuItem value={21}>21</MenuItem>
-                    <MenuItem value={22}>22</MenuItem>
-                    <MenuItem value={23}>23</MenuItem>
-                    <MenuItem value={24}>24</MenuItem>
-                    <MenuItem value={25}>25</MenuItem>
-                    <MenuItem value={26}>26</MenuItem>
-                    <MenuItem value={27}>27</MenuItem>
-                    <MenuItem value={28}>28</MenuItem>
-                    <MenuItem value={29}>29</MenuItem>
-                    <MenuItem value={30}>30</MenuItem>
-                    <MenuItem value={31}>31</MenuItem>
-                    <MenuItem value={32}>32</MenuItem>
-                    <MenuItem value={33}>33</MenuItem>
-                    <MenuItem value={34}>34</MenuItem>
-                    <MenuItem value={35}>35</MenuItem>
-                    <MenuItem value={36}>36</MenuItem>
-                    <MenuItem value={37}>37</MenuItem>
-                    <MenuItem value={38}>38</MenuItem>
-                    <MenuItem value={39}>39</MenuItem>
-                    <MenuItem value={40}>40</MenuItem>
-                    <MenuItem value={41}>41</MenuItem>
-                    <MenuItem value={42}>42</MenuItem>
-                    <MenuItem value={43}>43</MenuItem>
-                    <MenuItem value={44}>44</MenuItem>
-                    <MenuItem value={45}>45</MenuItem>
-                    <MenuItem value={46}>46</MenuItem>
-                    <MenuItem value={47}>47</MenuItem>
-                    <MenuItem value={48}>48</MenuItem>
-                    <MenuItem value={49}>49</MenuItem>
-                    <MenuItem value={50}>50</MenuItem>
-                    <MenuItem value={51}>51</MenuItem>
+                    <MenuItem value={579}>$579</MenuItem>
+                    <MenuItem value={10000}>$10,000</MenuItem>
+                    <MenuItem value={100000}>$100,000</MenuItem>
+                    <MenuItem value={500000}>$500,000</MenuItem>
+                    <MenuItem value={1000000}>$1M</MenuItem>
+                    <MenuItem value={5000000}>$5M</MenuItem>
+                    <MenuItem value={25000000}>$25M</MenuItem>
+                    <MenuItem value={441696754}>$442M</MenuItem>
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
@@ -225,60 +194,17 @@ function MyMap() {
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={countyTo}
-                    onChange={handleCountyTo}
+                    value={countyDollarsTo}
+                    onChange={handleCountyDollarsTo}
                   >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={4}>4</MenuItem>
-                    <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={6}>6</MenuItem>
-                    <MenuItem value={7}>7</MenuItem>
-                    <MenuItem value={8}>8</MenuItem>
-                    <MenuItem value={9}>9</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={11}>11</MenuItem>
-                    <MenuItem value={12}>12</MenuItem>
-                    <MenuItem value={13}>13</MenuItem>
-                    <MenuItem value={14}>14</MenuItem>
-                    <MenuItem value={15}>15</MenuItem>
-                    <MenuItem value={16}>16</MenuItem>
-                    <MenuItem value={17}>17</MenuItem>
-                    <MenuItem value={18}>18</MenuItem>
-                    <MenuItem value={19}>19</MenuItem>
-                    <MenuItem value={20}>20</MenuItem>
-                    <MenuItem value={21}>21</MenuItem>
-                    <MenuItem value={22}>22</MenuItem>
-                    <MenuItem value={23}>23</MenuItem>
-                    <MenuItem value={24}>24</MenuItem>
-                    <MenuItem value={25}>25</MenuItem>
-                    <MenuItem value={26}>26</MenuItem>
-                    <MenuItem value={27}>27</MenuItem>
-                    <MenuItem value={28}>28</MenuItem>
-                    <MenuItem value={29}>29</MenuItem>
-                    <MenuItem value={30}>30</MenuItem>
-                    <MenuItem value={31}>31</MenuItem>
-                    <MenuItem value={32}>32</MenuItem>
-                    <MenuItem value={33}>33</MenuItem>
-                    <MenuItem value={34}>34</MenuItem>
-                    <MenuItem value={35}>35</MenuItem>
-                    <MenuItem value={36}>36</MenuItem>
-                    <MenuItem value={37}>37</MenuItem>
-                    <MenuItem value={38}>38</MenuItem>
-                    <MenuItem value={39}>39</MenuItem>
-                    <MenuItem value={40}>40</MenuItem>
-                    <MenuItem value={41}>41</MenuItem>
-                    <MenuItem value={42}>42</MenuItem>
-                    <MenuItem value={43}>43</MenuItem>
-                    <MenuItem value={44}>44</MenuItem>
-                    <MenuItem value={45}>45</MenuItem>
-                    <MenuItem value={46}>46</MenuItem>
-                    <MenuItem value={47}>47</MenuItem>
-                    <MenuItem value={48}>48</MenuItem>
-                    <MenuItem value={49}>49</MenuItem>
-                    <MenuItem value={50}>50</MenuItem>
-                    <MenuItem value={51}>51</MenuItem>
+                    <MenuItem value={579}>$579</MenuItem>
+                    <MenuItem value={10000}>$10,000</MenuItem>
+                    <MenuItem value={100000}>$100,000</MenuItem>
+                    <MenuItem value={500000}>$500,000</MenuItem>
+                    <MenuItem value={1000000}>$1M</MenuItem>
+                    <MenuItem value={5000000}>$5M</MenuItem>
+                    <MenuItem value={250000000}>$25M</MenuItem>
+                    <MenuItem value={441696754}>$442M</MenuItem>
                   </Select>
                 </FormControl>
               </CardContent>
@@ -307,7 +233,7 @@ function MyMap() {
                     <MenuItem value={5000000}>$5M</MenuItem>
                     <MenuItem value={10000000}>$10M</MenuItem>
                     <MenuItem value={25000000}>$25M</MenuItem>
-                    <MenuItem value={119652131}>$119.7M</MenuItem>
+                    <MenuItem value={119652131}>$119M</MenuItem>
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
@@ -329,7 +255,7 @@ function MyMap() {
                     <MenuItem value={5000000}>$5M</MenuItem>
                     <MenuItem value={10000000}>$10M</MenuItem>
                     <MenuItem value={25000000}>$25M</MenuItem>
-                    <MenuItem value={119652131}>$119.7M</MenuItem>
+                    <MenuItem value={119652131}>$119M</MenuItem>
                   </Select>
                 </FormControl>
               </CardContent>
@@ -437,27 +363,32 @@ function MyMap() {
                   url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
                 />
                 <LayersControl collapsed={true} position="topright">
-                  <LayersControl.Overlay name="Counties">
+                  <LayersControl.Overlay name="County Grants">
                     <LayerGroup key={countyFromTo}>
                       <Counties from={countyFrom} to={countyTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Municipalities">
+                  <LayersControl.Overlay checked name="Municipality Grants">
                     <LayerGroup key={muniFromTo}>
                       <Municipalities from={muniFrom} to={muniTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Regional Entities">
+                  <LayersControl.Overlay name="Regional Entity Grants">
                     <LayerGroup key={regionalFromTo}>
                       <Regions from={regionalFrom} to={regionalTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Tribal Nations">
+                  <LayersControl.Overlay name="Tribal Grants">
                     <LayerGroup key={tribalFromTo}>
                       <TribalNations from={tribalFrom} to={tribalTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Municipal Dollars">
+                  <LayersControl.Overlay name="County Dollars">
+                    <LayerGroup key={countyDollarsFromTo}>
+                      <CountyDollars from={countyDollarsFrom} to={countyDollarsTo} />
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                  <LayersControl.Overlay name="Municipal Dollars">
                     <LayerGroup key={municipalDollarsFromTo}>
                       <MunicipalDollars from={municipalDollarsFrom} to={municipalDollarsTo} />
                     </LayerGroup>
@@ -500,51 +431,8 @@ function MyMap() {
                     <MenuItem value={3}>3</MenuItem>
                     <MenuItem value={4}>4</MenuItem>
                     <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={6}>6</MenuItem>
-                    <MenuItem value={7}>7</MenuItem>
-                    <MenuItem value={8}>8</MenuItem>
-                    <MenuItem value={9}>9</MenuItem>
                     <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={11}>11</MenuItem>
-                    <MenuItem value={12}>12</MenuItem>
-                    <MenuItem value={13}>13</MenuItem>
-                    <MenuItem value={14}>14</MenuItem>
-                    <MenuItem value={15}>15</MenuItem>
-                    <MenuItem value={16}>16</MenuItem>
-                    <MenuItem value={17}>17</MenuItem>
-                    <MenuItem value={18}>18</MenuItem>
-                    <MenuItem value={19}>19</MenuItem>
-                    <MenuItem value={20}>20</MenuItem>
-                    <MenuItem value={21}>21</MenuItem>
-                    <MenuItem value={22}>22</MenuItem>
-                    <MenuItem value={23}>23</MenuItem>
-                    <MenuItem value={24}>24</MenuItem>
                     <MenuItem value={25}>25</MenuItem>
-                    <MenuItem value={26}>26</MenuItem>
-                    <MenuItem value={27}>27</MenuItem>
-                    <MenuItem value={28}>28</MenuItem>
-                    <MenuItem value={29}>29</MenuItem>
-                    <MenuItem value={30}>30</MenuItem>
-                    <MenuItem value={31}>31</MenuItem>
-                    <MenuItem value={32}>32</MenuItem>
-                    <MenuItem value={33}>33</MenuItem>
-                    <MenuItem value={34}>34</MenuItem>
-                    <MenuItem value={35}>35</MenuItem>
-                    <MenuItem value={36}>36</MenuItem>
-                    <MenuItem value={37}>37</MenuItem>
-                    <MenuItem value={38}>38</MenuItem>
-                    <MenuItem value={39}>39</MenuItem>
-                    <MenuItem value={40}>40</MenuItem>
-                    <MenuItem value={41}>41</MenuItem>
-                    <MenuItem value={42}>42</MenuItem>
-                    <MenuItem value={43}>43</MenuItem>
-                    <MenuItem value={44}>44</MenuItem>
-                    <MenuItem value={45}>45</MenuItem>
-                    <MenuItem value={46}>46</MenuItem>
-                    <MenuItem value={47}>47</MenuItem>
-                    <MenuItem value={48}>48</MenuItem>
-                    <MenuItem value={49}>49</MenuItem>
-                    <MenuItem value={50}>50</MenuItem>
                     <MenuItem value={51}>51</MenuItem>
                   </Select>
                 </FormControl>
@@ -565,51 +453,8 @@ function MyMap() {
                     <MenuItem value={3}>3</MenuItem>
                     <MenuItem value={4}>4</MenuItem>
                     <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={6}>6</MenuItem>
-                    <MenuItem value={7}>7</MenuItem>
-                    <MenuItem value={8}>8</MenuItem>
-                    <MenuItem value={9}>9</MenuItem>
                     <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={11}>11</MenuItem>
-                    <MenuItem value={12}>12</MenuItem>
-                    <MenuItem value={13}>13</MenuItem>
-                    <MenuItem value={14}>14</MenuItem>
-                    <MenuItem value={15}>15</MenuItem>
-                    <MenuItem value={16}>16</MenuItem>
-                    <MenuItem value={17}>17</MenuItem>
-                    <MenuItem value={18}>18</MenuItem>
-                    <MenuItem value={19}>19</MenuItem>
-                    <MenuItem value={20}>20</MenuItem>
-                    <MenuItem value={21}>21</MenuItem>
-                    <MenuItem value={22}>22</MenuItem>
-                    <MenuItem value={23}>23</MenuItem>
-                    <MenuItem value={24}>24</MenuItem>
                     <MenuItem value={25}>25</MenuItem>
-                    <MenuItem value={26}>26</MenuItem>
-                    <MenuItem value={27}>27</MenuItem>
-                    <MenuItem value={28}>28</MenuItem>
-                    <MenuItem value={29}>29</MenuItem>
-                    <MenuItem value={30}>30</MenuItem>
-                    <MenuItem value={31}>31</MenuItem>
-                    <MenuItem value={32}>32</MenuItem>
-                    <MenuItem value={33}>33</MenuItem>
-                    <MenuItem value={34}>34</MenuItem>
-                    <MenuItem value={35}>35</MenuItem>
-                    <MenuItem value={36}>36</MenuItem>
-                    <MenuItem value={37}>37</MenuItem>
-                    <MenuItem value={38}>38</MenuItem>
-                    <MenuItem value={39}>39</MenuItem>
-                    <MenuItem value={40}>40</MenuItem>
-                    <MenuItem value={41}>41</MenuItem>
-                    <MenuItem value={42}>42</MenuItem>
-                    <MenuItem value={43}>43</MenuItem>
-                    <MenuItem value={44}>44</MenuItem>
-                    <MenuItem value={45}>45</MenuItem>
-                    <MenuItem value={46}>46</MenuItem>
-                    <MenuItem value={47}>47</MenuItem>
-                    <MenuItem value={48}>48</MenuItem>
-                    <MenuItem value={49}>49</MenuItem>
-                    <MenuItem value={50}>50</MenuItem>
                     <MenuItem value={51}>51</MenuItem>
                   </Select>
                 </FormControl>
@@ -637,25 +482,7 @@ function MyMap() {
                     <MenuItem value={3}>3</MenuItem>
                     <MenuItem value={4}>4</MenuItem>
                     <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={6}>6</MenuItem>
-                    <MenuItem value={7}>7</MenuItem>
-                    <MenuItem value={8}>8</MenuItem>
-                    <MenuItem value={9}>9</MenuItem>
                     <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={11}>11</MenuItem>
-                    <MenuItem value={12}>12</MenuItem>
-                    <MenuItem value={13}>13</MenuItem>
-                    <MenuItem value={14}>14</MenuItem>
-                    <MenuItem value={15}>15</MenuItem>
-                    <MenuItem value={16}>16</MenuItem>
-                    <MenuItem value={17}>17</MenuItem>
-                    <MenuItem value={18}>18</MenuItem>
-                    <MenuItem value={19}>19</MenuItem>
-                    <MenuItem value={20}>20</MenuItem>
-                    <MenuItem value={21}>21</MenuItem>
-                    <MenuItem value={22}>22</MenuItem>
-                    <MenuItem value={23}>23</MenuItem>
-                    <MenuItem value={24}>24</MenuItem>
                     <MenuItem value={25}>25</MenuItem>
                   </Select>
                 </FormControl>
@@ -676,25 +503,7 @@ function MyMap() {
                     <MenuItem value={3}>3</MenuItem>
                     <MenuItem value={4}>4</MenuItem>
                     <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={6}>6</MenuItem>
-                    <MenuItem value={7}>7</MenuItem>
-                    <MenuItem value={8}>8</MenuItem>
-                    <MenuItem value={9}>9</MenuItem>
                     <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={11}>11</MenuItem>
-                    <MenuItem value={12}>12</MenuItem>
-                    <MenuItem value={13}>13</MenuItem>
-                    <MenuItem value={14}>14</MenuItem>
-                    <MenuItem value={15}>15</MenuItem>
-                    <MenuItem value={16}>16</MenuItem>
-                    <MenuItem value={17}>17</MenuItem>
-                    <MenuItem value={18}>18</MenuItem>
-                    <MenuItem value={19}>19</MenuItem>
-                    <MenuItem value={20}>20</MenuItem>
-                    <MenuItem value={21}>21</MenuItem>
-                    <MenuItem value={22}>22</MenuItem>
-                    <MenuItem value={23}>23</MenuItem>
-                    <MenuItem value={24}>24</MenuItem>
                     <MenuItem value={25}>25</MenuItem>
                   </Select>
                 </FormControl>

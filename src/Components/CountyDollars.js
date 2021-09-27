@@ -2,7 +2,7 @@ import React from "react";
 import { GeoJSON } from "react-leaflet";
 import countyData from './Data/countyBuyouts.json'
 
-function Counties(props) {
+function CountyDollars(props) {
     const from=props.from;
     const to=props.to;
 
@@ -15,14 +15,14 @@ function Counties(props) {
 
   const onEachCounty = (county, layer) => {
     function getColor(d) {
-      return d > 51  ? '#08306b' :
-      d > 25  ? '#2171b5' :
-      d > 5   ? '#4292c6' :
-      d > 4   ? '#6baed6' :
-      d > 3  ? '#9ecae1' :
-      d > 2   ? '#c6dbef' :
-      d > 1   ? '#deebf7' :
-                 '#f7fbff';
+      return d > 25000000  ? '#08306b' :
+                 d > 2500000  ? '#2171b5' :
+                 d > 1000000   ? '#4292c6' :
+                 d > 500000   ? '#6baed6' :
+                 d > 100000  ? '#9ecae1' :
+                 d > 10000   ? '#c6dbef' :
+                 d > 579   ? '#deebf7' :
+                            '#f7fbff';
   }
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -42,12 +42,12 @@ function Counties(props) {
     console.log(countyName);
     layer.bindTooltip(countyName);
     
-    layer.options.fillColor = getColor(county.properties.grantcount);
+    layer.options.fillColor = getColor(county.properties.dollaramount);
 
   };
 
   function filter (buyoutCounty) {
-    if (buyoutCounty.properties.grantcount >= from && buyoutCounty.properties.grantcount <= to) return true;
+    if (buyoutCounty.properties.dollaramount >= from && buyoutCounty.properties.dollaramount <= to) return true;
 }
 
   return (
@@ -60,4 +60,4 @@ function Counties(props) {
   )
 }
 
-export default Counties;
+export default CountyDollars;

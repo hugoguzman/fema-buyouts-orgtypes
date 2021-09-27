@@ -17,11 +17,13 @@ function Municipalities(props) {
 
     const onEachMuni = (muni, layer) => {
         function getColor(d) {
-          return d > 20  ? '#67000d' :
-                 d > 10  ? '#ef3b2c' :
-                 d > 2   ? '#fcbba1' :
-                 d > 1   ? '#fcbba1' :
-                            '#fff5f0';
+          return d > 19  ? '#67000d' :
+          d > 9   ? '#ef3b2c' :
+          d > 4   ? '#fb6a4a' :
+          d > 3   ? '#fc9272' :
+          d > 2   ? '#fcbba1' :
+          d > 1   ? '#fee0d2' :
+                     '#fff5f0';
       }
         const formatter = new Intl.NumberFormat('en-US', {
           style: 'currency',
