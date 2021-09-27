@@ -158,6 +158,63 @@ function MyMap() {
         columnSpacing={{ xs: 1, md: 2 }}
         justifyContent="center"
         alignItems="center">
+                <Grid item xs={12} md={8}>
+          <Card raised={false} className={classes.root}>
+            <CardContent className={classes.root}>
+              <MapContainer
+                center={position}
+                zoom={4}
+                style={{ height: 446, width: "100%" }}>
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+                  url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+                />
+                <LayersControl collapsed={true} position="topright">
+                  <LayersControl.Overlay name="County Grants">
+                    <LayerGroup key={countyFromTo}>
+                      <Counties from={countyFrom} to={countyTo} />
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                  <LayersControl.Overlay name="Municipality Grants">
+                    <LayerGroup key={muniFromTo}>
+                      <Municipalities from={muniFrom} to={muniTo} />
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                  <LayersControl.Overlay checked name="Regional Grants">
+                    <LayerGroup key={regionalFromToDollarsFromDollarsTo}>
+                      <Regions from={regionalDollarsFrom} from2={regionalFrom} to={regionalDollarsTo} to2={regionalTo} />
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                  <LayersControl.Overlay name="Tribal Grants">
+                    <LayerGroup key={tribalFromTo}>
+                      <TribalNations from={tribalFrom} to={tribalTo} />
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                  <LayersControl.Overlay name="County Dollars">
+                    <LayerGroup key={countyDollarsFromTo}>
+                      <CountyDollars from={countyDollarsFrom} to={countyDollarsTo} />
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                  <LayersControl.Overlay name="Municipal Dollars">
+                    <LayerGroup key={municipalDollarsFromTo}>
+                      <MunicipalDollars from={municipalDollarsFrom} to={municipalDollarsTo} />
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                  <LayersControl.Overlay checked name="Regional Dollars">
+                    <LayerGroup key={regionalFromToDollarsFromDollarsTo}>
+                      <RegionalDollars from={regionalDollarsFrom} from2={regionalFrom} to={regionalDollarsTo} to2={regionalTo}/>
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                  <LayersControl.Overlay name="Tribal Dollars">
+                    <LayerGroup key={tribalDollarsFromTo}>
+                      <TribalNationsDollars from={tribalDollarsFrom} to={tribalDollarsTo} />
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                </LayersControl>
+              </MapContainer>
+            </CardContent>
+          </Card>
+        </Grid>
         <Grid item xs={12} md={2}>
         <Card raised={false}>
               <CardContent className={classes.root}>
@@ -338,63 +395,7 @@ function MyMap() {
               </CardContent>
             </Card>
         </Grid>
-        <Grid item xs={12} md={8}>
-          <Card raised={false} className={classes.root}>
-            <CardContent className={classes.root}>
-              <MapContainer
-                center={position}
-                zoom={4}
-                style={{ height: 446, width: "100%" }}>
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-                  url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
-                />
-                <LayersControl collapsed={true} position="topright">
-                  <LayersControl.Overlay name="County Grants">
-                    <LayerGroup key={countyFromTo}>
-                      <Counties from={countyFrom} to={countyTo} />
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Municipality Grants">
-                    <LayerGroup key={muniFromTo}>
-                      <Municipalities from={muniFrom} to={muniTo} />
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Regional Grants">
-                    <LayerGroup key={regionalFromToDollarsFromDollarsTo}>
-                      <Regions from={regionalDollarsFrom} from2={regionalFrom} to={regionalDollarsTo} to2={regionalTo} />
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Tribal Grants">
-                    <LayerGroup key={tribalFromTo}>
-                      <TribalNations from={tribalFrom} to={tribalTo} />
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay name="County Dollars">
-                    <LayerGroup key={countyDollarsFromTo}>
-                      <CountyDollars from={countyDollarsFrom} to={countyDollarsTo} />
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Municipal Dollars">
-                    <LayerGroup key={municipalDollarsFromTo}>
-                      <MunicipalDollars from={municipalDollarsFrom} to={municipalDollarsTo} />
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Regional Dollars">
-                    <LayerGroup key={regionalFromToDollarsFromDollarsTo}>
-                      <RegionalDollars from={regionalDollarsFrom} from2={regionalFrom} to={regionalDollarsTo} to2={regionalTo}/>
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Tribal Dollars">
-                    <LayerGroup key={tribalDollarsFromTo}>
-                      <TribalNationsDollars from={tribalDollarsFrom} to={tribalDollarsTo} />
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                </LayersControl>
-              </MapContainer>
-            </CardContent>
-          </Card>
-        </Grid>
+
         <Grid item xs={12} md={2}>
           <Card raised={false}>
               <CardContent className={classes.root}>
