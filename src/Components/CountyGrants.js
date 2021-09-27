@@ -15,13 +15,11 @@ function Counties(props) {
 
   const onEachCounty = (county, layer) => {
     function getColor(d) {
-      return d > 51  ? '#08306b' :
-      d > 25  ? '#2171b5' :
-      d > 5   ? '#4292c6' :
+      return d > 50  ? '#08306b' :
+      d > 24   ? '#4292c6' :
       d > 4   ? '#6baed6' :
-      d > 3  ? '#9ecae1' :
-      d > 2   ? '#c6dbef' :
-      d > 1   ? '#deebf7' :
+      d > 2   ? '#9ecae1' :
+      d > 1   ? '#C6dbef' :
                  '#f7fbff';
   }
     const formatter = new Intl.NumberFormat('en-US', {

@@ -15,13 +15,10 @@ function CountyDollars(props) {
 
   const onEachCounty = (county, layer) => {
     function getColor(d) {
-      return d > 25000000  ? '#08306b' :
-                 d > 2500000  ? '#2171b5' :
-                 d > 1000000   ? '#4292c6' :
-                 d > 500000   ? '#6baed6' :
-                 d > 100000  ? '#9ecae1' :
-                 d > 10000   ? '#c6dbef' :
-                 d > 579   ? '#deebf7' :
+      return d > 200000000  ? '#08306b' :
+                 d > 25000000   ? '#4292c6' :
+                 d > 1000000  ? '#9ecae1' :
+                 d > 100000   ? '#c6dbef' :
                             '#f7fbff';
   }
     const formatter = new Intl.NumberFormat('en-US', {

@@ -12,11 +12,11 @@ import {
   MenuItem,
   Select
 } from "@material-ui/core/";
-import Counties from "./Counties";
-import Municipalities from "./Municipalities";
-import Regions from "./Regions";
-import TribalNations from "./TribalNations";
-import TribalNationsDollars from "./TribalNationsDollars";
+import Counties from "./CountyGrants";
+import Municipalities from "./MunicipalGrants";
+import Regions from "./RegionalGrants";
+import TribalNations from "./TribalGrants";
+import TribalNationsDollars from "./TribalDollars";
 import RegionalDollars from "./RegionalDollars";
 import MunicipalDollars from "./MunicipalDollars";
 import CountyDollars from "./CountyDollars";
@@ -52,7 +52,7 @@ function MyMap() {
   const [tribalFrom, setTribalFrom] = useState(1);
   const [tribalTo, setTribalTo] = useState(2);
   const [countyDollarsFrom, setCountyDollarsFrom] = useState(579);
-  const [countyDollarsTo, setCountyDollarsTo] = useState(441696754);
+  const [countyDollarsTo, setCountyDollarsTo] = useState(441696755);
   const [municipalDollarsFrom, setMunicipalDollarsFrom] = useState(274);
   const [municipalDollarsTo, setMunicipalDollarsTo] = useState(119652131);
   const [regionalDollarsFrom, setRegionalDollarsFrom] = useState(35228);
@@ -173,16 +173,13 @@ function MyMap() {
                     labelId="countydollars-from"
                     id="countydollars-from"
                     value={countyDollarsFrom}
-                    onChange={handleCountyDollarsFrom}
-                  >
+                    onChange={handleCountyDollarsFrom}>
                     <MenuItem value={579}>$579</MenuItem>
-                    <MenuItem value={10000}>$10,000</MenuItem>
                     <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={500000}>$500,000</MenuItem>
                     <MenuItem value={1000000}>$1M</MenuItem>
-                    <MenuItem value={5000000}>$5M</MenuItem>
+                    <MenuItem value={10000000}>$10M</MenuItem>
                     <MenuItem value={25000000}>$25M</MenuItem>
-                    <MenuItem value={441696754}>$442M</MenuItem>
+                    <MenuItem value={441696755}>$442M</MenuItem>
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
@@ -195,16 +192,13 @@ function MyMap() {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={countyDollarsTo}
-                    onChange={handleCountyDollarsTo}
-                  >
+                    onChange={handleCountyDollarsTo}>
                     <MenuItem value={579}>$579</MenuItem>
-                    <MenuItem value={10000}>$10,000</MenuItem>
                     <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={500000}>$500,000</MenuItem>
                     <MenuItem value={1000000}>$1M</MenuItem>
-                    <MenuItem value={5000000}>$5M</MenuItem>
+                    <MenuItem value={10000000}>$10M</MenuItem>
                     <MenuItem value={250000000}>$25M</MenuItem>
-                    <MenuItem value={441696754}>$442M</MenuItem>
+                    <MenuItem value={441696755}>$442M</MenuItem>
                   </Select>
                 </FormControl>
               </CardContent>
@@ -226,14 +220,11 @@ function MyMap() {
                     value={municipalDollarsFrom}
                     onChange={handleMunicipalDollarsFrom}>
                     <MenuItem value={274}>$274</MenuItem>
-                    <MenuItem value={10000}>$10,000</MenuItem>
                     <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={500000}>$500,000</MenuItem>
                     <MenuItem value={1000000}>$1M</MenuItem>
                     <MenuItem value={5000000}>$5M</MenuItem>
-                    <MenuItem value={10000000}>$10M</MenuItem>
                     <MenuItem value={25000000}>$25M</MenuItem>
-                    <MenuItem value={119652131}>$119M</MenuItem>
+                    <MenuItem value={119652130}>$119M</MenuItem>
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
@@ -248,12 +239,9 @@ function MyMap() {
                     value={municipalDollarsTo}
                     onChange={handleMunicipalDollarsTo}>
                     <MenuItem value={274}>$274</MenuItem>
-                    <MenuItem value={10000}>$10,000</MenuItem>
                     <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={500000}>$500,000</MenuItem>
                     <MenuItem value={1000000}>$1M</MenuItem>
                     <MenuItem value={5000000}>$5M</MenuItem>
-                    <MenuItem value={10000000}>$10M</MenuItem>
                     <MenuItem value={25000000}>$25M</MenuItem>
                     <MenuItem value={119652131}>$119M</MenuItem>
                   </Select>
@@ -277,7 +265,6 @@ function MyMap() {
                     value={regionalDollarsFrom}
                     onChange={handleRegionalDollarsFrom}>
                     <MenuItem value={35228}>$35,228</MenuItem>
-                    <MenuItem value={250000}>$250,000</MenuItem>
                     <MenuItem value={500000}>$500,000</MenuItem>
                     <MenuItem value={1000000}>$1M</MenuItem>
                     <MenuItem value={2000000}>$2M</MenuItem>
@@ -297,7 +284,6 @@ function MyMap() {
                     onChange={handleRegionalDollarsTo}
                   >
                     <MenuItem value={35228}>$35,228</MenuItem>
-                    <MenuItem value={250000}>$250,000</MenuItem>
                     <MenuItem value={500000}>$500,000</MenuItem>
                     <MenuItem value={1000000}>$1M</MenuItem>
                     <MenuItem value={2000000}>$2M</MenuItem>
@@ -368,12 +354,12 @@ function MyMap() {
                       <Counties from={countyFrom} to={countyTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Municipality Grants">
+                  <LayersControl.Overlay name="Municipality Grants">
                     <LayerGroup key={muniFromTo}>
                       <Municipalities from={muniFrom} to={muniTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Regional Entity Grants">
+                  <LayersControl.Overlay name="Regional Grants">
                     <LayerGroup key={regionalFromTo}>
                       <Regions from={regionalFrom} to={regionalTo} />
                     </LayerGroup>
@@ -393,7 +379,7 @@ function MyMap() {
                       <MunicipalDollars from={municipalDollarsFrom} to={municipalDollarsTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Regional Dollars">
+                  <LayersControl.Overlay checked name="Regional Dollars">
                     <LayerGroup key={regionalDollarsFromTo}>
                       <RegionalDollars from={regionalDollarsFrom} to={regionalDollarsTo} />
                     </LayerGroup>
@@ -428,8 +414,6 @@ function MyMap() {
                   >
                     <MenuItem value={1}>1</MenuItem>
                     <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={4}>4</MenuItem>
                     <MenuItem value={5}>5</MenuItem>
                     <MenuItem value={10}>10</MenuItem>
                     <MenuItem value={25}>25</MenuItem>
@@ -450,8 +434,6 @@ function MyMap() {
                   >
                     <MenuItem value={1}>1</MenuItem>
                     <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={4}>4</MenuItem>
                     <MenuItem value={5}>5</MenuItem>
                     <MenuItem value={10}>10</MenuItem>
                     <MenuItem value={25}>25</MenuItem>
@@ -479,8 +461,6 @@ function MyMap() {
                   >
                     <MenuItem value={1}>1</MenuItem>
                     <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={4}>4</MenuItem>
                     <MenuItem value={5}>5</MenuItem>
                     <MenuItem value={10}>10</MenuItem>
                     <MenuItem value={25}>25</MenuItem>
@@ -500,8 +480,6 @@ function MyMap() {
                   >
                     <MenuItem value={1}>1</MenuItem>
                     <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={4}>4</MenuItem>
                     <MenuItem value={5}>5</MenuItem>
                     <MenuItem value={10}>10</MenuItem>
                     <MenuItem value={25}>25</MenuItem>

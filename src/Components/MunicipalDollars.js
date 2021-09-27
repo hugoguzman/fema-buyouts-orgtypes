@@ -17,12 +17,11 @@ function MunicipalDollars(props) {
 
     const onEachMuni = (muni, layer) => {
         function getColor(d) {
-          return d > 25000000  ? '#67000d' :
-                 d > 5000000  ? '#cb181d' :
-                 d > 1000000   ? '#ef3b2c' :
-                 d > 500000   ? '#fb6a4a' :
-                 d > 100000  ? '#fc9272' :
-                 d > 10000   ? '#fcbba1' :
+          return d > 100000000  ? '#67000d' :
+                 d > 25000000   ? '#ef3b2c' :
+                 d > 5000000   ? '#fb6a4a' :
+                 d > 1000000  ? '#fc9272' :
+                 d > 100000   ? '#fcbba1' :
                  d > 275   ? '#fee0d2' :
                             '#fff5f0';
       }
