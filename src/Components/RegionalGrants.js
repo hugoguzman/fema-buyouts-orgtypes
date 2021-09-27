@@ -3,8 +3,10 @@ import { GeoJSON } from "react-leaflet";
 import regionData from './Data/regionalBuyouts.json'
 
 function Regions(props) {
-    const from=props.from;
-    const to=props.to;
+  const from=props.from;
+  const from2=props.from2;
+  const to=props.to;
+  const to2=props.to2;
 
     const regionStyle = {
         fillOpacity: 1,
@@ -44,7 +46,7 @@ function Regions(props) {
       };
 
   function filter (buyoutCounty) {
-    if (buyoutCounty.properties.grantcount >= from && buyoutCounty.properties.grantcount <= to) return true;
+    if (buyoutCounty.properties.grantcount >= from && buyoutCounty.properties.grantcount <= to && buyoutCounty.properties.dollaramount >= from2 && buyoutCounty.properties.dollaramount <= to2) return true;
 }
 
   return (

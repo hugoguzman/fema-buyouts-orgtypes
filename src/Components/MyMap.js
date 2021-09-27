@@ -61,12 +61,13 @@ function MyMap() {
   const [tribalDollarsTo, setTribalDollarsTo] = useState(2540518);
   const countyFromTo = countyFrom + countyTo;
   const muniFromTo = muniFrom + muniTo;
-  const regionalFromTo = regionalFrom + regionalTo;
+  //const regionalFromTo = regionalFrom + regionalTo;
   const tribalFromTo = tribalFrom + tribalTo;
   const countyDollarsFromTo = countyDollarsFrom + countyDollarsTo;
   const municipalDollarsFromTo = municipalDollarsFrom + municipalDollarsTo;
-  const regionalDollarsFromTo = regionalDollarsFrom + regionalDollarsTo;
+  //const regionalDollarsFromTo = regionalDollarsFrom + regionalDollarsTo;
   const tribalDollarsFromTo = tribalDollarsFrom + tribalDollarsTo;
+  const regionalFromToDollarsFromDollarsTo = regionalFrom + regionalTo + regionalDollarsFrom + regionalDollarsTo;
 
 
   const handleCountyFrom = e => {
@@ -359,9 +360,9 @@ function MyMap() {
                       <Municipalities from={muniFrom} to={muniTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Regional Grants">
-                    <LayerGroup key={regionalFromTo}>
-                      <Regions from={regionalFrom} to={regionalTo} />
+                  <LayersControl.Overlay checked name="Regional Grants">
+                    <LayerGroup key={regionalFromToDollarsFromDollarsTo}>
+                      <Regions from={regionalDollarsFrom} from2={regionalFrom} to={regionalDollarsTo} to2={regionalTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
                   <LayersControl.Overlay name="Tribal Grants">
@@ -380,8 +381,8 @@ function MyMap() {
                     </LayerGroup>
                   </LayersControl.Overlay>
                   <LayersControl.Overlay checked name="Regional Dollars">
-                    <LayerGroup key={regionalDollarsFromTo}>
-                      <RegionalDollars from={regionalDollarsFrom} to={regionalDollarsTo} />
+                    <LayerGroup key={regionalFromToDollarsFromDollarsTo}>
+                      <RegionalDollars from={regionalDollarsFrom} from2={regionalFrom} to={regionalDollarsTo} to2={regionalTo}/>
                     </LayerGroup>
                   </LayersControl.Overlay>
                   <LayersControl.Overlay name="Tribal Dollars">

@@ -4,7 +4,9 @@ import regionData from './Data/regionalBuyouts.json'
 
 function RegionalDollars(props) {
     const from=props.from;
+    const from2=props.from2;
     const to=props.to;
+    const to2=props.to2;
 
     const regionStyle = {
         fillOpacity: 1,
@@ -48,7 +50,7 @@ function RegionalDollars(props) {
       };
 
   function filter (buyoutCounty) {
-    if (buyoutCounty.properties.dollaramount >= from && buyoutCounty.properties.dollaramount <= to) return true;
+    if (buyoutCounty.properties.dollaramount >= from && buyoutCounty.properties.dollaramount <= to && buyoutCounty.properties.grantcount >= from2 && buyoutCounty.properties.grantcount <= to2) return true;
 }
 
   return (
