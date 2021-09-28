@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     justifyContent: "center",
     margin: theme.spacing(0),
-    width: 105,
+    width: 90,
     padding: 2,
     '&:last-child': {
       paddingBottom: 30,
@@ -217,7 +217,92 @@ function MyMap() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} md={2}>
+        <Grid item xs={12} md={4}>
+        <Card raised={false}>
+              <CardContent className={classes.root}>
+                <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                  County Grant Count
+                </Typography>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="demo-simple-select-label"
+                  className={classes.formControl}>
+                  Min Grants
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={countyFrom}
+                    onChange={handleCountyFrom}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={5}>5</MenuItem>
+                    <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={25}>25</MenuItem>
+                    <MenuItem value={51}>51</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="demo-simple-select-label"
+                  className={classes.formControl}>
+                  Max Grants
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={countyTo}
+                    onChange={handleCountyTo}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={5}>5</MenuItem>
+                    <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={25}>25</MenuItem>
+                    <MenuItem value={51}>51</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="countydollars-from"
+                  className={classes.formControl}>
+                  Min Dollars
+                  </InputLabel>
+                  <Select
+                    labelId="countydollars-from"
+                    id="countydollars-from"
+                    value={countyDollarsFrom}
+                    onChange={handleCountyDollarsFrom}>
+                    <MenuItem value={579}>$579</MenuItem>
+                    <MenuItem value={100000}>$100,000</MenuItem>
+                    <MenuItem value={1000000}>$1M</MenuItem>
+                    <MenuItem value={10000000}>$10M</MenuItem>
+                    <MenuItem value={25000000}>$25M</MenuItem>
+                    <MenuItem value={441696755}>$442M</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="demo-simple-select-label"
+                  className={classes.formControl}>
+                  Max Dollars
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={countyDollarsTo}
+                    onChange={handleCountyDollarsTo}>
+                    <MenuItem value={579}>$579</MenuItem>
+                    <MenuItem value={100000}>$100,000</MenuItem>
+                    <MenuItem value={1000000}>$1M</MenuItem>
+                    <MenuItem value={10000000}>$10M</MenuItem>
+                    <MenuItem value={250000000}>$25M</MenuItem>
+                    <MenuItem value={441696755}>$442M</MenuItem>
+                  </Select>
+                </FormControl>
+              </CardContent>
+            </Card>
         <Card raised={false}>
               <CardContent className={classes.root}>
                 <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
