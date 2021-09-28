@@ -6,7 +6,9 @@ import muniData from './Data/munigeojson.json'
 
 function MunicipalDollars(props) {
     const from=props.from;
+    const from2=props.from2;
     const to=props.to;
+    const to2=props.to2;
 
     const muniStyle = {
         fillOpacity: 1,
@@ -50,7 +52,7 @@ function MunicipalDollars(props) {
     };
 
   function filter (buyoutMuni) {
-    if (buyoutMuni.properties.dollaramount >= from && buyoutMuni.properties.dollaramount <= to) return true;
+    if (buyoutMuni.properties.dollaramount >= from && buyoutMuni.properties.dollaramount <= to && buyoutMuni.properties.grantcount >= from2 && buyoutMuni.properties.grantcount <= to2) return true;
 }
 
 function pointToLayer(feature, latlng) {

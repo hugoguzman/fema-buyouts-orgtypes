@@ -6,7 +6,9 @@ import tribalData from './Data/tribalgeojson.json'
 
 function TribalNations(props) {
     const from=props.from;
+    const from2=props.from2;
     const to=props.to;
+    const to2=props.to2;
 
     const tribalStyle = {
         fillOpacity: 1,
@@ -45,7 +47,7 @@ function TribalNations(props) {
       };
 
   function filter (buyoutTribal) {
-    if (buyoutTribal.properties.grantcount >= from && buyoutTribal.properties.grantcount <= to) return true;
+    if (buyoutTribal.properties.dollaramount >= from && buyoutTribal.properties.dollaramount <= to && buyoutTribal.properties.grantcount >= from2 && buyoutTribal.properties.grantcount <= to2) return true;
 }
 
 function pointToLayer(feature, latlng) {

@@ -5,6 +5,8 @@ import countyData from './Data/countyBuyouts.json'
 function CountyDollars(props) {
     const from=props.from;
     const to=props.to;
+    const from2=props.from2;
+    const to2=props.to2;
 
     const countyStyle = {
         fillOpacity: 1,
@@ -44,7 +46,7 @@ function CountyDollars(props) {
   };
 
   function filter (buyoutCounty) {
-    if (buyoutCounty.properties.dollaramount >= from && buyoutCounty.properties.dollaramount <= to) return true;
+    if (buyoutCounty.properties.dollaramount >= from && buyoutCounty.properties.dollaramount <= to && buyoutCounty.properties.grantcount >= from2 && buyoutCounty.properties.grantcount <= to2) return true;
 }
 
   return (
