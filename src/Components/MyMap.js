@@ -24,23 +24,25 @@ import CountyDollars from "./CountyDollars";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     justifyContent: "center",
+    alignItems: "center",
     margin: theme.spacing(0),
     width: 90,
-    padding: 3,
-    paddingTop: 5,
+    padding: 2,
+    paddingTop: 2,
     '&:last-child': {
-      paddingBottom: 15,
+      paddingBottom: 2,
     },
   },
   formControl2: {
     justifyContent: "center",
+    alignItems: "center",
     margin: theme.spacing(0),
     width: 90,
     paddingRight: 30,
-    padding: 3,
-    paddingTop: 5,
+    padding: 2,
+    paddingTop: 2,
     '&:last-child': {
-      paddingBottom: 15,
+      paddingBottom: 2,
     },
   },
   root: {
@@ -51,11 +53,12 @@ const useStyles = makeStyles((theme) => ({
   },
   root2: {
     justifyContent: "center",
+    alignItems: "center",
     padding: 1,
-    paddingTop: 15,
+    paddingTop: 2,
     width: 220,
     '&:last-child': {
-      paddingBottom: 1,
+      paddingBottom: 2,
     },
   }
 }));
@@ -179,51 +182,51 @@ function MyMap() {
         className={classes.root}
         justifyContent="center"
         alignItems="center">
-                <Grid item xs={12} md={8}>
+                <Grid item xs={12} md={10}>
           <Card raised={false} className={classes.root}>
             <CardContent className={classes.root}>
               <MapContainer
                 center={position}
                 zoom={4}
-                style={{ height: 446, width: "100%" }}>
+                style={{ height: 546, width: "100%" }}>
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
                   url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
                 />
                 <LayersControl collapsed={true} position="topright">
-                  <LayersControl.Overlay name="County Grants">
+                  <LayersControl.Overlay checked name="County Grants">
                     <LayerGroup key={countyFromToDollarsFromDollarsTo}>
                       <Counties from={countyDollarsFrom} from2={countyFrom} to={countyDollarsTo} to2={countyTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Municipality Grants">
+                  <LayersControl.Overlay checked name="County Dollars">
+                    <LayerGroup key={countyFromToDollarsFromDollarsTo}>
+                      <CountyDollars from={countyDollarsFrom} from2={countyFrom} to={countyDollarsTo} to2={countyTo}/>
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                  <LayersControl.Overlay checked name="Municipality Grants">
                     <LayerGroup key={municipalFromToDollarsFromDollarsTo}>
                       <Municipalities from={municipalDollarsFrom} from2={muniFrom} to={municipalDollarsTo} to2={muniTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Regional Grants">
+                  <LayersControl.Overlay checked name="Municipal Dollars">
+                    <LayerGroup key={municipalFromToDollarsFromDollarsTo}>
+                      <MunicipalDollars from={municipalDollarsFrom} from2={muniFrom} to={municipalDollarsTo} to2={muniTo} />
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                  <LayersControl.Overlay checked name="Regional Grants">
                     <LayerGroup key={regionalFromToDollarsFromDollarsTo}>
                       <Regions from={regionalDollarsFrom} from2={regionalFrom} to={regionalDollarsTo} to2={regionalTo} />
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                  <LayersControl.Overlay checked name="Regional Dollars">
+                    <LayerGroup key={regionalFromToDollarsFromDollarsTo}>
+                      <RegionalDollars from={regionalDollarsFrom} from2={regionalFrom} to={regionalDollarsTo} to2={regionalTo}/>
                     </LayerGroup>
                   </LayersControl.Overlay>
                   <LayersControl.Overlay checked name="Tribal Grants">
                     <LayerGroup key={tribalFromToDollarsFromDollarsTo}>
                       <TribalNations ffrom={tribalDollarsFrom} from2={tribalFrom} to={tribalDollarsTo} to2={tribalTo} />
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay name="County Dollars">
-                    <LayerGroup key={countyFromToDollarsFromDollarsTo}>
-                      <CountyDollars from={countyDollarsFrom} from2={countyFrom} to={countyDollarsTo} to2={countyTo}/>
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Municipal Dollars">
-                    <LayerGroup key={municipalFromToDollarsFromDollarsTo}>
-                      <MunicipalDollars from={municipalDollarsFrom} from2={muniFrom} to={municipalDollarsTo} to2={muniTo} />
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Regional Dollars">
-                    <LayerGroup key={regionalFromToDollarsFromDollarsTo}>
-                      <RegionalDollars from={regionalDollarsFrom} from2={regionalFrom} to={regionalDollarsTo} to2={regionalTo}/>
                     </LayerGroup>
                   </LayersControl.Overlay>
                   <LayersControl.Overlay checked name="Tribal Dollars">
@@ -236,7 +239,7 @@ function MyMap() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={7} md={2}>
         <Card raised={false}>
               <CardContent className={classes.root2}>
                 <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -265,7 +268,7 @@ function MyMap() {
                 <FormControl className={classes.formControl}>
                   <InputLabel 
                   id="demo-simple-select-label"
-                  className={classes.formControl2}>
+                  className={classes.formControl}>
                   Max Grants
                   </InputLabel>
                   <Select
@@ -323,7 +326,7 @@ function MyMap() {
               </CardContent>
             </Card>
             <Card raised={false}>
-              <CardContent className={classes.root}>
+              <CardContent className={classes.root2}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                   Municipality Filters
                 </Typography>
@@ -346,7 +349,7 @@ function MyMap() {
                     <MenuItem value={25}>25</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl2}>
+                <FormControl className={classes.formControl}>
                   <InputLabel 
                   id="muni-to"
                   className={classes.formControl}>
@@ -406,7 +409,7 @@ function MyMap() {
               </CardContent>
             </Card>
             <Card raised={false}>
-              <CardContent className={classes.root}>
+              <CardContent className={classes.root2}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                   Regional Entity Filters
                 </Typography>
@@ -427,7 +430,7 @@ function MyMap() {
                     <MenuItem value={3}>3</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl2}>
+                <FormControl className={classes.formControl}>
                   <InputLabel 
                   id="regional-to"
                   className={classes.formControl}>
@@ -485,7 +488,7 @@ function MyMap() {
               </CardContent>
             </Card>
             <Card raised={false}>
-              <CardContent className={classes.root}>
+              <CardContent className={classes.root2}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                   Tribal Nation Filters
                 </Typography>
@@ -505,7 +508,7 @@ function MyMap() {
                     <MenuItem value={2}>2</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl2}>
+                <FormControl className={classes.formControl}>
                   <InputLabel 
                   id="tribal-to"
                   className={classes.formControl}>
