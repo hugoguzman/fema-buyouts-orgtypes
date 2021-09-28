@@ -26,15 +26,36 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     margin: theme.spacing(0),
     width: 90,
-    padding: 2,
+    padding: 3,
+    paddingTop: 5,
     '&:last-child': {
-      paddingBottom: 30,
+      paddingBottom: 15,
+    },
+  },
+  formControl2: {
+    justifyContent: "center",
+    margin: theme.spacing(0),
+    width: 90,
+    paddingRight: 30,
+    padding: 3,
+    paddingTop: 5,
+    '&:last-child': {
+      paddingBottom: 15,
     },
   },
   root: {
-    padding: 2,
+    padding: 1,
     '&:last-child': {
-      paddingBottom: 2,
+      paddingBottom: 1,
+    },
+  },
+  root2: {
+    justifyContent: "center",
+    padding: 1,
+    paddingTop: 15,
+    width: 220,
+    '&:last-child': {
+      paddingBottom: 1,
     },
   }
 }));
@@ -156,8 +177,6 @@ function MyMap() {
       <Grid
         container
         className={classes.root}
-        rowSpacing={{ xs: 1, md: 2 }}
-        columnSpacing={{ xs: 1, md: 2 }}
         justifyContent="center"
         alignItems="center">
                 <Grid item xs={12} md={8}>
@@ -219,9 +238,9 @@ function MyMap() {
         </Grid>
         <Grid item xs={12} md={4}>
         <Card raised={false}>
-              <CardContent className={classes.root}>
+              <CardContent className={classes.root2}>
                 <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  County Grant Count
+                  County Filters
                 </Typography>
                 <FormControl className={classes.formControl}>
                   <InputLabel 
@@ -246,7 +265,7 @@ function MyMap() {
                 <FormControl className={classes.formControl}>
                   <InputLabel 
                   id="demo-simple-select-label"
-                  className={classes.formControl}>
+                  className={classes.formControl2}>
                   Max Grants
                   </InputLabel>
                   <Select
@@ -303,56 +322,49 @@ function MyMap() {
                 </FormControl>
               </CardContent>
             </Card>
-        <Card raised={false}>
-              <CardContent className={classes.root}>
-                <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  County Dollar Amount
-                </Typography>
-                <FormControl className={classes.formControl}>
-                  <InputLabel 
-                  id="countydollars-from"
-                  className={classes.formControl}>
-                  Min Dollars
-                  </InputLabel>
-                  <Select
-                    labelId="countydollars-from"
-                    id="countydollars-from"
-                    value={countyDollarsFrom}
-                    onChange={handleCountyDollarsFrom}>
-                    <MenuItem value={579}>$579</MenuItem>
-                    <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={1000000}>$1M</MenuItem>
-                    <MenuItem value={10000000}>$10M</MenuItem>
-                    <MenuItem value={25000000}>$25M</MenuItem>
-                    <MenuItem value={441696755}>$442M</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl}>
-                  <InputLabel 
-                  id="demo-simple-select-label"
-                  className={classes.formControl}>
-                  Max Dollars
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={countyDollarsTo}
-                    onChange={handleCountyDollarsTo}>
-                    <MenuItem value={579}>$579</MenuItem>
-                    <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={1000000}>$1M</MenuItem>
-                    <MenuItem value={10000000}>$10M</MenuItem>
-                    <MenuItem value={250000000}>$25M</MenuItem>
-                    <MenuItem value={441696755}>$442M</MenuItem>
-                  </Select>
-                </FormControl>
-              </CardContent>
-            </Card>
             <Card raised={false}>
               <CardContent className={classes.root}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  Municipality Dollar Amount
+                  Municipality Filters
                 </Typography>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="muni-from"
+                  className={classes.formControl}>
+                  Min Grants
+                  </InputLabel>
+                  <Select
+                    labelId="muni-from"
+                    id="muni-from"
+                    value={muniFrom}
+                    onChange={handleMuniFrom}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={5}>5</MenuItem>
+                    <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={25}>25</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl2}>
+                  <InputLabel 
+                  id="muni-to"
+                  className={classes.formControl}>
+                  Max Grants
+                  </InputLabel>
+                  <Select
+                    labelId="muni-to"
+                    id="muni-to"
+                    value={muniTo}
+                    onChange={handleMuniTo}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={5}>5</MenuItem>
+                    <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={25}>25</MenuItem>
+                  </Select>
+                </FormControl>
                 <FormControl className={classes.formControl}>
                   <InputLabel 
                   id="muni-from"
@@ -396,8 +408,42 @@ function MyMap() {
             <Card raised={false}>
               <CardContent className={classes.root}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  Regional Dollar Amount
+                  Regional Entity Filters
                 </Typography>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="regional-from"
+                  className={classes.formControl}>
+                  Min Grants
+                  </InputLabel>
+                  <Select
+                    labelId="regional-from"
+                    id="regional-from"
+                    value={regionalFrom}
+                    onChange={handleRegionalFrom}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={3}>3</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl2}>
+                  <InputLabel 
+                  id="regional-to"
+                  className={classes.formControl}>
+                  Max Grants
+                  </InputLabel>
+                  <Select
+                    labelId="regional-to"
+                    id="regional-to"
+                    value={regionalTo}
+                    onChange={handleRegionalTo}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={3}>3</MenuItem>
+                  </Select>
+                </FormControl>
                 <FormControl className={classes.formControl}>
                   <InputLabel 
                   id="regional-from"
@@ -441,8 +487,40 @@ function MyMap() {
             <Card raised={false}>
               <CardContent className={classes.root}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  Tribal Dollar Amount
+                  Tribal Nation Filters
                 </Typography>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="tribal-from"
+                  className={classes.formControl}>
+                  Min Grants
+                  </InputLabel>
+                  <Select
+                    labelId="tribal-from"
+                    id="tribal-from"
+                    value={tribalFrom}
+                    onChange={handleTribalFrom}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl2}>
+                  <InputLabel 
+                  id="tribal-to"
+                  className={classes.formControl}>
+                  Max Grants
+                  </InputLabel>
+                  <Select
+                    labelId="tribal-to"
+                    id="tribal-to"
+                    value={tribalTo}
+                    onChange={handleTribalTo}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                  </Select>
+                </FormControl>
                 <FormControl className={classes.formControl}>
                   <InputLabel 
                   id="tribaldollars-from"
@@ -481,182 +559,6 @@ function MyMap() {
                 </FormControl>
               </CardContent>
             </Card>
-        </Grid>
-
-        <Grid item xs={12} md={2}>
-          <Card raised={false}>
-              <CardContent className={classes.root}>
-                <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  County Grant Count
-                </Typography>
-                <FormControl className={classes.formControl}>
-                  <InputLabel 
-                  id="demo-simple-select-label"
-                  className={classes.formControl}>
-                  Min Grants
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={countyFrom}
-                    onChange={handleCountyFrom}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={25}>25</MenuItem>
-                    <MenuItem value={51}>51</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl}>
-                  <InputLabel 
-                  id="demo-simple-select-label"
-                  className={classes.formControl}>
-                  Max Grants
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={countyTo}
-                    onChange={handleCountyTo}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={25}>25</MenuItem>
-                    <MenuItem value={51}>51</MenuItem>
-                  </Select>
-                </FormControl>
-              </CardContent>
-            </Card>
-            <Card raised={false}>
-              <CardContent className={classes.root}>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  Municipality Grant Count
-                </Typography>
-                <FormControl className={classes.formControl}>
-                  <InputLabel 
-                  id="muni-from"
-                  className={classes.formControl}>
-                  Min Grants
-                  </InputLabel>
-                  <Select
-                    labelId="muni-from"
-                    id="muni-from"
-                    value={muniFrom}
-                    onChange={handleMuniFrom}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={25}>25</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl}>
-                  <InputLabel 
-                  id="muni-to"
-                  className={classes.formControl}>
-                  Max Grants
-                  </InputLabel>
-                  <Select
-                    labelId="muni-to"
-                    id="muni-to"
-                    value={muniTo}
-                    onChange={handleMuniTo}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={25}>25</MenuItem>
-                  </Select>
-                </FormControl>
-              </CardContent>
-            </Card>
-            <Card raised={false}>
-              <CardContent className={classes.root}>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  Regional Entity Grant Count
-                </Typography>
-                <FormControl className={classes.formControl}>
-                  <InputLabel 
-                  id="regional-from"
-                  className={classes.formControl}>
-                  Min Grants
-                  </InputLabel>
-                  <Select
-                    labelId="regional-from"
-                    id="regional-from"
-                    value={regionalFrom}
-                    onChange={handleRegionalFrom}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl}>
-                  <InputLabel 
-                  id="regional-to"
-                  className={classes.formControl}>
-                  Max Grants
-                  </InputLabel>
-                  <Select
-                    labelId="regional-to"
-                    id="regional-to"
-                    value={regionalTo}
-                    onChange={handleRegionalTo}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                  </Select>
-                </FormControl>
-              </CardContent>
-            </Card>
-            <Card raised={false}>
-              <CardContent className={classes.root}>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  Tribal Nation Grant Count
-                </Typography>
-                <FormControl className={classes.formControl}>
-                  <InputLabel 
-                  id="tribal-from"
-                  className={classes.formControl}>
-                  Min Grants
-                  </InputLabel>
-                  <Select
-                    labelId="tribal-from"
-                    id="tribal-from"
-                    value={tribalFrom}
-                    onChange={handleTribalFrom}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl}>
-                  <InputLabel 
-                  id="tribal-to"
-                  className={classes.formControl}>
-                  Max Grants
-                  </InputLabel>
-                  <Select
-                    labelId="tribal-to"
-                    id="tribal-to"
-                    value={tribalTo}
-                    onChange={handleTribalTo}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                  </Select>
-                </FormControl>
-              </CardContent>
-            </Card>
-
         </Grid>
       </Grid>
     </div>
