@@ -46,7 +46,7 @@ function Regions(props) {
       };
 
   function filter (buyoutCounty) {
-    if (buyoutCounty.properties.grantcount >= from && buyoutCounty.properties.grantcount <= to && buyoutCounty.properties.dollaramount >= from2 && buyoutCounty.properties.dollaramount <= to2) return true;
+    if (buyoutCounty.properties.dollaramount >= from && buyoutCounty.properties.dollaramount <= to && buyoutCounty.properties.grantcount >= from2 && buyoutCounty.properties.grantcount <= to2) return true;
 }
 
   return (

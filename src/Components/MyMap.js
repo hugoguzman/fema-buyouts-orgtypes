@@ -202,7 +202,7 @@ function MyMap() {
                   </LayersControl.Overlay>
                   <LayersControl.Overlay checked name="Tribal Nations">
                     <LayerGroup key={tribalFromToDollarsFromDollarsTo}>
-                      <TribalNations ffrom={tribalDollarsFrom} from2={tribalFrom} to={tribalDollarsTo} to2={tribalTo} />
+                      <TribalNations from={tribalDollarsFrom} from2={tribalFrom} to={tribalDollarsTo} to2={tribalTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
                 </LayersControl>
