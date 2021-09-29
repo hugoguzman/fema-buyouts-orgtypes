@@ -16,10 +16,7 @@ import Counties from "./CountyGrants";
 import Municipalities from "./MunicipalGrants";
 import Regions from "./RegionalGrants";
 import TribalNations from "./TribalGrants";
-import TribalNationsDollars from "./TribalDollars";
-import RegionalDollars from "./RegionalDollars";
-import MunicipalDollars from "./MunicipalDollars";
-import CountyDollars from "./CountyDollars";
+
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -46,15 +43,17 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   root: {
-    padding: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 2,
     '&:last-child': {
-      paddingBottom: 1,
+      paddingBottom: 2,
     },
   },
   root2: {
     justifyContent: "center",
     alignItems: "center",
-    padding: 1,
+    padding: 2,
     paddingTop: 2,
     width: 220,
     '&:last-child': {
@@ -83,14 +82,6 @@ function MyMap() {
   const [regionalDollarsTo, setRegionalDollarsTo] = useState(4309474);
   const [tribalDollarsFrom, setTribalDollarsFrom] = useState(30952);
   const [tribalDollarsTo, setTribalDollarsTo] = useState(2540518);
-  //const countyFromTo = countyFrom + countyTo;
-  //const muniFromTo = muniFrom + muniTo;
-  //const regionalFromTo = regionalFrom + regionalTo;
-  //const tribalFromTo = tribalFrom + tribalTo;
-  //const countyDollarsFromTo = countyDollarsFrom + countyDollarsTo;
-  //const municipalDollarsFromTo = municipalDollarsFrom + municipalDollarsTo;
-  //const regionalDollarsFromTo = regionalDollarsFrom + regionalDollarsTo;
-  //const tribalDollarsFromTo = tribalDollarsFrom + tribalDollarsTo;
   const countyFromToDollarsFromDollarsTo = countyFrom + countyTo + countyDollarsFrom + countyDollarsTo;
   const municipalFromToDollarsFromDollarsTo = muniFrom + muniTo + municipalDollarsFrom + municipalDollarsTo;
   const regionalFromToDollarsFromDollarsTo = regionalFrom + regionalTo + regionalDollarsFrom + regionalDollarsTo;
@@ -166,7 +157,7 @@ function MyMap() {
         container
         className={classes.root}
         rowSpacing={{ xs: 1, md: 2 }}
-        columnSpacing={{ xs: 1, md: 2 }}
+        columnSpacing={{ xs: 2, md: 2 }}
         justifyContent="center"
         alignItems="center">
         <Grid item xs={12} md={12}>
@@ -188,50 +179,30 @@ function MyMap() {
               <MapContainer
                 center={position}
                 zoom={4}
-                style={{ height: 546, width: "100%" }}>
+                style={{ height: 541, width: "100%" }}>
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
                   url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
                 />
                 <LayersControl collapsed={true} position="topright">
-                  <LayersControl.Overlay checked name="County Grants">
+                  <LayersControl.Overlay checked name="Counties">
                     <LayerGroup key={countyFromToDollarsFromDollarsTo}>
                       <Counties from={countyDollarsFrom} from2={countyFrom} to={countyDollarsTo} to2={countyTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="County Dollars">
-                    <LayerGroup key={countyFromToDollarsFromDollarsTo}>
-                      <CountyDollars from={countyDollarsFrom} from2={countyFrom} to={countyDollarsTo} to2={countyTo}/>
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Municipality Grants">
+                  <LayersControl.Overlay checked name="Municipalities">
                     <LayerGroup key={municipalFromToDollarsFromDollarsTo}>
                       <Municipalities from={municipalDollarsFrom} from2={muniFrom} to={municipalDollarsTo} to2={muniTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Municipal Dollars">
-                    <LayerGroup key={municipalFromToDollarsFromDollarsTo}>
-                      <MunicipalDollars from={municipalDollarsFrom} from2={muniFrom} to={municipalDollarsTo} to2={muniTo} />
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Regional Grants">
+                  <LayersControl.Overlay checked name="Regional Entities">
                     <LayerGroup key={regionalFromToDollarsFromDollarsTo}>
                       <Regions from={regionalDollarsFrom} from2={regionalFrom} to={regionalDollarsTo} to2={regionalTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Regional Dollars">
-                    <LayerGroup key={regionalFromToDollarsFromDollarsTo}>
-                      <RegionalDollars from={regionalDollarsFrom} from2={regionalFrom} to={regionalDollarsTo} to2={regionalTo}/>
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Tribal Grants">
+                  <LayersControl.Overlay checked name="Tribal Nations">
                     <LayerGroup key={tribalFromToDollarsFromDollarsTo}>
                       <TribalNations ffrom={tribalDollarsFrom} from2={tribalFrom} to={tribalDollarsTo} to2={tribalTo} />
-                    </LayerGroup>
-                  </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Tribal Dollars">
-                    <LayerGroup key={tribalFromToDollarsFromDollarsTo}>
-                      <TribalNationsDollars from={tribalDollarsFrom} from2={tribalFrom} to={tribalDollarsTo} to2={tribalTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
                 </LayersControl>
