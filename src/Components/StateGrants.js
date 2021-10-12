@@ -17,12 +17,9 @@ function States(props) {
 
   const onEachCounty = (county, layer) => {
     function getColor(d) {
-      return d > 50  ? '#08306b' :
-      d > 24   ? '#4292c6' :
-      d > 4   ? '#6baed6' :
-      d > 2   ? '#9ecae1' :
-      d > 1   ? '#C6dbef' :
-                 '#f7fbff';
+      return d > 2  ? '#8c2d04' :
+      d > 1   ? '#fd8d3c' :
+                 '#feedde';
   }
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -60,4 +57,4 @@ function States(props) {
   )
 }
 
-export default Counties;
+export default States;

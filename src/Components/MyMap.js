@@ -16,6 +16,7 @@ import Counties from "./CountyGrants";
 import Municipalities from "./MunicipalGrants";
 import Regions from "./RegionalGrants";
 import TribalNations from "./TribalGrants";
+import States from "./StateGrants";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -72,18 +73,23 @@ function MyMap() {
   const [muniTo, setMuniTo] = useState(25);
   const [regionalFrom, setRegionalFrom] = useState(1);
   const [regionalTo, setRegionalTo] = useState(3);
+  const [stateFrom, setStateFrom] = useState(1);
+  const [stateTo, setStateTo] = useState(4);
   const [tribalFrom, setTribalFrom] = useState(1);
   const [tribalTo, setTribalTo] = useState(2);
   const [countyDollarsFrom, setCountyDollarsFrom] = useState(579);
   const [countyDollarsTo, setCountyDollarsTo] = useState(441696755);
   const [municipalDollarsFrom, setMunicipalDollarsFrom] = useState(274);
   const [municipalDollarsTo, setMunicipalDollarsTo] = useState(119652131);
+  const [stateDollarsFrom, setStateDollarsFrom] = useState(9133);
+  const [stateDollarsTo, setStateDollarsTo] = useState(117760209);
   const [regionalDollarsFrom, setRegionalDollarsFrom] = useState(35228);
   const [regionalDollarsTo, setRegionalDollarsTo] = useState(4309474);
   const [tribalDollarsFrom, setTribalDollarsFrom] = useState(30952);
   const [tribalDollarsTo, setTribalDollarsTo] = useState(2540518);
   const countyFromToDollarsFromDollarsTo = countyFrom + countyTo + countyDollarsFrom + countyDollarsTo;
   const municipalFromToDollarsFromDollarsTo = muniFrom + muniTo + municipalDollarsFrom + municipalDollarsTo;
+  const stateFromToDollarsFromDollarsTo = stateFrom + stateTo + stateDollarsFrom + stateDollarsTo;
   const regionalFromToDollarsFromDollarsTo = regionalFrom + regionalTo + regionalDollarsFrom + regionalDollarsTo;
   const tribalFromToDollarsFromDollarsTo = tribalFrom + tribalTo + tribalDollarsFrom + tribalDollarsTo;
 
@@ -105,6 +111,14 @@ function MyMap() {
 
   const handleRegionalFrom = e => {
     setRegionalFrom(e.target.value);
+  }
+
+  const handleStateTo = e => {
+    setStateTo(e.target.value);
+  }
+
+  const handleStateFrom = e => {
+    setStateFrom(e.target.value);
   }
 
   const handleRegionalTo = e => {
@@ -141,6 +155,14 @@ function MyMap() {
 
   const handleTribalDollarsTo = e => {
     setTribalDollarsTo(e.target.value);
+  }
+
+  const handleStateDollarsFrom = e => {
+    setStateDollarsFrom(e.target.value);
+  }
+
+  const handleStateDollarsTo = e => {
+    setStateDollarsTo(e.target.value);
   }
 
   const handleRegionalDollarsFrom = e => {
@@ -193,6 +215,11 @@ function MyMap() {
                   <LayersControl.Overlay checked name="Municipalities">
                     <LayerGroup key={municipalFromToDollarsFromDollarsTo}>
                       <Municipalities from={municipalDollarsFrom} from2={muniFrom} to={municipalDollarsTo} to2={muniTo} />
+                    </LayerGroup>
+                  </LayersControl.Overlay>
+                  <LayersControl.Overlay checked name="State Entities">
+                    <LayerGroup key={stateFromToDollarsFromDollarsTo}>
+                      <States from={stateDollarsFrom} from2={stateFrom} to={stateDollarsTo} to2={stateTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
                   <LayersControl.Overlay checked name="Regional Entities">
@@ -375,6 +402,85 @@ function MyMap() {
                     <MenuItem value={5000000}>$5M</MenuItem>
                     <MenuItem value={25000000}>$25M</MenuItem>
                     <MenuItem value={119652131}>$119M</MenuItem>
+                  </Select>
+                </FormControl>
+              </CardContent>
+            </Card>
+            <Card raised={false}>
+              <CardContent className={classes.root2}>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                  State Entity Filters
+                </Typography>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="state-from"
+                  className={classes.formControl}>
+                  Min Grants
+                  </InputLabel>
+                  <Select
+                    labelId="state-from"
+                    id="state-from"
+                    value={stateFrom}
+                    onChange={handleStateFrom}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={3}>3</MenuItem>
+                    <MenuItem value={4}>4</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="state-to"
+                  className={classes.formControl}>
+                  Max Grants
+                  </InputLabel>
+                  <Select
+                    labelId="state-to"
+                    id="state-to"
+                    value={stateTo}
+                    onChange={handleStateTo}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={3}>3</MenuItem>
+                    <MenuItem value={4}>4</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="state-from"
+                  className={classes.formControl}>
+                  Min Dollars
+                  </InputLabel>
+                  <Select
+                    labelId="state-from"
+                    id="state-from"
+                    value={stateDollarsFrom}
+                    onChange={handleStateDollarsFrom}>
+                    <MenuItem value={9133}>$9,133</MenuItem>
+                    <MenuItem value={100000}>$100,000</MenuItem>
+                    <MenuItem value={1000000}>$1M</MenuItem>
+                    <MenuItem value={10000000}>$10M</MenuItem>
+                    <MenuItem value={117760209}>$118M</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel id="state-to"
+                  className={classes.formControl}>
+                  Max Dollars
+                  </InputLabel>
+                  <Select
+                    labelId="state-to"
+                    id="state-to"
+                    value={stateDollarsTo}
+                    onChange={handleStateDollarsTo}
+                  >
+                    <MenuItem value={9133}>$9,133</MenuItem>
+                    <MenuItem value={100000}>$100,000</MenuItem>
+                    <MenuItem value={1000000}>$1M</MenuItem>
+                    <MenuItem value={10000000}>$10M</MenuItem>
+                    <MenuItem value={117760209}>$118M</MenuItem>
                   </Select>
                 </FormControl>
               </CardContent>
