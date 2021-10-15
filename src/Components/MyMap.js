@@ -335,7 +335,7 @@ function MyMap() {
                   <InputLabel 
                   id="countyproperties-from"
                   className={classes.formControl}>
-                  Min Dollars
+                  Min Props
                   </InputLabel>
                   <Select
                     labelId="countyproperties-from"
@@ -354,7 +354,7 @@ function MyMap() {
                   <InputLabel 
                   id="countyproperties-to"
                   className={classes.formControl}>
-                  Max Dollars
+                  Max Props
                   </InputLabel>
                   <Select
                     labelId="countyproperties-to"
