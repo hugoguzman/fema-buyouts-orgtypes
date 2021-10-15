@@ -87,7 +87,9 @@ function MyMap() {
   const [regionalDollarsTo, setRegionalDollarsTo] = useState(4309474);
   const [tribalDollarsFrom, setTribalDollarsFrom] = useState(30952);
   const [tribalDollarsTo, setTribalDollarsTo] = useState(2540518);
-  const countyFromToDollarsFromDollarsTo = countyFrom + countyTo + countyDollarsFrom + countyDollarsTo;
+  const [countyPropertiesFrom, setCountyPropertiesFrom] = useState(0);
+  const [countyPropertiesTo, setCountyPropertiesTo] = useState(2992);
+  const countyFromToDollarsFromDollarsToPropertiesFromPropertiesTo = countyFrom + countyTo + countyDollarsFrom + countyDollarsTo + countyPropertiesFrom + countyPropertiesTo;
   const municipalFromToDollarsFromDollarsTo = muniFrom + muniTo + municipalDollarsFrom + municipalDollarsTo;
   const stateFromToDollarsFromDollarsTo = stateFrom + stateTo + stateDollarsFrom + stateDollarsTo;
   const regionalFromToDollarsFromDollarsTo = regionalFrom + regionalTo + regionalDollarsFrom + regionalDollarsTo;
@@ -173,6 +175,14 @@ function MyMap() {
     setRegionalDollarsTo(e.target.value);
   }
 
+  const handleCountyPropertiesFrom = e => {
+    setCountyPropertiesFrom(e.target.value);
+  }
+
+  const handleCountyPropertiesTo = e => {
+    setCountyPropertiesTo(e.target.value);
+  }
+
   return (
     <div>
       <Grid
@@ -208,26 +218,26 @@ function MyMap() {
                 />
                 <LayersControl collapsed={true} position="topright">
                   <LayersControl.Overlay checked name="Counties">
-                    <LayerGroup key={countyFromToDollarsFromDollarsTo}>
-                      <Counties from={countyDollarsFrom} from2={countyFrom} to={countyDollarsTo} to2={countyTo} />
+                    <LayerGroup key={countyFromToDollarsFromDollarsToPropertiesFromPropertiesTo}>
+                      <Counties from={countyDollarsFrom} from2={countyFrom} from3={countyPropertiesFrom} to={countyDollarsTo} to2={countyTo} to3={countyPropertiesTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Municipalities">
+                  <LayersControl.Overlay name="Municipalities">
                     <LayerGroup key={municipalFromToDollarsFromDollarsTo}>
                       <Municipalities from={municipalDollarsFrom} from2={muniFrom} to={municipalDollarsTo} to2={muniTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="State Entities">
+                  <LayersControl.Overlay name="State Entities">
                     <LayerGroup key={stateFromToDollarsFromDollarsTo}>
                       <States from={stateDollarsFrom} from2={stateFrom} to={stateDollarsTo} to2={stateTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Regional Entities">
+                  <LayersControl.Overlay name="Regional Entities">
                     <LayerGroup key={regionalFromToDollarsFromDollarsTo}>
                       <Regions from={regionalDollarsFrom} from2={regionalFrom} to={regionalDollarsTo} to2={regionalTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay checked name="Tribal Nations">
+                  <LayersControl.Overlay name="Tribal Nations">
                     <LayerGroup key={tribalFromToDollarsFromDollarsTo}>
                       <TribalNations from={tribalDollarsFrom} from2={tribalFrom} to={tribalDollarsTo} to2={tribalTo} />
                     </LayerGroup>
@@ -299,7 +309,7 @@ function MyMap() {
                     <MenuItem value={1000000}>$1M</MenuItem>
                     <MenuItem value={10000000}>$10M</MenuItem>
                     <MenuItem value={25000000}>$25M</MenuItem>
-                    <MenuItem value={441696755}>$442M</MenuItem>
+                    <MenuItem value={441696754}>$442M</MenuItem>
                   </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
@@ -319,6 +329,44 @@ function MyMap() {
                     <MenuItem value={10000000}>$10M</MenuItem>
                     <MenuItem value={250000000}>$25M</MenuItem>
                     <MenuItem value={441696755}>$442M</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="countyproperties-from"
+                  className={classes.formControl}>
+                  Min Dollars
+                  </InputLabel>
+                  <Select
+                    labelId="countyproperties-from"
+                    id="countyproperties-from"
+                    value={countyPropertiesFrom}
+                    onChange={handleCountyPropertiesFrom}>
+                    <MenuItem value={0}>0</MenuItem>
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={100}>100</MenuItem>
+                    <MenuItem value={250}>250</MenuItem>
+                    <MenuItem value={2992}>2,992</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="countyproperties-to"
+                  className={classes.formControl}>
+                  Max Dollars
+                  </InputLabel>
+                  <Select
+                    labelId="countyproperties-to"
+                    id="countyproperties-to"
+                    value={countyPropertiesTo}
+                    onChange={handleCountyPropertiesTo}>
+                    <MenuItem value={0}>0</MenuItem>
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={100}>100</MenuItem>
+                    <MenuItem value={250}>250</MenuItem>
+                    <MenuItem value={2992}>2,992</MenuItem>
                   </Select>
                 </FormControl>
               </CardContent>

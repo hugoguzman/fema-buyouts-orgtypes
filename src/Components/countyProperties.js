@@ -2,11 +2,13 @@ import React from "react";
 import { GeoJSON } from "react-leaflet";
 import countyData from './Data/countyBuyouts2.json'
 
-function CountyDollars(props) {
+function CountyProperties(props) {
     const from=props.from;
     const to=props.to;
     const from2=props.from2;
     const to2=props.to2;
+    const from3=props.from3;
+    const to3=props.to3;
 
     const countyStyle = {
         fillOpacity: 1,
@@ -17,10 +19,12 @@ function CountyDollars(props) {
 
   const onEachCounty = (county, layer) => {
     function getColor(d) {
-      return d > 200000000  ? '#08306b' :
-                 d > 25000000   ? '#4292c6' :
-                 d > 1000000  ? '#9ecae1' :
-                 d > 100000   ? '#c6dbef' :
+      return d > 2992  ? '#08306b' :
+                 d > 250 ? '#4292c6' :
+                 d > 100 ? '#4292c6' :
+                 d > 10   ? '#4292c6' :
+                 d > 1  ? '#9ecae1' :
+                 d > 0   ? '#c6dbef' :
                             '#f7fbff';
   }
     const formatter = new Intl.NumberFormat('en-US', {
@@ -59,4 +63,4 @@ function CountyDollars(props) {
   )
 }
 
-export default CountyDollars;
+export default CountyProperties;
