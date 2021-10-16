@@ -5,8 +5,10 @@ import regionData from './Data/regionalBuyouts.json'
 function Regions(props) {
   const from=props.from;
   const from2=props.from2;
+  const from3=props.from3;
   const to=props.to;
   const to2=props.to2;
+  const to3=props.to3;
 
     const regionStyle = {
         fillOpacity: 1,
@@ -32,12 +34,14 @@ function Regions(props) {
         const buyoutState = region.properties.state
         const buyoutGrantcount = region.properties.grantcount
         const buyoutDollaramount = formatter.format(region.properties.dollaramount)
+        const buyoutPropertycount = region.properties.propertycount
     
         const countyName = "<b>County: </b>" + buyoutCounty 
         + "<br><b>Entity: </b>" + buyoutSubgrantee
         + "<br><b>State: </b>" + buyoutState
         + "<br><b>Grant Count: </b>" + buyoutGrantcount
-        + "<br><b>Dollar Amount: </b>" + buyoutDollaramount;
+        + "<br><b>Dollar Amount: </b>" + buyoutDollaramount
+        + "<br><b>Property Count: </b>" + buyoutPropertycount;
         console.log(countyName);
         layer.bindTooltip(countyName);
         
@@ -46,7 +50,7 @@ function Regions(props) {
       };
 
   function filter (buyoutCounty) {
-    if (buyoutCounty.properties.dollaramount >= from && buyoutCounty.properties.dollaramount <= to && buyoutCounty.properties.grantcount >= from2 && buyoutCounty.properties.grantcount <= to2) return true;
+    if (buyoutCounty.properties.dollaramount >= from && buyoutCounty.properties.dollaramount <= to && buyoutCounty.properties.grantcount >= from2 && buyoutCounty.properties.grantcount <= to2 && buyoutCounty.properties.propertycount >= from3 && buyoutCounty.properties.propertycount <= to3) return true;
 }
 
   return (

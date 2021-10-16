@@ -7,8 +7,10 @@ import muniData from './Data/munigeojson.json'
 function Municipalities(props) {
     const from=props.from;
     const from2=props.from2;
+    const from3=props.from3;
     const to=props.to;
     const to2=props.to2;
+    const to3=props.to3;
 
     const muniStyle = {
         fillOpacity: 1,
@@ -37,12 +39,14 @@ function Municipalities(props) {
         const buyoutState = muni.properties.state
         const buyoutGrantcount = muni.properties.grantcount
         const buyoutDollaramount = formatter.format(muni.properties.dollaramount)
+        const buyoutPropertycount = muni.properties.propertycount
     
         const muniName = "<b>County: </b>" + buyoutCounty 
         + "<br><b>Municipality: </b>" + buyoutSubgrantee
         + "<br><b>State: </b>" + buyoutState
         + "<br><b>Grant Count: </b>" + buyoutGrantcount
-        + "<br><b>Dollar Amount: </b>" + buyoutDollaramount;
+        + "<br><b>Dollar Amount: </b>" + buyoutDollaramount
+        + "<br><b>Property Count: </b>" + buyoutPropertycount;
         console.log(muniName);
         layer.bindTooltip(muniName);
         
@@ -51,7 +55,7 @@ function Municipalities(props) {
     };
 
   function filter (buyoutMuni) {
-    if (buyoutMuni.properties.dollaramount >= from && buyoutMuni.properties.dollaramount <= to && buyoutMuni.properties.grantcount >= from2 && buyoutMuni.properties.grantcount <= to2) return true;
+    if (buyoutMuni.properties.dollaramount >= from && buyoutMuni.properties.dollaramount <= to && buyoutMuni.properties.grantcount >= from2 && buyoutMuni.properties.grantcount <= to2 && buyoutMuni.properties.propertycount >= from3 && buyoutMuni.properties.propertycount <= to3) return true;
 }
 
 function pointToLayer(feature, latlng) {

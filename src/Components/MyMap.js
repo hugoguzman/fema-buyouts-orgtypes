@@ -89,11 +89,19 @@ function MyMap() {
   const [tribalDollarsTo, setTribalDollarsTo] = useState(2540518);
   const [countyPropertiesFrom, setCountyPropertiesFrom] = useState(0);
   const [countyPropertiesTo, setCountyPropertiesTo] = useState(2992);
-  const countyFromToDollarsFromDollarsToPropertiesFromPropertiesTo = countyFrom + countyTo + countyDollarsFrom + countyDollarsTo + countyPropertiesFrom + countyPropertiesTo;
-  const municipalFromToDollarsFromDollarsTo = muniFrom + muniTo + municipalDollarsFrom + municipalDollarsTo;
-  const stateFromToDollarsFromDollarsTo = stateFrom + stateTo + stateDollarsFrom + stateDollarsTo;
-  const regionalFromToDollarsFromDollarsTo = regionalFrom + regionalTo + regionalDollarsFrom + regionalDollarsTo;
-  const tribalFromToDollarsFromDollarsTo = tribalFrom + tribalTo + tribalDollarsFrom + tribalDollarsTo;
+  const [municipalPropertiesFrom, setMunicipalPropertiesFrom] = useState(0);
+  const [municipalPropertiesTo, setMunicipalPropertiesTo] = useState(574);
+  const [statePropertiesFrom, setStatePropertiesFrom] = useState(0);
+  const [statePropertiesTo, setStatePropertiesTo] = useState(490);
+  const [regionalPropertiesFrom, setRegionalPropertiesFrom] = useState(1);
+  const [regionalPropertiesTo, setRegionalPropertiesTo] = useState(129);
+  const [tribalPropertiesFrom, setTribalPropertiesFrom] = useState(1);
+  const [tribalPropertiesTo, setTribalPropertiesTo] = useState(7);
+  const countyKey = countyFrom + countyTo + countyDollarsFrom + countyDollarsTo + countyPropertiesFrom + countyPropertiesTo;
+  const municipalKey = muniFrom + muniTo + municipalDollarsFrom + municipalDollarsTo + municipalPropertiesFrom + municipalPropertiesTo;
+  const stateKey = stateFrom + stateTo + stateDollarsFrom + stateDollarsTo + statePropertiesFrom + statePropertiesTo;
+  const regionalKey = regionalFrom + regionalTo + regionalDollarsFrom + regionalDollarsTo + regionalPropertiesFrom + regionalPropertiesTo;
+  const tribalKey = tribalFrom + tribalTo + tribalDollarsFrom + tribalDollarsTo + tribalPropertiesFrom + tribalPropertiesTo;
 
   const handleCountyFrom = e => {
     setCountyFrom(e.target.value);
@@ -183,6 +191,37 @@ function MyMap() {
     setCountyPropertiesTo(e.target.value);
   }
 
+  const handleMunicipalPropertiesFrom = e => {
+    setMunicipalPropertiesFrom(e.target.value);
+  }
+
+  const handleMunicipalPropertiesTo = e => {
+    setMunicipalPropertiesTo(e.target.value);
+  }
+
+  const handleStatePropertiesFrom = e => {
+    setStatePropertiesFrom(e.target.value);
+  }
+
+  const handleStatePropertiesTo = e => {
+    setStatePropertiesTo(e.target.value);
+  }
+
+  const handleRegionalPropertiesFrom = e => {
+    setRegionalPropertiesFrom(e.target.value);
+  }
+
+  const handleRegionalPropertiesTo = e => {
+    setRegionalPropertiesTo(e.target.value);
+  }
+
+  const handleTribalPropertiesFrom = e => {
+    setTribalPropertiesFrom(e.target.value);
+  }
+
+  const handleTribalPropertiesTo = e => {
+    setTribalPropertiesTo(e.target.value);
+  }
   return (
     <div>
       <Grid
@@ -218,28 +257,28 @@ function MyMap() {
                 />
                 <LayersControl collapsed={true} position="topright">
                   <LayersControl.Overlay checked name="Counties">
-                    <LayerGroup key={countyFromToDollarsFromDollarsToPropertiesFromPropertiesTo}>
+                    <LayerGroup key={countyKey}>
                       <Counties from={countyDollarsFrom} from2={countyFrom} from3={countyPropertiesFrom} to={countyDollarsTo} to2={countyTo} to3={countyPropertiesTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Municipalities">
-                    <LayerGroup key={municipalFromToDollarsFromDollarsTo}>
-                      <Municipalities from={municipalDollarsFrom} from2={muniFrom} to={municipalDollarsTo} to2={muniTo} />
+                  <LayersControl.Overlay checked name="Municipalities">
+                    <LayerGroup key={municipalKey}>
+                      <Municipalities from={municipalDollarsFrom} from2={muniFrom} from3={municipalPropertiesFrom} to={municipalDollarsTo} to2={muniTo} to3={municipalPropertiesTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay name="State Entities">
-                    <LayerGroup key={stateFromToDollarsFromDollarsTo}>
-                      <States from={stateDollarsFrom} from2={stateFrom} to={stateDollarsTo} to2={stateTo} />
+                  <LayersControl.Overlay checked name="State Entities">
+                    <LayerGroup key={stateKey}>
+                      <States from={stateDollarsFrom} from2={stateFrom} from3={statePropertiesFrom} to={stateDollarsTo} to2={stateTo} to3={statePropertiesTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Regional Entities">
-                    <LayerGroup key={regionalFromToDollarsFromDollarsTo}>
-                      <Regions from={regionalDollarsFrom} from2={regionalFrom} to={regionalDollarsTo} to2={regionalTo} />
+                  <LayersControl.Overlay checked name="Regional Entities">
+                    <LayerGroup key={regionalKey}>
+                      <Regions from={regionalDollarsFrom} from2={regionalFrom} from3={regionalPropertiesFrom} to={regionalDollarsTo} to2={regionalTo} to3={regionalPropertiesTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
-                  <LayersControl.Overlay name="Tribal Nations">
-                    <LayerGroup key={tribalFromToDollarsFromDollarsTo}>
-                      <TribalNations from={tribalDollarsFrom} from2={tribalFrom} to={tribalDollarsTo} to2={tribalTo} />
+                  <LayersControl.Overlay checked name="Tribal Nations">
+                    <LayerGroup key={tribalKey}>
+                      <TribalNations from={tribalDollarsFrom} from2={tribalFrom} from3={tribalPropertiesFrom} to={tribalDollarsTo} to2={tribalTo} to3={tribalPropertiesTo} />
                     </LayerGroup>
                   </LayersControl.Overlay>
                 </LayersControl>
@@ -452,6 +491,44 @@ function MyMap() {
                     <MenuItem value={119652131}>$119M</MenuItem>
                   </Select>
                 </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="muniproperties-from"
+                  className={classes.formControl}>
+                  Min Props
+                  </InputLabel>
+                  <Select
+                    labelId="muniproperties-from"
+                    id="muniproperties-from"
+                    value={municipalPropertiesFrom}
+                    onChange={handleMunicipalPropertiesFrom}>
+                    <MenuItem value={0}>0</MenuItem>
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={100}>100</MenuItem>
+                    <MenuItem value={250}>250</MenuItem>
+                    <MenuItem value={574}>574</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="countyproperties-to"
+                  className={classes.formControl}>
+                  Max Props
+                  </InputLabel>
+                  <Select
+                    labelId="muniproperties-to"
+                    id="muniproperties-to"
+                    value={municipalPropertiesTo}
+                    onChange={handleMunicipalPropertiesTo}>
+                    <MenuItem value={0}>0</MenuItem>
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={100}>100</MenuItem>
+                    <MenuItem value={250}>250</MenuItem>
+                    <MenuItem value={574}>574</MenuItem>
+                  </Select>
+                </FormControl>
               </CardContent>
             </Card>
             <Card raised={false}>
@@ -529,6 +606,44 @@ function MyMap() {
                     <MenuItem value={1000000}>$1M</MenuItem>
                     <MenuItem value={10000000}>$10M</MenuItem>
                     <MenuItem value={117760209}>$118M</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="stateproperties-from"
+                  className={classes.formControl}>
+                  Min Props
+                  </InputLabel>
+                  <Select
+                    labelId="stateproperties-from"
+                    id="stateproperties-from"
+                    value={statePropertiesFrom}
+                    onChange={handleStatePropertiesFrom}
+                  >
+                    <MenuItem value={0}>0</MenuItem>
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={100}>100</MenuItem>
+                    <MenuItem value={490}>490</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="stateproperties-to"
+                  className={classes.formControl}>
+                  Max Props
+                  </InputLabel>
+                  <Select
+                    labelId="stateproperties-to"
+                    id="stateproperties-to"
+                    value={statePropertiesTo}
+                    onChange={handleStatePropertiesTo}
+                  >
+                    <MenuItem value={0}>0</MenuItem>
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={100}>100</MenuItem>
+                    <MenuItem value={490}>490</MenuItem>
                   </Select>
                 </FormControl>
               </CardContent>
@@ -610,6 +725,44 @@ function MyMap() {
                     <MenuItem value={4309474}>$4.3M</MenuItem>
                   </Select>
                 </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="regionalproperties-from"
+                  className={classes.formControl}>
+                  Min Props
+                  </InputLabel>
+                  <Select
+                    labelId="regionalproperties-from"
+                    id="regionalproperties-from"
+                    value={regionalPropertiesFrom}
+                    onChange={handleRegionalPropertiesFrom}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={25}>25</MenuItem>
+                    <MenuItem value={129}>129</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="regionalproperties-to"
+                  className={classes.formControl}>
+                  Max Props
+                  </InputLabel>
+                  <Select
+                    labelId="regionalproperties-to"
+                    id="regionalproperties-to"
+                    value={regionalPropertiesTo}
+                    onChange={handleRegionalPropertiesTo}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={25}>25</MenuItem>
+                    <MenuItem value={129}>129</MenuItem>
+                  </Select>
+                </FormControl>
               </CardContent>
             </Card>
             <Card raised={false}>
@@ -683,6 +836,42 @@ function MyMap() {
                     <MenuItem value={250000}>$250,000</MenuItem>
                     <MenuItem value={500000}>$500,000</MenuItem>
                     <MenuItem value={2540518}>$2.5M</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="tribalproperties-from"
+                  className={classes.formControl}>
+                  Min Props
+                  </InputLabel>
+                  <Select
+                    labelId="tribalproperties-from"
+                    id="tribalproperties-from"
+                    value={tribalPropertiesFrom}
+                    onChange={handleTribalPropertiesFrom}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={5}>5</MenuItem>
+                    <MenuItem value={7}>7</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel 
+                  id="tribalproperties-to"
+                  className={classes.formControl}>
+                  Max Props
+                  </InputLabel>
+                  <Select
+                    labelId="tribalproperties-to"
+                    id="tribalproperties-to"
+                    value={tribalPropertiesTo}
+                    onChange={handleTribalPropertiesTo}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={5}>5</MenuItem>
+                    <MenuItem value={7}>7</MenuItem>
                   </Select>
                 </FormControl>
               </CardContent>
