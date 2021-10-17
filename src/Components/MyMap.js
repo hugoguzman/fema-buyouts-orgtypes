@@ -279,7 +279,7 @@ function MyMap() {
         className={classes.dropdownsGrid}
         justifyContent="center"
         alignItems="center">
-        <Grid item xs={12} md={2}>
+        <Grid item xs={10} md={2}>
         <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -404,7 +404,7 @@ function MyMap() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} md={2}>
+          <Grid item xs={10} md={2}>
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -527,7 +527,7 @@ function MyMap() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} md={2}>
+          <Grid item xs={10} md={2}>
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -646,7 +646,7 @@ function MyMap() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} md={2}>
+          <Grid item xs={10} md={2}>
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -765,7 +765,7 @@ function MyMap() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} md={2}>
+          <Grid item xs={10} md={2}>
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
