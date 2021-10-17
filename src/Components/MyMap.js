@@ -21,44 +21,38 @@ import States from "./StateGrants";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    justifyContent: "center",
     alignItems: "center",
-    margin: theme.spacing(0),
-    width: 90,
-    padding: 2,
+    width: 96,
+    fontSize: 13,
     paddingTop: 2,
+    paddingRight: 0,
+    paddingLeft: 0,
     '&:last-child': {
       paddingBottom: 2,
     },
   },
-  formControl2: {
+  map: {
     justifyContent: "center",
     alignItems: "center",
-    margin: theme.spacing(0),
-    width: 90,
-    paddingRight: 30,
-    padding: 2,
-    paddingTop: 2,
+    padding: 0,
     '&:last-child': {
-      paddingBottom: 2,
+      paddingBottom: 0,
     },
   },
-  root: {
+  dropdownsGrid: {
     justifyContent: "center",
     alignItems: "center",
-    padding: 2,
-    '&:last-child': {
-      paddingBottom: 2,
-    },
+    padding: 18,
+    gap: 45,
   },
-  root2: {
+  orgtypeCards: {
     justifyContent: "center",
     alignItems: "center",
-    padding: 2,
-    paddingTop: 2,
-    width: 220,
+    paddingTop: 1,
+    paddingRight: 0,
+    paddingLeft: 0,
     '&:last-child': {
-      paddingBottom: 2,
+      paddingBottom: 3,
     },
   }
 }));
@@ -226,31 +220,25 @@ function MyMap() {
     <div>
       <Grid
         container
-        className={classes.root}
-        rowSpacing={{ xs: 1, md: 2 }}
-        columnSpacing={{ xs: 2, md: 2 }}
+        className={classes.h1grid}
         justifyContent="center"
         alignItems="center">
         <Grid item xs={12} md={12}>
-          <Card raised={false} className={classes.root}>
-            <CardContent className={classes.root}>
-              <h1 style={{ textAlign: "center" }}>FEMA Buyouts by Organizational Class</h1>
-            </CardContent>
-          </Card>
+              <h1 style={{ textAlign: "center", fontSize: 18 }}>FEMA Buyouts by Organizational Class</h1>
         </Grid>
       </Grid>
       <Grid
         container
-        className={classes.root}
+        className={classes.map}
         justifyContent="center"
         alignItems="center">
-                <Grid item xs={12} md={10}>
-          <Card raised={false} className={classes.root}>
-            <CardContent className={classes.root}>
+        <Grid item xs={12} md={12}>
+          <Card raised={false} className={classes.map}>
+            <CardContent className={classes.map}>
               <MapContainer
                 center={position}
                 zoom={4}
-                style={{ height: 541, width: "100%" }}>
+                style={{ height: 390, width: "100%" }}>
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
                   url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
@@ -286,9 +274,14 @@ function MyMap() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={7} md={2}>
-        <Card raised={false}>
-              <CardContent className={classes.root2}>
+        <Grid
+        container
+        className={classes.dropdownsGrid}
+        justifyContent="center"
+        alignItems="center">
+        <Grid item xs={12} md={2}>
+        <Card raised={true}>
+              <CardContent className={classes.orgtypeCards}>
                 <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                   County Filters
                 </Typography>
@@ -374,7 +367,7 @@ function MyMap() {
                   <InputLabel 
                   id="countyproperties-from"
                   className={classes.formControl}>
-                  Min Props
+                  Min Properties
                   </InputLabel>
                   <Select
                     labelId="countyproperties-from"
@@ -393,7 +386,7 @@ function MyMap() {
                   <InputLabel 
                   id="countyproperties-to"
                   className={classes.formControl}>
-                  Max Props
+                  Max Properties
                   </InputLabel>
                   <Select
                     labelId="countyproperties-to"
@@ -410,8 +403,10 @@ function MyMap() {
                 </FormControl>
               </CardContent>
             </Card>
-            <Card raised={false}>
-              <CardContent className={classes.root2}>
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <Card raised={true}>
+              <CardContent className={classes.orgtypeCards}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                   Municipality Filters
                 </Typography>
@@ -495,7 +490,7 @@ function MyMap() {
                   <InputLabel 
                   id="muniproperties-from"
                   className={classes.formControl}>
-                  Min Props
+                  Min Properties
                   </InputLabel>
                   <Select
                     labelId="muniproperties-from"
@@ -514,7 +509,7 @@ function MyMap() {
                   <InputLabel 
                   id="countyproperties-to"
                   className={classes.formControl}>
-                  Max Props
+                  Max Properties
                   </InputLabel>
                   <Select
                     labelId="muniproperties-to"
@@ -531,8 +526,10 @@ function MyMap() {
                 </FormControl>
               </CardContent>
             </Card>
-            <Card raised={false}>
-              <CardContent className={classes.root2}>
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <Card raised={true}>
+              <CardContent className={classes.orgtypeCards}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                   State Entity Filters
                 </Typography>
@@ -612,7 +609,7 @@ function MyMap() {
                   <InputLabel 
                   id="stateproperties-from"
                   className={classes.formControl}>
-                  Min Props
+                  Min Properties
                   </InputLabel>
                   <Select
                     labelId="stateproperties-from"
@@ -631,7 +628,7 @@ function MyMap() {
                   <InputLabel 
                   id="stateproperties-to"
                   className={classes.formControl}>
-                  Max Props
+                  Max Properties
                   </InputLabel>
                   <Select
                     labelId="stateproperties-to"
@@ -648,8 +645,10 @@ function MyMap() {
                 </FormControl>
               </CardContent>
             </Card>
-            <Card raised={false}>
-              <CardContent className={classes.root2}>
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <Card raised={true}>
+              <CardContent className={classes.orgtypeCards}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                   Regional Entity Filters
                 </Typography>
@@ -729,7 +728,7 @@ function MyMap() {
                   <InputLabel 
                   id="regionalproperties-from"
                   className={classes.formControl}>
-                  Min Props
+                  Min Properties
                   </InputLabel>
                   <Select
                     labelId="regionalproperties-from"
@@ -748,7 +747,7 @@ function MyMap() {
                   <InputLabel 
                   id="regionalproperties-to"
                   className={classes.formControl}>
-                  Max Props
+                  Max Properties
                   </InputLabel>
                   <Select
                     labelId="regionalproperties-to"
@@ -765,8 +764,10 @@ function MyMap() {
                 </FormControl>
               </CardContent>
             </Card>
-            <Card raised={false}>
-              <CardContent className={classes.root2}>
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <Card raised={true}>
+              <CardContent className={classes.orgtypeCards}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                   Tribal Nation Filters
                 </Typography>
@@ -842,7 +843,7 @@ function MyMap() {
                   <InputLabel 
                   id="tribalproperties-from"
                   className={classes.formControl}>
-                  Min Props
+                  Min Properties
                   </InputLabel>
                   <Select
                     labelId="tribalproperties-from"
@@ -860,7 +861,7 @@ function MyMap() {
                   <InputLabel 
                   id="tribalproperties-to"
                   className={classes.formControl}>
-                  Max Props
+                  Max Properties
                   </InputLabel>
                   <Select
                     labelId="tribalproperties-to"
@@ -878,6 +879,7 @@ function MyMap() {
             </Card>
         </Grid>
       </Grid>
+    </Grid>
     </div>
   );
 }
