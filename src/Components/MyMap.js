@@ -48,11 +48,12 @@ const useStyles = makeStyles((theme) => ({
   orgtypeCards: {
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#fff5eb",
     paddingTop: 1,
     paddingRight: 0,
     paddingLeft: 0,
     '&:last-child': {
-      paddingBottom: 3,
+      paddingBottom: 8,
     },
   }
 }));
@@ -279,7 +280,7 @@ function MyMap() {
         className={classes.dropdownsGrid}
         justifyContent="center"
         alignItems="center">
-        <Grid item xs={10} md={2}>
+        <Grid item xs={9} md={2}>
         <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography xs={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -404,7 +405,7 @@ function MyMap() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={10} md={2}>
+          <Grid item xs={9} md={2}>
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -527,7 +528,7 @@ function MyMap() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={10} md={2}>
+          <Grid item xs={9} md={2}>
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -646,7 +647,7 @@ function MyMap() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={10} md={2}>
+          <Grid item xs={9} md={2}>
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -765,7 +766,7 @@ function MyMap() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={10} md={2}>
+          <Grid item xs={9} md={2}>
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
