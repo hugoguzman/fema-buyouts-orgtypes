@@ -17,6 +17,7 @@ import Municipalities from "./MunicipalGrants";
 import Regions from "./RegionalGrants";
 import TribalNations from "./TribalGrants";
 import States from "./StateGrants";
+import { Button } from "@mui/material";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -225,7 +226,7 @@ function MyMap() {
         justifyContent="center"
         alignItems="center">
         <Grid item xs={12} md={12}>
-              <h1 style={{ textAlign: "center", fontSize: 18 }}>FEMA Buyouts by Organizational Class</h1>
+              {/* <h1 style={{ textAlign: "center", fontSize: 18 }}>FEMA Buyouts by Organizational Class</h1> */}
         </Grid>
       </Grid>
       <Grid
