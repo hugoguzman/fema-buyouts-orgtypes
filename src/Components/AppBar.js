@@ -11,7 +11,7 @@ export default function TopAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar 
-      className
+      color="transparent"
       elevation={0}
       position='static'>
         <Toolbar>
