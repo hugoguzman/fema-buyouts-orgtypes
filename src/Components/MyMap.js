@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { styled } from '@mui/material/styles';
 import { MapContainer, TileLayer, LayersControl, LayerGroup } from "react-leaflet";
 import '@fontsource/roboto';
 import {
@@ -6,7 +7,6 @@ import {
   Card,
   CardContent,
   Typography,
-  makeStyles,
   InputLabel,
   FormControl,
   MenuItem,
@@ -17,11 +17,23 @@ import Municipalities from "./MunicipalGrants";
 import Regions from "./RegionalGrants";
 import TribalNations from "./TribalGrants";
 import States from "./StateGrants";
-import { Button } from "@mui/material";
 
 
-const useStyles = makeStyles((theme) => ({
-  formControl: {
+const PREFIX = 'MyMap';
+
+const classes = {
+  formControl: `${PREFIX}-formControl`,
+  map: `${PREFIX}-map`,
+  dropdownsGrid: `${PREFIX}-dropdownsGrid`,
+  orgtypeCards: `${PREFIX}-orgtypeCards`
+};
+
+const Root = styled('div')((
+  {
+    theme
+  }
+) => ({
+  [`& .${classes.formControl}`]: {
     alignItems: "center",
     width: 96,
     fontSize: 13,
@@ -32,7 +44,8 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: 2,
     },
   },
-  map: {
+
+  [`& .${classes.map}`]: {
     justifyContent: "center",
     alignItems: "center",
     padding: 0,
@@ -40,13 +53,15 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: 0,
     },
   },
-  dropdownsGrid: {
+
+  [`& .${classes.dropdownsGrid}`]: {
     justifyContent: "center",
     alignItems: "center",
     padding: 18,
     gap: 45,
   },
-  orgtypeCards: {
+
+  [`& .${classes.orgtypeCards}`]: {
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff5eb",
@@ -62,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
 const position = [37.1, -95.7]
 
 function MyMap() {
-  const classes = useStyles();
+
   const [countyFrom, setCountyFrom] = useState(1);
   const [countyTo, setCountyTo] = useState(51);
   const [muniFrom, setMuniFrom] = useState(1);
@@ -219,7 +234,7 @@ function MyMap() {
     setTribalPropertiesTo(e.target.value);
   }
   return (
-    <div>
+    <Root>
       <Grid
         container
         className={classes.h1grid}
@@ -882,7 +897,7 @@ function MyMap() {
         </Grid>
       </Grid>
     </Grid>
-    </div>
+    </Root>
   );
 }
 
