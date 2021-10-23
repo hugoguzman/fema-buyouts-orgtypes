@@ -369,7 +369,8 @@ function MyMap() {
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography
-                  xs={{ fontSize: 14 }}
+                  // xs={{ fontSize: 14 }}
+                  sx={{fontSize: 16}}
                   fontWeight='bold'
                   color='text.secondary'
                   gutterBottom
@@ -509,7 +510,7 @@ function MyMap() {
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography
-                  sx={{ fontSize: 14 }}
+                  sx={{ fontSize: 16 }}
                   fontWeight='bold'
                   color='text.secondary'
                   gutterBottom
@@ -635,7 +636,7 @@ function MyMap() {
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography
-                  sx={{ fontSize: 14 }}
+                  sx={{ fontSize: 16 }}
                   fontWeight='bold'
                   color='text.secondary'
                   gutterBottom
@@ -755,7 +756,7 @@ function MyMap() {
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography
-                  sx={{ fontSize: 14 }}
+                  sx={{ fontSize: 16 }}
                   fontWeight='bold'
                   color='text.secondary'
                   gutterBottom
@@ -881,7 +882,7 @@ function MyMap() {
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography
-                  sx={{ fontSize: 14 }}
+                  sx={{ fontSize: 16 }}
                   fontWeight='bold'
                   color='text.secondary'
                   gutterBottom
