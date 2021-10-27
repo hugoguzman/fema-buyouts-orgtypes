@@ -35,7 +35,7 @@ function FilterCard(props) {
               value={props.typeFrom}
               onChange={props.handleTypeFrom}
             >
-              {props.countyRangeValues1.map((rangeValue) => (
+              {props.typeRangeValues1.map((rangeValue) => (
                 <MenuItem key={rangeValue} value={rangeValue}>
                   {rangeValue}
                 </MenuItem>
@@ -55,7 +55,7 @@ function FilterCard(props) {
               value={props.typeTo}
               onChange={props.handleTypeTo}
             >
-              {props.countyRangeValues1.map((rangeValue) => (
+              {props.typeRangeValues1.map((rangeValue) => (
                 <MenuItem key={rangeValue} value={rangeValue}>
                   {rangeValue}
                 </MenuItem>
@@ -75,7 +75,7 @@ function FilterCard(props) {
               value={props.typeDollarsFrom}
               onChange={props.handleTypeDollarsFrom}
             >
-              {props.countyRangeValues2.map((rangeValue) => (
+              {props.typeRangeValues2.map((rangeValue) => (
                 <MenuItem
                   key={rangeValue}
                   value={rangeValue}
@@ -100,7 +100,7 @@ function FilterCard(props) {
               value={props.typeDollarsTo}
               onChange={props.handleTypeDollarsTo}
             >
-              {props.countyRangeValues2.map((rangeValue) => (
+              {props.typeRangeValues2.map((rangeValue) => (
                 <MenuItem
                   key={rangeValue}
                   value={rangeValue}
@@ -124,7 +124,7 @@ function FilterCard(props) {
               value={props.typePropertiesFrom}
               onChange={props.handleTypePropertiesFrom}
             >
-              {props.countyRangeValues3.map((rangeValue) => (
+              {props.typeRangeValues3.map((rangeValue) => (
                 <MenuItem key={rangeValue} value={rangeValue}>
                   {rangeValue}
                 </MenuItem>
@@ -144,7 +144,7 @@ function FilterCard(props) {
               value={props.typePropertiesTo}
               onChange={props.handleTypePropertiesTo}
             >
-              {props.countyRangeValues3.map((rangeValue) => (
+              {props.typeRangeValues3.map((rangeValue) => (
                 <MenuItem key={rangeValue} value={rangeValue}>
                   {rangeValue}
                 </MenuItem>

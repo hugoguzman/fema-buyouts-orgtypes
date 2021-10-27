@@ -379,9 +379,9 @@ function MyMap() {
         > <Grid item xs={9} md={2}>
           <FilterCard
             class={classes}
-            countyRangeValues1={[1, 2, 5, 10, 25, 51,]}
-            countyRangeValues2={[579,100000,1000000,10000000, 25000000, 441696755]}
-            countyRangeValues3={[0,1,10,100,250,2992]}
+            typeRangeValues1={[1, 2, 5, 10, 25, 51,]}
+            typeRangeValues2={[579,100000,1000000,10000000, 25000000, 441696755]}
+            typeRangeValues3={[0,1,10,100,250,2992]}
             mainTitle={'County Filters'}
             typeFrom={countyFrom}
             typeTo={countyTo}
