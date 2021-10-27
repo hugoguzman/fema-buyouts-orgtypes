@@ -16,12 +16,14 @@ import {
   FormControl,
   MenuItem,
   Select,
+  fabClasses,
 } from '@mui/material';
 import Counties from './CountyGrants';
 import Municipalities from './MunicipalGrants';
 import Regions from './RegionalGrants';
 import TribalNations from './TribalGrants';
 import States from './StateGrants';
+import FilterCard from './FilterCard';
 
 const PREFIX = 'MyMap';
 
@@ -364,13 +366,30 @@ function MyMap() {
           className={classes.dropdownsGrid}
           justifyContent='center'
           alignItems='center'
-        >
+        > <Grid item xs={9} md={2}>
+          <FilterCard
+            class={classes}
+            mainTitle={'County Filters'}
+            typeFrom={countyFrom}
+            typeTo={countyTo}
+            handleTypeTo={handleCountyTo}
+            handleTypeFrom={handleCountyFrom}
+            typeDollarsFrom={countyDollarsFrom}
+            typeDollarsTo={countyDollarsTo}
+            handleTypeDollarsTo={handleCountyDollarsTo}
+            handleTypeDollarsFrom={handleCountyDollarsFrom}
+            typePropertiesFrom={countyPropertiesFrom}
+            typePropertiesTo={countyPropertiesTo}
+            handleTypePropertiesFrom={handleCountyPropertiesFrom}
+            handleTypePropertiesTo={handleCountyPropertiesTo}
+          />
+        </Grid>
           <Grid item xs={9} md={2}>
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography
                   // xs={{ fontSize: 14 }}
-                  sx={{fontSize: 16}}
+                  sx={{ fontSize: 16 }}
                   fontWeight='bold'
                   color='text.secondary'
                   gutterBottom
@@ -398,7 +417,7 @@ function MyMap() {
                     <MenuItem value={51}>51</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='demo-simple-select-label'
                     className={classes.formControl}
@@ -419,7 +438,7 @@ function MyMap() {
                     <MenuItem value={51}>51</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='countydollars-from'
                     className={classes.formControl}
@@ -440,7 +459,7 @@ function MyMap() {
                     <MenuItem value={441696754}>$442M</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='demo-simple-select-label'
                     className={classes.formControl}
@@ -461,7 +480,7 @@ function MyMap() {
                     <MenuItem value={441696755}>$442M</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='countyproperties-from'
                     className={classes.formControl}
@@ -482,7 +501,7 @@ function MyMap() {
                     <MenuItem value={2992}>2,992</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='countyproperties-to'
                     className={classes.formControl}
@@ -517,7 +536,7 @@ function MyMap() {
                 >
                   Municipality Filters
                 </Typography>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel id='muni-from' className={classes.formControl}>
                     Min Grants
                   </InputLabel>
@@ -534,7 +553,7 @@ function MyMap() {
                     <MenuItem value={25}>25</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel id='muni-to' className={classes.formControl}>
                     Max Grants
                   </InputLabel>
@@ -551,7 +570,7 @@ function MyMap() {
                     <MenuItem value={25}>25</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel id='muni-from' className={classes.formControl}>
                     Min Dollars
                   </InputLabel>
@@ -569,7 +588,7 @@ function MyMap() {
                     <MenuItem value={119652130}>$119M</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel id='muni-to' className={classes.formControl}>
                     Max Dollars
                   </InputLabel>
@@ -587,7 +606,7 @@ function MyMap() {
                     <MenuItem value={119652131}>$119M</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='muniproperties-from'
                     className={classes.formControl}
@@ -608,7 +627,7 @@ function MyMap() {
                     <MenuItem value={574}>574</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='countyproperties-to'
                     className={classes.formControl}
@@ -643,7 +662,7 @@ function MyMap() {
                 >
                   State Entity Filters
                 </Typography>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel id='state-from' className={classes.formControl}>
                     Min Grants
                   </InputLabel>
@@ -659,7 +678,7 @@ function MyMap() {
                     <MenuItem value={4}>4</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel id='state-to' className={classes.formControl}>
                     Max Grants
                   </InputLabel>
@@ -675,7 +694,7 @@ function MyMap() {
                     <MenuItem value={4}>4</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel id='state-from' className={classes.formControl}>
                     Min Dollars
                   </InputLabel>
@@ -692,7 +711,7 @@ function MyMap() {
                     <MenuItem value={117760209}>$118M</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel id='state-to' className={classes.formControl}>
                     Max Dollars
                   </InputLabel>
@@ -709,7 +728,7 @@ function MyMap() {
                     <MenuItem value={117760209}>$118M</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='stateproperties-from'
                     className={classes.formControl}
@@ -729,7 +748,7 @@ function MyMap() {
                     <MenuItem value={490}>490</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='stateproperties-to'
                     className={classes.formControl}
@@ -763,7 +782,7 @@ function MyMap() {
                 >
                   Regional Entity Filters
                 </Typography>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='regional-from'
                     className={classes.formControl}
@@ -781,7 +800,7 @@ function MyMap() {
                     <MenuItem value={3}>3</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel id='regional-to' className={classes.formControl}>
                     Max Grants
                   </InputLabel>
@@ -796,7 +815,7 @@ function MyMap() {
                     <MenuItem value={3}>3</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='regional-from'
                     className={classes.formControl}
@@ -817,7 +836,7 @@ function MyMap() {
                     <MenuItem value={4309473}>$4.3M</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel id='regional-to' className={classes.formControl}>
                     Max Dollars
                   </InputLabel>
@@ -835,7 +854,7 @@ function MyMap() {
                     <MenuItem value={4309474}>$4.3M</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='regionalproperties-from'
                     className={classes.formControl}
@@ -855,7 +874,7 @@ function MyMap() {
                     <MenuItem value={129}>129</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='regionalproperties-to'
                     className={classes.formControl}
@@ -889,7 +908,7 @@ function MyMap() {
                 >
                   Tribal Nation Filters
                 </Typography>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel id='tribal-from' className={classes.formControl}>
                     Min Grants
                   </InputLabel>
@@ -903,7 +922,7 @@ function MyMap() {
                     <MenuItem value={2}>2</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel id='tribal-to' className={classes.formControl}>
                     Max Grants
                   </InputLabel>
@@ -917,7 +936,7 @@ function MyMap() {
                     <MenuItem value={2}>2</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='tribaldollars-from'
                     className={classes.formControl}
@@ -936,7 +955,7 @@ function MyMap() {
                     <MenuItem value={2540518}>$2.5M</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='tribaldollars-to'
                     className={classes.formControl}
@@ -955,7 +974,7 @@ function MyMap() {
                     <MenuItem value={2540518}>$2.5M</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='tribalproperties-from'
                     className={classes.formControl}
@@ -974,7 +993,7 @@ function MyMap() {
                     <MenuItem value={7}>7</MenuItem>
                   </Select>
                 </FormControl>
-                <FormControl className={classes.formControl} variant="standard">
+                <FormControl className={classes.formControl} variant='standard'>
                   <InputLabel
                     id='tribalproperties-to'
                     className={classes.formControl}
