@@ -79,6 +79,16 @@ const Root = styled('div')(({ theme }) => ({
 
 const position = [37.1, -95.7];
 
+// const countyMinMaxValues = [
+//   1, 2, 5, 10, 25, 51,
+//   // maxGrantsCounty: (1,2,5,10,25,51),
+//   // minDollarsCounty: (579,100000,1000000,10000000, 25000000, 441696755),
+//   // maxDollarsCounty: (579,100000,1000000,10000000, 25000000, 441696755),
+//   // minPropertyCounty: (0,1,10,100,250,2992),
+//   // maxPropertyCounty:(0,1,10,100,250,2992)
+  
+// ];
+
 function MyMap() {
   const [countyFrom, setCountyFrom] = useState(1);
   const [countyTo, setCountyTo] = useState(51);
@@ -369,6 +379,9 @@ function MyMap() {
         > <Grid item xs={9} md={2}>
           <FilterCard
             class={classes}
+            countyRangeValues1={[1, 2, 5, 10, 25, 51,]}
+            countyRangeValues2={[579,100000,1000000,10000000, 25000000, 441696755]}
+            countyRangeValues3={[0,1,10,100,250,2992]}
             mainTitle={'County Filters'}
             typeFrom={countyFrom}
             typeTo={countyTo}
@@ -384,6 +397,25 @@ function MyMap() {
             handleTypePropertiesTo={handleCountyPropertiesTo}
           />
         </Grid>
+        {/* <Grid item xs={9} md={2}>
+        <FilterCard
+            class={classes}
+            rangeValues={countyMinMaxValues}
+            mainTitle={'Municipality Filters'}
+            typeFrom={muniFrom}
+            typeTo={muniTo}
+            handleTypeTo={handleMuniTo}
+            handleTypeFrom={handleMuniFrom}
+            typeDollarsFrom={municipalDollarsFrom}
+            typeDollarsTo={municipalDollarsTo}
+            handleTypeDollarsTo={handleMunicipalDollarsTo}
+            handleTypeDollarsFrom={handleMunicipalDollarsFrom}
+            typePropertiesFrom={municipalPropertiesFrom}
+            typePropertiesTo={municipalPropertiesTo}
+            handleTypePropertiesFrom={handleMunicipalPropertiesFrom}
+            handleTypePropertiesTo={handleMunicipalPropertiesTo}
+          />
+        </Grid> */}
           <Grid item xs={9} md={2}>
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
