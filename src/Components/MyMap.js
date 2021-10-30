@@ -16,7 +16,6 @@ import {
   FormControl,
   MenuItem,
   Select,
-  fabClasses,
 } from '@mui/material';
 import Counties from './CountyGrants';
 import Municipalities from './MunicipalGrants';
@@ -24,6 +23,8 @@ import Regions from './RegionalGrants';
 import TribalNations from './TribalGrants';
 import States from './StateGrants';
 import FilterCard from './FilterCard';
+import { useSelector, useDispatch } from 'react-redux';
+import { filteredCountyFrom, filteredCountyTo } from '../Components/countyCardSlice.js';
 
 const PREFIX = 'MyMap';
 
@@ -79,17 +80,15 @@ const Root = styled('div')(({ theme }) => ({
 
 const position = [37.1, -95.7];
 
-// const countyMinMaxValues = [
-//   1, 2, 5, 10, 25, 51,
-//   // maxGrantsCounty: (1,2,5,10,25,51),
-//   // minDollarsCounty: (579,100000,1000000,10000000, 25000000, 441696755),
-//   // maxDollarsCounty: (579,100000,1000000,10000000, 25000000, 441696755),
-//   // minPropertyCounty: (0,1,10,100,250,2992),
-//   // maxPropertyCounty:(0,1,10,100,250,2992)
-  
-// ];
+
+
 
 function MyMap() {
+  //init dispatch hook
+  const dispatch = useDispatch()
+  
+
+
   const [countyFrom, setCountyFrom] = useState(1);
   const [countyTo, setCountyTo] = useState(51);
   const [muniFrom, setMuniFrom] = useState(1);
@@ -120,6 +119,12 @@ function MyMap() {
   const [regionalPropertiesTo, setRegionalPropertiesTo] = useState(129);
   const [tribalPropertiesFrom, setTribalPropertiesFrom] = useState(1);
   const [tribalPropertiesTo, setTribalPropertiesTo] = useState(7);
+
+  //getting global state from store with useSelector
+  const filteredCountyGrantsFrom = useSelector(state => state.filterCounty.grantsFrom.value)
+  const filteredCountyGrantsTo = useSelector(state => state.filterCounty.grantsTo.value)
+
+
   const countyKey =
     countyFrom +
     countyTo +
@@ -158,10 +163,13 @@ function MyMap() {
 
   const handleCountyFrom = (e) => {
     setCountyFrom(e.target.value);
+    //after local state is changed using two way binding, the redux action is dispatched to update global state
+    dispatch(filteredCountyFrom(countyFrom))
   };
 
   const handleCountyTo = (e) => {
     setCountyTo(e.target.value);
+    dispatch(filteredCountyTo(countyTo))
   };
 
   const handleMuniFrom = (e) => {
@@ -376,7 +384,8 @@ function MyMap() {
           className={classes.dropdownsGrid}
           justifyContent='center'
           alignItems='center'
-        > <Grid item xs={9} md={2}>
+        > 
+        {/* <Grid item xs={9} md={2}>
           <FilterCard
             class={classes}
             typeRangeValues1={[1, 2, 5, 10, 25, 51,]}
@@ -395,25 +404,6 @@ function MyMap() {
             typePropertiesTo={countyPropertiesTo}
             handleTypePropertiesFrom={handleCountyPropertiesFrom}
             handleTypePropertiesTo={handleCountyPropertiesTo}
-          />
-        </Grid>
-        {/* <Grid item xs={9} md={2}>
-        <FilterCard
-            class={classes}
-            rangeValues={countyMinMaxValues}
-            mainTitle={'Municipality Filters'}
-            typeFrom={muniFrom}
-            typeTo={muniTo}
-            handleTypeTo={handleMuniTo}
-            handleTypeFrom={handleMuniFrom}
-            typeDollarsFrom={municipalDollarsFrom}
-            typeDollarsTo={municipalDollarsTo}
-            handleTypeDollarsTo={handleMunicipalDollarsTo}
-            handleTypeDollarsFrom={handleMunicipalDollarsFrom}
-            typePropertiesFrom={municipalPropertiesFrom}
-            typePropertiesTo={municipalPropertiesTo}
-            handleTypePropertiesFrom={handleMunicipalPropertiesFrom}
-            handleTypePropertiesTo={handleMunicipalPropertiesTo}
           />
         </Grid> */}
           <Grid item xs={9} md={2}>
@@ -438,7 +428,8 @@ function MyMap() {
                   <Select
                     labelId='demo-simple-select-label'
                     id='demo-simple-select'
-                    value={countyFrom}
+                    value={filteredCountyGrantsFrom}
+                    // value={countyFrom}
                     onChange={handleCountyFrom}
                   >
                     <MenuItem value={1}>1</MenuItem>
@@ -459,7 +450,8 @@ function MyMap() {
                   <Select
                     labelId='demo-simple-select-label'
                     id='demo-simple-select'
-                    value={countyTo}
+                    // value={countyTo}
+                    value={filteredCountyGrantsTo}
                     onChange={handleCountyTo}
                   >
                     <MenuItem value={1}>1</MenuItem>
