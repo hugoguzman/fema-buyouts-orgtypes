@@ -24,7 +24,7 @@ import TribalNations from './TribalGrants';
 import States from './StateGrants';
 import FilterCard from './FilterCard';
 import { useSelector, useDispatch } from 'react-redux';
-import { filteredCountyFrom, filteredCountyTo } from '../Components/countyCardSlice.js';
+import { filteredCountyDollarsFrom, filteredCountyDollarsTo, filteredCountyFrom, filteredCountyTo, filteredCountyPropsFrom, filteredCountyPropsTo } from '../Components/countyCardSlice.js';
 
 const PREFIX = 'MyMap';
 
@@ -85,14 +85,19 @@ const position = [37.1, -95.7];
 
 function MyMap() {
   //init dispatch hook
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   
   //getting global state from store with useSelector
-  const filteredCountyGrantsFrom = useSelector(state => state.filterCounty.grantsFrom.value)
-  const filteredCountyGrantsTo = useSelector(state => state.filterCounty.grantsTo.value)
+  const COUNTY_FROM = useSelector(state => state.filterCounty.grantsFrom.value);
+  const COUNTY_TO = useSelector(state => state.filterCounty.grantsTo.value);
+  const COUNTY$_FROM = useSelector(state => state.filterCounty.dollarsFrom.value);
+  const COUNTY$_TO = useSelector(state => state.filterCounty.dollarsTo.value);
+  const COUNTYPROPS_FROM = useSelector(state => state.filterCounty.propertiesFrom.value);
+  const COUNTYPROPS_TO = useSelector(state => state.filterCounty.propertiesTo.value);
 
-  const [countyFrom, setCountyFrom] = useState(filteredCountyGrantsFrom);
-  const [countyTo, setCountyTo] = useState(filteredCountyGrantsTo);
+  //pull initial local state from redux store
+  const [countyFrom, setCountyFrom] = useState(COUNTY_FROM);
+  const [countyTo, setCountyTo] = useState(COUNTY_TO);
   const [muniFrom, setMuniFrom] = useState(1);
   const [muniTo, setMuniTo] = useState(25);
   const [regionalFrom, setRegionalFrom] = useState(1);
@@ -101,8 +106,9 @@ function MyMap() {
   const [stateTo, setStateTo] = useState(4);
   const [tribalFrom, setTribalFrom] = useState(1);
   const [tribalTo, setTribalTo] = useState(2);
-  const [countyDollarsFrom, setCountyDollarsFrom] = useState(579);
-  const [countyDollarsTo, setCountyDollarsTo] = useState(441696755);
+
+  const [countyDollarsFrom, setCountyDollarsFrom] = useState(COUNTY$_FROM);
+  const [countyDollarsTo, setCountyDollarsTo] = useState(COUNTY$_TO);
   const [municipalDollarsFrom, setMunicipalDollarsFrom] = useState(274);
   const [municipalDollarsTo, setMunicipalDollarsTo] = useState(119652131);
   const [stateDollarsFrom, setStateDollarsFrom] = useState(9133);
@@ -111,8 +117,9 @@ function MyMap() {
   const [regionalDollarsTo, setRegionalDollarsTo] = useState(4309474);
   const [tribalDollarsFrom, setTribalDollarsFrom] = useState(30952);
   const [tribalDollarsTo, setTribalDollarsTo] = useState(2540518);
-  const [countyPropertiesFrom, setCountyPropertiesFrom] = useState(0);
-  const [countyPropertiesTo, setCountyPropertiesTo] = useState(2992);
+
+  const [countyPropertiesFrom, setCountyPropertiesFrom] = useState(COUNTYPROPS_FROM);
+  const [countyPropertiesTo, setCountyPropertiesTo] = useState(COUNTYPROPS_TO);
   const [municipalPropertiesFrom, setMunicipalPropertiesFrom] = useState(0);
   const [municipalPropertiesTo, setMunicipalPropertiesTo] = useState(574);
   const [statePropertiesFrom, setStatePropertiesFrom] = useState(0);
@@ -207,10 +214,12 @@ function MyMap() {
 
   const handleCountyDollarsFrom = (e) => {
     setCountyDollarsFrom(e.target.value);
+    dispatch(filteredCountyDollarsFrom(e.target.value));
   };
 
   const handleCountyDollarsTo = (e) => {
     setCountyDollarsTo(e.target.value);
+    dispatch(filteredCountyDollarsTo(e.target.value));
   };
 
   const handleMunicipalDollarsFrom = (e) => {
