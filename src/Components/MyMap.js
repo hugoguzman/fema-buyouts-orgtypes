@@ -256,10 +256,12 @@ function MyMap() {
 
   const handleCountyPropertiesFrom = (e) => {
     setCountyPropertiesFrom(e.target.value);
+    dispatch(filteredCountyPropsFrom(e.target.value));
   };
 
   const handleCountyPropertiesTo = (e) => {
     setCountyPropertiesTo(e.target.value);
+    dispatch(filteredCountyPropsTo(e.target.value));
   };
 
   const handleMunicipalPropertiesFrom = (e) => {
