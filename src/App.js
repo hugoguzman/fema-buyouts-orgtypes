@@ -1,16 +1,14 @@
-import { useState } from 'react';
 import './App.css';
 import TopAppBar from './Components/AppBar';
 import MyMap from './Components/MyMap'
-import { useSelector, useDispatch } from 'react-redux'
-import { filteredCountyFrom } from './Components/countyCardSlice';
+import { useSelector } from 'react-redux'
 
 function App() {
   
-  const dispatch = useDispatch()
+  
 
   
-  const [something, setSomething] = useState('')
+  
   
   const reduxState1 = useSelector(state => state.filterCounty.grantsFrom.value)
   const reduxState2 = useSelector(state => state.filterCounty.grantsTo.value)

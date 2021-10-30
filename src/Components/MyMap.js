@@ -87,10 +87,12 @@ function MyMap() {
   //init dispatch hook
   const dispatch = useDispatch()
   
+  //getting global state from store with useSelector
+  const filteredCountyGrantsFrom = useSelector(state => state.filterCounty.grantsFrom.value)
+  const filteredCountyGrantsTo = useSelector(state => state.filterCounty.grantsTo.value)
 
-
-  const [countyFrom, setCountyFrom] = useState(1);
-  const [countyTo, setCountyTo] = useState(51);
+  const [countyFrom, setCountyFrom] = useState(filteredCountyGrantsFrom);
+  const [countyTo, setCountyTo] = useState(filteredCountyGrantsTo);
   const [muniFrom, setMuniFrom] = useState(1);
   const [muniTo, setMuniTo] = useState(25);
   const [regionalFrom, setRegionalFrom] = useState(1);
@@ -120,9 +122,7 @@ function MyMap() {
   const [tribalPropertiesFrom, setTribalPropertiesFrom] = useState(1);
   const [tribalPropertiesTo, setTribalPropertiesTo] = useState(7);
 
-  //getting global state from store with useSelector
-  const filteredCountyGrantsFrom = useSelector(state => state.filterCounty.grantsFrom.value)
-  const filteredCountyGrantsTo = useSelector(state => state.filterCounty.grantsTo.value)
+  
 
 
   const countyKey =
@@ -164,12 +164,13 @@ function MyMap() {
   const handleCountyFrom = (e) => {
     setCountyFrom(e.target.value);
     //after local state is changed using two way binding, the redux action is dispatched to update global state
-    dispatch(filteredCountyFrom(countyFrom))
+    //fixed de-sync between local/global state by sending e.target.value as action payload instead of local state ("stock react state updates are async by nature")
+    dispatch(filteredCountyFrom(e.target.value))
   };
 
   const handleCountyTo = (e) => {
     setCountyTo(e.target.value);
-    dispatch(filteredCountyTo(countyTo))
+    dispatch(filteredCountyTo(e.target.value))
   };
 
   const handleMuniFrom = (e) => {
@@ -428,8 +429,8 @@ function MyMap() {
                   <Select
                     labelId='demo-simple-select-label'
                     id='demo-simple-select'
-                    value={filteredCountyGrantsFrom}
-                    // value={countyFrom}
+                    // value={filteredCountyGrantsFrom}
+                    value={countyFrom}
                     onChange={handleCountyFrom}
                   >
                     <MenuItem value={1}>1</MenuItem>
@@ -450,8 +451,8 @@ function MyMap() {
                   <Select
                     labelId='demo-simple-select-label'
                     id='demo-simple-select'
-                    // value={countyTo}
-                    value={filteredCountyGrantsTo}
+                    value={countyTo}
+                    // value={filteredCountyGrantsTo}
                     onChange={handleCountyTo}
                   >
                     <MenuItem value={1}>1</MenuItem>
