@@ -397,7 +397,7 @@ function MyMap() {
           justifyContent='center'
           alignItems='center'
         > 
-        {/* <Grid item xs={9} md={2}>
+        <Grid item xs={9} md={2}>
           <FilterCard
             class={classes}
             typeRangeValues1={[1, 2, 5, 10, 25, 51,]}
@@ -417,7 +417,7 @@ function MyMap() {
             handleTypePropertiesFrom={handleCountyPropertiesFrom}
             handleTypePropertiesTo={handleCountyPropertiesTo}
           />
-        </Grid> */}
+        </Grid>
           <Grid item xs={9} md={2}>
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
