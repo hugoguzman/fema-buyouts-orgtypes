@@ -75,14 +75,18 @@ function FilterCard(props) {
               value={props.typeDollarsFrom}
               onChange={props.handleTypeDollarsFrom}
             >
-              {props.typeRangeValues2.map((rangeValue) => (
+              {props.typeRangeValues2.map((rangeValue, index) => (
                 <MenuItem
                   key={rangeValue}
                   value={rangeValue}
-                  // ALEX TODO: for the money values, use intl.NumberFormat to convert to currency format
-                  // OR: add a key specific string to display for each index value, i.e(i: $579)
+                  // ALEX TODO: find way to pass specific money Strings depending on the orgtype props being passed
                 >
-                  ${rangeValue}
+                  ${index == 0 ? '579' : 
+                  index == 1 ? '100,000' :
+                  index == 2 ? '1M' :
+                  index == 3 ? '10M' :
+                  index == 4 ? '25M'  :
+                  ' 442M'} 
                 </MenuItem>
               ))}
             </Select>
@@ -100,13 +104,18 @@ function FilterCard(props) {
               value={props.typeDollarsTo}
               onChange={props.handleTypeDollarsTo}
             >
-              {props.typeRangeValues2.map((rangeValue) => (
+              {props.typeRangeValues2.map((rangeValue,index) => (
                 <MenuItem
                   key={rangeValue}
                   value={rangeValue}
-                  // ALEX TODO: for the money values, use intl.NumberFormat to convert to currency format
+                  // -----------------------------------------------------------------------
                 >
-                  ${rangeValue}
+                  ${index == 0 ? '579' : 
+                  index == 1 ? '100,000' :
+                  index == 2 ? '1M' :
+                  index == 3 ? '10M' :
+                  index == 4 ? '25M'  :
+                  ' 442M'} 
                 </MenuItem>
               ))}
             </Select>
