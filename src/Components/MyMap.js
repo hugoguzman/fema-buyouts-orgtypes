@@ -401,7 +401,7 @@ function MyMap() {
           <FilterCard
             class={classes}
             typeRangeValues1={[1, 2, 5, 10, 25, 51,]}
-            typeRangeValues2={[579,100000,1000000,10000000, 25000000, 441696755]}
+            typeRangeValues2={[579,100000,1000000,10000000,25000000,441696755]}
             typeRangeValues3={[0,1,10,100,250,2992]}
             mainTitle={'County Filters'}
             typeFrom={countyFrom}
@@ -512,7 +512,7 @@ function MyMap() {
                     <MenuItem value={100000}>$100,000</MenuItem>
                     <MenuItem value={1000000}>$1M</MenuItem>
                     <MenuItem value={10000000}>$10M</MenuItem>
-                    <MenuItem value={250000000}>$25M</MenuItem>
+                    <MenuItem value={25000000}>$25M</MenuItem>
                     <MenuItem value={441696755}>$442M</MenuItem>
                   </Select>
                 </FormControl>
