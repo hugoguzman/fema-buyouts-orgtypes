@@ -22,7 +22,7 @@ import Municipalities from './MunicipalGrants';
 import Regions from './RegionalGrants';
 import TribalNations from './TribalGrants';
 import States from './StateGrants';
-import FilterCard from './FilterCard';
+import FilterCard from './CountyFilterCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { filteredCountyDollarsFrom, filteredCountyDollarsTo, filteredCountyFrom, filteredCountyTo, filteredCountyPropsFrom, filteredCountyPropsTo } from './countyCardSlice';
 import {filteredMuniFrom, filteredMuniTo, filteredMuniDollarsFrom, filteredMuniDollarsTo, filteredMuniPropsFrom, filteredMuniPropsTo } from './muniCardSlice';
@@ -123,8 +123,8 @@ function MyMap() {
   const globalTribalPropsTo = useSelector(state => state.filterTribal.propertiesTo.value);
 
 
-  const [countyFrom, setCountyFrom] = useState(globalCountyFrom);
-  const [countyTo, setCountyTo] = useState(globalCountyTo);
+  // const [countyFrom, setCountyFrom] = useState(globalCountyFrom);
+  // const [countyTo, setCountyTo] = useState(globalCountyTo);
   const [muniFrom, setMuniFrom] = useState(globalMuniFrom);
   const [muniTo, setMuniTo] = useState(globalMuniTo);
   const [regionalFrom, setRegionalFrom] = useState(globalRegionFrom);
@@ -134,8 +134,8 @@ function MyMap() {
   const [tribalFrom, setTribalFrom] = useState(globalTribalFrom);
   const [tribalTo, setTribalTo] = useState(globalTribalTo);
 
-  const [countyDollarsFrom, setCountyDollarsFrom] = useState(globalCountyDollarsFrom);
-  const [countyDollarsTo, setCountyDollarsTo] = useState(globalCountyDollarsTo);
+  // const [countyDollarsFrom, setCountyDollarsFrom] = useState(globalCountyDollarsFrom);
+  // const [countyDollarsTo, setCountyDollarsTo] = useState(globalCountyDollarsTo);
   const [municipalDollarsFrom, setMunicipalDollarsFrom] = useState(globalMuniDollarsFrom);
   const [municipalDollarsTo, setMunicipalDollarsTo] = useState(globalMuniDollarsTo);
   const [stateDollarsFrom, setStateDollarsFrom] = useState(globalStateDollarsFrom);
@@ -145,8 +145,8 @@ function MyMap() {
   const [tribalDollarsFrom, setTribalDollarsFrom] = useState(globalTribalDollarsFrom);
   const [tribalDollarsTo, setTribalDollarsTo] = useState(globalTribalDollarsTo);
 
-  const [countyPropertiesFrom, setCountyPropertiesFrom] = useState(globalCountyPropsFrom);
-  const [countyPropertiesTo, setCountyPropertiesTo] = useState(globalCountyPropsTo);
+  // const [countyPropertiesFrom, setCountyPropertiesFrom] = useState(globalCountyPropsFrom);
+  // const [countyPropertiesTo, setCountyPropertiesTo] = useState(globalCountyPropsTo);
   const [municipalPropertiesFrom, setMunicipalPropertiesFrom] = useState(globalMunIPropsFrom);
   const [municipalPropertiesTo, setMunicipalPropertiesTo] = useState(globalMunIPropsTo);
   const [statePropertiesFrom, setStatePropertiesFrom] = useState(globalStatePropsFrom);
@@ -160,12 +160,18 @@ function MyMap() {
 
 
   const countyKey =
-    countyFrom +
-    countyTo +
-    countyDollarsFrom +
-    countyDollarsTo +
-    countyPropertiesFrom +
-    countyPropertiesTo;
+    globalCountyFrom +
+    globalCountyTo +
+    globalCountyDollarsFrom +
+    globalCountyDollarsTo +
+    globalCountyPropsFrom +
+    globalCountyPropsTo;
+    // countyFrom +
+    // countyTo +
+    // countyDollarsFrom +
+    // countyDollarsTo +
+    // countyPropertiesFrom +
+    // countyPropertiesTo;
   const municipalKey =
     muniFrom +
     muniTo +
@@ -195,15 +201,15 @@ function MyMap() {
     tribalPropertiesFrom +
     tribalPropertiesTo;
 
-  const handleCountyFrom = (e) => {
-    setCountyFrom(e.target.value);
-    dispatch(filteredCountyFrom(e.target.value))
-  };
+  // const handleCountyFrom = (e) => {
+  //   setCountyFrom(e.target.value);
+  //   dispatch(filteredCountyFrom(e.target.value))
+  // };
 
-  const handleCountyTo = (e) => {
-    setCountyTo(e.target.value);
-    dispatch(filteredCountyTo(e.target.value))
-  };
+  // const handleCountyTo = (e) => {
+  //   setCountyTo(e.target.value);
+  //   dispatch(filteredCountyTo(e.target.value))
+  // };
 
   const handleMuniFrom = (e) => {
     setMuniFrom(e.target.value);
@@ -245,15 +251,15 @@ function MyMap() {
     dispatch(filteredTribalTo(e.target.value))
   };
 
-  const handleCountyDollarsFrom = (e) => {
-    setCountyDollarsFrom(e.target.value);
-    dispatch(filteredCountyDollarsFrom(e.target.value));
-  };
+  // const handleCountyDollarsFrom = (e) => {
+  //   setCountyDollarsFrom(e.target.value);
+  //   dispatch(filteredCountyDollarsFrom(e.target.value));
+  // };
 
-  const handleCountyDollarsTo = (e) => {
-    setCountyDollarsTo(e.target.value);
-    dispatch(filteredCountyDollarsTo(e.target.value));
-  };
+  // const handleCountyDollarsTo = (e) => {
+  //   setCountyDollarsTo(e.target.value);
+  //   dispatch(filteredCountyDollarsTo(e.target.value));
+  // };
 
   const handleMunicipalDollarsFrom = (e) => {
     setMunicipalDollarsFrom(e.target.value);
@@ -295,15 +301,15 @@ function MyMap() {
     dispatch(filteredRegionalDollarsTo(e.target.value))
   };
 
-  const handleCountyPropertiesFrom = (e) => {
-    setCountyPropertiesFrom(e.target.value);
-    dispatch(filteredCountyPropsFrom(e.target.value));
-  };
+  // const handleCountyPropertiesFrom = (e) => {
+  //   setCountyPropertiesFrom(e.target.value);
+  //   dispatch(filteredCountyPropsFrom(e.target.value));
+  // };
 
-  const handleCountyPropertiesTo = (e) => {
-    setCountyPropertiesTo(e.target.value);
-    dispatch(filteredCountyPropsTo(e.target.value));
-  };
+  // const handleCountyPropertiesTo = (e) => {
+  //   setCountyPropertiesTo(e.target.value);
+  //   dispatch(filteredCountyPropsTo(e.target.value));
+  // };
 
   const handleMunicipalPropertiesFrom = (e) => {
     setMunicipalPropertiesFrom(e.target.value);
@@ -380,12 +386,12 @@ function MyMap() {
                   <LayersControl.Overlay checked name='Counties'>
                     <LayerGroup key={countyKey}>
                       <Counties
-                        from={countyDollarsFrom}
-                        from2={countyFrom}
-                        from3={countyPropertiesFrom}
-                        to={countyDollarsTo}
-                        to2={countyTo}
-                        to3={countyPropertiesTo}
+                        from={globalCountyDollarsFrom}
+                        from2={globalCountyFrom}
+                        from3={globalCountyPropsFrom}
+                        to={globalCountyDollarsTo}
+                        to2={globalCountyTo}
+                        to3={globalCountyPropsTo}
                       />
                     </LayerGroup>
                   </LayersControl.Overlay>
@@ -448,29 +454,29 @@ function MyMap() {
           justifyContent='center'
           alignItems='center'
         > 
-        {/* <Grid item xs={9} md={2}> */}
-          {/* <FilterCard
+        <Grid item xs={9} md={2}>
+          <FilterCard
             class={classes}
             typeRangeValues1={[1, 2, 5, 10, 25, 51,]}
-            typeRangeValues2={[579,100000,1000000,10000000, 25000000, 441696755]}
+            // typeRangeValues2={[579,100000,1000000,10000000, 25000000, 441696755]}
             typeRangeValues3={[0,1,10,100,250,2992]}
             mainTitle={'County Filters'}
-            typeFrom={countyFrom}
-            typeTo={countyTo}
-            handleTypeTo={handleCountyTo}
-            handleTypeFrom={handleCountyFrom}
-            typeDollarsFrom={countyDollarsFrom}
-            typeDollarsTo={countyDollarsTo}
-            handleTypeDollarsTo={handleCountyDollarsTo}
-            handleTypeDollarsFrom={handleCountyDollarsFrom}
-            typePropertiesFrom={countyPropertiesFrom}
-            typePropertiesTo={countyPropertiesTo}
-            handleTypePropertiesFrom={handleCountyPropertiesFrom}
-            handleTypePropertiesTo={handleCountyPropertiesTo}
-          /> */}
-        {/* </Grid> */}
-          <Grid item xs={9} md={2}>
-            <Card raised={true}>
+            // typeFrom={globalCountyFrom}
+            // typeTo={globalCountyTo}
+            // handleTypeTo={handleCountyTo}
+            // handleTypeFrom={handleCountyFrom}
+            // typeDollarsFrom={countyDollarsFrom}
+            // typeDollarsTo={countyDollarsTo}
+            // handleTypeDollarsTo={handleCountyDollarsTo}
+            // handleTypeDollarsFrom={handleCountyDollarsFrom}
+            // typePropertiesFrom={countyPropertiesFrom}
+            // typePropertiesTo={countyPropertiesTo}
+            // handleTypePropertiesFrom={handleCountyPropertiesFrom}
+            // handleTypePropertiesTo={handleCountyPropertiesTo}
+          />
+        </Grid>
+          {/* <Grid item xs={9} md={2}> */}
+            {/* <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
                 <Typography
                   // xs={{ fontSize: 14 }}
@@ -610,8 +616,8 @@ function MyMap() {
                   </Select>
                 </FormControl>
               </CardContent>
-            </Card>
-          </Grid>
+            </Card> */}
+          {/* </Grid> */}
           <Grid item xs={9} md={2}>
             <Card raised={true}>
               <CardContent className={classes.orgtypeCards}>
