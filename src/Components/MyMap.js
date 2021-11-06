@@ -22,9 +22,9 @@ import Municipalities from './MunicipalGrants';
 import Regions from './RegionalGrants';
 import TribalNations from './TribalGrants';
 import States from './StateGrants';
-import FilterCard from './CountyFilterCard';
+import CountyFilterCard from './CountyFilterCard'
+import MuniFilterCard from './MuniFilterCard';
 import { useSelector, useDispatch } from 'react-redux';
-import { filteredCountyDollarsFrom, filteredCountyDollarsTo, filteredCountyFrom, filteredCountyTo, filteredCountyPropsFrom, filteredCountyPropsTo } from './countyCardSlice';
 import {filteredMuniFrom, filteredMuniTo, filteredMuniDollarsFrom, filteredMuniDollarsTo, filteredMuniPropsFrom, filteredMuniPropsTo } from './muniCardSlice';
 import {filteredRegionalFrom, filteredRegionalTo, filteredRegionalDollarsFrom, filteredRegionalDollarsTo, filteredRegionalPropsFrom, filteredRegionalPropsTo }  from './regionalCardSlice';
 import {filteredStateFrom, filteredStateTo, filteredStateDollarsFrom, filteredStateDollarsTo, filteredStatePropsFrom, filteredStatePropsTo} from './stateCardSlice';
@@ -85,8 +85,6 @@ const Root = styled('div')(({ theme }) => ({
 const position = [37.1, -95.7];
 
 
-
-
 function MyMap() {
 
   const dispatch = useDispatch();
@@ -101,8 +99,8 @@ function MyMap() {
   const globalMuniTo = useSelector(state => state.filterMuni.grantsTo.value);
   const globalMuniDollarsFrom = useSelector(state => state.filterMuni.dollarsFrom.value);
   const globalMuniDollarsTo = useSelector(state => state.filterMuni.dollarsTo.value);
-  const globalMunIPropsFrom = useSelector(state => state.filterMuni.propertiesFrom.value);
-  const globalMunIPropsTo = useSelector(state => state.filterMuni.propertiesTo.value);
+  const globalMuniPropsFrom = useSelector(state => state.filterMuni.propertiesFrom.value);
+  const globalMuniPropsTo = useSelector(state => state.filterMuni.propertiesTo.value);
   const globalRegionFrom = useSelector(state => state.filterRegional.grantsFrom.value);
   const globalRegionTo = useSelector(state => state.filterRegional.grantsTo.value);
   const globalRegionDollarsFrom = useSelector(state => state.filterRegional.dollarsFrom.value);
@@ -123,10 +121,7 @@ function MyMap() {
   const globalTribalPropsTo = useSelector(state => state.filterTribal.propertiesTo.value);
 
 
-  // const [countyFrom, setCountyFrom] = useState(globalCountyFrom);
-  // const [countyTo, setCountyTo] = useState(globalCountyTo);
-  const [muniFrom, setMuniFrom] = useState(globalMuniFrom);
-  const [muniTo, setMuniTo] = useState(globalMuniTo);
+  
   const [regionalFrom, setRegionalFrom] = useState(globalRegionFrom);
   const [regionalTo, setRegionalTo] = useState(globalRegionTo);
   const [stateFrom, setStateFrom] = useState(globalStateFrom);
@@ -134,10 +129,7 @@ function MyMap() {
   const [tribalFrom, setTribalFrom] = useState(globalTribalFrom);
   const [tribalTo, setTribalTo] = useState(globalTribalTo);
 
-  // const [countyDollarsFrom, setCountyDollarsFrom] = useState(globalCountyDollarsFrom);
-  // const [countyDollarsTo, setCountyDollarsTo] = useState(globalCountyDollarsTo);
-  const [municipalDollarsFrom, setMunicipalDollarsFrom] = useState(globalMuniDollarsFrom);
-  const [municipalDollarsTo, setMunicipalDollarsTo] = useState(globalMuniDollarsTo);
+  
   const [stateDollarsFrom, setStateDollarsFrom] = useState(globalStateDollarsFrom);
   const [stateDollarsTo, setStateDollarsTo] = useState(globalStateDollarsTo);
   const [regionalDollarsFrom, setRegionalDollarsFrom] = useState(globalRegionDollarsFrom);
@@ -145,10 +137,7 @@ function MyMap() {
   const [tribalDollarsFrom, setTribalDollarsFrom] = useState(globalTribalDollarsFrom);
   const [tribalDollarsTo, setTribalDollarsTo] = useState(globalTribalDollarsTo);
 
-  // const [countyPropertiesFrom, setCountyPropertiesFrom] = useState(globalCountyPropsFrom);
-  // const [countyPropertiesTo, setCountyPropertiesTo] = useState(globalCountyPropsTo);
-  const [municipalPropertiesFrom, setMunicipalPropertiesFrom] = useState(globalMunIPropsFrom);
-  const [municipalPropertiesTo, setMunicipalPropertiesTo] = useState(globalMunIPropsTo);
+  
   const [statePropertiesFrom, setStatePropertiesFrom] = useState(globalStatePropsFrom);
   const [statePropertiesTo, setStatePropertiesTo] = useState(globalStatePropsTo);
   const [regionalPropertiesFrom, setRegionalPropertiesFrom] = useState(globalRegionPropsFrom);
@@ -166,19 +155,13 @@ function MyMap() {
     globalCountyDollarsTo +
     globalCountyPropsFrom +
     globalCountyPropsTo;
-    // countyFrom +
-    // countyTo +
-    // countyDollarsFrom +
-    // countyDollarsTo +
-    // countyPropertiesFrom +
-    // countyPropertiesTo;
   const municipalKey =
-    muniFrom +
-    muniTo +
-    municipalDollarsFrom +
-    municipalDollarsTo +
-    municipalPropertiesFrom +
-    municipalPropertiesTo;
+    globalMuniFrom +
+    globalMuniTo +
+    globalMuniDollarsFrom +
+    globalMuniDollarsTo +
+    globalMuniPropsFrom +
+    globalMuniPropsTo;
   const stateKey =
     stateFrom +
     stateTo +
@@ -201,25 +184,8 @@ function MyMap() {
     tribalPropertiesFrom +
     tribalPropertiesTo;
 
-  // const handleCountyFrom = (e) => {
-  //   setCountyFrom(e.target.value);
-  //   dispatch(filteredCountyFrom(e.target.value))
-  // };
 
-  // const handleCountyTo = (e) => {
-  //   setCountyTo(e.target.value);
-  //   dispatch(filteredCountyTo(e.target.value))
-  // };
-
-  const handleMuniFrom = (e) => {
-    setMuniFrom(e.target.value);
-    dispatch(filteredMuniFrom(e.target.value))
-  };
-
-  const handleMuniTo = (e) => {
-    setMuniTo(e.target.value);
-    dispatch(filteredMuniTo(e.target.value))
-  };
+  
 
   const handleRegionalFrom = (e) => {
     setRegionalFrom(e.target.value);
@@ -251,26 +217,6 @@ function MyMap() {
     dispatch(filteredTribalTo(e.target.value))
   };
 
-  // const handleCountyDollarsFrom = (e) => {
-  //   setCountyDollarsFrom(e.target.value);
-  //   dispatch(filteredCountyDollarsFrom(e.target.value));
-  // };
-
-  // const handleCountyDollarsTo = (e) => {
-  //   setCountyDollarsTo(e.target.value);
-  //   dispatch(filteredCountyDollarsTo(e.target.value));
-  // };
-
-  const handleMunicipalDollarsFrom = (e) => {
-    setMunicipalDollarsFrom(e.target.value);
-    dispatch(filteredMuniDollarsFrom(e.target.value))
-  };
-
-  const handleMunicipalDollarsTo = (e) => {
-    setMunicipalDollarsTo(e.target.value);
-    dispatch(filteredMuniDollarsTo(e.target.value))
-  };
-
   const handleTribalDollarsFrom = (e) => {
     setTribalDollarsFrom(e.target.value);
     dispatch(filteredTribalDollarsFrom(e.target.value))
@@ -299,26 +245,6 @@ function MyMap() {
   const handleRegionalDollarsTo = (e) => {
     setRegionalDollarsTo(e.target.value);
     dispatch(filteredRegionalDollarsTo(e.target.value))
-  };
-
-  // const handleCountyPropertiesFrom = (e) => {
-  //   setCountyPropertiesFrom(e.target.value);
-  //   dispatch(filteredCountyPropsFrom(e.target.value));
-  // };
-
-  // const handleCountyPropertiesTo = (e) => {
-  //   setCountyPropertiesTo(e.target.value);
-  //   dispatch(filteredCountyPropsTo(e.target.value));
-  // };
-
-  const handleMunicipalPropertiesFrom = (e) => {
-    setMunicipalPropertiesFrom(e.target.value);
-    dispatch(filteredMuniPropsFrom(e.target.value))
-  };
-
-  const handleMunicipalPropertiesTo = (e) => {
-    setMunicipalPropertiesTo(e.target.value);
-    dispatch(filteredMuniPropsTo(e.target.value))
   };
 
   const handleStatePropertiesFrom = (e) => {
@@ -398,12 +324,12 @@ function MyMap() {
                   <LayersControl.Overlay checked name='Municipalities'>
                     <LayerGroup key={municipalKey}>
                       <Municipalities
-                        from={municipalDollarsFrom}
-                        from2={muniFrom}
-                        from3={municipalPropertiesFrom}
-                        to={municipalDollarsTo}
-                        to2={muniTo}
-                        to3={municipalPropertiesTo}
+                        from={globalMuniDollarsFrom}
+                        from2={globalMuniFrom}
+                        from3={globalMuniPropsFrom}
+                        to={globalMuniDollarsTo}
+                        to2={globalMuniTo}
+                        to3={globalMuniPropsTo}
                       />
                     </LayerGroup>
                   </LayersControl.Overlay>
@@ -455,295 +381,14 @@ function MyMap() {
           alignItems='center'
         > 
         <Grid item xs={9} md={2}>
-          <FilterCard
+          <CountyFilterCard
             class={classes}
-            typeRangeValues1={[1, 2, 5, 10, 25, 51,]}
-            // typeRangeValues2={[579,100000,1000000,10000000, 25000000, 441696755]}
-            typeRangeValues3={[0,1,10,100,250,2992]}
-            mainTitle={'County Filters'}
-            // typeFrom={globalCountyFrom}
-            // typeTo={globalCountyTo}
-            // handleTypeTo={handleCountyTo}
-            // handleTypeFrom={handleCountyFrom}
-            // typeDollarsFrom={countyDollarsFrom}
-            // typeDollarsTo={countyDollarsTo}
-            // handleTypeDollarsTo={handleCountyDollarsTo}
-            // handleTypeDollarsFrom={handleCountyDollarsFrom}
-            // typePropertiesFrom={countyPropertiesFrom}
-            // typePropertiesTo={countyPropertiesTo}
-            // handleTypePropertiesFrom={handleCountyPropertiesFrom}
-            // handleTypePropertiesTo={handleCountyPropertiesTo}
           />
         </Grid>
-          {/* <Grid item xs={9} md={2}> */}
-            {/* <Card raised={true}>
-              <CardContent className={classes.orgtypeCards}>
-                <Typography
-                  // xs={{ fontSize: 14 }}
-                  sx={{ fontSize: 16 }}
-                  fontWeight='bold'
-                  color='text.secondary'
-                  gutterBottom
-                >
-                  County Filters
-                </Typography>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel
-                    id='demo-simple-select-label'
-                    className={classes.formControl}
-                  >
-                    Min Grants
-                  </InputLabel>
-                  <Select
-                    labelId='demo-simple-select-label'
-                    id='demo-simple-select'
-                    // value={filteredCountyGrantsFrom}
-                    value={countyFrom}
-                    onChange={handleCountyFrom}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={25}>25</MenuItem>
-                    <MenuItem value={51}>51</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel
-                    id='demo-simple-select-label'
-                    className={classes.formControl}
-                  >
-                    Max Grants
-                  </InputLabel>
-                  <Select
-                    labelId='demo-simple-select-label'
-                    id='demo-simple-select'
-                    value={countyTo}
-                    // value={filteredCountyGrantsTo}
-                    onChange={handleCountyTo}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={25}>25</MenuItem>
-                    <MenuItem value={51}>51</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel
-                    id='countydollars-from'
-                    className={classes.formControl}
-                  >
-                    Min Dollars
-                  </InputLabel>
-                  <Select
-                    labelId='countydollars-from'
-                    id='countydollars-from'
-                    value={countyDollarsFrom}
-                    onChange={handleCountyDollarsFrom}
-                  >
-                    <MenuItem value={579}>$579</MenuItem>
-                    <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={1000000}>$1M</MenuItem>
-                    <MenuItem value={10000000}>$10M</MenuItem>
-                    <MenuItem value={25000000}>$25M</MenuItem>
-                    <MenuItem value={441696754}>$442M</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel
-                    id='demo-simple-select-label'
-                    className={classes.formControl}
-                  >
-                    Max Dollars
-                  </InputLabel>
-                  <Select
-                    labelId='demo-simple-select-label'
-                    id='demo-simple-select'
-                    value={countyDollarsTo}
-                    onChange={handleCountyDollarsTo}
-                  >
-                    <MenuItem value={579}>$579</MenuItem>
-                    <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={1000000}>$1M</MenuItem>
-                    <MenuItem value={10000000}>$10M</MenuItem>
-                    <MenuItem value={250000000}>$25M</MenuItem>
-                    <MenuItem value={441696755}>$442M</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel
-                    id='countyproperties-from'
-                    className={classes.formControl}
-                  >
-                    Min Properties
-                  </InputLabel>
-                  <Select
-                    labelId='countyproperties-from'
-                    id='countyproperties-from'
-                    value={countyPropertiesFrom}
-                    onChange={handleCountyPropertiesFrom}
-                  >
-                    <MenuItem value={0}>0</MenuItem>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={100}>100</MenuItem>
-                    <MenuItem value={250}>250</MenuItem>
-                    <MenuItem value={2992}>2,992</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel
-                    id='countyproperties-to'
-                    className={classes.formControl}
-                  >
-                    Max Properties
-                  </InputLabel>
-                  <Select
-                    labelId='countyproperties-to'
-                    id='countyproperties-to'
-                    value={countyPropertiesTo}
-                    onChange={handleCountyPropertiesTo}
-                  >
-                    <MenuItem value={0}>0</MenuItem>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={100}>100</MenuItem>
-                    <MenuItem value={250}>250</MenuItem>
-                    <MenuItem value={2992}>2,992</MenuItem>
-                  </Select>
-                </FormControl>
-              </CardContent>
-            </Card> */}
-          {/* </Grid> */}
           <Grid item xs={9} md={2}>
-            <Card raised={true}>
-              <CardContent className={classes.orgtypeCards}>
-                <Typography
-                  sx={{ fontSize: 16 }}
-                  fontWeight='bold'
-                  color='text.secondary'
-                  gutterBottom
-                >
-                  Municipality Filters
-                </Typography>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel id='muni-from' className={classes.formControl}>
-                    Min Grants
-                  </InputLabel>
-                  <Select
-                    labelId='muni-from'
-                    id='muni-from'
-                    value={muniFrom}
-                    onChange={handleMuniFrom}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={25}>25</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel id='muni-to' className={classes.formControl}>
-                    Max Grants
-                  </InputLabel>
-                  <Select
-                    labelId='muni-to'
-                    id='muni-to'
-                    value={muniTo}
-                    onChange={handleMuniTo}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={25}>25</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel id='muni-from' className={classes.formControl}>
-                    Min Dollars
-                  </InputLabel>
-                  <Select
-                    labelId='muni-from'
-                    id='muni-from'
-                    value={municipalDollarsFrom}
-                    onChange={handleMunicipalDollarsFrom}
-                  >
-                    <MenuItem value={274}>$274</MenuItem>
-                    <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={1000000}>$1M</MenuItem>
-                    <MenuItem value={5000000}>$5M</MenuItem>
-                    <MenuItem value={25000000}>$25M</MenuItem>
-                    <MenuItem value={119652130}>$119M</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel id='muni-to' className={classes.formControl}>
-                    Max Dollars
-                  </InputLabel>
-                  <Select
-                    labelId='muni-to'
-                    id='muni-to'
-                    value={municipalDollarsTo}
-                    onChange={handleMunicipalDollarsTo}
-                  >
-                    <MenuItem value={0}>$0</MenuItem>
-                    <MenuItem value={274}>$274</MenuItem>
-                    <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={1000000}>$1M</MenuItem>
-                    <MenuItem value={5000000}>$5M</MenuItem>
-                    <MenuItem value={25000000}>$25M</MenuItem>
-                    <MenuItem value={119652131}>$119M</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel
-                    id='muniproperties-from'
-                    className={classes.formControl}
-                  >
-                    Min Properties
-                  </InputLabel>
-                  <Select
-                    labelId='muniproperties-from'
-                    id='muniproperties-from'
-                    value={municipalPropertiesFrom}
-                    onChange={handleMunicipalPropertiesFrom}
-                  >
-                    <MenuItem value={0}>0</MenuItem>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={100}>100</MenuItem>
-                    <MenuItem value={250}>250</MenuItem>
-                    <MenuItem value={574}>574</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel
-                    id='countyproperties-to'
-                    className={classes.formControl}
-                  >
-                    Max Properties
-                  </InputLabel>
-                  <Select
-                    labelId='muniproperties-to'
-                    id='muniproperties-to'
-                    value={municipalPropertiesTo}
-                    onChange={handleMunicipalPropertiesTo}
-                  >
-                    <MenuItem value={0}>0</MenuItem>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={100}>100</MenuItem>
-                    <MenuItem value={250}>250</MenuItem>
-                    <MenuItem value={574}>574</MenuItem>
-                  </Select>
-                </FormControl>
-              </CardContent>
-            </Card>
+            <MuniFilterCard
+            class={classes}
+            />
           </Grid>
           <Grid item xs={9} md={2}>
             <Card raised={true}>
