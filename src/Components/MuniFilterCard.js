@@ -25,8 +25,7 @@ function MuniFilterCard(props) {
 	const globalMuniFrom = useSelector(
 		(state) => state.filterMuni.grantsFrom.value
 	);
-	const globalMuniTo = useSelector(
-		(state) => state.filterMuni.grantsTo.value);
+	const globalMuniTo = useSelector((state) => state.filterMuni.grantsTo.value);
 	const globalMuniDollarsFrom = useSelector(
 		(state) => state.filterMuni.dollarsFrom.value
 	);
@@ -42,10 +41,15 @@ function MuniFilterCard(props) {
 
 	const [muniFrom, setMuniFrom] = useState(globalMuniFrom);
 	const [muniTo, setMuniTo] = useState(globalMuniTo);
-	const [municipalDollarsFrom, setMunicipalDollarsFrom] = useState(globalMuniDollarsFrom);
-	const [municipalDollarsTo, setMunicipalDollarsTo] = useState(globalMuniDollarsTo);
-	const [municipalPropertiesFrom, setMunicipalPropertiesFrom] = useState(globalMunIPropsFrom);
-	const [municipalPropertiesTo, setMunicipalPropertiesTo] = useState(globalMunIPropsTo);
+	const [municipalDollarsFrom, setMunicipalDollarsFrom] = useState(
+		globalMuniDollarsFrom
+	);
+	const [municipalDollarsTo, setMunicipalDollarsTo] =
+		useState(globalMuniDollarsTo);
+	const [municipalPropertiesFrom, setMunicipalPropertiesFrom] =
+		useState(globalMunIPropsFrom);
+	const [municipalPropertiesTo, setMunicipalPropertiesTo] =
+		useState(globalMunIPropsTo);
 
 	const handleMuniFrom = (e) => {
 		setMuniFrom(e.target.value);

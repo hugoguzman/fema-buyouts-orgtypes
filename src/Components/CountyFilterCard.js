@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import '@fontsource/roboto';
 import {
 	Card,
@@ -21,7 +20,6 @@ import {
 } from './countyCardSlice';
 
 function CountyFilterCard(props) {
-
 	const dispatch = useDispatch();
 
 	const globalCountyFrom = useSelector(
@@ -140,7 +138,10 @@ function CountyFilterCard(props) {
 						</Select>
 					</FormControl>
 					<FormControl className={props.class.formControl} variant='standard'>
-						<InputLabel id='countydollars-from' className={props.class.formControl}>
+						<InputLabel
+							id='countydollars-from'
+							className={props.class.formControl}
+						>
 							Min Dollars
 						</InputLabel>
 						<Select

@@ -7,16 +7,7 @@ import {
 	LayerGroup,
 } from 'react-leaflet';
 import '@fontsource/roboto';
-import {
-	Grid,
-	Card,
-	CardContent,
-	Typography,
-	InputLabel,
-	FormControl,
-	MenuItem,
-	Select,
-} from '@mui/material';
+import { Grid, Card, CardContent } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import Counties from './CountyGrants';
 import Municipalities from './MunicipalGrants';
@@ -84,8 +75,6 @@ const Root = styled('div')(({ theme }) => ({
 const position = [37.1, -95.7];
 
 function MyMap() {
-	const dispatch = useDispatch();
-
 	const globalCountyFrom = useSelector(
 		(state) => state.filterCounty.grantsFrom.value
 	);
@@ -219,9 +208,7 @@ function MyMap() {
 				justifyContent='center'
 				alignItems='center'
 			>
-				<Grid item xs={12} md={12}>
-					{/* <h1 style={{ textAlign: "center", fontSize: 18 }}>FEMA Buyouts by Organizational Class</h1> */}
-				</Grid>
+				<Grid item xs={12} md={12}></Grid>
 			</Grid>
 			<Grid
 				container
