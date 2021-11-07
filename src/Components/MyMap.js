@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { styled } from '@mui/material/styles';
 import {
 	MapContainer,
@@ -8,7 +8,7 @@ import {
 } from 'react-leaflet';
 import '@fontsource/roboto';
 import { Grid, Card, CardContent } from '@mui/material';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Counties from './CountyGrants';
 import Municipalities from './MunicipalGrants';
 import Regions from './RegionalGrants';
