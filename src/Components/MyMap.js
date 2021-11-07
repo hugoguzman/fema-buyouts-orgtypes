@@ -17,6 +17,7 @@ import {
 	MenuItem,
 	Select,
 } from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux';
 import Counties from './CountyGrants';
 import Municipalities from './MunicipalGrants';
 import Regions from './RegionalGrants';
@@ -25,16 +26,8 @@ import States from './StateGrants';
 import CountyFilterCard from './CountyFilterCard';
 import MuniFilterCard from './MuniFilterCard';
 import StateFilterCard from './StateFilterCard';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-	filteredTribalFrom,
-	filteredTribalTo,
-	filteredTribalDollarsFrom,
-	filteredTribalDollarsTo,
-	filteredTribalPropsFrom,
-	filteredTribalPropsTo,
-} from './tribalCardSlice';
 import RegionalFilterCard from './RegionalFilterCard';
+import TribalFilterCard from './TribalFilterCard';
 
 const PREFIX = 'MyMap';
 
@@ -182,20 +175,6 @@ function MyMap() {
 		(state) => state.filterTribal.propertiesTo.value
 	);
 
-	const [tribalFrom, setTribalFrom] = useState(globalTribalFrom);
-	const [tribalTo, setTribalTo] = useState(globalTribalTo);
-
-	const [tribalDollarsFrom, setTribalDollarsFrom] = useState(
-		globalTribalDollarsFrom
-	);
-	const [tribalDollarsTo, setTribalDollarsTo] = useState(globalTribalDollarsTo);
-
-	const [tribalPropertiesFrom, setTribalPropertiesFrom] = useState(
-		globalTribalPropsFrom
-	);
-	const [tribalPropertiesTo, setTribalPropertiesTo] =
-		useState(globalTribalPropsTo);
-
 	const countyKey =
 		globalCountyFrom +
 		globalCountyTo +
@@ -225,42 +204,12 @@ function MyMap() {
 		globalRegionPropsFrom +
 		globalRegionPropsTo;
 	const tribalKey =
-		tribalFrom +
-		tribalTo +
-		tribalDollarsFrom +
-		tribalDollarsTo +
-		tribalPropertiesFrom +
-		tribalPropertiesTo;
-
-	const handleTribalFrom = (e) => {
-		setTribalFrom(e.target.value);
-		dispatch(filteredTribalFrom(e.target.value));
-	};
-
-	const handleTribalTo = (e) => {
-		setTribalTo(e.target.value);
-		dispatch(filteredTribalTo(e.target.value));
-	};
-
-	const handleTribalDollarsFrom = (e) => {
-		setTribalDollarsFrom(e.target.value);
-		dispatch(filteredTribalDollarsFrom(e.target.value));
-	};
-
-	const handleTribalDollarsTo = (e) => {
-		setTribalDollarsTo(e.target.value);
-		dispatch(filteredTribalDollarsTo(e.target.value));
-	};
-
-	const handleTribalPropertiesFrom = (e) => {
-		setTribalPropertiesFrom(e.target.value);
-		dispatch(filteredTribalPropsFrom(e.target.value));
-	};
-
-	const handleTribalPropertiesTo = (e) => {
-		setTribalPropertiesTo(e.target.value);
-		dispatch(filteredTribalPropsTo(e.target.value));
-	};
+		globalTribalFrom +
+		globalTribalTo +
+		globalTribalDollarsFrom +
+		globalTribalDollarsTo +
+		globalTribalPropsFrom +
+		globalTribalPropsTo;
 
 	return (
 		<Root>
@@ -344,12 +293,12 @@ function MyMap() {
 									<LayersControl.Overlay checked name='Tribal Nations'>
 										<LayerGroup key={tribalKey}>
 											<TribalNations
-												from={tribalDollarsFrom}
-												from2={tribalFrom}
-												from3={tribalPropertiesFrom}
-												to={tribalDollarsTo}
-												to2={tribalTo}
-												to3={tribalPropertiesTo}
+												from={globalTribalDollarsFrom}
+												from2={globalTribalFrom}
+												from3={globalTribalPropsFrom}
+												to={globalTribalDollarsTo}
+												to2={globalTribalTo}
+												to3={globalTribalPropsTo}
 											/>
 										</LayerGroup>
 									</LayersControl.Overlay>
@@ -377,122 +326,7 @@ function MyMap() {
 						<RegionalFilterCard class={classes} />
 					</Grid>
 					<Grid item xs={9} md={2}>
-						<Card raised={true}>
-							<CardContent className={classes.orgtypeCards}>
-								<Typography
-									sx={{ fontSize: 16 }}
-									fontWeight='bold'
-									color='text.secondary'
-									gutterBottom
-								>
-									Tribal Nation Filters
-								</Typography>
-								<FormControl className={classes.formControl} variant='standard'>
-									<InputLabel id='tribal-from' className={classes.formControl}>
-										Min Grants
-									</InputLabel>
-									<Select
-										labelId='tribal-from'
-										id='tribal-from'
-										value={tribalFrom}
-										onChange={handleTribalFrom}
-									>
-										<MenuItem value={1}>1</MenuItem>
-										<MenuItem value={2}>2</MenuItem>
-									</Select>
-								</FormControl>
-								<FormControl className={classes.formControl} variant='standard'>
-									<InputLabel id='tribal-to' className={classes.formControl}>
-										Max Grants
-									</InputLabel>
-									<Select
-										labelId='tribal-to'
-										id='tribal-to'
-										value={tribalTo}
-										onChange={handleTribalTo}
-									>
-										<MenuItem value={1}>1</MenuItem>
-										<MenuItem value={2}>2</MenuItem>
-									</Select>
-								</FormControl>
-								<FormControl className={classes.formControl} variant='standard'>
-									<InputLabel
-										id='tribaldollars-from'
-										className={classes.formControl}
-									>
-										Min Dollars
-									</InputLabel>
-									<Select
-										labelId='tribaldollars-from'
-										id='tribaldollars-from'
-										value={tribalDollarsFrom}
-										onChange={handleTribalDollarsFrom}
-									>
-										<MenuItem value={30952}>$30,952</MenuItem>
-										<MenuItem value={250000}>$250,000</MenuItem>
-										<MenuItem value={500000}>$500,000</MenuItem>
-										<MenuItem value={2540518}>$2.5M</MenuItem>
-									</Select>
-								</FormControl>
-								<FormControl className={classes.formControl} variant='standard'>
-									<InputLabel
-										id='tribaldollars-to'
-										className={classes.formControl}
-									>
-										Max Dollars
-									</InputLabel>
-									<Select
-										labelId='tribaldollars-to'
-										id='tribaldollars-to'
-										value={tribalDollarsTo}
-										onChange={handleTribalDollarsTo}
-									>
-										<MenuItem value={30952}>$30,952</MenuItem>
-										<MenuItem value={250000}>$250,000</MenuItem>
-										<MenuItem value={500000}>$500,000</MenuItem>
-										<MenuItem value={2540518}>$2.5M</MenuItem>
-									</Select>
-								</FormControl>
-								<FormControl className={classes.formControl} variant='standard'>
-									<InputLabel
-										id='tribalproperties-from'
-										className={classes.formControl}
-									>
-										Min Properties
-									</InputLabel>
-									<Select
-										labelId='tribalproperties-from'
-										id='tribalproperties-from'
-										value={tribalPropertiesFrom}
-										onChange={handleTribalPropertiesFrom}
-									>
-										<MenuItem value={1}>1</MenuItem>
-										<MenuItem value={2}>2</MenuItem>
-										<MenuItem value={5}>5</MenuItem>
-										<MenuItem value={7}>7</MenuItem>
-									</Select>
-								</FormControl>
-								<FormControl className={classes.formControl} variant='standard'>
-									<InputLabel
-										id='tribalproperties-to'
-										className={classes.formControl}
-									>
-										Max Properties
-									</InputLabel>
-									<Select
-										labelId='tribalproperties-to'
-										id='tribalproperties-to'
-										value={tribalPropertiesTo}
-										onChange={handleTribalPropertiesTo}
-									>
-										<MenuItem value={1}>1</MenuItem>
-										<MenuItem value={2}>2</MenuItem>
-										<MenuItem value={5}>5</MenuItem>
-										<MenuItem value={7}>7</MenuItem>
-									</Select>
-								</FormControl>
-							</CardContent>
-						</Card>
+						<TribalFilterCard class={classes} />
 					</Grid>
 				</Grid>
 			</Grid>
