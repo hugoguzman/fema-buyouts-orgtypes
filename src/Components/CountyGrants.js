@@ -1,6 +1,7 @@
 import React from "react";
 import { GeoJSON } from "react-leaflet";
 import countyData from './Data/countyBuyouts2.json'
+import { useSelector } from 'react-redux';
 
 function Counties(props) {
     const from=props.from;
