@@ -24,11 +24,12 @@ import TribalNations from './TribalGrants';
 import States from './StateGrants';
 import CountyFilterCard from './CountyFilterCard'
 import MuniFilterCard from './MuniFilterCard';
+import StateFilterCard from './StateFilterCard';
 import { useSelector, useDispatch } from 'react-redux';
-import {filteredMuniFrom, filteredMuniTo, filteredMuniDollarsFrom, filteredMuniDollarsTo, filteredMuniPropsFrom, filteredMuniPropsTo } from './muniCardSlice';
 import {filteredRegionalFrom, filteredRegionalTo, filteredRegionalDollarsFrom, filteredRegionalDollarsTo, filteredRegionalPropsFrom, filteredRegionalPropsTo }  from './regionalCardSlice';
 import {filteredStateFrom, filteredStateTo, filteredStateDollarsFrom, filteredStateDollarsTo, filteredStatePropsFrom, filteredStatePropsTo} from './stateCardSlice';
 import { filteredTribalFrom, filteredTribalTo, filteredTribalDollarsFrom, filteredTribalDollarsTo, filteredTribalPropsFrom, filteredTribalPropsTo } from './tribalCardSlice'
+
 
 const PREFIX = 'MyMap';
 
@@ -124,22 +125,22 @@ function MyMap() {
   
   const [regionalFrom, setRegionalFrom] = useState(globalRegionFrom);
   const [regionalTo, setRegionalTo] = useState(globalRegionTo);
-  const [stateFrom, setStateFrom] = useState(globalStateFrom);
-  const [stateTo, setStateTo] = useState(globalStateTo);
+  // const [stateFrom, setStateFrom] = useState(globalStateFrom);
+  // const [stateTo, setStateTo] = useState(globalStateTo);
   const [tribalFrom, setTribalFrom] = useState(globalTribalFrom);
   const [tribalTo, setTribalTo] = useState(globalTribalTo);
 
   
-  const [stateDollarsFrom, setStateDollarsFrom] = useState(globalStateDollarsFrom);
-  const [stateDollarsTo, setStateDollarsTo] = useState(globalStateDollarsTo);
+  // const [stateDollarsFrom, setStateDollarsFrom] = useState(globalStateDollarsFrom);
+  // const [stateDollarsTo, setStateDollarsTo] = useState(globalStateDollarsTo);
   const [regionalDollarsFrom, setRegionalDollarsFrom] = useState(globalRegionDollarsFrom);
   const [regionalDollarsTo, setRegionalDollarsTo] = useState(globalRegionDollarsTo);
   const [tribalDollarsFrom, setTribalDollarsFrom] = useState(globalTribalDollarsFrom);
   const [tribalDollarsTo, setTribalDollarsTo] = useState(globalTribalDollarsTo);
 
   
-  const [statePropertiesFrom, setStatePropertiesFrom] = useState(globalStatePropsFrom);
-  const [statePropertiesTo, setStatePropertiesTo] = useState(globalStatePropsTo);
+  // const [statePropertiesFrom, setStatePropertiesFrom] = useState(globalStatePropsFrom);
+  // const [statePropertiesTo, setStatePropertiesTo] = useState(globalStatePropsTo);
   const [regionalPropertiesFrom, setRegionalPropertiesFrom] = useState(globalRegionPropsFrom);
   const [regionalPropertiesTo, setRegionalPropertiesTo] = useState(globalRegionPropsTo);
   const [tribalPropertiesFrom, setTribalPropertiesFrom] = useState(globalTribalPropsFrom);
@@ -163,12 +164,12 @@ function MyMap() {
     globalMuniPropsFrom +
     globalMuniPropsTo;
   const stateKey =
-    stateFrom +
-    stateTo +
-    stateDollarsFrom +
-    stateDollarsTo +
-    statePropertiesFrom +
-    statePropertiesTo;
+    globalStateFrom +
+    globalStateTo +
+    globalStateDollarsFrom +
+    globalStateDollarsTo +
+    globalStatePropsFrom +
+    globalStatePropsTo;
   const regionalKey =
     regionalFrom +
     regionalTo +
@@ -197,16 +198,6 @@ function MyMap() {
     dispatch(filteredRegionalTo(e.target.value))
   };
 
-  const handleStateTo = (e) => {
-    setStateTo(e.target.value);
-    dispatch(filteredStateTo(e.target.value))
-  };
-
-  const handleStateFrom = (e) => {
-    setStateFrom(e.target.value);
-    dispatch(filteredStateFrom(e.target.value))
-  };
-
   const handleTribalFrom = (e) => {
     setTribalFrom(e.target.value);
     dispatch(filteredTribalFrom(e.target.value))
@@ -227,16 +218,6 @@ function MyMap() {
     dispatch(filteredTribalDollarsTo(e.target.value))
   };
 
-  const handleStateDollarsFrom = (e) => {
-    setStateDollarsFrom(e.target.value);
-    dispatch(filteredStateDollarsFrom(e.target.value))
-  };
-
-  const handleStateDollarsTo = (e) => {
-    setStateDollarsTo(e.target.value);
-    dispatch(filteredStateDollarsTo(e.target.value))
-  };
-
   const handleRegionalDollarsFrom = (e) => {
     setRegionalDollarsFrom(e.target.value);
     dispatch(filteredRegionalDollarsFrom(e.target.value))
@@ -245,16 +226,6 @@ function MyMap() {
   const handleRegionalDollarsTo = (e) => {
     setRegionalDollarsTo(e.target.value);
     dispatch(filteredRegionalDollarsTo(e.target.value))
-  };
-
-  const handleStatePropertiesFrom = (e) => {
-    setStatePropertiesFrom(e.target.value);
-    dispatch(filteredStatePropsFrom(e.target.value))
-  };
-
-  const handleStatePropertiesTo = (e) => {
-    setStatePropertiesTo(e.target.value);
-    dispatch(filteredStatePropsTo(e.target.value))
   };
 
   const handleRegionalPropertiesFrom = (e) => {
@@ -336,12 +307,12 @@ function MyMap() {
                   <LayersControl.Overlay checked name='State Entities'>
                     <LayerGroup key={stateKey}>
                       <States
-                        from={stateDollarsFrom}
-                        from2={stateFrom}
-                        from3={statePropertiesFrom}
-                        to={stateDollarsTo}
-                        to2={stateTo}
-                        to3={statePropertiesTo}
+                        from={globalStateDollarsFrom}
+                        from2={globalStateFrom}
+                        from3={globalStatePropsFrom}
+                        to={globalStateDollarsTo}
+                        to2={globalStateTo}
+                        to3={globalStatePropsTo}
                       />
                     </LayerGroup>
                   </LayersControl.Overlay>
@@ -391,124 +362,9 @@ function MyMap() {
             />
           </Grid>
           <Grid item xs={9} md={2}>
-            <Card raised={true}>
-              <CardContent className={classes.orgtypeCards}>
-                <Typography
-                  sx={{ fontSize: 16 }}
-                  fontWeight='bold'
-                  color='text.secondary'
-                  gutterBottom
-                >
-                  State Entity Filters
-                </Typography>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel id='state-from' className={classes.formControl}>
-                    Min Grants
-                  </InputLabel>
-                  <Select
-                    labelId='state-from'
-                    id='state-from'
-                    value={stateFrom}
-                    onChange={handleStateFrom}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={4}>4</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel id='state-to' className={classes.formControl}>
-                    Max Grants
-                  </InputLabel>
-                  <Select
-                    labelId='state-to'
-                    id='state-to'
-                    value={stateTo}
-                    onChange={handleStateTo}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={4}>4</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel id='state-from' className={classes.formControl}>
-                    Min Dollars
-                  </InputLabel>
-                  <Select
-                    labelId='state-from'
-                    id='state-from'
-                    value={stateDollarsFrom}
-                    onChange={handleStateDollarsFrom}
-                  >
-                    <MenuItem value={9133}>$9,133</MenuItem>
-                    <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={1000000}>$1M</MenuItem>
-                    <MenuItem value={10000000}>$10M</MenuItem>
-                    <MenuItem value={117760209}>$118M</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel id='state-to' className={classes.formControl}>
-                    Max Dollars
-                  </InputLabel>
-                  <Select
-                    labelId='state-to'
-                    id='state-to'
-                    value={stateDollarsTo}
-                    onChange={handleStateDollarsTo}
-                  >
-                    <MenuItem value={9133}>$9,133</MenuItem>
-                    <MenuItem value={100000}>$100,000</MenuItem>
-                    <MenuItem value={1000000}>$1M</MenuItem>
-                    <MenuItem value={10000000}>$10M</MenuItem>
-                    <MenuItem value={117760209}>$118M</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel
-                    id='stateproperties-from'
-                    className={classes.formControl}
-                  >
-                    Min Properties
-                  </InputLabel>
-                  <Select
-                    labelId='stateproperties-from'
-                    id='stateproperties-from'
-                    value={statePropertiesFrom}
-                    onChange={handleStatePropertiesFrom}
-                  >
-                    <MenuItem value={0}>0</MenuItem>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={100}>100</MenuItem>
-                    <MenuItem value={490}>490</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl className={classes.formControl} variant='standard'>
-                  <InputLabel
-                    id='stateproperties-to'
-                    className={classes.formControl}
-                  >
-                    Max Properties
-                  </InputLabel>
-                  <Select
-                    labelId='stateproperties-to'
-                    id='stateproperties-to'
-                    value={statePropertiesTo}
-                    onChange={handleStatePropertiesTo}
-                  >
-                    <MenuItem value={0}>0</MenuItem>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={100}>100</MenuItem>
-                    <MenuItem value={490}>490</MenuItem>
-                  </Select>
-                </FormControl>
-              </CardContent>
-            </Card>
+            <StateFilterCard
+            class={classes}
+            />
           </Grid>
           <Grid item xs={9} md={2}>
             <Card raised={true}>
