@@ -2,15 +2,28 @@ import React from "react";
 import { GeoJSON } from "react-leaflet";
 import L from 'leaflet';
 import tribalData from './Data/tribalgeojson.json'
+import { useSelector } from 'react-redux';
 
 
-function TribalNations(props) {
-    const from=props.from;
-    const from2=props.from2;
-    const from3=props.from3;
-    const to=props.to;
-    const to2=props.to2;
-    const to3=props.to3;
+function TribalNations() {
+	const globalTribalFrom = useSelector(
+		(state) => state.filterTribal.grantsFrom.value
+	);
+	const globalTribalTo = useSelector(
+		(state) => state.filterTribal.grantsTo.value
+	);
+	const globalTribalDollarsFrom = useSelector(
+		(state) => state.filterTribal.dollarsFrom.value
+	);
+	const globalTribalDollarsTo = useSelector(
+		(state) => state.filterTribal.dollarsTo.value
+	);
+	const globalTribalPropsFrom = useSelector(
+		(state) => state.filterTribal.propertiesFrom.value
+	);
+	const globalTribalPropsTo = useSelector(
+		(state) => state.filterTribal.propertiesTo.value
+	);
 
     const tribalStyle = {
         fillOpacity: 1,
@@ -50,7 +63,12 @@ function TribalNations(props) {
       };
 
   function filter (buyoutTribal) {
-    if (buyoutTribal.properties.dollaramount >= from && buyoutTribal.properties.dollaramount <= to && buyoutTribal.properties.grantcount >= from2 && buyoutTribal.properties.grantcount <= to2 && buyoutTribal.properties.propertycount >= from3 && buyoutTribal.properties.propertycount <= to3) return true;
+    if (buyoutTribal.properties.dollaramount >= globalTribalDollarsFrom 
+      && buyoutTribal.properties.dollaramount <= globalTribalDollarsTo
+      && buyoutTribal.properties.grantcount >= globalTribalFrom 
+      && buyoutTribal.properties.grantcount <= globalTribalTo
+      && buyoutTribal.properties.propertycount >= globalTribalPropsFrom
+      && buyoutTribal.properties.propertycount <= globalTribalPropsTo) return true;
 }
 
 function pointToLayer(feature, latlng) {

@@ -96,7 +96,9 @@ function MyMap() {
 	const globalMuniFrom = useSelector(
 		(state) => state.filterMuni.grantsFrom.value
 	);
-	const globalMuniTo = useSelector((state) => state.filterMuni.grantsTo.value);
+	const globalMuniTo = useSelector(
+		(state) => state.filterMuni.grantsTo.value
+	);
 	const globalMuniDollarsFrom = useSelector(
 		(state) => state.filterMuni.dollarsFrom.value
 	);
@@ -231,62 +233,27 @@ function MyMap() {
 								<LayersControl collapsed={true} position='topright'>
 									<LayersControl.Overlay checked name='Counties'>
 										<LayerGroup key={countyKey}>
-											<Counties
-												//from={globalCountyDollarsFrom}
-												//from2={globalCountyFrom}
-												from3={globalCountyPropsFrom}
-												to={globalCountyDollarsTo}
-												to2={globalCountyTo}
-												to3={globalCountyPropsTo}
-											/>
+											<Counties/>
 										</LayerGroup>
 									</LayersControl.Overlay>
 									<LayersControl.Overlay checked name='Municipalities'>
 										<LayerGroup key={municipalKey}>
-											<Municipalities
-												from={globalMuniDollarsFrom}
-												from2={globalMuniFrom}
-												from3={globalMuniPropsFrom}
-												to={globalMuniDollarsTo}
-												to2={globalMuniTo}
-												to3={globalMuniPropsTo}
-											/>
+											<Municipalities/>
 										</LayerGroup>
 									</LayersControl.Overlay>
 									<LayersControl.Overlay checked name='State Entities'>
 										<LayerGroup key={stateKey}>
-											<States
-												from={globalStateDollarsFrom}
-												from2={globalStateFrom}
-												from3={globalStatePropsFrom}
-												to={globalStateDollarsTo}
-												to2={globalStateTo}
-												to3={globalStatePropsTo}
-											/>
+											<States/>
 										</LayerGroup>
 									</LayersControl.Overlay>
 									<LayersControl.Overlay checked name='Regional Entities'>
 										<LayerGroup key={regionalKey}>
-											<Regions
-												from={globalRegionDollarsFrom}
-												from2={globalRegionFrom}
-												from3={globalRegionPropsFrom}
-												to={globalRegionDollarsTo}
-												to2={globalRegionTo}
-												to3={globalRegionPropsTo}
-											/>
+											<Regions/>
 										</LayerGroup>
 									</LayersControl.Overlay>
 									<LayersControl.Overlay checked name='Tribal Nations'>
 										<LayerGroup key={tribalKey}>
-											<TribalNations
-												from={globalTribalDollarsFrom}
-												from2={globalTribalFrom}
-												from3={globalTribalPropsFrom}
-												to={globalTribalDollarsTo}
-												to2={globalTribalTo}
-												to3={globalTribalPropsTo}
-											/>
+											<TribalNations/>
 										</LayerGroup>
 									</LayersControl.Overlay>
 								</LayersControl>

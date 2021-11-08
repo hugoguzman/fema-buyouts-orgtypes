@@ -1,14 +1,27 @@
 import React from "react";
 import { GeoJSON } from "react-leaflet";
 import stateData from './Data/stateBuyouts.json'
+import { useSelector } from 'react-redux';
 
-function States(props) {
-    const from=props.from;
-    const from2=props.from2;
-    const from3=props.from3;
-    const to=props.to;
-    const to2=props.to2;
-    const to3=props.to3;
+function States() {
+	const globalStateFrom = useSelector(
+		(state) => state.filterState.grantsFrom.value
+	);
+	const globalStateTo = useSelector(
+		(state) => state.filterState.grantsTo.value
+	);
+	const globalStateDollarsFrom = useSelector(
+		(state) => state.filterState.dollarsFrom.value
+	);
+	const globalStateDollarsTo = useSelector(
+		(state) => state.filterState.dollarsTo.value
+	);
+	const globalStatePropsFrom = useSelector(
+		(state) => state.filterState.propertiesFrom.value
+	);
+	const globalStatePropsTo = useSelector(
+		(state) => state.filterState.propertiesTo.value
+	);
 
     const countyStyle = {
         fillOpacity: 1,
@@ -51,7 +64,12 @@ function States(props) {
   };
 
   function filter (buyoutState) {
-    if (buyoutState.properties.dollaramount >= from && buyoutState.properties.dollaramount <= to && buyoutState.properties.grantcount >= from2 && buyoutState.properties.grantcount <= to2 && buyoutState.properties.propertycount >= from3 && buyoutState.properties.propertycount <= to3) return true;
+    if (buyoutState.properties.dollaramount >= globalStateDollarsFrom 
+      && buyoutState.properties.dollaramount <= globalStateDollarsTo
+      && buyoutState.properties.grantcount >= globalStateFrom
+      && buyoutState.properties.grantcount <= globalStateTo
+      && buyoutState.properties.propertycount >= globalStatePropsFrom 
+      && buyoutState.properties.propertycount <= globalStatePropsTo) return true;
 }
 
   return (
