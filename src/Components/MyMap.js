@@ -232,8 +232,8 @@ function MyMap() {
 									<LayersControl.Overlay checked name='Counties'>
 										<LayerGroup key={countyKey}>
 											<Counties
-												from={globalCountyDollarsFrom}
-												from2={globalCountyFrom}
+												//from={globalCountyDollarsFrom}
+												//from2={globalCountyFrom}
 												from3={globalCountyPropsFrom}
 												to={globalCountyDollarsTo}
 												to2={globalCountyTo}
