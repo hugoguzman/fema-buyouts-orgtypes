@@ -2,15 +2,28 @@ import React from "react";
 import { GeoJSON } from "react-leaflet";
 import L from 'leaflet';
 import muniData from './Data/munigeojson.json'
+import { useSelector } from 'react-redux';
 
 
-function Municipalities(props) {
-    const from=props.from;
-    const from2=props.from2;
-    const from3=props.from3;
-    const to=props.to;
-    const to2=props.to2;
-    const to3=props.to3;
+function Municipalities() {
+	const globalMuniFrom = useSelector(
+		(state) => state.filterMuni.grantsFrom.value
+	);
+	const globalMuniTo = useSelector(
+		(state) => state.filterMuni.grantsTo.value
+	);
+	const globalMuniDollarsFrom = useSelector(
+		(state) => state.filterMuni.dollarsFrom.value
+	);
+	const globalMuniDollarsTo = useSelector(
+		(state) => state.filterMuni.dollarsTo.value
+	);
+	const globalMuniPropsFrom = useSelector(
+		(state) => state.filterMuni.propertiesFrom.value
+	);
+	const globalMuniPropsTo = useSelector(
+		(state) => state.filterMuni.propertiesTo.value
+	);
 
     const muniStyle = {
         fillOpacity: 1,
@@ -55,7 +68,12 @@ function Municipalities(props) {
     };
 
   function filter (buyoutMuni) {
-    if (buyoutMuni.properties.dollaramount >= from && buyoutMuni.properties.dollaramount <= to && buyoutMuni.properties.grantcount >= from2 && buyoutMuni.properties.grantcount <= to2 && buyoutMuni.properties.propertycount >= from3 && buyoutMuni.properties.propertycount <= to3) return true;
+    if (buyoutMuni.properties.dollaramount >= globalMuniDollarsFrom 
+      && buyoutMuni.properties.dollaramount <= globalMuniDollarsTo
+      && buyoutMuni.properties.grantcount >= globalMuniFrom
+      && buyoutMuni.properties.grantcount <= globalMuniTo
+      && buyoutMuni.properties.propertycount >= globalMuniPropsFrom
+      && buyoutMuni.properties.propertycount <= globalMuniPropsTo) return true;
 }
 
 function pointToLayer(feature, latlng) {
