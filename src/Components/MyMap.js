@@ -1,10 +1,11 @@
-import React from 'react';
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import {
 	MapContainer,
 	TileLayer,
 	LayersControl,
 	LayerGroup,
+	useMap
 } from 'react-leaflet';
 import '@fontsource/roboto';
 import { Grid, Card, CardContent } from '@mui/material';
@@ -19,6 +20,7 @@ import MuniFilterCard from './MuniFilterCard';
 import StateFilterCard from './StateFilterCard';
 import RegionalFilterCard from './RegionalFilterCard';
 import TribalFilterCard from './TribalFilterCard';
+import MyButtonGroup from './myButtonGroup';
 
 const PREFIX = 'MyMap';
 
@@ -75,6 +77,7 @@ const Root = styled('div')(({ theme }) => ({
 const position = [37.1, -95.7];
 
 function MyMap() {
+	const [map, setMap] = useState(null);
 	const globalCountyFrom = useSelector(
 		(state) => state.filterCounty.grantsFrom.value
 	);
@@ -225,6 +228,7 @@ function MyMap() {
 								center={position}
 								zoom={4}
 								style={{ height: 390, width: '100%' }}
+								whenCreated={setMap}
 							>
 								<TileLayer
 									attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
@@ -261,6 +265,11 @@ function MyMap() {
 						</CardContent>
 					</Card>
 				</Grid>
+				<MyButtonGroup 
+				position={position}
+				zoom={4}
+				map={map}
+				/>
 				<Grid
 					container
 					className={classes.dropdownsGrid}
