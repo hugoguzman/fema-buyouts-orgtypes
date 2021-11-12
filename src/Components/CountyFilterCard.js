@@ -147,7 +147,7 @@ function CountyFilterCard(props) {
 						<Select
 							labelId='countydollars-from'
 							id='countydollars-from'
-							value={countyDollarsFrom}
+							value={globalCountyDollarsFrom}
 							onChange={handleCountyDollarsFrom}
 						>
 							<MenuItem value={579}>$579</MenuItem>

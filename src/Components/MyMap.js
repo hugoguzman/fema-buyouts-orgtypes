@@ -5,7 +5,6 @@ import {
 	TileLayer,
 	LayersControl,
 	LayerGroup,
-	useMap
 } from 'react-leaflet';
 import '@fontsource/roboto';
 import { Grid, Card, CardContent } from '@mui/material';
