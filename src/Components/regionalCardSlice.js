@@ -31,11 +31,14 @@ export const regionalCardSlice = createSlice({
         },
         filteredRegionalPropsTo: (state, action) => {
             state.propertiesTo.value = action.payload;
+        },
+        resetRegional: (state, action) => {
+            return initialState
         }
     }
 })
 
 
-export const { filteredRegionalFrom, filteredRegionalTo, filteredRegionalDollarsFrom, filteredRegionalDollarsTo, filteredRegionalPropsFrom, filteredRegionalPropsTo } = regionalCardSlice.actions
+export const { filteredRegionalFrom, filteredRegionalTo, filteredRegionalDollarsFrom, filteredRegionalDollarsTo, filteredRegionalPropsFrom, filteredRegionalPropsTo, resetRegional } = regionalCardSlice.actions
 
 export default regionalCardSlice.reducer;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import '@fontsource/roboto';
 import {
 	Card,
@@ -41,44 +41,44 @@ function StateFilterCard(props) {
 		(state) => state.filterState.propertiesTo.value
 	);
 
-	const [stateFrom, setStateFrom] = useState(globalStateFrom);
-	const [stateTo, setStateTo] = useState(globalStateTo);
-	const [stateDollarsFrom, setStateDollarsFrom] = useState(
-		globalStateDollarsFrom
-	);
-	const [stateDollarsTo, setStateDollarsTo] = useState(globalStateDollarsTo);
-	const [statePropertiesFrom, setStatePropertiesFrom] =
-		useState(globalStatePropsFrom);
-	const [statePropertiesTo, setStatePropertiesTo] =
-		useState(globalStatePropsTo);
+	// const [stateFrom, setStateFrom] = useState(globalStateFrom);
+	// const [stateTo, setStateTo] = useState(globalStateTo);
+	// const [stateDollarsFrom, setStateDollarsFrom] = useState(
+	// 	globalStateDollarsFrom
+	// );
+	// const [stateDollarsTo, setStateDollarsTo] = useState(globalStateDollarsTo);
+	// const [statePropertiesFrom, setStatePropertiesFrom] =
+	// 	useState(globalStatePropsFrom);
+	// const [statePropertiesTo, setStatePropertiesTo] =
+	// 	useState(globalStatePropsTo);
 
 	const handleStateTo = (e) => {
-		setStateTo(e.target.value);
+		// setStateTo(e.target.value);
 		dispatch(filteredStateTo(e.target.value));
 	};
 
 	const handleStateFrom = (e) => {
-		setStateFrom(e.target.value);
+		// setStateFrom(e.target.value);
 		dispatch(filteredStateFrom(e.target.value));
 	};
 
 	const handleStateDollarsFrom = (e) => {
-		setStateDollarsFrom(e.target.value);
+		// setStateDollarsFrom(e.target.value);
 		dispatch(filteredStateDollarsFrom(e.target.value));
 	};
 
 	const handleStateDollarsTo = (e) => {
-		setStateDollarsTo(e.target.value);
+		// setStateDollarsTo(e.target.value);
 		dispatch(filteredStateDollarsTo(e.target.value));
 	};
 
 	const handleStatePropertiesFrom = (e) => {
-		setStatePropertiesFrom(e.target.value);
+		// setStatePropertiesFrom(e.target.value);
 		dispatch(filteredStatePropsFrom(e.target.value));
 	};
 
 	const handleStatePropertiesTo = (e) => {
-		setStatePropertiesTo(e.target.value);
+		// setStatePropertiesTo(e.target.value);
 		dispatch(filteredStatePropsTo(e.target.value));
 	};
 
@@ -101,7 +101,7 @@ function StateFilterCard(props) {
 						<Select
 							labelId='state-from'
 							id='state-from'
-							value={stateFrom}
+							value={globalStateFrom}
 							onChange={handleStateFrom}
 						>
 							<MenuItem value={1}>1</MenuItem>
@@ -117,7 +117,7 @@ function StateFilterCard(props) {
 						<Select
 							labelId='state-to'
 							id='state-to'
-							value={stateTo}
+							value={globalStateTo}
 							onChange={handleStateTo}
 						>
 							<MenuItem value={1}>1</MenuItem>
@@ -133,7 +133,7 @@ function StateFilterCard(props) {
 						<Select
 							labelId='state-from'
 							id='state-from'
-							value={stateDollarsFrom}
+							value={globalStateDollarsFrom}
 							onChange={handleStateDollarsFrom}
 						>
 							<MenuItem value={9133}>$9,133</MenuItem>
@@ -150,7 +150,7 @@ function StateFilterCard(props) {
 						<Select
 							labelId='state-to'
 							id='state-to'
-							value={stateDollarsTo}
+							value={globalStateDollarsTo}
 							onChange={handleStateDollarsTo}
 						>
 							<MenuItem value={9133}>$9,133</MenuItem>
@@ -170,7 +170,7 @@ function StateFilterCard(props) {
 						<Select
 							labelId='stateproperties-from'
 							id='stateproperties-from'
-							value={statePropertiesFrom}
+							value={globalStatePropsFrom}
 							onChange={handleStatePropertiesFrom}
 						>
 							<MenuItem value={0}>0</MenuItem>
@@ -190,7 +190,7 @@ function StateFilterCard(props) {
 						<Select
 							labelId='stateproperties-to'
 							id='stateproperties-to'
-							value={statePropertiesTo}
+							value={globalStatePropsTo}
 							onChange={handleStatePropertiesTo}
 						>
 							<MenuItem value={0}>0</MenuItem>

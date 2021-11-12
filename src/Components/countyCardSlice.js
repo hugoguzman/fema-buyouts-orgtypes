@@ -33,13 +33,13 @@ export const countyCardSlice = createSlice({
             state.propertiesTo.value = action.payload;
         },
         // resetStates: state => initialState()
-        resetStates: (state, action) => {
+        resetCounty: (state, action) => {
             return initialState
         }
     }
 })
 
 
-export const { filteredCountyFrom, filteredCountyTo, filteredCountyDollarsFrom, filteredCountyDollarsTo, filteredCountyPropsFrom, filteredCountyPropsTo, resetStates } = countyCardSlice.actions
+export const { filteredCountyFrom, filteredCountyTo, filteredCountyDollarsFrom, filteredCountyDollarsTo, filteredCountyPropsFrom, filteredCountyPropsTo, resetCounty } = countyCardSlice.actions
 
 export default countyCardSlice.reducer;

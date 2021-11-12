@@ -1,13 +1,22 @@
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useDispatch } from 'react-redux';
-import { filteredCountyDollarsFrom, resetStates } from './countyCardSlice';
+import { resetCounty } from './countyCardSlice';
+import { resetMuni } from './muniCardSlice';
+import { resetState } from './stateCardSlice';
+import { resetRegional } from './regionalCardSlice';
+import { resetTribal } from './tribalCardSlice';
+
 
 export default function MyButtonGroup(props) {
     const dispatch = useDispatch();
     const OnClick = () => {
         props.map.flyTo(props.position, props.zoom);
-        dispatch(resetStates());
+        dispatch(resetCounty());
+        dispatch(resetMuni());
+        dispatch(resetState());
+        dispatch(resetRegional());
+        dispatch(resetTribal())
      }
 	return (
 		<ButtonGroup

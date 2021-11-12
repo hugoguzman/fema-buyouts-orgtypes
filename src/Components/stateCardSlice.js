@@ -31,11 +31,14 @@ export const stateCardSlice = createSlice({
         },
         filteredStatePropsTo: (state, action) => {
             state.propertiesTo.value = action.payload;
+        },
+        resetState: (state, action) => {
+            return initialState
         }
     }
 })
 
 
-export const { filteredStateFrom, filteredStateTo, filteredStateDollarsFrom, filteredStateDollarsTo, filteredStatePropsFrom, filteredStatePropsTo } = stateCardSlice.actions
+export const { filteredStateFrom, filteredStateTo, filteredStateDollarsFrom, filteredStateDollarsTo, filteredStatePropsFrom, filteredStatePropsTo, resetState } = stateCardSlice.actions
 
 export default stateCardSlice.reducer;

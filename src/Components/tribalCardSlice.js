@@ -31,11 +31,14 @@ export const tribalCardSlice = createSlice({
         },
         filteredTribalPropsTo: (state, action) => {
             state.propertiesTo.value = action.payload;
+        },
+        resetTribal: (state, action) => {
+            return initialState
         }
     }
 })
 
 
-export const { filteredTribalFrom, filteredTribalTo, filteredTribalDollarsFrom, filteredTribalDollarsTo, filteredTribalPropsFrom, filteredTribalPropsTo } = tribalCardSlice.actions
+export const { filteredTribalFrom, filteredTribalTo, filteredTribalDollarsFrom, filteredTribalDollarsTo, filteredTribalPropsFrom, filteredTribalPropsTo, resetTribal } = tribalCardSlice.actions
 
 export default tribalCardSlice.reducer;
