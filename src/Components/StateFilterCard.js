@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import '@fontsource/roboto';
 import {
 	Card,
@@ -41,44 +40,27 @@ function StateFilterCard(props) {
 		(state) => state.filterState.propertiesTo.value
 	);
 
-	// const [stateFrom, setStateFrom] = useState(globalStateFrom);
-	// const [stateTo, setStateTo] = useState(globalStateTo);
-	// const [stateDollarsFrom, setStateDollarsFrom] = useState(
-	// 	globalStateDollarsFrom
-	// );
-	// const [stateDollarsTo, setStateDollarsTo] = useState(globalStateDollarsTo);
-	// const [statePropertiesFrom, setStatePropertiesFrom] =
-	// 	useState(globalStatePropsFrom);
-	// const [statePropertiesTo, setStatePropertiesTo] =
-	// 	useState(globalStatePropsTo);
-
 	const handleStateTo = (e) => {
-		// setStateTo(e.target.value);
 		dispatch(filteredStateTo(e.target.value));
 	};
 
 	const handleStateFrom = (e) => {
-		// setStateFrom(e.target.value);
 		dispatch(filteredStateFrom(e.target.value));
 	};
 
 	const handleStateDollarsFrom = (e) => {
-		// setStateDollarsFrom(e.target.value);
 		dispatch(filteredStateDollarsFrom(e.target.value));
 	};
 
 	const handleStateDollarsTo = (e) => {
-		// setStateDollarsTo(e.target.value);
 		dispatch(filteredStateDollarsTo(e.target.value));
 	};
 
 	const handleStatePropertiesFrom = (e) => {
-		// setStatePropertiesFrom(e.target.value);
 		dispatch(filteredStatePropsFrom(e.target.value));
 	};
 
 	const handleStatePropertiesTo = (e) => {
-		// setStatePropertiesTo(e.target.value);
 		dispatch(filteredStatePropsTo(e.target.value));
 	};
 

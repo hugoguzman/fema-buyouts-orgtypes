@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import '@fontsource/roboto';
 import {
 	Card,
@@ -41,47 +40,27 @@ function TribalFilterCard(props) {
 		(state) => state.filterTribal.propertiesTo.value
 	);
 
-	// const [tribalFrom, setTribalFrom] = useState(globalTribalFrom);
-	// const [tribalTo, setTribalTo] = useState(globalTribalTo);
-
-	// const [tribalDollarsFrom, setTribalDollarsFrom] = useState(
-	// 	globalTribalDollarsFrom
-	// );
-	// const [tribalDollarsTo, setTribalDollarsTo] = useState(globalTribalDollarsTo);
-
-	// const [tribalPropertiesFrom, setTribalPropertiesFrom] = useState(
-	// 	globalTribalPropsFrom
-	// );
-	// const [tribalPropertiesTo, setTribalPropertiesTo] =
-	// 	useState(globalTribalPropsTo);
-
 	const handleTribalFrom = (e) => {
-		// setTribalFrom(e.target.value);
 		dispatch(filteredTribalFrom(e.target.value));
 	};
 
 	const handleTribalTo = (e) => {
-		// setTribalTo(e.target.value);
 		dispatch(filteredTribalTo(e.target.value));
 	};
 
 	const handleTribalDollarsFrom = (e) => {
-		// setTribalDollarsFrom(e.target.value);
 		dispatch(filteredTribalDollarsFrom(e.target.value));
 	};
 
 	const handleTribalDollarsTo = (e) => {
-		// setTribalDollarsTo(e.target.value);
 		dispatch(filteredTribalDollarsTo(e.target.value));
 	};
 
 	const handleTribalPropertiesFrom = (e) => {
-		// setTribalPropertiesFrom(e.target.value);
 		dispatch(filteredTribalPropsFrom(e.target.value));
 	};
 
 	const handleTribalPropertiesTo = (e) => {
-		// setTribalPropertiesTo(e.target.value);
 		dispatch(filteredTribalPropsTo(e.target.value));
 	};
 

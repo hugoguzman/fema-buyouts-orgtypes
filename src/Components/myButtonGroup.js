@@ -8,6 +8,7 @@ import { resetRegional } from './regionalCardSlice';
 import { resetTribal } from './tribalCardSlice';
 
 
+
 export default function MyButtonGroup(props) {
     const dispatch = useDispatch();
     const OnClick = () => {
@@ -16,19 +17,21 @@ export default function MyButtonGroup(props) {
         dispatch(resetMuni());
         dispatch(resetState());
         dispatch(resetRegional());
-        dispatch(resetTribal())
+        dispatch(resetTribal());
      }
 	return (
+        
 		<ButtonGroup
 			variant='contained'
 			size='small'
 			color='secondary'
 			aria-label='small button group'
+            
 		>
 			<Button
 				onClick={OnClick}
 			>
-				Reset View
+				Reset
 			</Button>
 		</ButtonGroup>
 	);

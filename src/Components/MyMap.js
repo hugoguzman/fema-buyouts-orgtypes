@@ -168,6 +168,7 @@ function MyMap() {
 		(state) => state.filterTribal.propertiesTo.value
 	);
 
+
 	const countyKey =
 		globalCountyFrom +
 		globalCountyTo +
@@ -203,6 +204,8 @@ function MyMap() {
 		globalTribalDollarsTo +
 		globalTribalPropsFrom +
 		globalTribalPropsTo;
+
+	
 
 	return (
 		<Root>
@@ -264,11 +267,6 @@ function MyMap() {
 						</CardContent>
 					</Card>
 				</Grid>
-				<MyButtonGroup 
-				position={position}
-				zoom={4}
-				map={map}
-				/>
 				<Grid
 					container
 					className={classes.dropdownsGrid}
@@ -292,6 +290,11 @@ function MyMap() {
 					</Grid>
 				</Grid>
 			</Grid>
+			<MyButtonGroup 
+				position={position}
+				zoom={4}
+				map={map}
+				/>
 		</Root>
 	);
 }
