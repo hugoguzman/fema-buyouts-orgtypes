@@ -17,6 +17,9 @@ import {
 	filteredCountyPropsFrom,
 	filteredCountyPropsTo,
 } from './countyCardSlice';
+import Switch from '@mui/material/Switch';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 function CountyFilterCard(props) {
 	const dispatch = useDispatch();
@@ -39,6 +42,11 @@ function CountyFilterCard(props) {
 	const globalCountyPropsTo = useSelector(
 		(state) => state.filterCounty.propertiesTo.value
 	);
+
+	const toggleCounty = (e) => {
+		dispatch(filteredCountyFrom(-1));
+		dispatch(filteredCountyTo(-1));
+	};
 
 	const handleCountyFrom = (e) => {
 		dispatch(filteredCountyFrom(e.target.value));
@@ -67,6 +75,13 @@ function CountyFilterCard(props) {
 		<div>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
+					<FormGroup>
+  						<FormControlLabel 
+						  className={props.class.orgtypeCards} 
+						  onChange={toggleCounty}
+						  control={<Switch defaultChecked />} 
+						  label="Toggle Counties" />
+					</FormGroup>
 					<Typography
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'
