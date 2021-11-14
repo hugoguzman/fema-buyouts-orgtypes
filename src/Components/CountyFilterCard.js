@@ -1,3 +1,4 @@
+import React from 'react';
 import '@fontsource/roboto';
 import {
 	Card,
@@ -20,6 +21,8 @@ import {
 import Switch from '@mui/material/Switch';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { resetCounty } from './countyCardSlice';
+
 
 function CountyFilterCard(props) {
 	const dispatch = useDispatch();
@@ -43,9 +46,17 @@ function CountyFilterCard(props) {
 		(state) => state.filterCounty.propertiesTo.value
 	);
 
-	const toggleCounty = (e) => {
-		dispatch(filteredCountyFrom(-1));
-		dispatch(filteredCountyTo(-1));
+	const [checked, setChecked] = React.useState(true);
+
+	const switchOn = (e) => {
+		setChecked(e.target.checked)
+			dispatch(filteredCountyFrom(-1));
+			dispatch(filteredCountyTo(-1));
+	};
+
+	const switchOff = (e) => {
+		setChecked(e.target.checked)
+		dispatch(resetCounty());
 	};
 
 	const handleCountyFrom = (e) => {
@@ -73,14 +84,22 @@ function CountyFilterCard(props) {
 
 	return (
 		<div>
+			<p>{String(checked)}</p>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
 					<FormGroup>
   						<FormControlLabel 
-						  className={props.class.orgtypeCards} 
-						  onChange={toggleCounty}
+						  className={props.class.orgtypeCards}
+						  onChange={switchOn}
 						  control={<Switch defaultChecked />} 
-						  label="Toggle Counties" />
+						  label="Remove Counties" />
+					</FormGroup>
+					<FormGroup>
+  						<FormControlLabel 
+						  className={props.class.orgtypeCards}
+						  onChange={switchOff}
+						  control={<Switch defaultChecked />} 
+						  label="Reset Counties" />
 					</FormGroup>
 					<Typography
 						sx={{ fontSize: 16 }}
