@@ -18,10 +18,7 @@ import {
 	filteredCountyPropsFrom,
 	filteredCountyPropsTo,
 } from './countyCardSlice';
-import Switch from '@mui/material/Switch';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import { resetCounty } from './countyCardSlice';
+import CountyFilterCardButtons from './CountyFilterCardButtons';
 
 
 function CountyFilterCard(props) {
@@ -45,19 +42,6 @@ function CountyFilterCard(props) {
 	const globalCountyPropsTo = useSelector(
 		(state) => state.filterCounty.propertiesTo.value
 	);
-
-	const [checked, setChecked] = React.useState(true);
-
-	const switchOn = (e) => {
-		setChecked(e.target.checked)
-			dispatch(filteredCountyFrom(-1));
-			dispatch(filteredCountyTo(-1));
-	};
-
-	const switchOff = (e) => {
-		setChecked(e.target.checked)
-		dispatch(resetCounty());
-	};
 
 	const handleCountyFrom = (e) => {
 		dispatch(filteredCountyFrom(e.target.value));
@@ -84,23 +68,9 @@ function CountyFilterCard(props) {
 
 	return (
 		<div>
-			<p>{String(checked)}</p>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
-					<FormGroup>
-  						<FormControlLabel 
-						  className={props.class.orgtypeCards}
-						  onChange={switchOn}
-						  control={<Switch defaultChecked />} 
-						  label="Remove Counties" />
-					</FormGroup>
-					<FormGroup>
-  						<FormControlLabel 
-						  className={props.class.orgtypeCards}
-						  onChange={switchOff}
-						  control={<Switch defaultChecked />} 
-						  label="Reset Counties" />
-					</FormGroup>
+					<CountyFilterCardButtons />
 					<Typography
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'
