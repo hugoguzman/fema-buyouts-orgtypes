@@ -236,7 +236,7 @@ function MyMap() {
 									attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
 									url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
 								/>
-								<LayersControl collapsed={true} position='topright'>
+								<LayersControl collapsed='true' position='topright' sortLayers='false'>
 									<LayersControl.Overlay checked name='Counties'>
 										<LayerGroup key={countyKey}>
 											<Counties/>
