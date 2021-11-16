@@ -10,6 +10,15 @@ const initialState = {
     propertiesTo: {value:2992},
 };
 
+const emptyState = {
+    grantsFrom: {value:-1},
+    grantsTo: {value:-1},
+    dollarsFrom: {value:-1},
+    dollarsTo: {value:-1},
+    propertiesFrom: {value:-1},
+    propertiesTo: {value:-1},
+};
+
 export const countyCardSlice = createSlice({
     name: 'filterCounty',
     initialState,
@@ -35,11 +44,14 @@ export const countyCardSlice = createSlice({
         // resetStates: state => initialState()
         resetCounty: (state, action) => {
             return initialState
+        },
+        emptyCounty: (state, action) => {
+            return emptyState
         }
     }
 })
 
 
-export const { filteredCountyFrom, filteredCountyTo, filteredCountyDollarsFrom, filteredCountyDollarsTo, filteredCountyPropsFrom, filteredCountyPropsTo, resetCounty } = countyCardSlice.actions
+export const { filteredCountyFrom, filteredCountyTo, filteredCountyDollarsFrom, filteredCountyDollarsTo, filteredCountyPropsFrom, filteredCountyPropsTo, resetCounty, emptyCounty } = countyCardSlice.actions
 
 export default countyCardSlice.reducer;
