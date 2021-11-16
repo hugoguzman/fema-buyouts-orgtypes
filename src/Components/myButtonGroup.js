@@ -31,7 +31,7 @@ export default function MyButtonGroup(props) {
 			<Button
 				onClick={OnClick}
 			>
-				Reset
+				Reset All Map Content
 			</Button>
 		</ButtonGroup>
 	);

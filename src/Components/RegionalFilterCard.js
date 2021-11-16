@@ -17,6 +17,7 @@ import {
 	filteredRegionalPropsFrom,
 	filteredRegionalPropsTo,
 } from './regionalCardSlice';
+import RegionalFilterCardButtons from './RegionalFilterCardButtons';
 
 function RegionalFilterCard(props) {
 	const dispatch = useDispatch();
@@ -68,6 +69,7 @@ function RegionalFilterCard(props) {
 		<div>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
+					<RegionalFilterCardButtons />
 					<Typography
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'

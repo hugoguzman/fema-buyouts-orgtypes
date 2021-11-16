@@ -17,6 +17,7 @@ import {
 	filteredTribalPropsFrom,
 	filteredTribalPropsTo,
 } from './tribalCardSlice';
+import TribalFilterCardButtons from './TribalFilterCardButtons';
 
 function TribalFilterCard(props) {
 	const dispatch = useDispatch();
@@ -68,6 +69,7 @@ function TribalFilterCard(props) {
 		<div>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
+					<TribalFilterCardButtons />
 					<Typography
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'

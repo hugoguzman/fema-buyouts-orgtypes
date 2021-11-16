@@ -17,6 +17,7 @@ import {
 	filteredMuniPropsFrom,
 	filteredMuniPropsTo,
 } from './muniCardSlice';
+import MuniFilterCardButtons from './MuniFilterCardButtons';
 
 function MuniFilterCard(props) {
 	const dispatch = useDispatch();
@@ -64,6 +65,7 @@ function MuniFilterCard(props) {
 		<div>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
+					<MuniFilterCardButtons />
 					<Typography
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'

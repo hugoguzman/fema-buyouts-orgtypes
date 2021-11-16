@@ -63,7 +63,7 @@ const Root = styled('div')(({ theme }) => ({
 		variant: 'standard',
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#fff5eb',
+		//backgroundColor: '#fff5eb',
 		paddingTop: 1,
 		paddingRight: 0,
 		paddingLeft: 0,
@@ -267,6 +267,11 @@ function MyMap() {
 						</CardContent>
 					</Card>
 				</Grid>
+				<MyButtonGroup 
+				position={position}
+				zoom={4}
+				map={map}
+				/>
 				<Grid
 					container
 					className={classes.dropdownsGrid}
@@ -290,11 +295,7 @@ function MyMap() {
 					</Grid>
 				</Grid>
 			</Grid>
-			<MyButtonGroup 
-				position={position}
-				zoom={4}
-				map={map}
-				/>
+
 		</Root>
 	);
 }

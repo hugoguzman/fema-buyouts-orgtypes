@@ -17,6 +17,7 @@ import {
 	filteredStatePropsFrom,
 	filteredStatePropsTo,
 } from './stateCardSlice';
+import StateFilterCardButtons from './StateFilterCardButtons';
 
 function StateFilterCard(props) {
 	const dispatch = useDispatch();
@@ -68,6 +69,7 @@ function StateFilterCard(props) {
 		<div>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
+					<StateFilterCardButtons />
 					<Typography
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'

@@ -1,29 +1,29 @@
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useDispatch } from 'react-redux';
-import { resetCounty } from './countyCardSlice';
+import { resetState } from './stateCardSlice';
 import {
-	filteredCountyDollarsFrom,
-	filteredCountyDollarsTo,
-	filteredCountyFrom,
-	filteredCountyTo,
-	filteredCountyPropsFrom,
-	filteredCountyPropsTo,
-} from './countyCardSlice';
+	filteredStateDollarsFrom,
+	filteredStateDollarsTo,
+	filteredStateFrom,
+	filteredStateTo,
+	filteredStatePropsFrom,
+	filteredStatePropsTo,
+} from './stateCardSlice';
 
-export default function CountyFilterCardButtons() {
+export default function StateFilterCardButtons() {
     const dispatch = useDispatch();
 	const switchOn = (e) => {
-        dispatch(filteredCountyFrom(-1));
-        dispatch(filteredCountyTo(-1));
-        dispatch(filteredCountyDollarsFrom(-1));
-        dispatch(filteredCountyDollarsTo(-1));
-        dispatch(filteredCountyPropsFrom(-1));
-        dispatch(filteredCountyPropsTo(-1));
+        dispatch(filteredStateFrom(-1));
+        dispatch(filteredStateTo(-1));
+        dispatch(filteredStateDollarsFrom(-1));
+        dispatch(filteredStateDollarsTo(-1));
+        dispatch(filteredStatePropsFrom(-1));
+        dispatch(filteredStatePropsTo(-1));
 };
 
 const switchOff = (e) => {
-    dispatch(resetCounty());
+    dispatch(resetState());
 };
 	return (
         
