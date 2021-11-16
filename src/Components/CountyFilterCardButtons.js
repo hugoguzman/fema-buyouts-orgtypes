@@ -1,7 +1,6 @@
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useDispatch } from 'react-redux';
-import { resetCounty } from './countyCardSlice';
 import {
 	filteredCountyDollarsFrom,
 	filteredCountyDollarsTo,
@@ -9,6 +8,7 @@ import {
 	filteredCountyTo,
 	filteredCountyPropsFrom,
 	filteredCountyPropsTo,
+    resetCounty
 } from './countyCardSlice';
 
 export default function CountyFilterCardButtons() {

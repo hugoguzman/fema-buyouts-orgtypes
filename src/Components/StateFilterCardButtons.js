@@ -1,7 +1,6 @@
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useDispatch } from 'react-redux';
-import { resetState } from './stateCardSlice';
 import {
 	filteredStateDollarsFrom,
 	filteredStateDollarsTo,
@@ -9,6 +8,7 @@ import {
 	filteredStateTo,
 	filteredStatePropsFrom,
 	filteredStatePropsTo,
+    resetState
 } from './stateCardSlice';
 
 export default function StateFilterCardButtons() {
