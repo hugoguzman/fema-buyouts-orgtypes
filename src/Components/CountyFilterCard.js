@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 import '@fontsource/roboto';
 import {
 	Card,
@@ -18,6 +18,8 @@ import {
 	filteredCountyPropsFrom,
 	filteredCountyPropsTo,
 } from './countyCardSlice';
+import CountyFilterCardButtons from './CountyFilterCardButtons';
+
 
 function CountyFilterCard(props) {
 	const dispatch = useDispatch();
@@ -41,44 +43,26 @@ function CountyFilterCard(props) {
 		(state) => state.filterCounty.propertiesTo.value
 	);
 
-	const [countyFrom, setCountyFrom] = useState(globalCountyFrom);
-	const [countyTo, setCountyTo] = useState(globalCountyTo);
-	const [countyDollarsFrom, setCountyDollarsFrom] = useState(
-		globalCountyDollarsFrom
-	);
-	const [countyDollarsTo, setCountyDollarsTo] = useState(globalCountyDollarsTo);
-	const [countyPropertiesFrom, setCountyPropertiesFrom] = useState(
-		globalCountyPropsFrom
-	);
-	const [countyPropertiesTo, setCountyPropertiesTo] =
-		useState(globalCountyPropsTo);
-
 	const handleCountyFrom = (e) => {
-		setCountyFrom(e.target.value);
 		dispatch(filteredCountyFrom(e.target.value));
 	};
 
 	const handleCountyTo = (e) => {
-		setCountyTo(e.target.value);
 		dispatch(filteredCountyTo(e.target.value));
 	};
 
 	const handleCountyDollarsFrom = (e) => {
-		setCountyDollarsFrom(e.target.value);
 		dispatch(filteredCountyDollarsFrom(e.target.value));
 	};
 
 	const handleCountyDollarsTo = (e) => {
-		setCountyDollarsTo(e.target.value);
 		dispatch(filteredCountyDollarsTo(e.target.value));
 	};
 	const handleCountyPropertiesFrom = (e) => {
-		setCountyPropertiesFrom(e.target.value);
 		dispatch(filteredCountyPropsFrom(e.target.value));
 	};
 
 	const handleCountyPropertiesTo = (e) => {
-		setCountyPropertiesTo(e.target.value);
 		dispatch(filteredCountyPropsTo(e.target.value));
 	};
 
@@ -86,8 +70,8 @@ function CountyFilterCard(props) {
 		<div>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
+					<CountyFilterCardButtons />
 					<Typography
-						// xs={{ fontSize: 14 }}
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'
 						color='text.secondary'
@@ -105,7 +89,7 @@ function CountyFilterCard(props) {
 						<Select
 							labelId='demo-simple-select-label'
 							id='demo-simple-select'
-							value={countyFrom}
+							value={globalCountyFrom}
 							onChange={handleCountyFrom}
 						>
 							<MenuItem value={1}>1</MenuItem>
@@ -126,7 +110,7 @@ function CountyFilterCard(props) {
 						<Select
 							labelId='demo-simple-select-label'
 							id='demo-simple-select'
-							value={countyTo}
+							value={globalCountyTo}
 							onChange={handleCountyTo}
 						>
 							<MenuItem value={1}>1</MenuItem>
@@ -147,7 +131,7 @@ function CountyFilterCard(props) {
 						<Select
 							labelId='countydollars-from'
 							id='countydollars-from'
-							value={countyDollarsFrom}
+							value={globalCountyDollarsFrom}
 							onChange={handleCountyDollarsFrom}
 						>
 							<MenuItem value={579}>$579</MenuItem>
@@ -168,7 +152,7 @@ function CountyFilterCard(props) {
 						<Select
 							labelId='demo-simple-select-label'
 							id='demo-simple-select'
-							value={countyDollarsTo}
+							value={globalCountyDollarsTo}
 							onChange={handleCountyDollarsTo}
 						>
 							<MenuItem value={579}>$579</MenuItem>
@@ -189,7 +173,7 @@ function CountyFilterCard(props) {
 						<Select
 							labelId='countyproperties-from'
 							id='countyproperties-from'
-							value={countyPropertiesFrom}
+							value={globalCountyPropsFrom}
 							onChange={handleCountyPropertiesFrom}
 						>
 							<MenuItem value={0}>0</MenuItem>
@@ -210,7 +194,7 @@ function CountyFilterCard(props) {
 						<Select
 							labelId='countyproperties-to'
 							id='countyproperties-to'
-							value={countyPropertiesTo}
+							value={globalCountyPropsTo}
 							onChange={handleCountyPropertiesTo}
 						>
 							<MenuItem value={0}>0</MenuItem>

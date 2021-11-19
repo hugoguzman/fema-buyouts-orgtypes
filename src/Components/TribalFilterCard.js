@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import '@fontsource/roboto';
 import {
 	Card,
@@ -18,6 +17,7 @@ import {
 	filteredTribalPropsFrom,
 	filteredTribalPropsTo,
 } from './tribalCardSlice';
+import TribalFilterCardButtons from './TribalFilterCardButtons';
 
 function TribalFilterCard(props) {
 	const dispatch = useDispatch();
@@ -41,47 +41,27 @@ function TribalFilterCard(props) {
 		(state) => state.filterTribal.propertiesTo.value
 	);
 
-	const [tribalFrom, setTribalFrom] = useState(globalTribalFrom);
-	const [tribalTo, setTribalTo] = useState(globalTribalTo);
-
-	const [tribalDollarsFrom, setTribalDollarsFrom] = useState(
-		globalTribalDollarsFrom
-	);
-	const [tribalDollarsTo, setTribalDollarsTo] = useState(globalTribalDollarsTo);
-
-	const [tribalPropertiesFrom, setTribalPropertiesFrom] = useState(
-		globalTribalPropsFrom
-	);
-	const [tribalPropertiesTo, setTribalPropertiesTo] =
-		useState(globalTribalPropsTo);
-
 	const handleTribalFrom = (e) => {
-		setTribalFrom(e.target.value);
 		dispatch(filteredTribalFrom(e.target.value));
 	};
 
 	const handleTribalTo = (e) => {
-		setTribalTo(e.target.value);
 		dispatch(filteredTribalTo(e.target.value));
 	};
 
 	const handleTribalDollarsFrom = (e) => {
-		setTribalDollarsFrom(e.target.value);
 		dispatch(filteredTribalDollarsFrom(e.target.value));
 	};
 
 	const handleTribalDollarsTo = (e) => {
-		setTribalDollarsTo(e.target.value);
 		dispatch(filteredTribalDollarsTo(e.target.value));
 	};
 
 	const handleTribalPropertiesFrom = (e) => {
-		setTribalPropertiesFrom(e.target.value);
 		dispatch(filteredTribalPropsFrom(e.target.value));
 	};
 
 	const handleTribalPropertiesTo = (e) => {
-		setTribalPropertiesTo(e.target.value);
 		dispatch(filteredTribalPropsTo(e.target.value));
 	};
 
@@ -89,6 +69,7 @@ function TribalFilterCard(props) {
 		<div>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
+					<TribalFilterCardButtons />
 					<Typography
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'
@@ -104,7 +85,7 @@ function TribalFilterCard(props) {
 						<Select
 							labelId='tribal-from'
 							id='tribal-from'
-							value={tribalFrom}
+							value={globalTribalFrom}
 							onChange={handleTribalFrom}
 						>
 							<MenuItem value={1}>1</MenuItem>
@@ -118,7 +99,7 @@ function TribalFilterCard(props) {
 						<Select
 							labelId='tribal-to'
 							id='tribal-to'
-							value={tribalTo}
+							value={globalTribalTo}
 							onChange={handleTribalTo}
 						>
 							<MenuItem value={1}>1</MenuItem>
@@ -135,7 +116,7 @@ function TribalFilterCard(props) {
 						<Select
 							labelId='tribaldollars-from'
 							id='tribaldollars-from'
-							value={tribalDollarsFrom}
+							value={globalTribalDollarsFrom}
 							onChange={handleTribalDollarsFrom}
 						>
 							<MenuItem value={30952}>$30,952</MenuItem>
@@ -154,7 +135,7 @@ function TribalFilterCard(props) {
 						<Select
 							labelId='tribaldollars-to'
 							id='tribaldollars-to'
-							value={tribalDollarsTo}
+							value={globalTribalDollarsTo}
 							onChange={handleTribalDollarsTo}
 						>
 							<MenuItem value={30952}>$30,952</MenuItem>
@@ -173,7 +154,7 @@ function TribalFilterCard(props) {
 						<Select
 							labelId='tribalproperties-from'
 							id='tribalproperties-from'
-							value={tribalPropertiesFrom}
+							value={globalTribalPropsFrom}
 							onChange={handleTribalPropertiesFrom}
 						>
 							<MenuItem value={1}>1</MenuItem>
@@ -192,7 +173,7 @@ function TribalFilterCard(props) {
 						<Select
 							labelId='tribalproperties-to'
 							id='tribalproperties-to'
-							value={tribalPropertiesTo}
+							value={globalTribalPropsTo}
 							onChange={handleTribalPropertiesTo}
 						>
 							<MenuItem value={1}>1</MenuItem>

@@ -31,11 +31,14 @@ export const muniCardSlice = createSlice({
         },
         filteredMuniPropsTo: (state, action) => {
             state.propertiesTo.value = action.payload;
+        },
+        resetMuni: (state, action) => {
+            return initialState
         }
     }
 })
 
 
-export const { filteredMuniFrom, filteredMuniTo, filteredMuniDollarsFrom, filteredMuniDollarsTo, filteredMuniPropsFrom, filteredMuniPropsTo } = muniCardSlice.actions
+export const { filteredMuniFrom, filteredMuniTo, filteredMuniDollarsFrom, filteredMuniDollarsTo, filteredMuniPropsFrom, filteredMuniPropsTo, resetMuni } = muniCardSlice.actions
 
 export default muniCardSlice.reducer;

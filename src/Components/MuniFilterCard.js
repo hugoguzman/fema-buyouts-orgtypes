@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import '@fontsource/roboto';
 import {
 	Card,
@@ -18,6 +17,7 @@ import {
 	filteredMuniPropsFrom,
 	filteredMuniPropsTo,
 } from './muniCardSlice';
+import MuniFilterCardButtons from './MuniFilterCardButtons';
 
 function MuniFilterCard(props) {
 	const dispatch = useDispatch();
@@ -32,50 +32,32 @@ function MuniFilterCard(props) {
 	const globalMuniDollarsTo = useSelector(
 		(state) => state.filterMuni.dollarsTo.value
 	);
-	const globalMunIPropsFrom = useSelector(
+	const globalMuniPropsFrom = useSelector(
 		(state) => state.filterMuni.propertiesFrom.value
 	);
-	const globalMunIPropsTo = useSelector(
+	const globalMuniPropsTo = useSelector(
 		(state) => state.filterMuni.propertiesTo.value
 	);
 
-	const [muniFrom, setMuniFrom] = useState(globalMuniFrom);
-	const [muniTo, setMuniTo] = useState(globalMuniTo);
-	const [municipalDollarsFrom, setMunicipalDollarsFrom] = useState(
-		globalMuniDollarsFrom
-	);
-	const [municipalDollarsTo, setMunicipalDollarsTo] =
-		useState(globalMuniDollarsTo);
-	const [municipalPropertiesFrom, setMunicipalPropertiesFrom] =
-		useState(globalMunIPropsFrom);
-	const [municipalPropertiesTo, setMunicipalPropertiesTo] =
-		useState(globalMunIPropsTo);
-
 	const handleMuniFrom = (e) => {
-		setMuniFrom(e.target.value);
 		dispatch(filteredMuniFrom(e.target.value));
 	};
 
 	const handleMuniTo = (e) => {
-		setMuniTo(e.target.value);
 		dispatch(filteredMuniTo(e.target.value));
 	};
 	const handleMunicipalDollarsFrom = (e) => {
-		setMunicipalDollarsFrom(e.target.value);
 		dispatch(filteredMuniDollarsFrom(e.target.value));
 	};
 
 	const handleMunicipalDollarsTo = (e) => {
-		setMunicipalDollarsTo(e.target.value);
 		dispatch(filteredMuniDollarsTo(e.target.value));
 	};
 	const handleMunicipalPropertiesFrom = (e) => {
-		setMunicipalPropertiesFrom(e.target.value);
 		dispatch(filteredMuniPropsFrom(e.target.value));
 	};
 
 	const handleMunicipalPropertiesTo = (e) => {
-		setMunicipalPropertiesTo(e.target.value);
 		dispatch(filteredMuniPropsTo(e.target.value));
 	};
 
@@ -83,6 +65,7 @@ function MuniFilterCard(props) {
 		<div>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
+					<MuniFilterCardButtons />
 					<Typography
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'
@@ -98,7 +81,7 @@ function MuniFilterCard(props) {
 						<Select
 							labelId='muni-from'
 							id='muni-from'
-							value={muniFrom}
+							value={globalMuniFrom}
 							onChange={handleMuniFrom}
 						>
 							<MenuItem value={1}>1</MenuItem>
@@ -115,7 +98,7 @@ function MuniFilterCard(props) {
 						<Select
 							labelId='muni-to'
 							id='muni-to'
-							value={muniTo}
+							value={globalMuniTo}
 							onChange={handleMuniTo}
 						>
 							<MenuItem value={1}>1</MenuItem>
@@ -132,7 +115,7 @@ function MuniFilterCard(props) {
 						<Select
 							labelId='muni-from'
 							id='muni-from'
-							value={municipalDollarsFrom}
+							value={globalMuniDollarsFrom}
 							onChange={handleMunicipalDollarsFrom}
 						>
 							<MenuItem value={274}>$274</MenuItem>
@@ -150,7 +133,7 @@ function MuniFilterCard(props) {
 						<Select
 							labelId='muni-to'
 							id='muni-to'
-							value={municipalDollarsTo}
+							value={globalMuniDollarsTo}
 							onChange={handleMunicipalDollarsTo}
 						>
 							<MenuItem value={0}>$0</MenuItem>
@@ -172,7 +155,7 @@ function MuniFilterCard(props) {
 						<Select
 							labelId='muniproperties-from'
 							id='muniproperties-from'
-							value={municipalPropertiesFrom}
+							value={globalMuniPropsFrom}
 							onChange={handleMunicipalPropertiesFrom}
 						>
 							<MenuItem value={0}>0</MenuItem>
@@ -193,7 +176,7 @@ function MuniFilterCard(props) {
 						<Select
 							labelId='muniproperties-to'
 							id='muniproperties-to'
-							value={municipalPropertiesTo}
+							value={globalMuniPropsTo}
 							onChange={handleMunicipalPropertiesTo}
 						>
 							<MenuItem value={0}>0</MenuItem>

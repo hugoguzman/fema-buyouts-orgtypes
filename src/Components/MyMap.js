@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import {
 	MapContainer,
@@ -19,6 +19,7 @@ import MuniFilterCard from './MuniFilterCard';
 import StateFilterCard from './StateFilterCard';
 import RegionalFilterCard from './RegionalFilterCard';
 import TribalFilterCard from './TribalFilterCard';
+import MapButtonGroup from './MapButtonGroup';
 
 const PREFIX = 'MyMap';
 
@@ -62,7 +63,7 @@ const Root = styled('div')(({ theme }) => ({
 		variant: 'standard',
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#fff5eb',
+		//backgroundColor: '#fff5eb',
 		paddingTop: 1,
 		paddingRight: 0,
 		paddingLeft: 0,
@@ -75,6 +76,7 @@ const Root = styled('div')(({ theme }) => ({
 const position = [37.1, -95.7];
 
 function MyMap() {
+	const [map, setMap] = useState(null);
 	const globalCountyFrom = useSelector(
 		(state) => state.filterCounty.grantsFrom.value
 	);
@@ -166,6 +168,7 @@ function MyMap() {
 		(state) => state.filterTribal.propertiesTo.value
 	);
 
+
 	const countyKey =
 		globalCountyFrom +
 		globalCountyTo +
@@ -202,6 +205,8 @@ function MyMap() {
 		globalTribalPropsFrom +
 		globalTribalPropsTo;
 
+	
+
 	return (
 		<Root>
 			<Grid
@@ -225,12 +230,13 @@ function MyMap() {
 								center={position}
 								zoom={4}
 								style={{ height: 390, width: '100%' }}
+								whenCreated={setMap}
 							>
 								<TileLayer
 									attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
 									url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
 								/>
-								<LayersControl collapsed={true} position='topright'>
+								<LayersControl collapsed='true' position='topright' sortLayers='false'>
 									<LayersControl.Overlay checked name='Counties'>
 										<LayerGroup key={countyKey}>
 											<Counties/>
@@ -261,6 +267,11 @@ function MyMap() {
 						</CardContent>
 					</Card>
 				</Grid>
+				<MapButtonGroup 
+				position={position}
+				zoom={4}
+				map={map}
+				/>
 				<Grid
 					container
 					className={classes.dropdownsGrid}
@@ -284,6 +295,7 @@ function MyMap() {
 					</Grid>
 				</Grid>
 			</Grid>
+
 		</Root>
 	);
 }

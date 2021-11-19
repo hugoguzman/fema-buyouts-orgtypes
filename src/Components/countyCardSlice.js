@@ -31,11 +31,15 @@ export const countyCardSlice = createSlice({
         },
         filteredCountyPropsTo: (state, action) => {
             state.propertiesTo.value = action.payload;
+        },
+        // resetStates: state => initialState()
+        resetCounty: (state, action) => {
+            return initialState
         }
     }
 })
 
 
-export const { filteredCountyFrom, filteredCountyTo, filteredCountyDollarsFrom, filteredCountyDollarsTo, filteredCountyPropsFrom, filteredCountyPropsTo } = countyCardSlice.actions
+export const { filteredCountyFrom, filteredCountyTo, filteredCountyDollarsFrom, filteredCountyDollarsTo, filteredCountyPropsFrom, filteredCountyPropsTo, resetCounty } = countyCardSlice.actions
 
 export default countyCardSlice.reducer;

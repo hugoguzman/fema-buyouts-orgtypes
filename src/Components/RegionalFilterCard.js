@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import '@fontsource/roboto';
 import {
 	Card,
@@ -18,6 +17,7 @@ import {
 	filteredRegionalPropsFrom,
 	filteredRegionalPropsTo,
 } from './regionalCardSlice';
+import RegionalFilterCardButtons from './RegionalFilterCardButtons';
 
 function RegionalFilterCard(props) {
 	const dispatch = useDispatch();
@@ -41,47 +41,27 @@ function RegionalFilterCard(props) {
 		(state) => state.filterRegional.propertiesTo.value
 	);
 
-	const [regionalFrom, setRegionalFrom] = useState(globalRegionFrom);
-	const [regionalTo, setRegionalTo] = useState(globalRegionTo);
-	const [regionalDollarsFrom, setRegionalDollarsFrom] = useState(
-		globalRegionDollarsFrom
-	);
-	const [regionalDollarsTo, setRegionalDollarsTo] = useState(
-		globalRegionDollarsTo
-	);
-	const [regionalPropertiesFrom, setRegionalPropertiesFrom] = useState(
-		globalRegionPropsFrom
-	);
-	const [regionalPropertiesTo, setRegionalPropertiesTo] =
-		useState(globalRegionPropsTo);
-
 	const handleRegionalFrom = (e) => {
-		setRegionalFrom(e.target.value);
 		dispatch(filteredRegionalFrom(e.target.value));
 	};
 
 	const handleRegionalTo = (e) => {
-		setRegionalTo(e.target.value);
 		dispatch(filteredRegionalTo(e.target.value));
 	};
 
 	const handleRegionalDollarsFrom = (e) => {
-		setRegionalDollarsFrom(e.target.value);
 		dispatch(filteredRegionalDollarsFrom(e.target.value));
 	};
 
 	const handleRegionalDollarsTo = (e) => {
-		setRegionalDollarsTo(e.target.value);
 		dispatch(filteredRegionalDollarsTo(e.target.value));
 	};
 
 	const handleRegionalPropertiesFrom = (e) => {
-		setRegionalPropertiesFrom(e.target.value);
 		dispatch(filteredRegionalPropsFrom(e.target.value));
 	};
 
 	const handleRegionalPropertiesTo = (e) => {
-		setRegionalPropertiesTo(e.target.value);
 		dispatch(filteredRegionalPropsTo(e.target.value));
 	};
 
@@ -89,6 +69,7 @@ function RegionalFilterCard(props) {
 		<div>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
+					<RegionalFilterCardButtons />
 					<Typography
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'
@@ -104,7 +85,7 @@ function RegionalFilterCard(props) {
 						<Select
 							labelId='regional-from'
 							id='regional-from'
-							value={regionalFrom}
+							value={globalRegionFrom}
 							onChange={handleRegionalFrom}
 						>
 							<MenuItem value={1}>1</MenuItem>
@@ -119,7 +100,7 @@ function RegionalFilterCard(props) {
 						<Select
 							labelId='regional-to'
 							id='regional-to'
-							value={regionalTo}
+							value={globalRegionTo}
 							onChange={handleRegionalTo}
 						>
 							<MenuItem value={1}>1</MenuItem>
@@ -134,7 +115,7 @@ function RegionalFilterCard(props) {
 						<Select
 							labelId='regional-from'
 							id='regional-from'
-							value={regionalDollarsFrom}
+							value={globalRegionDollarsFrom}
 							onChange={handleRegionalDollarsFrom}
 						>
 							<MenuItem value={35228}>$35,228</MenuItem>
@@ -152,7 +133,7 @@ function RegionalFilterCard(props) {
 						<Select
 							labelId='regional-to'
 							id='regional-to'
-							value={regionalDollarsTo}
+							value={globalRegionDollarsTo}
 							onChange={handleRegionalDollarsTo}
 						>
 							<MenuItem value={35228}>$35,228</MenuItem>
@@ -173,7 +154,7 @@ function RegionalFilterCard(props) {
 						<Select
 							labelId='regionalproperties-from'
 							id='regionalproperties-from'
-							value={regionalPropertiesFrom}
+							value={globalRegionPropsFrom}
 							onChange={handleRegionalPropertiesFrom}
 						>
 							<MenuItem value={1}>1</MenuItem>
@@ -193,7 +174,7 @@ function RegionalFilterCard(props) {
 						<Select
 							labelId='regionalproperties-to'
 							id='regionalproperties-to'
-							value={regionalPropertiesTo}
+							value={globalRegionPropsTo}
 							onChange={handleRegionalPropertiesTo}
 						>
 							<MenuItem value={1}>1</MenuItem>
