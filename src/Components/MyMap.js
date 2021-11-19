@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import {
 	MapContainer,
@@ -76,6 +76,10 @@ const Root = styled('div')(({ theme }) => ({
 const position = [37.1, -95.7];
 
 function MyMap() {
+	const controlRef = useRef();
+	useEffect(() => {
+		console.log(controlRef)
+	}, [controlRef])
 	const [map, setMap] = useState(null);
 	const globalCountyFrom = useSelector(
 		(state) => state.filterCounty.grantsFrom.value
@@ -236,7 +240,7 @@ function MyMap() {
 									attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
 									url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
 								/>
-								<LayersControl collapsed='true' position='topright' sortLayers='false'>
+								<LayersControl ref={controlRef} collapsed='true' position='topright' sortLayers='false'>
 									<LayersControl.Overlay checked name='Counties'>
 										<LayerGroup key={countyKey}>
 											<Counties/>
