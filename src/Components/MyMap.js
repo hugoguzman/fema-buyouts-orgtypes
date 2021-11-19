@@ -19,7 +19,7 @@ import MuniFilterCard from './MuniFilterCard';
 import StateFilterCard from './StateFilterCard';
 import RegionalFilterCard from './RegionalFilterCard';
 import TribalFilterCard from './TribalFilterCard';
-import MyButtonGroup from './myButtonGroup';
+import MapButtonGroup from './MapButtonGroup';
 
 const PREFIX = 'MyMap';
 
@@ -267,7 +267,7 @@ function MyMap() {
 						</CardContent>
 					</Card>
 				</Grid>
-				<MyButtonGroup 
+				<MapButtonGroup 
 				position={position}
 				zoom={4}
 				map={map}
