@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import {
 	MapContainer,
@@ -76,7 +76,7 @@ const Root = styled('div')(({ theme }) => ({
 
 const position = [37.1, -95.7];
 
-function MyMap() {
+const MyMap = React.forwardRef(function MyMap(props, ref) {
 	const popperRef = useRef();
 	const controlRef = useRef();
 	const positionRef = useRef({
@@ -212,16 +212,15 @@ function MyMap() {
 		globalTribalPropsFrom +
 		globalTribalPropsTo;
 
-	const handleMouseMove = (event) => {
-		// controlRef.current = { x: event.clientX, y: event.clientY };
-
-		if (popperRef.current != null) {
-			popperRef.current.update();
-		}
-	};
+	// const handleMouseMove = (event) => {
+		
+	// 	if (popperRef.current != null) {
+	// 		popperRef.current.update();
+	// 	}
+	// };
 
 	return (
-		<Root>
+		<Root {...props} ref={ref}>
 			<Grid
 				container
 				className={classes.h1grid}
@@ -238,28 +237,28 @@ function MyMap() {
 			>
 				<Tooltip
 				title='Zoom in with (+) and zoom out with (-).'
-				placement='top'
+				placement='top-start'
 				arrow
-				PopperProps={{
-					popperRef,
-					anchorEl: {
-						getBoundingClientRect: () => {
-							return new DOMRect(
-								positionRef.current.x,
-								controlRef.current.getBoundingClientRect().y,
-								0,
-								0
-							);
-						},
-					},
-				}}
+				// PopperProps={{
+				// 	popperRef,
+				// 	anchorEl: {
+				// 		getBoundingClientRect: () => {
+				// 			return new DOMRect(
+				// 				positionRef.current.x,
+				// 				controlRef.current.getBoundingClientRect().y,
+				// 				0,
+				// 				0
+				// 			);
+				// 		},
+				// 	},
+				// }}
 			>
 				<Grid
 					item
 					xs={12}
 					md={12}
 					ref={controlRef}
-					onMouseMove={handleMouseMove}
+					// onMouseMove={handleMouseMove}
 				>
 					<Card raised={false} className={classes.map}>
 						<CardContent className={classes.map}>
@@ -335,6 +334,6 @@ function MyMap() {
 			</Grid>
 		</Root>
 	);
-}
+});
 
 export default MyMap;
