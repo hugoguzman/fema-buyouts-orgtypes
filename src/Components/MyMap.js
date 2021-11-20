@@ -20,6 +20,7 @@ import StateFilterCard from './StateFilterCard';
 import RegionalFilterCard from './RegionalFilterCard';
 import TribalFilterCard from './TribalFilterCard';
 import MapButtonGroup from './MapButtonGroup';
+import Tooltip from '@mui/material/Tooltip';
 
 const PREFIX = 'MyMap';
 
@@ -76,10 +77,15 @@ const Root = styled('div')(({ theme }) => ({
 const position = [37.1, -95.7];
 
 function MyMap() {
+	const popperRef = useRef();
 	const controlRef = useRef();
+	const positionRef = useRef({
+		x: 0,
+		y: 0,
+	  });
 	useEffect(() => {
-		console.log(controlRef)
-	}, [controlRef])
+		console.log(controlRef);
+	}, [controlRef]);
 	const [map, setMap] = useState(null);
 	const globalCountyFrom = useSelector(
 		(state) => state.filterCounty.grantsFrom.value
@@ -102,9 +108,7 @@ function MyMap() {
 	const globalMuniFrom = useSelector(
 		(state) => state.filterMuni.grantsFrom.value
 	);
-	const globalMuniTo = useSelector(
-		(state) => state.filterMuni.grantsTo.value
-	);
+	const globalMuniTo = useSelector((state) => state.filterMuni.grantsTo.value);
 	const globalMuniDollarsFrom = useSelector(
 		(state) => state.filterMuni.dollarsFrom.value
 	);
@@ -172,7 +176,6 @@ function MyMap() {
 		(state) => state.filterTribal.propertiesTo.value
 	);
 
-
 	const countyKey =
 		globalCountyFrom +
 		globalCountyTo +
@@ -209,7 +212,13 @@ function MyMap() {
 		globalTribalPropsFrom +
 		globalTribalPropsTo;
 
-	
+	const handleMouseMove = (event) => {
+		// controlRef.current = { x: event.clientX, y: event.clientY };
+
+		if (popperRef.current != null) {
+			popperRef.current.update();
+		}
+	};
 
 	return (
 		<Root>
@@ -227,7 +236,31 @@ function MyMap() {
 				justifyContent='center'
 				alignItems='center'
 			>
-				<Grid item xs={12} md={12}>
+				<Tooltip
+				title='Zoom in with (+) and zoom out with (-).'
+				placement='top'
+				arrow
+				PopperProps={{
+					popperRef,
+					anchorEl: {
+						getBoundingClientRect: () => {
+							return new DOMRect(
+								positionRef.current.x,
+								controlRef.current.getBoundingClientRect().y,
+								0,
+								0
+							);
+						},
+					},
+				}}
+			>
+				<Grid
+					item
+					xs={12}
+					md={12}
+					ref={controlRef}
+					onMouseMove={handleMouseMove}
+				>
 					<Card raised={false} className={classes.map}>
 						<CardContent className={classes.map}>
 							<MapContainer
@@ -240,30 +273,34 @@ function MyMap() {
 									attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
 									url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
 								/>
-								<LayersControl ref={controlRef} collapsed='true' position='topright' sortLayers='false'>
+								<LayersControl
+									collapsed='true'
+									position='topright'
+									sortLayers='false'
+								>
 									<LayersControl.Overlay checked name='Counties'>
 										<LayerGroup key={countyKey}>
-											<Counties/>
+											<Counties />
 										</LayerGroup>
 									</LayersControl.Overlay>
 									<LayersControl.Overlay checked name='Municipalities'>
 										<LayerGroup key={municipalKey}>
-											<Municipalities/>
+											<Municipalities />
 										</LayerGroup>
 									</LayersControl.Overlay>
 									<LayersControl.Overlay checked name='State Entities'>
 										<LayerGroup key={stateKey}>
-											<States/>
+											<States />
 										</LayerGroup>
 									</LayersControl.Overlay>
 									<LayersControl.Overlay checked name='Regional Entities'>
 										<LayerGroup key={regionalKey}>
-											<Regions/>
+											<Regions />
 										</LayerGroup>
 									</LayersControl.Overlay>
 									<LayersControl.Overlay checked name='Tribal Nations'>
 										<LayerGroup key={tribalKey}>
-											<TribalNations/>
+											<TribalNations />
 										</LayerGroup>
 									</LayersControl.Overlay>
 								</LayersControl>
@@ -271,11 +308,8 @@ function MyMap() {
 						</CardContent>
 					</Card>
 				</Grid>
-				<MapButtonGroup 
-				position={position}
-				zoom={4}
-				map={map}
-				/>
+				</Tooltip>
+				<MapButtonGroup position={position} zoom={4} map={map} />
 				<Grid
 					container
 					className={classes.dropdownsGrid}
@@ -299,7 +333,6 @@ function MyMap() {
 					</Grid>
 				</Grid>
 			</Grid>
-
 		</Root>
 	);
 }
