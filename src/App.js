@@ -4,8 +4,7 @@ import MyMap from './Components/MyMap'
 
 
 function App() {
-  
-
+ 
   return (
     <div className="App">
       <TopAppBar />
