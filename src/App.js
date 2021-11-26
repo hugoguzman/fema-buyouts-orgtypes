@@ -14,8 +14,8 @@ function App() {
           paddingBottom: "1rem"
         }}
       >
-        <Link to="/counties">Counties</Link> |{" "}
-        <Link to="/municipalities">Municipalities</Link>
+        <Link to="/">Home</Link> | {" "}
+        <Link to="/counties">Counties</Link>
       </nav>
       <TopAppBar />
       <MyMap />

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { countyData } from "../countyBuyouts2";
-import { getInvoices } from "../data";
 
 export default function Counties() {
   let counties = countyData();
@@ -12,6 +11,8 @@ export default function Counties() {
           padding: "1rem"
         }}
       >
+        <Link to="/">Home</Link> | {" "}
+        <Link to="/counties">Counties</Link> |{" "}
         {counties.map(county => (
           <Link
             style={{ display: "block", margin: "1rem 0" }}
