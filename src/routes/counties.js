@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { countyData } from "../countyBuyouts2";
 
 export default function Counties() {
@@ -16,13 +16,14 @@ export default function Counties() {
         {counties.map(county => (
           <Link
             style={{ display: "block", margin: "1rem 0" }}
-            to={`/counties/${county.properties.subgrantee_clean}`}
+            to={`/counties/${county.properties.grantcount}`}
             key={county.properties.subgrantee_clean}
           >
             {county.properties.subgrantee_clean}
           </Link>
         ))}
       </nav>
+      <Outlet />
     </div>
   );
 }

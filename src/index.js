@@ -11,7 +11,8 @@ import {
   Route 
 } from "react-router-dom";
 import Counties from "./routes/counties";
-import Municipalities from "./routes/municipalities";
+import County from "./routes/county";
+
 
 
 ReactDOM.render(
@@ -20,8 +21,17 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
       <Route path="/" element={<App />} />
-        <Route path="counties" element={<Counties />} />
-        <Route path="municipalities" element={<Municipalities />} />
+        <Route path="counties" element={<Counties />}>
+          <Route path=":countyID" element={<County />} />
+        </Route>
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
     </Routes>
     </BrowserRouter>
   </React.StrictMode>
