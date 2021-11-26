@@ -12,7 +12,7 @@ export default function Counties() {
         }}
       >
         <Link to="/">Home</Link> | {" "}
-        <Link to="/counties">Counties</Link> |{" "}
+        <Link to="/counties">Counties</Link>
         {counties.map(county => (
           <Link
             style={{ display: "block", margin: "1rem 0" }}
