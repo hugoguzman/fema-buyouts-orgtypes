@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import {
 	MapContainer,
@@ -20,9 +20,6 @@ import StateFilterCard from './StateFilterCard';
 import RegionalFilterCard from './RegionalFilterCard';
 import TribalFilterCard from './TribalFilterCard';
 import MapButtonGroup from './MapButtonGroup';
-import Tooltip from '@mui/material/Tooltip';
-import Fade from '@mui/material/Fade';
-import Zoom from '@mui/material/Zoom';
 
 const PREFIX = 'MyMap';
 
@@ -78,17 +75,9 @@ const Root = styled('div')(({ theme }) => ({
 
 const position = [37.1, -95.7];
 
-const MyMap = React.forwardRef(function MyMap(props, ref) {
-	// const popperRef = useRef();
-	const controlRef = useRef();
-	// const positionRef = useRef({
-	// 	x: 0,
-	// 	y: 0,
-	//   });
-	useEffect(() => {
-		console.log(controlRef);
-	}, [controlRef]);
+function MyMap() {
 	const [map, setMap] = useState(null);
+
 	const globalCountyFrom = useSelector(
 		(state) => state.filterCounty.grantsFrom.value
 	);
@@ -111,6 +100,7 @@ const MyMap = React.forwardRef(function MyMap(props, ref) {
 		(state) => state.filterMuni.grantsFrom.value
 	);
 	const globalMuniTo = useSelector((state) => state.filterMuni.grantsTo.value);
+
 	const globalMuniDollarsFrom = useSelector(
 		(state) => state.filterMuni.dollarsFrom.value
 	);
@@ -214,21 +204,13 @@ const MyMap = React.forwardRef(function MyMap(props, ref) {
 		globalTribalPropsFrom +
 		globalTribalPropsTo;
 
-	// const handleMouseMove = (event) => {
-
-	// 	if (popperRef.current != null) {
-	// 		popperRef.current.update();
-	// 	}
-	// };
-
 	return (
-		<Root {...props} ref={ref}>
+		<Root>
 			<Grid
 				container
 				sx={{
 					paddingTop: 3,
 				}}
-				// className={classes.h1grid}
 				justifyContent='center'
 				alignItems='center'
 			>
@@ -240,87 +222,54 @@ const MyMap = React.forwardRef(function MyMap(props, ref) {
 				justifyContent='center'
 				alignItems='center'
 			>
-				<Tooltip
-					TransitionComponent={Zoom}
-					TransitionProps={{ timeout: 600 }}
-					title='Choose which layers to display.'
-					placement='top-end'
-				>
-					<Tooltip
-						TransitionComponent={Zoom}
-						TransitionProps={{ timeout: 600 }}
-						title='Zoom in with (+) and zoom out with (-).'
-						placement='top-start'
-						// PopperProps={{
-						// 	popperRef,
-						// 	anchorEl: {
-						// 		getBoundingClientRect: () => {
-						// 			return new DOMRect(
-						// 				positionRef.current.x,
-						// 				controlRef.current.getBoundingClientRect().y,
-						// 				0,
-						// 				0
-						// 			);
-						// 		},
-						// 	},
-						// }}
-					>
-						<Grid
-							item
-							xs={12}
-							md={12}
-							ref={controlRef}
-							// onMouseMove={handleMouseMove}
-						>
-							<Card raised={false} className={classes.map}>
-								<CardContent className={classes.map}>
-									<MapContainer
-										center={position}
-										zoom={4}
-										style={{ height: 390, width: '100%' }}
-										whenCreated={setMap}
-									>
-										<TileLayer
-											attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-											url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
-										/>
-										<LayersControl
-											collapsed='true'
-											position='topright'
-											sortLayers='false'
-										>
-											<LayersControl.Overlay checked name='Counties'>
-												<LayerGroup key={countyKey}>
-													<Counties />
-												</LayerGroup>
-											</LayersControl.Overlay>
-											<LayersControl.Overlay checked name='Municipalities'>
-												<LayerGroup key={municipalKey}>
-													<Municipalities />
-												</LayerGroup>
-											</LayersControl.Overlay>
-											<LayersControl.Overlay checked name='State Entities'>
-												<LayerGroup key={stateKey}>
-													<States />
-												</LayerGroup>
-											</LayersControl.Overlay>
-											<LayersControl.Overlay checked name='Regional Entities'>
-												<LayerGroup key={regionalKey}>
-													<Regions />
-												</LayerGroup>
-											</LayersControl.Overlay>
-											<LayersControl.Overlay checked name='Tribal Nations'>
-												<LayerGroup key={tribalKey}>
-													<TribalNations />
-												</LayerGroup>
-											</LayersControl.Overlay>
-										</LayersControl>
-									</MapContainer>
-								</CardContent>
-							</Card>
-						</Grid>
-					</Tooltip>
-				</Tooltip>
+				<Grid item xs={12} md={12}>
+					<Card raised={false} className={classes.map}>
+						<CardContent className={classes.map}>
+							<MapContainer
+								center={position}
+								zoom={4}
+								style={{ height: 390, width: '100%' }}
+								whenCreated={setMap}
+							>
+								<TileLayer
+									attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+									url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
+								/>
+								<LayersControl
+									collapsed='true'
+									position='topright'
+									sortLayers='false'
+								>
+									<LayersControl.Overlay checked name='Counties'>
+										<LayerGroup key={countyKey}>
+											<Counties />
+										</LayerGroup>
+									</LayersControl.Overlay>
+									<LayersControl.Overlay checked name='Municipalities'>
+										<LayerGroup key={municipalKey}>
+											<Municipalities />
+										</LayerGroup>
+									</LayersControl.Overlay>
+									<LayersControl.Overlay checked name='State Entities'>
+										<LayerGroup key={stateKey}>
+											<States />
+										</LayerGroup>
+									</LayersControl.Overlay>
+									<LayersControl.Overlay checked name='Regional Entities'>
+										<LayerGroup key={regionalKey}>
+											<Regions />
+										</LayerGroup>
+									</LayersControl.Overlay>
+									<LayersControl.Overlay checked name='Tribal Nations'>
+										<LayerGroup key={tribalKey}>
+											<TribalNations />
+										</LayerGroup>
+									</LayersControl.Overlay>
+								</LayersControl>
+							</MapContainer>
+						</CardContent>
+					</Card>
+				</Grid>
 				<MapButtonGroup position={position} zoom={4} map={map} />
 				<Grid
 					container
@@ -347,6 +296,6 @@ const MyMap = React.forwardRef(function MyMap(props, ref) {
 			</Grid>
 		</Root>
 	);
-});
+}
 
 export default MyMap;
