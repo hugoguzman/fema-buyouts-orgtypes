@@ -16,7 +16,7 @@ export default function Counties() {
         {counties.map(county => (
           <Link
             style={{ display: "block", margin: "1rem 0" }}
-            to={`/counties/${county.properties.grantcount}`}
+            to={`/counties/${county.properties.group}`}
             key={county.properties.subgrantee_clean}
           >
             {county.properties.subgrantee_clean}

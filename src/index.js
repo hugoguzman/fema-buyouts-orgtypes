@@ -22,7 +22,7 @@ ReactDOM.render(
       <Routes>
       <Route path="/" element={<App />} />
         <Route path="counties" element={<Counties />}>
-          <Route path=":countyID" element={<County />} />
+          <Route path=":countyId" element={<County />} />
         </Route>
         <Route
           path="*"

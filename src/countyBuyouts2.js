@@ -96303,3 +96303,9 @@ let countiesArray = counties.features;
 export function countyData() {
     return countiesArray;
   }
+
+export function getCounty(number) {
+    return countiesArray.find(
+    county => county.properties.group === number
+  );
+}
