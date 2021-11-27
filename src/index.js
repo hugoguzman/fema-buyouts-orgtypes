@@ -5,18 +5,38 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
+import { 
+  BrowserRouter,
+  Routes,
+  Route 
+} from "react-router-dom";
+import Counties from "./routes/counties";
+import County from "./routes/county";
+
 
 
 ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+      <Route path="/" element={<App />} />
+        <Route path="counties" element={<Counties />}>
+          <Route path=":countyId" element={<County />} />
+        </Route>
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
+    </Routes>
+    </BrowserRouter>
   </React.StrictMode>
   </Provider>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
