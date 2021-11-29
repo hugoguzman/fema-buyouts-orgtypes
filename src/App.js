@@ -25,13 +25,6 @@ function App() {
 
   return (
     <div className="App">
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem"
-        }}
-      >
-      </nav>
       <TopAppBar />
       <ControlModal handleOpen={handleOpen} handleClose={handleClose} open={open}/>
       <ZoomModal handleOpen={handleOpenChild} handleClose={handleCloseChild} open={openChild}/>
