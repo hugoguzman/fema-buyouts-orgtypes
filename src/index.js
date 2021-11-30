@@ -20,7 +20,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<App />} >
         <Route path="counties" element={<Counties />}>
           <Route path=":countyId" element={<County />} />
         </Route>
@@ -32,6 +32,7 @@ ReactDOM.render(
             </main>
           }
         />
+      </Route>S
     </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -12,8 +12,6 @@ export default function Counties() {
           padding: "1rem"
         }}
       >
-        <Link to="/">Home</Link> | {" "}
-        <Link to="/counties">Counties</Link> {" "}
         <input
           value={searchParams.get("filter") || ""}
           onChange={event => {

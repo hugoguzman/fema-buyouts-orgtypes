@@ -26,10 +26,11 @@ function App() {
   return (
     <div className="App">
       <TopAppBar />
-      <ControlModal handleOpen={handleOpen} handleClose={handleClose} open={open}/>
-      <ZoomModal handleOpen={handleOpenChild} handleClose={handleCloseChild} open={openChild}/>
-      <MyMap />
       <Outlet />
+      {/*<ControlModal handleOpen={handleOpen} handleClose={handleClose} open={open}/>*/}
+      {/*<ZoomModal handleOpen={handleOpenChild} handleClose={handleCloseChild} open={openChild}/>*/}
+      <MyMap />
+      
     </div>
   );
 }
