@@ -4,8 +4,10 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import { Tab, Tabs } from '@mui/material';
+import { Link, Outlet } from "react-router-dom";
+
 
 export default function TopAppBar() {
   return (
@@ -13,22 +15,17 @@ export default function TopAppBar() {
       <AppBar 
       color="transparent"
       elevation={0}
-      position='static'>
+      position='static'
+      >
         <Toolbar>
-          <IconButton
-            size='large'
-            edge='start'
-            color='inherit'
-            aria-label='menu'
-            sx={{ mr: 0 }}
-            onClick={() => {
-              console.log('clicked'); //function for menu button top app bar
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
+
+            <Tabs>
+              <Tab label='Home'  to='/' component={Link} />
+              <Tab label="Map" to ='/usmap' component={Link} />
+              <Tab label='Counties' to ='/counties' component={Link} />
+            </Tabs>
           <Typography variant='h5' component='div' sx={{ flexGrow: 1 }}>
-            FEMA Buyouts by Organizational Class
+            AdaptationApps.com
           </Typography>
           <IconButton
             size='large'
@@ -43,6 +40,7 @@ export default function TopAppBar() {
           </IconButton>
         </Toolbar>
       </AppBar>
+      <Outlet />
     </Box>
   );
 }

@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet, useSearchParams } from "react-router-dom";
+import { NavLink, Outlet, useSearchParams } from "react-router-dom";
 import { countyData } from "../countyBuyouts2";
 
 export default function Counties() {
@@ -12,8 +12,6 @@ export default function Counties() {
           padding: "1rem"
         }}
       >
-        <Link to="/">Home</Link> | {" "}
-        <Link to="/counties">Counties</Link> {" "}
         <input
           value={searchParams.get("filter") || ""}
           onChange={event => {

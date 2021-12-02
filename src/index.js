@@ -5,13 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
-import { 
-  BrowserRouter,
-  Routes,
-  Route 
-} from "react-router-dom";
-import Counties from "./routes/counties";
-import County from "./routes/county";
+import { BrowserRouter} from "react-router-dom";
+
 
 
 
@@ -19,20 +14,7 @@ ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<App />} />
-        <Route path="counties" element={<Counties />}>
-          <Route path=":countyId" element={<County />} />
-        </Route>
-        <Route
-          path="*"
-          element={
-            <main style={{ padding: "1rem" }}>
-              <p>There's nothing here!</p>
-            </main>
-          }
-        />
-    </Routes>
+      <App />
     </BrowserRouter>
   </React.StrictMode>
   </Provider>,
