@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Tab, Tabs } from '@mui/material';
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 
 export default function TopAppBar() {
@@ -21,10 +21,11 @@ export default function TopAppBar() {
 
             <Tabs>
               <Tab label='Home'  to='/' component={Link} />
+              <Tab label="Map" to ='/usmap' component={Link} />
               <Tab label='Counties' to ='/counties' component={Link} />
             </Tabs>
           <Typography variant='h5' component='div' sx={{ flexGrow: 1 }}>
-            FEMA Buyouts by Organizational Class
+            AdaptationApps.com
           </Typography>
           <IconButton
             size='large'
@@ -39,6 +40,7 @@ export default function TopAppBar() {
           </IconButton>
         </Toolbar>
       </AppBar>
+      <Outlet />
     </Box>
   );
 }
