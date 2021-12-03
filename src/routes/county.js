@@ -4,6 +4,9 @@ import {
 	MapContainer,
 	TileLayer,
 } from 'react-leaflet';
+import { DataGrid } from '@mui/x-data-grid';
+
+
 
 const position = [-87.9375687,31.1459866]
 export default function County() {
@@ -26,7 +29,7 @@ export default function County() {
   </p>
   <MapContainer
 								center={position}
-								zoom={4}
+								zoom={10}
 								style={{ height: 390, width: '100%' }}
 							>
 								<TileLayer
