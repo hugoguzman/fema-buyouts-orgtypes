@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import {
 	MapContainer,
@@ -20,6 +20,8 @@ import StateFilterCard from '../Components/StateFilterCard';
 import RegionalFilterCard from '../Components/RegionalFilterCard';
 import TribalFilterCard from '../Components/TribalFilterCard';
 import MapButtonGroup from '../Components/MapButtonGroup';
+import ControlModal from '../Components/ControlModal';
+import ZoomModal from '../Components/ZoomModal';
 
 const PREFIX = 'MyMap';
 
@@ -75,9 +77,22 @@ const Root = styled('div')(({ theme }) => ({
 
 const position = [37.1, -95.7];
 
+
 function MyMap() {
 	const [map, setMap] = useState(null);
-
+	useEffect(() => {
+		setOpen(true);
+	}, []);
+	const [open, setOpen] = useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => {
+		setOpen(false);
+		setOpenChild(true);
+	};
+	const [openChild, setOpenChild] = useState(false);
+	const handleOpenChild = () => setOpenChild(true);
+	const handleCloseChild = () => setOpenChild(false);
+	
 	const globalCountyFrom = useSelector(
 		(state) => state.filterCounty.grantsFrom.value
 	);
@@ -206,6 +221,16 @@ function MyMap() {
 
 	return (
 		<Root>
+			<ControlModal
+				handleOpen={handleOpen}
+				handleClose={handleClose}
+				open={open}
+			/>
+			<ZoomModal
+				handleOpen={handleOpenChild}
+				handleClose={handleCloseChild}
+				open={openChild}
+			/>
 			<Grid
 				container
 				sx={{
