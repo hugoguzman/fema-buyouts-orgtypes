@@ -77821,13 +77821,5 @@ export const countyGrants =
     }
 ]
 
-let features = []
-let countyGrantsArray = countyGrants.features;
 
-export function countyGrantsData() {
-    return countyGrantsArray;
-  }
 
-export function getGrant() {
-    return countyGrantsArray.map(id => id.id);
-}
