@@ -16,9 +16,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 export default function TopAppBar() {
   const [openDrawer, setOpenDrawer] = useState(true)
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  console.log(matches);
+  console.log(isMobile);
 
   return (
     <>
@@ -30,7 +30,7 @@ export default function TopAppBar() {
       >
         <Toolbar>
 
-            {matches ? (
+            {isMobile ? (
             <NavDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
             ) : ( <Tabs>
               <Tab label='Home'  to='/' component={Link} />
@@ -41,7 +41,7 @@ export default function TopAppBar() {
             AdaptationApps.com
           </Typography>
         
-          {matches ? (
+          {isMobile ? (
           <IconButton onClick={() => setOpenDrawer(true)}>
             <MenuIcon/>
           </IconButton>) : (
