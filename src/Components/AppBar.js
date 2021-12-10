@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,10 +7,21 @@ import IconButton from '@mui/material/IconButton';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Tab, Tabs } from '@mui/material';
 import { Link, Outlet } from "react-router-dom";
+import NavDrawer from './NavDrawer';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import MenuIcon from '@mui/icons-material/Menu';
 
 
 export default function TopAppBar() {
+  const [openDrawer, setOpenDrawer] = useState(true)
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
+  console.log(matches);
+
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar 
       color="transparent"
@@ -19,15 +30,22 @@ export default function TopAppBar() {
       >
         <Toolbar>
 
-            <Tabs>
+            {matches ? (
+            <NavDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
+            ) : ( <Tabs>
               <Tab label='Home'  to='/' component={Link} />
               <Tab label="Map" to ='/usmap' component={Link} />
               <Tab label='Counties' to ='/counties' component={Link} />
-            </Tabs>
+            </Tabs>)}
           <Typography variant='h5' component='div' sx={{ flexGrow: 1 }}>
             AdaptationApps.com
           </Typography>
-          <IconButton
+        
+          {matches ? (
+          <IconButton onClick={() => setOpenDrawer(true)}>
+            <MenuIcon/>
+          </IconButton>) : (
+             <IconButton
             size='large'
             edge='start'
             color='inherit'
@@ -37,10 +55,11 @@ export default function TopAppBar() {
             href='https://github.com/hugoguzman/fema-buyouts-orgtypes.git'
           >
             <GitHubIcon />
-          </IconButton>
+          </IconButton>)}
         </Toolbar>
       </AppBar>
       <Outlet />
     </Box>
+    </>
   );
-}
+} 
