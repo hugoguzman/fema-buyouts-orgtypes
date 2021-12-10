@@ -1,7 +1,6 @@
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useDispatch } from 'react-redux';
-import { resetMuni } from './muniCardSlice';
 import {
 	filteredMuniDollarsFrom,
 	filteredMuniDollarsTo,
@@ -9,6 +8,7 @@ import {
 	filteredMuniTo,
 	filteredMuniPropsFrom,
 	filteredMuniPropsTo,
+    resetMuni
 } from './muniCardSlice';
 
 export default function MuniFilterCardButtons() {

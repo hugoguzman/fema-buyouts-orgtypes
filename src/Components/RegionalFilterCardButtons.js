@@ -1,7 +1,6 @@
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useDispatch } from 'react-redux';
-import { resetRegional } from './regionalCardSlice';
 import {
 	filteredRegionalDollarsFrom,
 	filteredRegionalDollarsTo,
@@ -9,6 +8,7 @@ import {
 	filteredRegionalTo,
 	filteredRegionalPropsFrom,
 	filteredRegionalPropsTo,
+    resetRegional
 } from './regionalCardSlice';
 
 export default function RegionalFilterCardButtons() {

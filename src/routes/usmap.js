@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import {
 	MapContainer,
@@ -9,17 +9,19 @@ import {
 import '@fontsource/roboto';
 import { Grid, Card, CardContent } from '@mui/material';
 import { useSelector } from 'react-redux';
-import Counties from './CountyGrants';
-import Municipalities from './MunicipalGrants';
-import Regions from './RegionalGrants';
-import TribalNations from './TribalGrants';
-import States from './StateGrants';
-import CountyFilterCard from './CountyFilterCard';
-import MuniFilterCard from './MuniFilterCard';
-import StateFilterCard from './StateFilterCard';
-import RegionalFilterCard from './RegionalFilterCard';
-import TribalFilterCard from './TribalFilterCard';
-import MapButtonGroup from './MapButtonGroup';
+import Counties from '../Components/CountyGrants';
+import Municipalities from '../Components/MunicipalGrants';
+import Regions from '../Components/RegionalGrants';
+import TribalNations from '../Components/TribalGrants';
+import States from '../Components/StateGrants';
+import CountyFilterCard from '../Components/CountyFilterCard';
+import MuniFilterCard from '../Components/MuniFilterCard';
+import StateFilterCard from '../Components/StateFilterCard';
+import RegionalFilterCard from '../Components/RegionalFilterCard';
+import TribalFilterCard from '../Components/TribalFilterCard';
+import MapButtonGroup from '../Components/MapButtonGroup';
+import ControlModal from '../Components/ControlModal';
+import ZoomModal from '../Components/ZoomModal';
 
 const PREFIX = 'MyMap';
 
@@ -75,9 +77,22 @@ const Root = styled('div')(({ theme }) => ({
 
 const position = [37.1, -95.7];
 
+
 function MyMap() {
 	const [map, setMap] = useState(null);
-
+	useEffect(() => {
+		setOpen(true);
+	}, []);
+	const [open, setOpen] = useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => {
+		setOpen(false);
+		setOpenChild(true);
+	};
+	const [openChild, setOpenChild] = useState(false);
+	const handleOpenChild = () => setOpenChild(true);
+	const handleCloseChild = () => setOpenChild(false);
+	
 	const globalCountyFrom = useSelector(
 		(state) => state.filterCounty.grantsFrom.value
 	);
@@ -206,6 +221,16 @@ function MyMap() {
 
 	return (
 		<Root>
+			<ControlModal
+				handleOpen={handleOpen}
+				handleClose={handleClose}
+				open={open}
+			/>
+			<ZoomModal
+				handleOpen={handleOpenChild}
+				handleClose={handleCloseChild}
+				open={openChild}
+			/>
 			<Grid
 				container
 				sx={{

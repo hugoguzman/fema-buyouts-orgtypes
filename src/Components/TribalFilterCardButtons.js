@@ -1,7 +1,6 @@
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useDispatch } from 'react-redux';
-import { resetTribal } from './tribalCardSlice';
 import {
 	filteredTribalDollarsFrom,
 	filteredTribalDollarsTo,
@@ -9,6 +8,7 @@ import {
 	filteredTribalTo,
 	filteredTribalPropsFrom,
 	filteredTribalPropsTo,
+    resetTribal
 } from './tribalCardSlice';
 
 export default function TribalFilterCardButtons() {
