@@ -2,6 +2,10 @@ import { useParams } from "react-router-dom";
 import { getCounty } from "../countyBuyouts2"; 
 import { countyGrants } from "../countyGrants";
 import { DataGrid } from '@mui/x-data-grid';
+import {
+  useQuery,
+  gql
+} from "@apollo/client";
 
 const columns = [
   { field: 'subgrantee_clean', headerName: 'County', width: 125},
