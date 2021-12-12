@@ -9,7 +9,6 @@ import { BrowserRouter} from "react-router-dom";
 import {
   ApolloClient,
   ApolloProvider,
-  useQuery,
   gql
 } from "@apollo/client";
 import { createAuthLink } from "aws-appsync-auth-link";
@@ -55,18 +54,9 @@ client
   })
   .then(result => console.log(result));
 
-const COUNTY_GRANTS = gql`
-query countyGrants {
-  listCountygrants {
-    items {
-      county
-    }
-  }
-  getCountygrants(uuid: "") {
-    county
-  }
-}
-`;
+
+
+
 
 ReactDOM.render(
 <ApolloProvider client={client}>
