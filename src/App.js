@@ -16,15 +16,10 @@ import {
 
 const COUNTY_GRANTS = gql`
 query countyGrants {
-  listCountygrants {
+  listCountygrants(limit: 2) {
     items {
       county
-      uuid
     }
-    nextToken
-  }
-  getCountygrants(uuid: "*") {
-    county
   }
 }
 `;

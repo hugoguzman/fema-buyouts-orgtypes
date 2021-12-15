@@ -35,24 +35,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-client
-  .query({
-    query: gql`
-    query countyGrants {
-      listCountygrants {
-        items {
-          county
-          uuid
-        }
-        nextToken
-      }
-      getCountygrants(uuid: "*") {
-        county
-      }
-    }
-    `
-  })
-  .then(result => console.log(result));
+
 
 
 
