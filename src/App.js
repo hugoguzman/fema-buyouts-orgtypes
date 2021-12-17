@@ -13,12 +13,28 @@ import {
   useQuery,
   gql
 } from "@apollo/client";
+import { DataGrid } from '@mui/x-data-grid';
+import ReactTable from 'react-table'
+
+const columns = [
+  { field: 'subgrantee_clean', headerName: 'County', width: 125},
+  { field: 'state', headerName: 'State', width: 125},
+  { field: 'grantclass', headerName: 'Grant Class', width: 125},
+  { field: 'numberOfFinalProperties', headerName: 'Property Count', width: 125},
+  { field: 'projectAmount', headerName: 'Dollar Amount', width: 125},
+  { field: 'programFy', headerName: 'Year', width: 125},
+  { field: 'costSharePercentage', headerName: 'FEMA Cost Share %', width: 125},
+  { field: 'benefitCostRatio', headerName: 'Benefit Cost Ratio', width: 125},
+  { field: 'id', headerName: 'id', width: 90 },
+]
 
 const COUNTY_GRANTS = gql`
 query countyGrants {
   listCountygrants(limit: 2) {
     items {
       county
+      uuid
+      id
     }
   }
 }
@@ -30,14 +46,21 @@ function CountyGrants() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  return data.listCountygrants.items.map(({ county }) => (
-    <div key={county}>
-      <p>
-        {county}
-      </p>
+  return (
+    <div>
+    <DataGrid
+        rows={data.listCountygrants.items.filter(countyfilter => countyfilter.county ==="Manatee")}
+        columns={columns}
+        pageSize={100}
+        rowsPerPageOptions={[200]}
+        checkboxSelection
+        disableSelectionOnClick
+      />
     </div>
-  ));
+  );
 }
+
+
 
 function App() {
   return (
