@@ -2,6 +2,10 @@ import { useParams } from "react-router-dom";
 import { getCounty } from "../countyBuyouts2"; 
 import { countyGrants } from "../countyGrants";
 import { DataGrid } from '@mui/x-data-grid';
+import {
+  useQuery,
+  gql
+} from "@apollo/client";
 
 
 const columns = [
@@ -16,6 +20,26 @@ const columns = [
   { field: 'id', headerName: 'ID', width: 90 },
 ]
 
+const COUNTY_GRANTS = gql`
+query countyGrants {
+  listCountygrants(limit: 1000) {
+    items {
+      county
+      uuid
+      id
+      subgrantee_clean
+      state
+      grantclass
+      numberOfFinalProperties
+      projectAmount
+      programFy
+      benefitCostRatio
+      costSharePercentage
+    }
+  }
+}
+`;
+
 export default function County() {
   let params = useParams();
   const formatter = new Intl.NumberFormat('en-US', {
@@ -27,6 +51,11 @@ export default function County() {
 
   let county = getCounty(parseInt(params.countyId, 10));
   
+  const { loading, error, data } = useQuery(COUNTY_GRANTS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
   return (
   <main style={{ padding: "1rem", width: "100%"}}>
   <h2>County: {county.properties.subgrantee_clean} ({county.properties.state})</h2>
@@ -36,7 +65,7 @@ export default function County() {
     <strong>Number of Properties:</strong> {county.properties.propertycount}
   </p>
   <DataGrid
-        rows={countyGrants.filter(subgrantee => subgrantee.subgrantee_clean === county.properties.subgrantee_clean)}
+        rows={data.listCountygrants.items.filter(subgrantee => subgrantee.subgrantee_clean === county.properties.subgrantee_clean && subgrantee.county === county.properties.subgrantee_clean)}
         columns={columns}
         pageSize={100}
         rowsPerPageOptions={[200]}

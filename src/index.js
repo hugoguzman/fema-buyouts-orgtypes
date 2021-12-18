@@ -9,7 +9,6 @@ import { BrowserRouter} from "react-router-dom";
 import {
   ApolloClient,
   ApolloProvider,
-  gql
 } from "@apollo/client";
 import { createAuthLink } from "aws-appsync-auth-link";
 import { createHttpLink } from 'apollo-link-http';

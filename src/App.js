@@ -14,7 +14,7 @@ import {
   gql
 } from "@apollo/client";
 import { DataGrid } from '@mui/x-data-grid';
-import ReactTable from 'react-table'
+
 
 const columns = [
   { field: 'subgrantee_clean', headerName: 'County', width: 125},
