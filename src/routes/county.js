@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { getCounty } from "../countyBuyouts2"; 
-import { countyGrants } from "../countyGrants";
 import { DataGrid } from '@mui/x-data-grid';
 import {
   useQuery,
@@ -35,6 +34,19 @@ query countyGrants {
       programFy
       benefitCostRatio
       costSharePercentage
+    }
+  }
+}
+`;
+
+const COUNTY_BUYOUT_GRANTS = gql`
+query countyBuyoutGrants {
+  listCountybuyoutgrants(limit: 1000) {
+    items {
+      county
+      uuid
+      subgrantee_clean
+      state
     }
   }
 }

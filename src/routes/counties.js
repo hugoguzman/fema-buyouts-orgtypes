@@ -1,9 +1,33 @@
 import { NavLink, Outlet, useSearchParams } from "react-router-dom";
 import { countyData } from "../countyBuyouts2";
+import {
+  useQuery,
+  gql
+} from "@apollo/client";
+
+const COUNTY_BUYOUT_GRANTS = gql`
+query countyBuyoutGrants {
+  listCountybuyoutgrants(limit: 1000) {
+    items {
+      county
+      uuid
+      subgrantee_clean
+      state
+    }
+  }
+}
+`;
+
 
 export default function Counties() {
-  let counties = countyData();
   let [searchParams, setSearchParams] = useSearchParams();
+  const { loading, error, data } = useQuery(COUNTY_BUYOUT_GRANTS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+  let counties = countyData();
+
   return (
     <div style={{ display: "flex" }}>
       <nav
@@ -23,10 +47,10 @@ export default function Counties() {
             }
           }}
         />
-        {counties.filter(county => {
+        {data.listCountybuyoutgrants.items.filter(county => {
             let filter = searchParams.get("filter");
             if (!filter) return true;
-            let name = county.properties.subgrantee_clean.toLowerCase();
+            let name = county.subgrantee_clean.toLowerCase();
             return name.startsWith(filter.toLowerCase());
           })
         .map(county => (
@@ -38,10 +62,10 @@ export default function Counties() {
                 color: isActive ? "red" : ""
               };
             }}
-            to={`/counties/${county.properties.group}`}
-            key={county.properties.subgrantee_clean}
+            to={`/counties/${county.uuid}`}
+            key={county.subgrantee_clean}
           >
-            {county.properties.subgrantee_clean}
+            {county.subgrantee_clean}
           </NavLink>
         ))}
       </nav>
