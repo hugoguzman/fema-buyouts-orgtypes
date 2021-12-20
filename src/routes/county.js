@@ -75,7 +75,7 @@ export default function County() {
   const uniqueCounties = countyBuyouts.data.listCountybuyoutgrants.items.map(items => items.subgrantee_clean);
   const countiesFilter = buyoutCounties.find(uuid => uuid === params.countyId);
 
-  const uuids = getCounty(parseInt(params.countyId, 10));
+  let uuids = getCounty(parseInt(params.countyId, 10));
 
   
 
