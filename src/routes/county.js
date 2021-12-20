@@ -21,7 +21,7 @@ const columns = [
 
 const COUNTY_GRANTS = gql`
 query countyGrants {
-  listCountygrants(limit: 1000) {
+  listCountygrants(limit: 10) {
     items {
       county
       uuid
@@ -41,12 +41,13 @@ query countyGrants {
 
 const COUNTY_BUYOUT_GRANTS = gql`
 query countyBuyoutGrants {
-  listCountybuyoutgrants(limit: 1000) {
+  listCountybuyoutgrants(limit: 10) {
     items {
       county
       uuid
       subgrantee_clean
       state
+      grantcount
     }
   }
 }
@@ -61,23 +62,33 @@ export default function County() {
     maximumFractionDigits: 0,
   });
 
-  let county = getCounty(parseInt(params.countyId, 10));
-  
-  const { loading, error, data } = useQuery(COUNTY_GRANTS);
+  const countyUniques = useQuery(COUNTY_GRANTS);
+  const countyBuyouts = useQuery(COUNTY_BUYOUT_GRANTS);
+
+  const error = countyUniques.error || countyBuyouts.error;
+  const loading = countyUniques.loading || countyBuyouts.error;
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
+  
+  const buyoutCounties = countyBuyouts.data.listCountybuyoutgrants.items.map(items => items.uuid);
+  const uniqueCounties = countyBuyouts.data.listCountybuyoutgrants.items.map(items => items.subgrantee_clean);
+  const countiesFilter = buyoutCounties.find(uuid => uuid === params.countyId);
+
+  const uuids = getCounty(parseInt(params.countyId, 10));
+
+  
 
   return (
   <main style={{ padding: "1rem", width: "100%"}}>
-  <h2>County: {county.properties.subgrantee_clean} ({county.properties.state})</h2>
+  <h2>County: {params.countyId} ({countiesFilter})</h2>
   <p>
-    <strong>Number of Grants:</strong> {county.properties.grantcount} <br />
-    <strong>Total Dollar Amount:</strong> {formatter.format(county.properties.dollaramount)} <br />
-    <strong>Number of Properties:</strong> {county.properties.propertycount}
+    <strong>Number of Grants:</strong> {uniqueCounties} <br />
+    <strong>Total Dollar Amount:</strong> {formatter.format(uuids)} <br />
+    <strong>Number of Properties:</strong> {params.countyId}
   </p>
   <DataGrid
-        rows={data.listCountygrants.items.filter(subgrantee => subgrantee.subgrantee_clean === county.properties.subgrantee_clean && subgrantee.county === county.properties.subgrantee_clean)}
+        rows={countyUniques.data.listCountygrants.items.filter(subgrantee => subgrantee.subgrantee_clean === uuids.properties.subgrantee_clean)}
         columns={columns}
         pageSize={100}
         rowsPerPageOptions={[200]}

@@ -1,5 +1,4 @@
 import { NavLink, Outlet, useSearchParams } from "react-router-dom";
-import { countyData } from "../countyBuyouts2";
 import {
   useQuery,
   gql
@@ -25,8 +24,6 @@ export default function Counties() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-
-  let counties = countyData();
 
   return (
     <div style={{ display: "flex" }}>
@@ -63,7 +60,7 @@ export default function Counties() {
               };
             }}
             to={`/counties/${county.uuid}`}
-            key={county.subgrantee_clean}
+            key={county.uuid}
           >
             {county.subgrantee_clean}
           </NavLink>
