@@ -54,7 +54,7 @@ query countyBuyoutGrants {
 `;
 
 export default function County() {
-  let params = useParams();
+  const params = useParams();
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -75,7 +75,7 @@ export default function County() {
   const uniqueCounties = countyBuyouts.data.listCountybuyoutgrants.items.map(items => items.subgrantee_clean);
   const countiesFilter = buyoutCounties.find(uuid => uuid === params.countyId);
 
-  let uuids = getCounty(parseInt(params.countyId, 10));
+  const uuids = getCounty(parseInt(params.countyId, 10));
 
   
 
@@ -84,11 +84,11 @@ export default function County() {
   <h2>County: {params.countyId} ({countiesFilter})</h2>
   <p>
     <strong>Number of Grants:</strong> {uniqueCounties} <br />
-    <strong>Total Dollar Amount:</strong> {formatter.format(uuids)} <br />
+    <strong>Total Dollar Amount:</strong> {formatter.format(params.countyId)} <br />
     <strong>Number of Properties:</strong> {params.countyId}
   </p>
   <DataGrid
-        rows={countyUniques.data.listCountygrants.items.filter(subgrantee => subgrantee.subgrantee_clean === uuids.properties.subgrantee_clean)}
+        rows={countyUniques.data.listCountygrants.items.filter(subgrantee => subgrantee.subgrantee_clean === uniqueCounties)}
         columns={columns}
         pageSize={100}
         rowsPerPageOptions={[200]}
