@@ -21,7 +21,7 @@ const columns = [
 
 const COUNTY_GRANTS = gql`
 query countyGrants {
-  listCountygrants(limit: 10) {
+  listCountygrants(limit: 1000) {
     items {
       county
       uuid
@@ -41,7 +41,7 @@ query countyGrants {
 
 const COUNTY_BUYOUT_GRANTS = gql`
 query countyBuyoutGrants {
-  listCountybuyoutgrants(limit: 10) {
+  listCountybuyoutgrants(limit: 1000) {
     items {
       county
       uuid
@@ -53,7 +53,7 @@ query countyBuyoutGrants {
 }
 `;
 
-export default function County() {
+export default function CountyOverview() {
   const params = useParams();
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -62,47 +62,44 @@ export default function County() {
     maximumFractionDigits: 0,
   });
 
-  const countyUniques = useQuery(COUNTY_GRANTS);
-  const countyBuyouts = useQuery(COUNTY_BUYOUT_GRANTS);
-
-  const error = countyUniques.error || countyBuyouts.error;
-  const loading = countyUniques.loading || countyBuyouts.error;
+  const { loading, error, data } = useQuery(COUNTY_BUYOUT_GRANTS);
   
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
   
-  //const buyoutCounties = countyBuyouts.data.listCountybuyoutgrants.items.map(items => items.uuid);
-  //const uniqueCounties = countyBuyouts.data.listCountybuyoutgrants.items.map(items => items.subgrantee_clean);
-  //const countiesFilter = buyoutCounties.find(uuid => uuid === params.countyId);
-  //const countiesFilter2 = uniqueCounties.filter(subgrantee_clean => subgrantee_clean === "Giles");
-  
-  function getCounty() {
-    return countyBuyouts.data.listCountybuyoutgrants.items.map(items => items.subgrantee_clean
-  );
-  }
-
-  const getCountyFunction = getCounty();
-
-  function getCounty2(number) {
-    return getCountyFunction.find(
-      county => county.subgrantee_clean === number
-  );
-  }
-  const uuids = getCounty2(parseInt(params.countyId, 10));
-
-  
-
   return (
   <main style={{ padding: "1rem", width: "100%"}}>
-  <h2>County: {params.countyId} ({uuids})</h2>
+  <h2>County: {data.listCountybuyoutgrants.items.find(subgrantee => subgrantee.uuid === parseInt(params.countyId, 10))} ({params.countyId})</h2>
   <p>
-    <strong>Number of Grants:</strong> {uuids} <br />
+    <strong>Number of Grants:</strong> {params.countyId} <br />
     <strong>Total Dollar Amount:</strong> {formatter.format(params.countyId)} <br />
-    <strong>Number of Properties:</strong> {countyUniques.data.listCountygrants.items.find(subgrantee => subgrantee.subgrantee_clean === "Giles")}
+    <strong>Number of Properties:</strong> {params.countyId}
   </p>
+  <CountyTables />
+</main>
+);
+}
+
+function CountyTables() {
+  const params = useParams();
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+
+  const { loading, error, data } = useQuery(COUNTY_GRANTS);
+  
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+  
+  return (
+  <main style={{ padding: "1rem", width: "100%"}}>
   <DataGrid
-        rows={countyUniques.data.listCountygrants.items.filter(subgrantee => subgrantee.county === uuids)}
+        rows={data.listCountygrants.items.filter(subgrantee => subgrantee.county === "Manatee")}
         columns={columns}
         pageSize={100}
         rowsPerPageOptions={[200]}
