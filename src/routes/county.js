@@ -67,28 +67,42 @@ export default function County() {
 
   const error = countyUniques.error || countyBuyouts.error;
   const loading = countyUniques.loading || countyBuyouts.error;
+  
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
   
-  const buyoutCounties = countyBuyouts.data.listCountybuyoutgrants.items.map(items => items.uuid);
-  const uniqueCounties = countyBuyouts.data.listCountybuyoutgrants.items.map(items => items.subgrantee_clean);
-  const countiesFilter = buyoutCounties.find(uuid => uuid === params.countyId);
+  //const buyoutCounties = countyBuyouts.data.listCountybuyoutgrants.items.map(items => items.uuid);
+  //const uniqueCounties = countyBuyouts.data.listCountybuyoutgrants.items.map(items => items.subgrantee_clean);
+  //const countiesFilter = buyoutCounties.find(uuid => uuid === params.countyId);
+  //const countiesFilter2 = uniqueCounties.filter(subgrantee_clean => subgrantee_clean === "Giles");
+  
+  function getCounty() {
+    return countyBuyouts.data.listCountybuyoutgrants.items.map(items => items.subgrantee_clean
+  );
+  }
 
-  const uuids = getCounty(parseInt(params.countyId, 10));
+  const getCountyFunction = getCounty();
+
+  function getCounty2(number) {
+    return getCountyFunction.find(
+      county => county.subgrantee_clean === number
+  );
+  }
+  const uuids = getCounty2(parseInt(params.countyId, 10));
 
   
 
   return (
   <main style={{ padding: "1rem", width: "100%"}}>
-  <h2>County: {params.countyId} ({countiesFilter})</h2>
+  <h2>County: {params.countyId} ({uuids})</h2>
   <p>
-    <strong>Number of Grants:</strong> {uniqueCounties} <br />
+    <strong>Number of Grants:</strong> {uuids} <br />
     <strong>Total Dollar Amount:</strong> {formatter.format(params.countyId)} <br />
-    <strong>Number of Properties:</strong> {params.countyId}
+    <strong>Number of Properties:</strong> {countyUniques.data.listCountygrants.items.find(subgrantee => subgrantee.subgrantee_clean === "Giles")}
   </p>
   <DataGrid
-        rows={countyUniques.data.listCountygrants.items.filter(subgrantee => subgrantee.subgrantee_clean === uniqueCounties)}
+        rows={countyUniques.data.listCountygrants.items.filter(subgrantee => subgrantee.county === uuids)}
         columns={columns}
         pageSize={100}
         rowsPerPageOptions={[200]}
