@@ -66,13 +66,14 @@ export default function CountyOverview() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  const county = data.listCountybuyoutgrants.items.map(subgrantee => subgrantee.county);
+  const uuids = data.listCountybuyoutgrants.items.map(subgrantee => subgrantee.uuid);
+  const uuidMapper = uuids.find(item => item === params.countyId);
   
   return (
   <main style={{ padding: "1rem", width: "100%"}}>
-  <h2>County: {county.find(subgrantee => subgrantee === "Harris")} ({params.countyId})</h2>
+  <h2>County: {uuidMapper} ({uuidMapper})</h2>
   <p>
-    <strong>Number of Grants:</strong> {parseInt(params.countyId, 10)} <br />
+    <strong>Number of Grants:</strong> {params.countyId} <br />
     <strong>Total Dollar Amount:</strong> {formatter.format(params.countyId)} <br />
     <strong>Number of Properties:</strong> {params.countyId}
   </p>
