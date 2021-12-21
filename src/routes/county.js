@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { getCounty } from "../countyBuyouts2"; 
 import { DataGrid } from '@mui/x-data-grid';
 import {
   useQuery,
@@ -63,16 +62,17 @@ export default function CountyOverview() {
   });
 
   const { loading, error, data } = useQuery(COUNTY_BUYOUT_GRANTS);
-  
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
+
+  const county = data.listCountybuyoutgrants.items.map(subgrantee => subgrantee.county);
   
   return (
   <main style={{ padding: "1rem", width: "100%"}}>
-  <h2>County: {data.listCountybuyoutgrants.items.find(subgrantee => subgrantee.uuid === parseInt(params.countyId, 10))} ({params.countyId})</h2>
+  <h2>County: {county.find(subgrantee => subgrantee === "Harris")} ({params.countyId})</h2>
   <p>
-    <strong>Number of Grants:</strong> {params.countyId} <br />
+    <strong>Number of Grants:</strong> {parseInt(params.countyId, 10)} <br />
     <strong>Total Dollar Amount:</strong> {formatter.format(params.countyId)} <br />
     <strong>Number of Properties:</strong> {params.countyId}
   </p>
