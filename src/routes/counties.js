@@ -8,10 +8,8 @@ const COUNTY_BUYOUT_GRANTS = gql`
 query countyBuyoutGrants {
   listCountybuyoutgrants(limit: 1000) {
     items {
-      county
       uuid
       subgrantee_clean
-      state
     }
   }
 }
@@ -59,7 +57,7 @@ export default function Counties() {
                 color: isActive ? "red" : ""
               };
             }}
-            to={`/counties/${county.uuid}`}
+            to={`/counties/${county.subgrantee_clean}`}
             key={county.uuid}
           >
             {county.subgrantee_clean}

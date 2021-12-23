@@ -47,6 +47,8 @@ query countyBuyoutGrants {
       subgrantee_clean
       state
       grantcount
+      propertycount
+      dollaramount
     }
   }
 }
@@ -66,16 +68,25 @@ export default function CountyOverview() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  const uuids = data.listCountybuyoutgrants.items.map(subgrantee => subgrantee.uuid);
-  const uuidMapper = uuids.find(item => item === params.countyId);
+  const subgrantee = data.listCountybuyoutgrants.items.map(subgrantee => subgrantee.subgrantee_clean);
+  const subgranteeMapper = subgrantee.find(item => item === params.countyId);
+  console.log(subgranteeMapper);
   
+  function getCounty() {
+    return data.listCountybuyoutgrants.items.find(
+    item => item.subgrantee_clean === subgranteeMapper
+  );
+  }
+  
+  let item = getCounty(parseInt(params.invoiceId, 10));
+
   return (
   <main style={{ padding: "1rem", width: "100%"}}>
-  <h2>County: {uuidMapper} ({uuidMapper})</h2>
+  <h2>County: {item.county} ({item.state})</h2>
   <p>
-    <strong>Number of Grants:</strong> {params.countyId} <br />
-    <strong>Total Dollar Amount:</strong> {formatter.format(params.countyId)} <br />
-    <strong>Number of Properties:</strong> {params.countyId}
+    <strong>Number of Grants:</strong> {item.grantcount} <br />
+    <strong>Total Dollar Amount:</strong> {formatter.format(item.dollaramount)} <br />
+    <strong>Number of Properties:</strong> {item.propertycount}
   </p>
   <CountyTables />
 </main>
@@ -84,23 +95,18 @@ export default function CountyOverview() {
 
 function CountyTables() {
   const params = useParams();
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  });
-
   const { loading, error, data } = useQuery(COUNTY_GRANTS);
-  
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-  
+
+  const subgrantee = data.listCountygrants.items.map(subgrantee => subgrantee.subgrantee_clean);
+  const subgranteeMapper = subgrantee.find(item => item === params.countyId);
+
   return (
   <main style={{ padding: "1rem", width: "100%"}}>
   <DataGrid
-        rows={data.listCountygrants.items.filter(subgrantee => subgrantee.county === "Manatee")}
+        rows={data.listCountygrants.items.filter(subgrantee => subgrantee.subgrantee_clean === subgranteeMapper)}
         columns={columns}
         pageSize={100}
         rowsPerPageOptions={[200]}
