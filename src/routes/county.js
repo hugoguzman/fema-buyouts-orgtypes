@@ -104,14 +104,10 @@ function CountyTables() {
   const subgranteeMapper = subgrantee.find(item => item === params.countyId);
 
   return (
-  <main style={{ padding: "1rem", width: "100%"}}>
+  <main style={{ padding: "1rem", height: "1.5%", width: "98%"}}>
   <DataGrid
         rows={data.listCountygrants.items.filter(subgrantee => subgrantee.subgrantee_clean === subgranteeMapper)}
         columns={columns}
-        pageSize={100}
-        rowsPerPageOptions={[200]}
-        checkboxSelection
-        disableSelectionOnClick
       />
 </main>
 );
