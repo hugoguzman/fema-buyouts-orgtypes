@@ -9,6 +9,7 @@ import {
 import Counties from "./routes/counties";
 import County from "./routes/county";
 import MyMap from "./routes/usmap"
+import Layout from './Components/Layout';
 import {
   useQuery,
   gql
@@ -63,28 +64,29 @@ if (error) return <p>Error :(</p>;
 
 function App() {
   return (
-    <div className="App">
-      <Routes>
-      <Route path="/" element={<TopAppBar />} >
+    // <div className="App">
+    <Routes>
+      <Route path="/" element={<Layout />} >
+        <Route index element={<p> Welcome to AdaptationApps.com. This application provides detailed information on over 2,000 U.S. communities that have implemented buyouts utilizing FEMA grant funds. </p>}
+        />
         <Route path="usmap" element={<MyMap />}/>
         <Route path="counties" element={<Counties />}>
-        <Route path=":countyId" element={<County />} />
-        <Route
-          path="*"
-          element={
+          <Route path=":countyId" element={<County />} />
+        </Route>
+
+      <Route
+        path="*"
+        element={
             <main style={{ padding: "1rem" }}>
               <p>There's nothing here!</p>
             </main>
           }
         />
       </Route>
-      </Route>
     </Routes>
 
-    <Outlet />
-    <p> Welcome to AdaptationApps.com. This application provides detailed information on over 2,000 U.S. communities that have implemented buyouts utilizing FEMA grant funds. </p>
-    {/*<CountyGrants />*/}
-    </div>
+    /*<CountyGrants />*/
+    // </div>
   );
 }
 
