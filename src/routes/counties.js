@@ -3,7 +3,6 @@ import {
   useQuery,
   gql
 } from "@apollo/client";
-// import '../Components/test.css';
 
 const COUNTY_BUYOUT_GRANTS = gql`
 query countyBuyoutGrants {
@@ -27,7 +26,6 @@ export default function Counties() {
   return (
     <div style={{ display: "flex" }}>
       <nav
-      // className='navSide'
         style={{
           borderRight: "solid 1px",
           padding: "1rem"

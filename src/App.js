@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import TopAppBar from './Components/AppBar';
 import { 
   Routes,
   Route,
@@ -64,7 +63,6 @@ if (error) return <p>Error :(</p>;
 
 function App() {
   return (
-    // <div className="App">
     <Routes>
       <Route path="/" element={<Layout />} >
         <Route index element={<p> Welcome to AdaptationApps.com. This application provides detailed information on over 2,000 U.S. communities that have implemented buyouts utilizing FEMA grant funds. </p>}
@@ -85,8 +83,6 @@ function App() {
       </Route>
     </Routes>
 
-    /*<CountyGrants />*/
-    // </div>
   );
 }
 
