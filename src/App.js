@@ -9,6 +9,57 @@ import {
 import Counties from "./routes/counties";
 import County from "./routes/county";
 import MyMap from "./routes/usmap"
+import {
+  useQuery,
+  gql
+} from "@apollo/client";
+import { DataGrid } from '@mui/x-data-grid';
+
+const columns = [
+  { field: 'subgrantee_clean', headerName: 'County', width: 125},
+  { field: 'state', headerName: 'State', width: 125},
+  { field: 'grantclass', headerName: 'Grant Class', width: 125},
+  { field: 'numberOfFinalProperties', headerName: 'Property Count', width: 125},
+  { field: 'projectAmount', headerName: 'Dollar Amount', width: 125},
+  { field: 'programFy', headerName: 'Year', width: 125},
+  { field: 'costSharePercentage', headerName: 'FEMA Cost Share %', width: 125},
+  { field: 'benefitCostRatio', headerName: 'Benefit Cost Ratio', width: 125},
+  { field: 'id', headerName: 'id', width: 90 },
+]
+
+{/*const COUNTY_GRANTS = gql`
+query countyGrants {
+  listCountygrants(limit: 2) {
+    items {
+      county
+      uuid
+      id
+    }
+  }
+}
+`;
+
+function CountyGrants() {
+  const { loading, error, data } = useQuery(COUNTY_GRANTS);
+
+  if (loading) return <p>Loading...</p>;
+if (error) return <p>Error :(</p>;
+
+  return (
+    <div>
+    <DataGrid
+        rows={data.listCountygrants.items.filter(countyfilter => countyfilter.county ==="Manatee")}
+        columns={columns}
+        pageSize={100}
+        rowsPerPageOptions={[200]}
+        checkboxSelection
+        disableSelectionOnClick
+      />
+    </div>
+  );
+}*/}
+
+
 
 function App() {
   return (
@@ -32,6 +83,7 @@ function App() {
 
     <Outlet />
     <p> Welcome to AdaptationApps.com. This application provides detailed information on over 2,000 U.S. communities that have implemented buyouts utilizing FEMA grant funds. </p>
+    {/*<CountyGrants />*/}
     </div>
   );
 }
