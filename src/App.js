@@ -8,7 +8,6 @@ import {
 import Counties from "./routes/counties";
 import County from "./routes/county";
 import MyMap from "./routes/usmap"
-import Layout from './Components/Layout';
 import {
   useQuery,
   gql
@@ -83,6 +82,9 @@ function App() {
       </Route>
     </Routes>
 
+    <Outlet />
+    <p> Welcome to AdaptationApps.com. This application provides detailed information on over 2,000 U.S. communities that have implemented buyouts utilizing FEMA grant funds. </p>
+    {/*<CountyGrants />*/}
   );
 }
 

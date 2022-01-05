@@ -6,7 +6,6 @@ import {
 } from "@apollo/client";
 
 
-
 const columns = [
   { field: 'subgrantee_clean', headerName: 'County', width: 125},
   { field: 'state', headerName: 'State', width: 125},
