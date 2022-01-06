@@ -13,6 +13,10 @@ import {
   gql
 } from "@apollo/client";
 import { DataGrid } from '@mui/x-data-grid';
+import Layout from './Components/Layout'
+
+
+
 
 const columns = [
   { field: 'subgrantee_clean', headerName: 'County', width: 125},
@@ -26,7 +30,7 @@ const columns = [
   { field: 'id', headerName: 'id', width: 90 },
 ]
 
-{/*const COUNTY_GRANTS = gql`
+/*const COUNTY_GRANTS = gql`
 query countyGrants {
   listCountygrants(limit: 2) {
     items {
@@ -56,12 +60,13 @@ if (error) return <p>Error :(</p>;
       />
     </div>
   );
-}*/}
+}*/
 
 
 
 function App() {
   return (
+    <>
     <Routes>
       <Route path="/" element={<Layout />} >
         <Route index element={<p> Welcome to AdaptationApps.com. This application provides detailed information on over 2,000 U.S. communities that have implemented buyouts utilizing FEMA grant funds. </p>}
@@ -85,7 +90,7 @@ function App() {
     <Outlet />
     <p> Welcome to AdaptationApps.com. This application provides detailed information on over 2,000 U.S. communities that have implemented buyouts utilizing FEMA grant funds. </p>
     {/*<CountyGrants />*/}
+    </>
   );
 }
-
 export default App;

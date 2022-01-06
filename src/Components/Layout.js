@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Tab, Tabs } from '@mui/material';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import NavDrawer from './NavDrawer';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
@@ -17,7 +17,20 @@ export default function Layout() {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-	console.log(isMobile);
+	const [selectedTab, setSelectedTab] = useState(0);
+	const handleTabChange = (newValue) => {
+		setSelectedTab(newValue);
+	};
+
+	const location = useLocation();
+
+	useEffect(() => {
+		let path = location.pathname;
+		if (path === '/' && selectedTab !== 0) setSelectedTab(0);
+		else if (path === '/usmap' && selectedTab !== 1) setSelectedTab(1);
+		else if (path === '/counties' && selectedTab !== 2) setSelectedTab(2);
+	
+	}, [selectedTab])
 
 	return (
 		<div
@@ -34,8 +47,8 @@ export default function Layout() {
 								setOpenDrawer={setOpenDrawer}
 							/>
 						) : (
-							<Tabs>
-								<Tab label='Home' to='/' component={Link} />
+							<Tabs centered  value={selectedTab} onChange={handleTabChange}>
+								<Tab label='Home' to='/' component={Link}  />
 								<Tab label='Map' to='/usmap' component={Link} />
 								<Tab label='Counties' to='/counties' component={Link} />
 							</Tabs>
