@@ -79,6 +79,7 @@ export default function Layout() {
 			</Box>
 
 			<Outlet />
+			
 		</div>
 	);
 }
