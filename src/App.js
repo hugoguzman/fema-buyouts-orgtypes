@@ -59,12 +59,9 @@ if (error) return <p>Error :(</p>;
 
 function App() {
 	return (
-		<>
-			{/* <div className='App'> */}
+		<div style={{textAlign: 'center'}}>
 			<Routes>
 				<Route path='/' element={<Layout />}>
-					{/* <Route index element={<p> Welcome to AdaptationApps.com. This application provides detailed information on over 2,000 U.S. communities that have implemented buyouts utilizing FEMA grant funds. </p>}
-        /> */}
 					<Route path='usmap' element={<MyMap />} />
 					<Route path='counties' element={<Counties />}>
 						<Route path=':countyId' element={<County />} />
@@ -80,13 +77,10 @@ function App() {
 					/>
 				</Route>
 			</Routes>
-			{/* <Outlet /> */}
-			{/*<CountyGrants />*/}
-			{/* </div> */}
-			<footer style={{ backgroundColor: 'beige' }}>
+			<footer>
 				{' '}
 				<Typography
-					sx={{ padding: 2, display: 'block', alignText: 'center' }}
+					sx={{ padding: 2}}
 					variant='body2'
 				>
 					{' '}
@@ -95,7 +89,7 @@ function App() {
 					buyouts utilizing FEMA grant funds.
 				</Typography>{' '}
 			</footer>
-		</>
+		</div>
 	);
 }
 export default App;
