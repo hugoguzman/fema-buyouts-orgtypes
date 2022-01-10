@@ -77,7 +77,7 @@ function App() {
 					/>
 				</Route>
 			</Routes>
-			<footer>
+			{/* <footer>
 				{' '}
 				<Typography
 					sx={{ padding: 2}}
@@ -88,7 +88,7 @@ function App() {
 					information on over 2,000 U.S. communities that have implemented
 					buyouts utilizing FEMA grant funds.
 				</Typography>{' '}
-			</footer>
+			</footer> */}
 		</div>
 	);
 }

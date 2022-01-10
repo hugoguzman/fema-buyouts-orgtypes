@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-femabuyoutsorgtypes-dev-182544-authRole",
+      "UnauthRoleArn": "arn:aws:iam::976807564794:role/amplify-femabuyoutsorgtypes-dev-182544-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::976807564794:role/amplify-femabuyoutsorgtypes-dev-182544-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-femabuyoutsorgtypes-dev-182544-deployment",
+      "UnauthRoleName": "amplify-femabuyoutsorgtypes-dev-182544-unauthRole",
+      "StackName": "amplify-femabuyoutsorgtypes-dev-182544",
+      "StackId": "arn:aws:cloudformation:us-east-1:976807564794:stack/amplify-femabuyoutsorgtypes-dev-182544/795ba5a0-71a3-11ec-8403-128891b50703",
+      "AmplifyAppId": "d2ht753wgxc1l6"
+    },
+    "categories": {
+      "auth": {
+        "femabuyoutsorgtypes4b8e7ef3": {}
+      }
+    }
+  }
+}

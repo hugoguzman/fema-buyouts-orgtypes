@@ -3,6 +3,8 @@ import {
   useQuery,
   gql
 } from "@apollo/client";
+import { Grid } from "@mui/material";
+
 
 const COUNTY_BUYOUT_GRANTS = gql`
 query countyBuyoutGrants {
@@ -24,13 +26,24 @@ export default function Counties() {
   if (error) return <p>Error :(</p>;
 
   return (
-    <div style={{ display: "flex" }}>
-      <nav
+    <Grid
+      container
+      direction='row'
+      justifyContent='space-between'
+      alignItems='stretch'
+    >
+      <Grid
+      xs={4}
+      item
+      component='nav'
+      // sx={{borderRight: 'solid 1px', paddingBottom:'100%'}}
+      >
+      {/* <nav
         style={{
           borderRight: "solid 1px",
           padding: "1rem"
         }}
-      >
+      > */}
         <input
           value={searchParams.get("filter") || ""}
           onChange={event => {
@@ -63,8 +76,14 @@ export default function Counties() {
             {county.subgrantee_clean}
           </NavLink>
         ))}
-      </nav>
+      {/* </nav> */}
+      </Grid>
+      <Grid 
+      item
+      xs={8}
+      >
       <Outlet />
-    </div>
+      </Grid>
+      </Grid>
   );
 }

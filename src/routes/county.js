@@ -4,6 +4,7 @@ import {
   useQuery,
   gql
 } from "@apollo/client";
+import { Card, Grid } from "@mui/material";
 
 
 const columns = [
@@ -81,7 +82,14 @@ export default function CountyOverview() {
   let item = getCounty(parseInt(params.invoiceId, 10));
 
   return (
-  <main style={{ padding: "1rem", width: "100%"}}>
+  <Grid
+  container
+  direction='column'
+  justifyContent='space-evenly'
+  alignItems='stretch'
+  sx={{}}
+  >
+  <Card sx={{height:'100%'}}>
   <h2>County: {item.county} ({item.state})</h2>
   <p>
     <strong>Number of Grants:</strong> {item.grantcount} <br />
@@ -89,7 +97,8 @@ export default function CountyOverview() {
     <strong>Number of Properties:</strong> {item.propertycount}
   </p>
   <CountyTables />
-</main>
+  </Card>
+  </Grid>
 );
 }
 
@@ -104,11 +113,13 @@ function CountyTables() {
   const subgranteeMapper = subgrantee.find(item => item === params.countyId);
 
   return (
-  <main style={{ padding: "1rem", height: "1.5%", width: "98%"}}>
+  <Grid item xs={12} sx={{ padding: "1rem"}}>
   <DataGrid
+        autoHeight
+        sx={{ m:2 }}
         rows={data.listCountygrants.items.filter(subgrantee => subgrantee.subgrantee_clean === subgranteeMapper)}
         columns={columns}
       />
-</main>
+</Grid>
 );
 }
