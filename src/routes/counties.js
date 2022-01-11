@@ -106,7 +106,7 @@ export default function Counties() {
 					</Drawer>
 				</React.Fragment>
 			))}
-			<Container>
+			<Container maxWidth sx={{m:0,p:0,}}>
 				<Outlet />
 			</Container>
 		</div>
