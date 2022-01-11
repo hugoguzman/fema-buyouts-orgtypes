@@ -49,16 +49,6 @@ export default function Counties() {
 
 	return (
 		<div>
-			{/* <Grid
-      xs={4}
-      item
-      component='nav'
-      > */}
-			{/* <Drawer
-        anchor='left'
-        open={toggleDrawer(true)}
-        onClose={toggleDrawer(false)}
-        > */}
 			{['left'].map((anchor) => (
 				<React.Fragment key={anchor}>
 					<Button variant='contained' onClick={toggleDrawer(anchor, true)} sx={{m: 4, p:2}} startIcon={<SearchIcon />}>search counties</Button>
@@ -87,7 +77,7 @@ export default function Counties() {
 									return name.startsWith(filter.toLowerCase());
 								})
 								.map((county) => (
-									<ListItem>
+									<ListItem divider>
 										<NavLink
 											style={({ isActive }) => {
 												return {
@@ -98,14 +88,15 @@ export default function Counties() {
 											}}
 											to={`/counties/${county.subgrantee_clean}`}
 											key={county.uuid}
+                      onClick={toggleDrawer(anchor, false)}
 										>
 											{county.subgrantee_clean}
 										</NavLink>
+                    
 									</ListItem>
+                 
 								))}
 						</List>
-						{/* </nav> */}
-						{/* </Grid> */}
 					</Drawer>
 				</React.Fragment>
 			))}
