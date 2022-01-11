@@ -1,16 +1,13 @@
+import { gql, useQuery } from '@apollo/client';
+import SearchIcon from '@mui/icons-material/Search';
+import { Container } from '@mui/material';
+import Button from '@mui/material/Button';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import TextField from '@mui/material/TextField';
 import * as React from 'react';
 import { NavLink, Outlet, useSearchParams } from 'react-router-dom';
-import { useQuery, gql } from '@apollo/client';
-import { Grid, Container } from '@mui/material';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import SearchIcon from '@mui/icons-material/Search';
-import TextField from '@mui/material/TextField';
 
 const COUNTY_BUYOUT_GRANTS = gql`
 	query countyBuyoutGrants {
@@ -52,16 +49,23 @@ export default function Counties() {
 		<div>
 			{['left'].map((anchor) => (
 				<React.Fragment key={anchor}>
-					<Button variant='contained' onClick={toggleDrawer(anchor, true)} sx={{m: 4, p:2}} startIcon={<SearchIcon />}>search counties</Button>
+					<Button
+						variant='contained'
+						onClick={toggleDrawer(anchor, true)}
+						sx={{ m: 2, p: 2 }}
+						startIcon={<SearchIcon />}
+					>
+						search counties
+					</Button>
 					<Drawer
 						anchor={anchor}
 						open={state[anchor]}
 						onClose={toggleDrawer(anchor, false)}
 					>
 						<TextField
-            variant='filled'
-            label='County'
-              sx={{m: 1}}
+							variant='filled'
+							label='County'
+							sx={{ m: 1 }}
 							value={searchParams.get('filter') || ''}
 							onChange={(event) => {
 								let filter = event.target.value;
@@ -92,19 +96,17 @@ export default function Counties() {
 											}}
 											to={`/counties/${county.subgrantee_clean}`}
 											key={county.uuid}
-                      onClick={toggleDrawer(anchor, false)}
+											onClick={toggleDrawer(anchor, false)}
 										>
 											{county.subgrantee_clean}
 										</NavLink>
-                    
 									</ListItem>
-                 
 								))}
 						</List>
 					</Drawer>
 				</React.Fragment>
 			))}
-			<Container >
+			<Container>
 				<Outlet />
 			</Container>
 		</div>

@@ -1,7 +1,7 @@
-import { useParams } from 'react-router-dom';
+import { gql, useQuery } from '@apollo/client';
+import { Card, Container } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { useQuery, gql } from '@apollo/client';
-import { Card, Grid, Container, Box } from '@mui/material';
+import { useParams } from 'react-router-dom';
 
 const columns = [
 	{ field: 'subgrantee_clean', headerName: 'County', width: 125 },
@@ -84,8 +84,8 @@ export default function CountyOverview() {
 	let item = getCounty(parseInt(params.invoiceId, 10));
 
 	return (
-	<>
-			<Card>
+		<>
+			<Card elevation={0}>
 				<h2>
 					County: {item.county} ({item.state})
 				</h2>
@@ -95,10 +95,9 @@ export default function CountyOverview() {
 					{formatter.format(item.dollaramount)} <br />
 					<strong>Number of Properties:</strong> {item.propertycount}
 				</p>
-        </Card>
-				<CountyTables />
-			
-	</>
+			</Card>
+			<CountyTables />
+		</>
 	);
 }
 
@@ -115,8 +114,7 @@ function CountyTables() {
 	const subgranteeMapper = subgrantee.find((item) => item === params.countyId);
 
 	return (
-		// <Grid item xs={12} sx={{ padding: "1rem"}}>
-		<Container sx={{height: '1000px'}}>
+		<Container sx={{ height: '950px' }}>
 			<DataGrid
 				rowHeight={150}
 				sx={{ m: 2 }}
@@ -126,6 +124,5 @@ function CountyTables() {
 				columns={columns}
 			/>
 		</Container>
-		// </Grid>
 	);
 }
