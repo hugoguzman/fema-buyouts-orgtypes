@@ -29,6 +29,7 @@ export default function Layout() {
 		if (path === '/' && selectedTab !== 0) setSelectedTab(0);
 		else if (path === '/usmap' && selectedTab !== 1) setSelectedTab(1);
 		else if (path === '/counties' && selectedTab !== 2) setSelectedTab(2);
+		// else if (path === '/counties:*' && selectedTab !== 2) setSelectedTab(2); // need to find way to set tab indicator when on indexed route i.e. counties:'countiesID'.
 	
 	}, [selectedTab])
 
@@ -39,7 +40,7 @@ export default function Layout() {
 			}}
 		>
 			<Box sx={{ flexGrow: 1 }}>
-				<AppBar color='transparent' elevation={0} position='static'>
+				<AppBar color='transparent' elevation={0} position='static' >
 					<Toolbar>
 						{isMobile ? (
 							<NavDrawer
@@ -53,7 +54,7 @@ export default function Layout() {
 								<Tab label='Counties' to='/counties' component={Link} />
 							</Tabs>
 						)}
-						<Typography variant='h5' component='div' sx={{ flexGrow: 1 }}>
+						<Typography variant='h5' component='div' sx={{ flexGrow: 1, mr: '10%'}}>
 							AdaptationApps.com
 						</Typography>
 
@@ -67,7 +68,7 @@ export default function Layout() {
 								edge='start'
 								color='inherit'
 								aria-label='github'
-								sx={{ mr: 0 }}
+								sx={{ mr: 0}}
 								target='_blank'
 								href='https://github.com/hugoguzman/fema-buyouts-orgtypes.git'
 							>
