@@ -10,6 +10,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SearchIcon from '@mui/icons-material/Search';
+import TextField from '@mui/material/TextField';
 
 const COUNTY_BUYOUT_GRANTS = gql`
 	query countyBuyoutGrants {
@@ -57,7 +58,10 @@ export default function Counties() {
 						open={state[anchor]}
 						onClose={toggleDrawer(anchor, false)}
 					>
-						<input
+						<TextField
+            variant='filled'
+            label='County'
+              sx={{m: 1}}
 							value={searchParams.get('filter') || ''}
 							onChange={(event) => {
 								let filter = event.target.value;
