@@ -85,7 +85,7 @@ export default function Counties() {
 									return name.startsWith(filter.toLowerCase());
 								})
 								.map((county) => (
-									<ListItem divider>
+									<ListItem key={county.uuid} divider>
 										<NavLink
 											style={({ isActive }) => {
 												return {
@@ -106,7 +106,7 @@ export default function Counties() {
 					</Drawer>
 				</React.Fragment>
 			))}
-			<Container maxWidth sx={{m:0,p:0,}}>
+			<Container maxWidth='lg' sx={{m:0,p:0,}}>
 				<Outlet />
 			</Container>
 		</div>
