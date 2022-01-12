@@ -51,7 +51,13 @@ export default function Counties() {
 				<React.Fragment key={anchor}>
 					<Box
 						component='div'
-						sx={{ boxShadow: 1, backgroundColor: '#e0e0e0', mt:0, p: 3, border: '2px #1769aa solid' }}
+						sx={{
+							boxShadow: 1,
+							backgroundColor: '#e0e0e0',
+							mt: 0,
+							p: 3,
+							border: '2px #1769aa solid',
+						}}
 					>
 						<Button
 							variant='text'
@@ -70,7 +76,7 @@ export default function Counties() {
 						<TextField
 							variant='filled'
 							label='County'
-							sx={{ m: 1, mt:3 }}
+							sx={{ m: 1, mt: 3 }}
 							value={searchParams.get('filter') || ''}
 							onChange={(event) => {
 								let filter = event.target.value;

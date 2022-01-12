@@ -77,22 +77,28 @@ const Root = styled('div')(({ theme }) => ({
 
 const position = [37.1, -95.7];
 
-
 function MyMap() {
 	const [map, setMap] = useState(null);
-	useEffect(() => {
-		setOpen(true);
-	}, []);
 	const [open, setOpen] = useState(false);
-	const handleOpen = () => setOpen(true);
+
+	useEffect(() => {
+		const modalOpenedInfo = localStorage.getItem('modalOpened');
+		if (modalOpenedInfo !== '1') {
+			setOpen(true);
+		}
+	}, []);
+
+	
+	// const handleOpen = () => setOpen(true);
 	const handleClose = () => {
 		setOpen(false);
 		setOpenChild(true);
+		localStorage.setItem('modalOpened', '1');
 	};
 	const [openChild, setOpenChild] = useState(false);
 	const handleOpenChild = () => setOpenChild(true);
 	const handleCloseChild = () => setOpenChild(false);
-	
+
 	const globalCountyFrom = useSelector(
 		(state) => state.filterCounty.grantsFrom.value
 	);
@@ -221,8 +227,8 @@ function MyMap() {
 
 	return (
 		<Root>
-			{/* <ControlModal
-				handleOpen={handleOpen}
+			<ControlModal
+				// handleOpen={handleOpen}
 				handleClose={handleClose}
 				open={open}
 			/>
@@ -230,10 +236,7 @@ function MyMap() {
 				handleOpen={handleOpenChild}
 				handleClose={handleCloseChild}
 				open={openChild}
-			/> */}
-
-
-
+			/>
 
 			{/* <Grid
 				container
@@ -245,8 +248,6 @@ function MyMap() {
 			>
 				<Grid item xs={12} md={12}></Grid>
 			</Grid> */}
-
-
 
 			<Grid
 				container
@@ -302,8 +303,18 @@ function MyMap() {
 						</CardContent>
 					</Card>
 				</Grid>
-				<Box component='div' sx={{boxShadow: 1, backgroundColor: '#e0e0e0', m: 0, p: 2, width:'100%', border: '2px #1769aa solid'}}>
-				<MapButtonGroup position={position} zoom={4} map={map} />
+				<Box
+					component='div'
+					sx={{
+						boxShadow: 1,
+						backgroundColor: '#e0e0e0',
+						m: 0,
+						p: 2,
+						width: '100%',
+						border: '2px #1769aa solid',
+					}}
+				>
+					<MapButtonGroup position={position} zoom={4} map={map} />
 				</Box>
 				{/* <Box component='div' sx={{boxShadow: 1,  m: 2, p: 2, width:'100%', border: '1px #1769aa solid'}}> */}
 
