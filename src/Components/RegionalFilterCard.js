@@ -67,11 +67,11 @@ function RegionalFilterCard(props) {
 
 	return (
 		<div>
-			<Card raised={true}>
+			<Card raised={true} >
 				<CardContent className={props.class.orgtypeCards}>
 					<RegionalFilterCardButtons />
 					<Typography
-						sx={{ fontSize: 16 }}
+						sx={{ fontSize: 16,}}
 						fontWeight='bold'
 						color='text.secondary'
 						gutterBottom

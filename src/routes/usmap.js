@@ -221,7 +221,7 @@ function MyMap() {
 
 	return (
 		<Root>
-			<ControlModal
+			{/* <ControlModal
 				handleOpen={handleOpen}
 				handleClose={handleClose}
 				open={open}
@@ -230,8 +230,12 @@ function MyMap() {
 				handleOpen={handleOpenChild}
 				handleClose={handleCloseChild}
 				open={openChild}
-			/>
-			<Grid
+			/> */}
+
+
+
+
+			{/* <Grid
 				container
 				sx={{
 					paddingTop: 3,
@@ -240,12 +244,15 @@ function MyMap() {
 				alignItems='center'
 			>
 				<Grid item xs={12} md={12}></Grid>
-			</Grid>
+			</Grid> */}
+
+
+
 			<Grid
 				container
 				className={classes.map}
-				justifyContent='center'
-				alignItems='center'
+				// justifyContent='center'
+				// alignItems='center'
 			>
 				<Grid item xs={12} md={12}>
 					<Card raised={false} className={classes.map}>
@@ -302,19 +309,19 @@ function MyMap() {
 					justifyContent='center'
 					alignItems='center'
 				>
-					<Grid item xs={9} md={2}>
+					<Grid item xs={9} md={3}>
 						<CountyFilterCard class={classes} />
 					</Grid>
-					<Grid item xs={9} md={2}>
+					<Grid item xs={9} md={3}>
 						<MuniFilterCard class={classes} />
 					</Grid>
-					<Grid item xs={9} md={2}>
+					<Grid item xs={9} md={3}>
 						<StateFilterCard class={classes} />
 					</Grid>
-					<Grid item xs={9} md={2}>
+					<Grid item xs={9} md={3}>
 						<RegionalFilterCard class={classes} />
 					</Grid>
-					<Grid item xs={9} md={2}>
+					<Grid item xs={9} md={3}>
 						<TribalFilterCard class={classes} />
 					</Grid>
 				</Grid>
