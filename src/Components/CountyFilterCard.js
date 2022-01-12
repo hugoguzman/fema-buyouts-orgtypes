@@ -20,7 +20,6 @@ import {
 } from './countyCardSlice';
 import CountyFilterCardButtons from './CountyFilterCardButtons';
 
-
 function CountyFilterCard(props) {
 	const dispatch = useDispatch();
 
@@ -70,7 +69,6 @@ function CountyFilterCard(props) {
 		<div>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
-					<CountyFilterCardButtons />
 					<Typography
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'
@@ -205,6 +203,7 @@ function CountyFilterCard(props) {
 							<MenuItem value={2992}>2,992</MenuItem>
 						</Select>
 					</FormControl>
+					<CountyFilterCardButtons />
 				</CardContent>
 			</Card>
 		</div>

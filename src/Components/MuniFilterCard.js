@@ -65,7 +65,6 @@ function MuniFilterCard(props) {
 		<div>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
-					<MuniFilterCardButtons />
 					<Typography
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'
@@ -187,6 +186,7 @@ function MuniFilterCard(props) {
 							<MenuItem value={574}>574</MenuItem>
 						</Select>
 					</FormControl>
+					<MuniFilterCardButtons />
 				</CardContent>
 			</Card>
 		</div>

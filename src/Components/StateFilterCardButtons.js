@@ -8,44 +8,33 @@ import {
 	filteredStateTo,
 	filteredStatePropsFrom,
 	filteredStatePropsTo,
-    resetState
+	resetState,
 } from './stateCardSlice';
 
 export default function StateFilterCardButtons() {
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const switchOn = (e) => {
-        dispatch(filteredStateFrom(-1));
-        dispatch(filteredStateTo(-1));
-        dispatch(filteredStateDollarsFrom(-1));
-        dispatch(filteredStateDollarsTo(-1));
-        dispatch(filteredStatePropsFrom(-1));
-        dispatch(filteredStatePropsTo(-1));
-};
+		dispatch(filteredStateFrom(-1));
+		dispatch(filteredStateTo(-1));
+		dispatch(filteredStateDollarsFrom(-1));
+		dispatch(filteredStateDollarsTo(-1));
+		dispatch(filteredStatePropsFrom(-1));
+		dispatch(filteredStatePropsTo(-1));
+	};
 
-const switchOff = (e) => {
-    dispatch(resetState());
-};
+	const switchOff = (e) => {
+		dispatch(resetState());
+	};
 	return (
-        
-        <ButtonGroup
-        variant='contained'
-        size='small'
-        color='primary'
-        aria-label='small button group'
-
-    >
-        <Button
-            size="small"
-            onClick={switchOn}
-        >
-            Remove
-        </Button>
-        <Button
-            size="small"
-            onClick={switchOff}
-        >
-            Reset
-        </Button>
-    </ButtonGroup>
+		<ButtonGroup
+			sx={{ mt: 2 }}
+			variant='contained'
+			size='small'
+			color='primary'
+			aria-label='small button group'
+		>
+			<Button onClick={switchOn}>Remove</Button>
+			<Button onClick={switchOff}>Reset</Button>
+		</ButtonGroup>
 	);
 }

@@ -95,13 +95,13 @@ export default function MapButtonGroup(props) {
 	};
 	return (
 		<ButtonGroup
-			variant='contained'
-			size='small'
+			variant='text'
+			size='large'
 			color='primary'
 			aria-label='small button group'
 		>
-			<Button onClick={RemoveAllLayers}>Remove All</Button>
-			<Button onClick={ResetMapView}>Reset All</Button>
+			<Button onClick={RemoveAllLayers}>Remove all</Button>
+			<Button onClick={ResetMapView}>Reset Map</Button>
 		</ButtonGroup>
 	);
 }

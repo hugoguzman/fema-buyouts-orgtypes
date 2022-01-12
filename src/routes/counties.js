@@ -51,10 +51,10 @@ export default function Counties() {
 				<React.Fragment key={anchor}>
 					<Box
 						component='div'
-						sx={{ boxShadow: 1, backgroundColor: '#e0e0e0', m: 2, p: 2 }}
+						sx={{ boxShadow: 1, backgroundColor: '#e0e0e0', mt:0, p: 3, border: '2px #1769aa solid' }}
 					>
 						<Button
-							variant='contained'
+							variant='text'
 							onClick={toggleDrawer(anchor, true)}
 							sx={{ m: 2, p: 2 }}
 							startIcon={<SearchIcon />}

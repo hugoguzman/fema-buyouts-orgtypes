@@ -7,7 +7,7 @@ import {
 	LayerGroup,
 } from 'react-leaflet';
 import '@fontsource/roboto';
-import { Grid, Card, CardContent } from '@mui/material';
+import { Grid, Card, CardContent, Box } from '@mui/material';
 import { useSelector } from 'react-redux';
 import Counties from '../Components/CountyGrants';
 import Municipalities from '../Components/MunicipalGrants';
@@ -302,7 +302,11 @@ function MyMap() {
 						</CardContent>
 					</Card>
 				</Grid>
+				<Box component='div' sx={{boxShadow: 1, backgroundColor: '#e0e0e0', m: 0, p: 2, width:'100%', border: '2px #1769aa solid'}}>
 				<MapButtonGroup position={position} zoom={4} map={map} />
+				</Box>
+				{/* <Box component='div' sx={{boxShadow: 1,  m: 2, p: 2, width:'100%', border: '1px #1769aa solid'}}> */}
+
 				<Grid
 					container
 					className={classes.dropdownsGrid}
@@ -325,6 +329,7 @@ function MyMap() {
 						<TribalFilterCard class={classes} />
 					</Grid>
 				</Grid>
+				{/* </Box> */}
 			</Grid>
 		</Root>
 	);

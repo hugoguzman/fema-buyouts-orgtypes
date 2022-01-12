@@ -69,7 +69,6 @@ function TribalFilterCard(props) {
 		<div>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
-					<TribalFilterCardButtons />
 					<Typography
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'
@@ -182,6 +181,7 @@ function TribalFilterCard(props) {
 							<MenuItem value={7}>7</MenuItem>
 						</Select>
 					</FormControl>
+					<TribalFilterCardButtons />
 				</CardContent>
 			</Card>
 		</div>
