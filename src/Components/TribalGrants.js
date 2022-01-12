@@ -55,7 +55,7 @@ function TribalNations() {
         + "<br><b>Dollar Amount: </b>" + buyoutDollaramount
         + "<br><b>Property Count: </b>" + buyoutPropertycount;
 
-        console.log(tribalName);
+        // console.log(tribalName);
         layer.bindTooltip(tribalName);
         
         layer.options.fillColor = getColor(tribal.properties.grantcount);

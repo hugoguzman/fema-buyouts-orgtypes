@@ -55,7 +55,7 @@ function Regions() {
         + "<br><b>Grant Count: </b>" + buyoutGrantcount
         + "<br><b>Dollar Amount: </b>" + buyoutDollaramount
         + "<br><b>Property Count: </b>" + buyoutPropertycount;
-        console.log(countyName);
+        // console.log(countyName);
         layer.bindTooltip(countyName);
         
         layer.options.fillColor = getColor(region.properties.grantcount);

@@ -8,44 +8,33 @@ import {
 	filteredTribalTo,
 	filteredTribalPropsFrom,
 	filteredTribalPropsTo,
-    resetTribal
+	resetTribal,
 } from './tribalCardSlice';
 
 export default function TribalFilterCardButtons() {
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const switchOn = (e) => {
-        dispatch(filteredTribalFrom(-1));
-        dispatch(filteredTribalTo(-1));
-        dispatch(filteredTribalDollarsFrom(-1));
-        dispatch(filteredTribalDollarsTo(-1));
-        dispatch(filteredTribalPropsFrom(-1));
-        dispatch(filteredTribalPropsTo(-1));
-};
+		dispatch(filteredTribalFrom(-1));
+		dispatch(filteredTribalTo(-1));
+		dispatch(filteredTribalDollarsFrom(-1));
+		dispatch(filteredTribalDollarsTo(-1));
+		dispatch(filteredTribalPropsFrom(-1));
+		dispatch(filteredTribalPropsTo(-1));
+	};
 
-const switchOff = (e) => {
-    dispatch(resetTribal());
-};
+	const switchOff = (e) => {
+		dispatch(resetTribal());
+	};
 	return (
-        
-        <ButtonGroup
-        variant='contained'
-        size='small'
-        color='primary'
-        aria-label='small button group'
-
-    >
-        <Button
-            size="small"
-            onClick={switchOn}
-        >
-            Remove
-        </Button>
-        <Button
-            size="small"
-            onClick={switchOff}
-        >
-            Reset
-        </Button>
-    </ButtonGroup>
+		<ButtonGroup
+			sx={{ mt: 2 }}
+			variant='contained'
+			size='small'
+			color='primary'
+			aria-label='small button group'
+		>
+			<Button onClick={switchOn}>Remove</Button>
+			<Button onClick={switchOff}>Reset</Button>
+		</ButtonGroup>
 	);
 }

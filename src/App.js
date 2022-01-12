@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Counties from './routes/counties';
 import County from './routes/county';
 import MyMap from './routes/usmap';
-import { useQuery, gql } from '@apollo/client';
-import { DataGrid } from '@mui/x-data-grid';
+// import { useQuery, gql } from '@apollo/client';
+// import { DataGrid } from '@mui/x-data-grid';
 import Layout from './Components/Layout';
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 
 const columns = [
 	{ field: 'subgrantee_clean', headerName: 'County', width: 125 },

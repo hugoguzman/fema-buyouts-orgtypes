@@ -8,44 +8,33 @@ import {
 	filteredMuniTo,
 	filteredMuniPropsFrom,
 	filteredMuniPropsTo,
-    resetMuni
+	resetMuni,
 } from './muniCardSlice';
 
 export default function MuniFilterCardButtons() {
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const switchOn = (e) => {
-        dispatch(filteredMuniFrom(-1));
-        dispatch(filteredMuniTo(-1));
-        dispatch(filteredMuniDollarsFrom(-1));
-        dispatch(filteredMuniDollarsTo(-1));
-        dispatch(filteredMuniPropsFrom(-1));
-        dispatch(filteredMuniPropsTo(-1));
-};
+		dispatch(filteredMuniFrom(-1));
+		dispatch(filteredMuniTo(-1));
+		dispatch(filteredMuniDollarsFrom(-1));
+		dispatch(filteredMuniDollarsTo(-1));
+		dispatch(filteredMuniPropsFrom(-1));
+		dispatch(filteredMuniPropsTo(-1));
+	};
 
-const switchOff = (e) => {
-    dispatch(resetMuni());
-};
+	const switchOff = (e) => {
+		dispatch(resetMuni());
+	};
 	return (
-        
-        <ButtonGroup
-        variant='contained'
-        size='small'
-        color='primary'
-        aria-label='small button group'
-
-    >
-        <Button
-            size="small"
-            onClick={switchOn}
-        >
-            Remove
-        </Button>
-        <Button
-            size="small"
-            onClick={switchOff}
-        >
-            Reset
-        </Button>
-    </ButtonGroup>
+		<ButtonGroup
+			sx={{ mt: 2 }}
+			variant='contained'
+			size='small'
+			color='primary'
+			aria-label='small button group'
+		>
+			<Button onClick={switchOn}>Remove</Button>
+			<Button onClick={switchOff}>Reset</Button>
+		</ButtonGroup>
 	);
 }

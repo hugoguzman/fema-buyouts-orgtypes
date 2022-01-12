@@ -8,44 +8,37 @@ import {
 	filteredRegionalTo,
 	filteredRegionalPropsFrom,
 	filteredRegionalPropsTo,
-    resetRegional
+	resetRegional,
 } from './regionalCardSlice';
 
 export default function RegionalFilterCardButtons() {
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const switchOn = (e) => {
-        dispatch(filteredRegionalFrom(-1));
-        dispatch(filteredRegionalTo(-1));
-        dispatch(filteredRegionalDollarsFrom(-1));
-        dispatch(filteredRegionalDollarsTo(-1));
-        dispatch(filteredRegionalPropsFrom(-1));
-        dispatch(filteredRegionalPropsTo(-1));
-};
+		dispatch(filteredRegionalFrom(-1));
+		dispatch(filteredRegionalTo(-1));
+		dispatch(filteredRegionalDollarsFrom(-1));
+		dispatch(filteredRegionalDollarsTo(-1));
+		dispatch(filteredRegionalPropsFrom(-1));
+		dispatch(filteredRegionalPropsTo(-1));
+	};
 
-const switchOff = (e) => {
-    dispatch(resetRegional());
-};
+	const switchOff = (e) => {
+		dispatch(resetRegional());
+	};
 	return (
-        
-        <ButtonGroup
-        variant='contained'
-        size='small'
-        color='primary'
-        aria-label='small button group'
-
-    >
-        <Button
-            size="small"
-            onClick={switchOn}
-        >
-            Remove
-        </Button>
-        <Button
-            size="small"
-            onClick={switchOff}
-        >
-            Reset
-        </Button>
-    </ButtonGroup>
+		<ButtonGroup
+			sx={{ mt: 2 }}
+			variant='contained'
+			size='small'
+			color='primary'
+			aria-label='small button group'
+		>
+			<Button size='small' onClick={switchOn}>
+				Remove
+			</Button>
+			<Button size='small' onClick={switchOff}>
+				Reset
+			</Button>
+		</ButtonGroup>
 	);
 }

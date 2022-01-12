@@ -114,7 +114,7 @@ function CountyTables() {
 	const subgranteeMapper = subgrantee.find((item) => item === params.countyId);
 
 	return (
-		<Container sx={{ height: '950px' }}>
+		<Container maxWidth='xl' sx={{ height: '800px'}}>
 			<DataGrid
 				rowHeight={150}
 				sx={{ m: 2 }}
@@ -123,6 +123,6 @@ function CountyTables() {
 				)}
 				columns={columns}
 			/>
-		</Container>
+		 </Container>
 	);
 }

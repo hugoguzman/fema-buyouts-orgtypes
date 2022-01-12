@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 import SearchIcon from '@mui/icons-material/Search';
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -49,14 +49,25 @@ export default function Counties() {
 		<div>
 			{['left'].map((anchor) => (
 				<React.Fragment key={anchor}>
-					<Button
-						variant='contained'
-						onClick={toggleDrawer(anchor, true)}
-						sx={{ m: 2, p: 2 }}
-						startIcon={<SearchIcon />}
+					<Box
+						component='div'
+						sx={{
+							boxShadow: 1,
+							backgroundColor: '#e0e0e0',
+							mt: 0,
+							p: 3,
+							border: '2px #1769aa solid',
+						}}
 					>
-						search counties
-					</Button>
+						<Button
+							variant='text'
+							onClick={toggleDrawer(anchor, true)}
+							sx={{ m: 2, p: 2 }}
+							startIcon={<SearchIcon />}
+						>
+							search counties
+						</Button>
+					</Box>
 					<Drawer
 						anchor={anchor}
 						open={state[anchor]}
@@ -65,7 +76,7 @@ export default function Counties() {
 						<TextField
 							variant='filled'
 							label='County'
-							sx={{ m: 1 }}
+							sx={{ m: 1, mt: 3 }}
 							value={searchParams.get('filter') || ''}
 							onChange={(event) => {
 								let filter = event.target.value;
@@ -85,7 +96,7 @@ export default function Counties() {
 									return name.startsWith(filter.toLowerCase());
 								})
 								.map((county) => (
-									<ListItem divider>
+									<ListItem key={county.uuid} divider>
 										<NavLink
 											style={({ isActive }) => {
 												return {

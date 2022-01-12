@@ -69,7 +69,6 @@ function RegionalFilterCard(props) {
 		<div>
 			<Card raised={true}>
 				<CardContent className={props.class.orgtypeCards}>
-					<RegionalFilterCardButtons />
 					<Typography
 						sx={{ fontSize: 16 }}
 						fontWeight='bold'
@@ -184,6 +183,7 @@ function RegionalFilterCard(props) {
 							<MenuItem value={129}>129</MenuItem>
 						</Select>
 					</FormControl>
+					<RegionalFilterCardButtons />
 				</CardContent>
 			</Card>
 		</div>
