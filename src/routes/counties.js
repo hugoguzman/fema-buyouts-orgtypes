@@ -46,7 +46,7 @@ export default function Counties() {
 	if (error) return <p>Error :(</p>;
 
 	return (
-		<div>
+		<div >
 			{['left'].map((anchor) => (
 				<React.Fragment key={anchor}>
 					<Button
@@ -106,7 +106,7 @@ export default function Counties() {
 					</Drawer>
 				</React.Fragment>
 			))}
-			<Container maxWidth='lg' sx={{m:0,p:0,}}>
+			<Container >
 				<Outlet />
 			</Container>
 		</div>
