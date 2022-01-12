@@ -17,21 +17,21 @@ export default function Layout() {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-	const [selectedTab, setSelectedTab] = useState(0);
-	const handleTabChange = (newValue) => {
-		setSelectedTab(newValue);
+	const [value, setValue] = useState(0);
+	const handleTabChange = (event, newValue) => {
+		setValue(newValue);
 	};
 
 	const location = useLocation();
 
 	useEffect(() => {
 		let path = location.pathname;
-		if (path === '/' && selectedTab !== 0) setSelectedTab(0);
-		else if (path === '/usmap' && selectedTab !== 1) setSelectedTab(1);
-		else if (path === '/counties' && selectedTab !== 2) setSelectedTab(2);
+		if (path === '/' && value !== 0) setValue(0);
+		else if (path === '/usmap' && value !== 1) setValue(1);
+		else if (path === '/counties' && value !== 2) setValue(2);
 		// else if (path === '/counties:*' && selectedTab !== 2) setSelectedTab(2); // need to find way to set tab indicator when on indexed route i.e. counties:'countiesID'.
 	
-	}, [selectedTab])
+	}, [value])
 
 	return (
 		<div
@@ -48,7 +48,7 @@ export default function Layout() {
 								setOpenDrawer={setOpenDrawer}
 							/>
 						) : (
-							<Tabs centered  value={selectedTab} onChange={handleTabChange}>
+							<Tabs centered  value={value} onChange={handleTabChange}>
 								<Tab label='Home' to='/' component={Link}  />
 								<Tab label='Map' to='/usmap' component={Link} />
 								<Tab label='Counties' to='/counties' component={Link} />
