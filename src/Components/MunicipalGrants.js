@@ -60,7 +60,7 @@ function Municipalities() {
         + "<br><b>Grant Count: </b>" + buyoutGrantcount
         + "<br><b>Dollar Amount: </b>" + buyoutDollaramount
         + "<br><b>Property Count: </b>" + buyoutPropertycount;
-        console.log(muniName);
+        // console.log(muniName);
         layer.bindTooltip(muniName);
         
         layer.options.fillColor = getColor(muni.properties.grantcount);

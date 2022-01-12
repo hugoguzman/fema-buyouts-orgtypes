@@ -31,7 +31,7 @@ export default function Layout() {
 		else if (path === '/counties' && value !== 2) setValue(2);
 		// else if (path === '/counties:*' && selectedTab !== 2) setSelectedTab(2); // need to find way to set tab indicator when on indexed route i.e. counties:'countiesID'.
 	
-	}, [value])
+	}, [value, location.pathname])
 
 	return (
 		<div
