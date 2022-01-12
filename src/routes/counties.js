@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 import SearchIcon from '@mui/icons-material/Search';
-import { Container } from '@mui/material';
+import { Container, Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -49,6 +49,7 @@ export default function Counties() {
 		<div >
 			{['left'].map((anchor) => (
 				<React.Fragment key={anchor}>
+					<Box component='div' sx={{backgroundColor: '#e0e0e0'}}>
 					<Button
 						variant='contained'
 						onClick={toggleDrawer(anchor, true)}
@@ -57,6 +58,7 @@ export default function Counties() {
 					>
 						search counties
 					</Button>
+					</Box>
 					<Drawer
 						anchor={anchor}
 						open={state[anchor]}
