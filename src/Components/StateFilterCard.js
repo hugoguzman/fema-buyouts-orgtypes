@@ -7,6 +7,7 @@ import {
 	FormControl,
 	MenuItem,
 	Select,
+	Box,
 } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -183,7 +184,9 @@ function StateFilterCard(props) {
 							<MenuItem value={490}>490</MenuItem>
 						</Select>
 					</FormControl>
+					<Box maxWidth>
 					<StateFilterCardButtons />
+					</Box>
 				</CardContent>
 			</Card>
 		</div>

@@ -7,6 +7,7 @@ import {
 	FormControl,
 	MenuItem,
 	Select,
+	Box
 } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -186,7 +187,9 @@ function MuniFilterCard(props) {
 							<MenuItem value={574}>574</MenuItem>
 						</Select>
 					</FormControl>
+					<Box maxWidth>
 					<MuniFilterCardButtons />
+					</Box>
 				</CardContent>
 			</Card>
 		</div>

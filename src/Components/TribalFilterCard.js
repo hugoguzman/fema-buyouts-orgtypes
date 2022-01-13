@@ -7,6 +7,7 @@ import {
 	FormControl,
 	MenuItem,
 	Select,
+	Box
 } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -181,7 +182,9 @@ function TribalFilterCard(props) {
 							<MenuItem value={7}>7</MenuItem>
 						</Select>
 					</FormControl>
+					<Box maxWidth >
 					<TribalFilterCardButtons />
+					</Box>
 				</CardContent>
 			</Card>
 		</div>
