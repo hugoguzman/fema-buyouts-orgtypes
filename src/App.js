@@ -1,16 +1,16 @@
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import Amplify from 'aws-amplify';
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
-import Counties from './routes/counties';
-import County from './routes/county';
-import MyMap from './routes/usmap';
+import awsconfig from './aws-exports';
 // import { useQuery, gql } from '@apollo/client';
 // import { DataGrid } from '@mui/x-data-grid';
 import Layout from './Components/Layout';
-import Typography from '@mui/material/Typography';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import Amplify from 'aws-amplify';
-import awsconfig from './aws-exports';
+import Counties from './routes/counties';
+import County from './routes/county';
+import MyMap from './routes/usmap';
+
 Amplify.configure(awsconfig);
 
 const columns = [
@@ -63,8 +63,7 @@ if (error) return <p>Error :(</p>;
 
 function App() {
 	return (
-		
-		<div style={{textAlign: 'center'}}>
+		<div style={{ textAlign: 'center' }}>
 			<Routes>
 				<Route path='/' element={<Layout />}>
 					<Route path='usmap' element={<MyMap />} />
@@ -82,18 +81,6 @@ function App() {
 					/>
 				</Route>
 			</Routes>
-			<footer>
-				{' '}
-				<Typography
-					sx={{ padding: 2}}
-					variant='body2'
-				>
-					{' '}
-					{/* Hello {user.username} */}
-				</Typography>{' '}
-				{/* <AmplifySignOut /> */}
-				
-			</footer>
 		</div>
 	);
 }

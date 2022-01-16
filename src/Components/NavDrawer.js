@@ -1,6 +1,3 @@
-import React from 'react';
-import { Auth, Hub } from 'aws-amplify';
-
 import {
 	Drawer as MUIDrawer,
 	List,
@@ -8,6 +5,8 @@ import {
 	ListItemText,
 	Typography
 } from '@mui/material';
+import { Auth, Hub } from 'aws-amplify';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -47,7 +46,9 @@ const NavDrawer = ({ openDrawer, setOpenDrawer }) => {
 						<ListItemText primary='Counties' />
 					</Link>
 				</ListItem>
-				<ListItem divider button onClick={handleSignOutButtonClick}><Typography color='primary' >Sign Out</Typography></ListItem>
+				<ListItem divider button onClick={handleSignOutButtonClick}>
+					<Typography color='primary'>Sign Out</Typography>
+				</ListItem>
 			</List>
 		</MUIDrawer>
 	);
