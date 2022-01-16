@@ -36,25 +36,26 @@
         ],
         "verificationMechanisms": [
           "EMAIL"
-        ]
+        ],
+        "socialProviders": [],
+        "usernameAttributes": []
       },
+      "lastPushTimeStamp": "2022-01-16T01:29:53.331Z",
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-femabuyoutsorgtypes-dev-182544-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypes4b8e7ef3-cloudformation-template.yml",
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-femabuyoutsorgtypes-dev-182544-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypes4b8e7ef3-cloudformation-template.json",
         "logicalId": "authfemabuyoutsorgtypes4b8e7ef3"
       },
-      "lastPushTimeStamp": "2022-01-10T01:45:08.471Z",
       "output": {
-        "UserPoolId": "us-east-1_RUDAAVGFR",
-        "AppClientIDWeb": "68ibe90mbikg8r521o4adbqnte",
-        "AppClientID": "39ve4m0umk8imm40ace66g0don",
-        "HostedUIDomain": "femabuyoutsorgtypes4b8e7ef3-4b8e7ef3-dev",
-        "IdentityPoolId": "us-east-1:29e21072-1094-42e1-96d6-69cff16517f8",
-        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:976807564794:userpool/us-east-1_RUDAAVGFR",
+        "CreatedSNSRole": "arn:aws:iam::976807564794:role/sns4b8e7ef3182544-dev",
+        "UserPoolId": "us-east-1_UnB880FOy",
+        "AppClientIDWeb": "5f7ftb3lbccvuhv5mcr4lh65e",
+        "AppClientID": "5bc53m3bies1d21rrrrnsvk687",
+        "IdentityPoolId": "us-east-1:89b9a854-b57b-4212-a3a7-1609f4d1ee2f",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:976807564794:userpool/us-east-1_UnB880FOy",
         "IdentityPoolName": "femabuyoutsorgtypes4b8e7ef3_identitypool_4b8e7ef3__dev",
-        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
         "UserPoolName": "femabuyoutsorgtypes4b8e7ef3_userpool_4b8e7ef3"
       },
-      "lastPushDirHash": "Jlgk2T5de+DCNasJNGdHhdb0sQA="
+      "lastPushDirHash": "2I/WER6/Nj6lNeJITRC9K8sKWbQ="
     }
   }
 }

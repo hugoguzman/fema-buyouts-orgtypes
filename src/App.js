@@ -8,6 +8,10 @@ import MyMap from './routes/usmap';
 // import { DataGrid } from '@mui/x-data-grid';
 import Layout from './Components/Layout';
 // import Typography from '@mui/material/Typography';
+import { withAuthenticator } from '@aws-amplify/ui-react'
+import Amplify, { Auth } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 
 const columns = [
 	{ field: 'subgrantee_clean', headerName: 'County', width: 125 },
@@ -92,4 +96,4 @@ function App() {
 		</div>
 	);
 }
-export default App;
+export default withAuthenticator(App);
