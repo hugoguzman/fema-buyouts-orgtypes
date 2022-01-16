@@ -7,9 +7,9 @@ import MyMap from './routes/usmap';
 // import { useQuery, gql } from '@apollo/client';
 // import { DataGrid } from '@mui/x-data-grid';
 import Layout from './Components/Layout';
-// import Typography from '@mui/material/Typography';
-import { withAuthenticator } from '@aws-amplify/ui-react'
-import Amplify, { Auth } from 'aws-amplify';
+import Typography from '@mui/material/Typography';
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
 
@@ -63,6 +63,7 @@ if (error) return <p>Error :(</p>;
 
 function App() {
 	return (
+		
 		<div style={{textAlign: 'center'}}>
 			<Routes>
 				<Route path='/' element={<Layout />}>
@@ -81,18 +82,18 @@ function App() {
 					/>
 				</Route>
 			</Routes>
-			{/* <footer>
+			<footer>
 				{' '}
 				<Typography
 					sx={{ padding: 2}}
 					variant='body2'
 				>
 					{' '}
-					Welcome to AdaptationApps.com. This application provides detailed
-					information on over 2,000 U.S. communities that have implemented
-					buyouts utilizing FEMA grant funds.
+					{/* Hello {user.username} */}
 				</Typography>{' '}
-			</footer> */}
+				{/* <AmplifySignOut /> */}
+				
+			</footer>
 		</div>
 	);
 }

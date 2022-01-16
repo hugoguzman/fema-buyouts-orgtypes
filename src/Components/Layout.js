@@ -11,6 +11,9 @@ import NavDrawer from './NavDrawer';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
+import CustomSignOutButton from './SignOutButton'
+import Tooltip from '@mui/material/Tooltip';
+
 
 export default function Layout() {
 	const [openDrawer, setOpenDrawer] = useState(true);
@@ -59,14 +62,21 @@ export default function Layout() {
 						</Typography>
 
 						{isMobile ? (
-							<IconButton onClick={() => setOpenDrawer(true)}>
+							<Tooltip title='Menu'>
+							<IconButton
+							 onClick={() => setOpenDrawer(true)}
+							 color='primary'
+							 >
 								<MenuIcon />
 							</IconButton>
+							</Tooltip>
 						) : (
-							<IconButton
+							<>
+								<Tooltip title='GitHub'>
+								<IconButton
 								size='large'
 								edge='start'
-								color='inherit'
+								color='primary'
 								aria-label='github'
 								sx={{ mr: 0}}
 								target='_blank'
@@ -74,6 +84,10 @@ export default function Layout() {
 							>
 								<GitHubIcon />
 							</IconButton>
+							</Tooltip>
+
+							<CustomSignOutButton />
+							</>
 						)}
 					</Toolbar>
 				</AppBar>
