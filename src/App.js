@@ -14,7 +14,6 @@ import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 Amplify.configure(awsExports);
 
-
 // Amplify.configure(awsconfig);
 
 const columns = [
@@ -66,30 +65,29 @@ if (error) return <p>Error :(</p>;
 }*/
 
 function App() {
-
 	return (
 		<Authenticator>
-      {({ signOut, user }) => (
-		<div style={{ textAlign: 'center' }}>
-			<Routes>
-				<Route path='/' element={<Layout signOut={signOut} />}>
-					<Route path='usmap' element={<MyMap />} />
-					<Route path='counties' element={<Counties />}>
-						<Route path=':countyId' element={<County />} />
-					</Route>
+			{({ signOut, user }) => (
+				<div style={{ textAlign: 'center' }}>
+					<Routes>
+						<Route path='/' element={<Layout signOut={signOut} />}>
+							<Route path='usmap' element={<MyMap />} />
+							<Route path='counties' element={<Counties />}>
+								<Route path=':countyId' element={<County />} />
+							</Route>
 
-					<Route
-						path='*'
-						element={
-							<main style={{ padding: '1rem' }}>
-								<p>There's nothing here!</p>
-							</main>
-						}
-					/>
-				</Route>
-			</Routes>
-		</div>
-	  )}
+							<Route
+								path='*'
+								element={
+									<main style={{ padding: '1rem' }}>
+										<p>There's nothing here!</p>
+									</main>
+								}
+							/>
+						</Route>
+					</Routes>
+				</div>
+			)}
 		</Authenticator>
 	);
 }

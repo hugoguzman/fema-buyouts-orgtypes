@@ -1,4 +1,5 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Tab, Tabs } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
@@ -12,8 +13,6 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import NavDrawer from './NavDrawer';
-import CustomSignOutButton from './SignOutButton';
-import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function Layout(props) {
 	const [openDrawer, setOpenDrawer] = useState(true);

@@ -40,7 +40,7 @@
         "socialProviders": [],
         "usernameAttributes": []
       },
-      "lastPushTimeStamp": "2022-01-17T00:53:19.635Z",
+      "lastPushTimeStamp": "2022-01-17T01:19:14.943Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-femabuyoutsorgtypes-dev-182544-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypes4b8e7ef3-cloudformation-template.json",
         "logicalId": "authfemabuyoutsorgtypes4b8e7ef3"

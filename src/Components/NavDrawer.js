@@ -5,12 +5,8 @@ import {
 	ListItemText,
 	Typography
 } from '@mui/material';
-import { Auth, Hub } from 'aws-amplify';
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-
-
 
 const NavDrawer = ({ openDrawer, setOpenDrawer, signOut }) => {
 	return (
