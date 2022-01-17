@@ -1,76 +1,57 @@
 {
-    "providers": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-amplify672b112cb4994-staging-173803-authRole",
-            "UnauthRoleArn": "arn:aws:iam::976807564794:role/amplify-amplify672b112cb4994-staging-173803-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::976807564794:role/amplify-amplify672b112cb4994-staging-173803-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-amplify672b112cb4994-staging-173803-deployment",
-            "UnauthRoleName": "amplify-amplify672b112cb4994-staging-173803-unauthRole",
-            "StackName": "amplify-amplify672b112cb4994-staging-173803",
-            "StackId": "arn:aws:cloudformation:us-east-1:976807564794:stack/amplify-amplify672b112cb4994-staging-173803/fcd0ee30-2ab9-11ec-8fbf-0ee15019571d",
-            "AmplifyAppId": "dclue2jnkq1ay"
-        }
-    },
-    "auth": {
-        "femabuyoutsorgtypes5728cd0f": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [],
-            "customAuth": false,
-            "frontendAuthConfig": {
-                "socialProviders": [],
-                "usernameAttributes": [],
-                "signupAttributes": [
-                    "EMAIL"
-                ],
-                "passwordProtectionSettings": {
-                    "passwordPolicyMinLength": 8,
-                    "passwordPolicyCharacters": []
-                },
-                "mfaConfiguration": "OFF",
-                "mfaTypes": [
-                    "SMS"
-                ],
-                "verificationMechanisms": [
-                    "EMAIL"
-                ]
-            },
-            "providerMetadata": {
-                "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify672b112cb4994-staging-173803-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypes5728cd0f-cloudformation-template.json",
-                "logicalId": "authfemabuyoutsorgtypes5728cd0f"
-            },
-            "lastPushTimeStamp": "2022-01-17T19:06:08.456Z",
-            "output": {
-                "CreatedSNSRole": "arn:aws:iam::976807564794:role/sns5728cd0f173803-staging",
-                "UserPoolId": "us-east-1_UaUahoeQW",
-                "AppClientIDWeb": "13hc7vv014of8vc2o3vrabvdf3",
-                "AppClientID": "2pfkfh5s2ovgmc1dsaka6kjldb",
-                "IdentityPoolId": "us-east-1:5a2ad285-2567-4c83-be44-06ce9392dc22",
-                "UserPoolArn": "arn:aws:cognito-idp:us-east-1:976807564794:userpool/us-east-1_UaUahoeQW",
-                "IdentityPoolName": "femabuyoutsorgtypes5728cd0f_identitypool_5728cd0f__staging",
-                "UserPoolName": "femabuyoutsorgtypes5728cd0f_userpool_5728cd0f"
-            },
-            "lastPushDirHash": "Af8qzSTxMchU5eKwTZz+5wzGFck="
-        }
-    },
-    "api": {
-        "countygrantsv2": {
-            "service": "AppSync",
-            "output": {
-                "authConfig": {
-                    "defaultAuthentication": {
-                        "authenticationType": "API_KEY"
-                    },
-                    "additionalAuthenticationProviders": null
-                },
-                "GraphQLAPIIdOutput": "zf25sudeovbzbkxl5qm47twhdy",
-                "GraphQLAPIEndpointOutput": "https://dxaowooaxnfkdb4fnllekzf4ju.appsync-api.us-east-1.amazonaws.com/graphql",
-                "name": "countygrantsv2",
-                "region": "us-east-1",
-                "GraphQLAPIKeyOutput": "da2-zbzjk4rhrjfd3lu5lkzjgf4bxq"
-            },
-            "lastPushTimeStamp": "2022-01-17T19:37:07.351Z"
-        }
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplify672b112cb4994-staging-173803-authRole",
+      "UnauthRoleArn": "arn:aws:iam::976807564794:role/amplify-amplify672b112cb4994-staging-173803-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::976807564794:role/amplify-amplify672b112cb4994-staging-173803-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-amplify672b112cb4994-staging-173803-deployment",
+      "UnauthRoleName": "amplify-amplify672b112cb4994-staging-173803-unauthRole",
+      "StackName": "amplify-amplify672b112cb4994-staging-173803",
+      "StackId": "arn:aws:cloudformation:us-east-1:976807564794:stack/amplify-amplify672b112cb4994-staging-173803/fcd0ee30-2ab9-11ec-8fbf-0ee15019571d",
+      "AmplifyAppId": "dclue2jnkq1ay"
     }
+  },
+  "auth": {
+    "femabuyoutsorgtypes5728cd0f": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify672b112cb4994-staging-173803-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypes5728cd0f-cloudformation-template.json",
+        "logicalId": "authfemabuyoutsorgtypes5728cd0f"
+      },
+      "lastPushTimeStamp": "2022-01-17T19:06:08.456Z",
+      "output": {
+        "CreatedSNSRole": "arn:aws:iam::976807564794:role/sns5728cd0f173803-staging",
+        "UserPoolId": "us-east-1_UaUahoeQW",
+        "AppClientIDWeb": "13hc7vv014of8vc2o3vrabvdf3",
+        "AppClientID": "2pfkfh5s2ovgmc1dsaka6kjldb",
+        "IdentityPoolId": "us-east-1:5a2ad285-2567-4c83-be44-06ce9392dc22",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:976807564794:userpool/us-east-1_UaUahoeQW",
+        "IdentityPoolName": "femabuyoutsorgtypes5728cd0f_identitypool_5728cd0f__staging",
+        "UserPoolName": "femabuyoutsorgtypes5728cd0f_userpool_5728cd0f"
+      },
+      "lastPushDirHash": "Af8qzSTxMchU5eKwTZz+5wzGFck="
+    }
+  }
 }

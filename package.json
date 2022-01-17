@@ -60,5 +60,8 @@
     ">0.2%",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "mini-css-extract-plugin": "2.4.5"
+  }
 }

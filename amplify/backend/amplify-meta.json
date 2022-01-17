@@ -40,7 +40,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify672b112cb4994-staging-173803-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypes5728cd0f-cloudformation-template.json",
         "logicalId": "authfemabuyoutsorgtypes5728cd0f"
       },
-      "lastPushTimeStamp": "2022-01-17T19:06:08.456Z",
+      "lastPushTimeStamp": "2022-01-17T20:32:07.837Z",
       "output": {
         "CreatedSNSRole": "arn:aws:iam::976807564794:role/sns5728cd0f173803-staging",
         "UserPoolId": "us-east-1_UaUahoeQW",
@@ -52,25 +52,6 @@
         "UserPoolName": "femabuyoutsorgtypes5728cd0f_userpool_5728cd0f"
       },
       "lastPushDirHash": "Af8qzSTxMchU5eKwTZz+5wzGFck="
-    }
-  },
-  "api": {
-    "countygrantsv2": {
-      "service": "AppSync",
-      "output": {
-        "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY"
-          },
-          "additionalAuthenticationProviders": null
-        },
-        "GraphQLAPIIdOutput": "zf25sudeovbzbkxl5qm47twhdy",
-        "GraphQLAPIEndpointOutput": "https://dxaowooaxnfkdb4fnllekzf4ju.appsync-api.us-east-1.amazonaws.com/graphql",
-        "name": "countygrantsv2",
-        "region": "us-east-1",
-        "GraphQLAPIKeyOutput": "da2-zbzjk4rhrjfd3lu5lkzjgf4bxq"
-      },
-      "lastPushTimeStamp": "2022-01-17T19:37:07.351Z"
     }
   }
 }
