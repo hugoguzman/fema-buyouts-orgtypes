@@ -43,7 +43,7 @@ export default function Counties() {
 	const { loading, error, data } = useQuery(COUNTY_BUYOUT_GRANTS);
 
 	if (loading) return <p>Loading...</p>;
-	if (error) return <p>Error :(</p>;
+	// if (error) return <p>Error :(</p>;
 
 	return (
 		<div>

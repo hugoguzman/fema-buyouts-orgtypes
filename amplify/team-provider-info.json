@@ -1,37 +1,19 @@
 {
-  "dev": {
+  "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-femabuyoutsorgtypes-dev-182544-authRole",
-      "UnauthRoleArn": "arn:aws:iam::976807564794:role/amplify-femabuyoutsorgtypes-dev-182544-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::976807564794:role/amplify-femabuyoutsorgtypes-dev-182544-authRole",
+      "AuthRoleName": "amplify-amplify672b112cb4994-staging-173803-authRole",
+      "UnauthRoleArn": "arn:aws:iam::976807564794:role/amplify-amplify672b112cb4994-staging-173803-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::976807564794:role/amplify-amplify672b112cb4994-staging-173803-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-femabuyoutsorgtypes-dev-182544-deployment",
-      "UnauthRoleName": "amplify-femabuyoutsorgtypes-dev-182544-unauthRole",
-      "StackName": "amplify-femabuyoutsorgtypes-dev-182544",
-      "StackId": "arn:aws:cloudformation:us-east-1:976807564794:stack/amplify-femabuyoutsorgtypes-dev-182544/795ba5a0-71a3-11ec-8403-128891b50703",
-      "AmplifyAppId": "d2ht753wgxc1l6"
+      "DeploymentBucketName": "amplify-amplify672b112cb4994-staging-173803-deployment",
+      "UnauthRoleName": "amplify-amplify672b112cb4994-staging-173803-unauthRole",
+      "StackName": "amplify-amplify672b112cb4994-staging-173803",
+      "StackId": "arn:aws:cloudformation:us-east-1:976807564794:stack/amplify-amplify672b112cb4994-staging-173803/fcd0ee30-2ab9-11ec-8fbf-0ee15019571d",
+      "AmplifyAppId": "dclue2jnkq1ay"
     },
     "categories": {
       "auth": {
-        "femabuyoutsorgtypes4b8e7ef3": {}
-      }
-    }
-  },
-  "test": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-femabuyoutsorgtypes-test-181901-authRole",
-      "UnauthRoleArn": "arn:aws:iam::976807564794:role/amplify-femabuyoutsorgtypes-test-181901-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::976807564794:role/amplify-femabuyoutsorgtypes-test-181901-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-femabuyoutsorgtypes-test-181901-deployment",
-      "UnauthRoleName": "amplify-femabuyoutsorgtypes-test-181901-unauthRole",
-      "StackName": "amplify-femabuyoutsorgtypes-test-181901",
-      "StackId": "arn:aws:cloudformation:us-east-1:976807564794:stack/amplify-femabuyoutsorgtypes-test-181901/b13e3440-7722-11ec-89fc-1240661c4205",
-      "AmplifyAppId": "d2ht753wgxc1l6"
-    },
-    "categories": {
-      "auth": {
-        "femabuyoutsorgtypes4b8e7ef3": {}
+        "femabuyoutsorgtypes5728cd0f": {}
       }
     }
   }

@@ -67,7 +67,7 @@ export default function CountyOverview() {
 	const { loading, error, data } = useQuery(COUNTY_BUYOUT_GRANTS);
 
 	if (loading) return <p>Loading...</p>;
-	if (error) return <p>Error :(</p>;
+	// if (error) return <p>Error :(</p>; 
 
 	const subgrantee = data.listCountybuyoutgrants.items.map(
 		(subgrantee) => subgrantee.subgrantee_clean
@@ -106,7 +106,7 @@ function CountyTables() {
 	const { loading, error, data } = useQuery(COUNTY_GRANTS);
 
 	if (loading) return <p>Loading...</p>;
-	if (error) return <p>Error :(</p>;
+	// if (error) return <p>Error :(</p>;
 
 	const subgrantee = data.listCountygrants.items.map(
 		(subgrantee) => subgrantee.subgrantee_clean

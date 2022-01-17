@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "femabuyoutsorgtypes4b8e7ef3_identitypool_4b8e7ef3",
+    "identityPoolName": "femabuyoutsorgtypes5728cd0f_identitypool_5728cd0f",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "femabu4b8e7ef3",
-    "userPoolName": "femabuyoutsorgtypes4b8e7ef3_userpool_4b8e7ef3",
+    "resourceNameTruncated": "femabu5728cd0f",
+    "userPoolName": "femabuyoutsorgtypes5728cd0f_userpool_5728cd0f",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -22,10 +22,7 @@
     "requiredAttributes": [
       "email"
     ],
-    "aliasAttributes": [
-      "email",
-      "preferred_username"
-    ],
+    "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
@@ -34,31 +31,15 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "femabu4b8e7ef3_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "femabu5728cd0f_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
+    "sharedId": "5728cd0f",
+    "resourceName": "femabuyoutsorgtypes5728cd0f",
     "authSelections": "identityPoolAndUserPool",
-    "resourceName": "femabuyoutsorgtypes4b8e7ef3",
-    "serviceName": "Cognito",
     "useDefault": "default",
-    "sharedId": "4b8e7ef3",
     "userPoolGroupList": [],
+    "serviceName": "Cognito",
     "usernameCaseSensitive": false,
-    "hostedUI": false,
-    "authRoleArn": {
-      "Fn::GetAtt": [
-        "AuthRole",
-        "Arn"
-      ]
-    },
-    "unauthRoleArn": {
-      "Fn::GetAtt": [
-        "UnauthRole",
-        "Arn"
-      ]
-    },
-    "breakCircularDependency": true,
-    "useEnabledMfas": false,
-    "dependsOn": [],
-    "authProviders": []
+    "useEnabledMfas": false
   }
 }

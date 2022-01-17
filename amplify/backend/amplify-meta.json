@@ -1,28 +1,26 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-femabuyoutsorgtypes-dev-182544-authRole",
-      "UnauthRoleArn": "arn:aws:iam::976807564794:role/amplify-femabuyoutsorgtypes-dev-182544-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::976807564794:role/amplify-femabuyoutsorgtypes-dev-182544-authRole",
+      "AuthRoleName": "amplify-amplify672b112cb4994-staging-173803-authRole",
+      "UnauthRoleArn": "arn:aws:iam::976807564794:role/amplify-amplify672b112cb4994-staging-173803-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::976807564794:role/amplify-amplify672b112cb4994-staging-173803-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-femabuyoutsorgtypes-dev-182544-deployment",
-      "UnauthRoleName": "amplify-femabuyoutsorgtypes-dev-182544-unauthRole",
-      "StackName": "amplify-femabuyoutsorgtypes-dev-182544",
-      "StackId": "arn:aws:cloudformation:us-east-1:976807564794:stack/amplify-femabuyoutsorgtypes-dev-182544/795ba5a0-71a3-11ec-8403-128891b50703",
-      "AmplifyAppId": "d2ht753wgxc1l6"
+      "DeploymentBucketName": "amplify-amplify672b112cb4994-staging-173803-deployment",
+      "UnauthRoleName": "amplify-amplify672b112cb4994-staging-173803-unauthRole",
+      "StackName": "amplify-amplify672b112cb4994-staging-173803",
+      "StackId": "arn:aws:cloudformation:us-east-1:976807564794:stack/amplify-amplify672b112cb4994-staging-173803/fcd0ee30-2ab9-11ec-8fbf-0ee15019571d",
+      "AmplifyAppId": "dclue2jnkq1ay"
     }
   },
   "auth": {
-    "femabuyoutsorgtypes4b8e7ef3": {
+    "femabuyoutsorgtypes5728cd0f": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
-        "loginMechanisms": [
-          "EMAIL",
-          "PREFERRED_USERNAME"
-        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
         "signupAttributes": [
           "EMAIL"
         ],
@@ -36,26 +34,43 @@
         ],
         "verificationMechanisms": [
           "EMAIL"
-        ],
-        "socialProviders": [],
-        "usernameAttributes": []
+        ]
       },
-      "lastPushTimeStamp": "2022-01-17T01:19:14.943Z",
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-femabuyoutsorgtypes-dev-182544-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypes4b8e7ef3-cloudformation-template.json",
-        "logicalId": "authfemabuyoutsorgtypes4b8e7ef3"
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify672b112cb4994-staging-173803-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypes5728cd0f-cloudformation-template.json",
+        "logicalId": "authfemabuyoutsorgtypes5728cd0f"
       },
+      "lastPushTimeStamp": "2022-01-17T19:06:08.456Z",
       "output": {
-        "CreatedSNSRole": "arn:aws:iam::976807564794:role/sns4b8e7ef3182544-dev",
-        "UserPoolId": "us-east-1_UnB880FOy",
-        "AppClientIDWeb": "5f7ftb3lbccvuhv5mcr4lh65e",
-        "AppClientID": "5bc53m3bies1d21rrrrnsvk687",
-        "IdentityPoolId": "us-east-1:89b9a854-b57b-4212-a3a7-1609f4d1ee2f",
-        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:976807564794:userpool/us-east-1_UnB880FOy",
-        "IdentityPoolName": "femabuyoutsorgtypes4b8e7ef3_identitypool_4b8e7ef3__dev",
-        "UserPoolName": "femabuyoutsorgtypes4b8e7ef3_userpool_4b8e7ef3"
+        "CreatedSNSRole": "arn:aws:iam::976807564794:role/sns5728cd0f173803-staging",
+        "UserPoolId": "us-east-1_UaUahoeQW",
+        "AppClientIDWeb": "13hc7vv014of8vc2o3vrabvdf3",
+        "AppClientID": "2pfkfh5s2ovgmc1dsaka6kjldb",
+        "IdentityPoolId": "us-east-1:5a2ad285-2567-4c83-be44-06ce9392dc22",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:976807564794:userpool/us-east-1_UaUahoeQW",
+        "IdentityPoolName": "femabuyoutsorgtypes5728cd0f_identitypool_5728cd0f__staging",
+        "UserPoolName": "femabuyoutsorgtypes5728cd0f_userpool_5728cd0f"
       },
-      "lastPushDirHash": "2I/WER6/Nj6lNeJITRC9K8sKWbQ="
+      "lastPushDirHash": "Af8qzSTxMchU5eKwTZz+5wzGFck="
+    }
+  },
+  "api": {
+    "countygrantsv2": {
+      "service": "AppSync",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY"
+          },
+          "additionalAuthenticationProviders": null
+        },
+        "GraphQLAPIIdOutput": "zf25sudeovbzbkxl5qm47twhdy",
+        "GraphQLAPIEndpointOutput": "https://dxaowooaxnfkdb4fnllekzf4ju.appsync-api.us-east-1.amazonaws.com/graphql",
+        "name": "countygrantsv2",
+        "region": "us-east-1",
+        "GraphQLAPIKeyOutput": "da2-zbzjk4rhrjfd3lu5lkzjgf4bxq"
+      },
+      "lastPushTimeStamp": "2022-01-17T19:37:07.351Z"
     }
   }
 }

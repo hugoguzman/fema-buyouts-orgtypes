@@ -1,6 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
     "auth": {
-        "femabuyoutsorgtypes4b8e7ef3": {
+        "femabuyoutsorgtypes5728cd0f": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
             "UserPoolId": "string",

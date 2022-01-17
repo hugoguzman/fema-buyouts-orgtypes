@@ -1,5 +1,5 @@
 {
-  "Description": "Root Stack for AWS Amplify CLI",
+  "Description": "Root Stack for AWS Amplify Console",
   "AWSTemplateFormatVersion": "2010-09-09",
   "Parameters": {
     "DeploymentBucketName": {
@@ -152,15 +152,15 @@
         }
       }
     },
-    "authfemabuyoutsorgtypes4b8e7ef3": {
+    "authfemabuyoutsorgtypes5728cd0f": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-femabuyoutsorgtypes-dev-182544-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypes4b8e7ef3-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplify672b112cb4994-staging-173803-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypes5728cd0f-cloudformation-template.json",
         "Parameters": {
-          "identityPoolName": "femabuyoutsorgtypes4b8e7ef3_identitypool_4b8e7ef3",
+          "identityPoolName": "femabuyoutsorgtypes5728cd0f_identitypool_5728cd0f",
           "allowUnauthenticatedIdentities": false,
-          "resourceNameTruncated": "femabu4b8e7ef3",
-          "userPoolName": "femabuyoutsorgtypes4b8e7ef3_userpool_4b8e7ef3",
+          "resourceNameTruncated": "femabu5728cd0f",
+          "userPoolName": "femabuyoutsorgtypes5728cd0f_userpool_5728cd0f",
           "autoVerifiedAttributes": "email",
           "mfaConfiguration": "OFF",
           "mfaTypes": "SMS Text Message",
@@ -172,21 +172,21 @@
           "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": "",
           "requiredAttributes": "email",
-          "aliasAttributes": "email,preferred_username",
+          "aliasAttributes": "",
           "userpoolClientGenerateSecret": false,
           "userpoolClientRefreshTokenValidity": 30,
           "userpoolClientWriteAttributes": "email",
           "userpoolClientReadAttributes": "email",
-          "userpoolClientLambdaRole": "femabu4b8e7ef3_userpoolclient_lambda_role",
+          "userpoolClientLambdaRole": "femabu5728cd0f_userpoolclient_lambda_role",
           "userpoolClientSetAttributes": false,
+          "sharedId": "5728cd0f",
+          "resourceName": "femabuyoutsorgtypes5728cd0f",
           "authSelections": "identityPoolAndUserPool",
-          "resourceName": "femabuyoutsorgtypes4b8e7ef3",
-          "serviceName": "Cognito",
           "useDefault": "default",
-          "sharedId": "4b8e7ef3",
           "userPoolGroupList": "",
+          "serviceName": "Cognito",
           "usernameCaseSensitive": false,
-          "hostedUI": false,
+          "useEnabledMfas": false,
           "authRoleArn": {
             "Fn::GetAtt": [
               "AuthRole",
@@ -200,10 +200,8 @@
             ]
           },
           "breakCircularDependency": true,
-          "useEnabledMfas": false,
           "dependsOn": "",
-          "authProviders": "",
-          "env": "dev"
+          "env": "staging"
         }
       }
     },
@@ -211,7 +209,7 @@
       "DependsOn": [
         "AuthRole",
         "UnauthRole",
-        "authfemabuyoutsorgtypes4b8e7ef3"
+        "authfemabuyoutsorgtypes5728cd0f"
       ],
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -306,7 +304,7 @@
         },
         "idpId": {
           "Fn::GetAtt": [
-            "authfemabuyoutsorgtypes4b8e7ef3",
+            "authfemabuyoutsorgtypes5728cd0f",
             "Outputs.IdentityPoolId"
           ]
         },
