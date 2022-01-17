@@ -71,28 +71,28 @@
     "userpoolClientSetAttributes": {
       "Type": "String"
     },
-    "authSelections": {
+    "sharedId": {
       "Type": "String"
     },
     "resourceName": {
       "Type": "String"
     },
-    "serviceName": {
+    "authSelections": {
       "Type": "String"
     },
     "useDefault": {
       "Type": "String"
     },
-    "sharedId": {
-      "Type": "String"
-    },
     "userPoolGroupList": {
       "Type": "CommaDelimitedList"
+    },
+    "serviceName": {
+      "Type": "String"
     },
     "usernameCaseSensitive": {
       "Type": "String"
     },
-    "hostedUI": {
+    "useEnabledMfas": {
       "Type": "String"
     },
     "authRoleArn": {
@@ -104,11 +104,11 @@
     "breakCircularDependency": {
       "Type": "String"
     },
-    "useEnabledMfas": {
-      "Type": "String"
-    },
     "dependsOn": {
       "Type": "CommaDelimitedList"
+    },
+    "hostedUI": {
+      "Type": "String"
     },
     "authProviders": {
       "Type": "CommaDelimitedList"
@@ -150,7 +150,7 @@
               ],
               "Condition": {
                 "StringEquals": {
-                  "sts:ExternalId": "femabu4b8e7ef3_role_external_id"
+                  "sts:ExternalId": "femabud4652576_role_external_id"
                 }
               }
             }
@@ -170,18 +170,18 @@
                 }
               ]
             },
-            "PolicyName": "femabu4b8e7ef3-sns-policy"
+            "PolicyName": "femabud4652576-sns-policy"
           }
         ],
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "femabu4b8e7ef3_sns-role",
+            "femabud4652576_sns-role",
             {
               "Fn::Join": [
                 "",
                 [
-                  "sns4b8e7ef3",
+                  "snsd4652576",
                   {
                     "Fn::Select": [
                       3,
@@ -209,9 +209,6 @@
     "UserPool": {
       "Type": "AWS::Cognito::UserPool",
       "Properties": {
-        "AliasAttributes": {
-          "Ref": "aliasAttributes"
-        },
         "AutoVerifiedAttributes": [
           "email"
         ],
@@ -246,7 +243,7 @@
           "Ref": "smsAuthenticationMessage"
         },
         "SmsConfiguration": {
-          "ExternalId": "femabu4b8e7ef3_role_external_id",
+          "ExternalId": "femabud4652576_role_external_id",
           "SnsCallerArn": {
             "Fn::GetAtt": [
               "SNSRole",
@@ -290,7 +287,7 @@
         "UserPoolId": {
           "Ref": "UserPool"
         },
-        "ClientName": "femabu4b8e7ef3_app_clientWeb",
+        "ClientName": "femabud4652576_app_clientWeb",
         "RefreshTokenValidity": {
           "Ref": "userpoolClientRefreshTokenValidity"
         }
@@ -305,7 +302,7 @@
         "UserPoolId": {
           "Ref": "UserPool"
         },
-        "ClientName": "femabu4b8e7ef3_app_client",
+        "ClientName": "femabud4652576_app_client",
         "GenerateSecret": {
           "Ref": "userpoolClientGenerateSecret"
         },
@@ -342,7 +339,7 @@
               "Fn::Join": [
                 "",
                 [
-                  "upClientLambdaRole4b8e7ef3",
+                  "upClientLambdaRoled4652576",
                   {
                     "Fn::Select": [
                       3,
@@ -410,7 +407,7 @@
             }
           ]
         },
-        "PolicyName": "femabu4b8e7ef3_userpoolclient_lambda_iam_policy",
+        "PolicyName": "femabud4652576_userpoolclient_lambda_iam_policy",
         "Roles": [
           {
             "Ref": "UserPoolClientRole"
@@ -453,7 +450,7 @@
             }
           ]
         },
-        "PolicyName": "femabu4b8e7ef3_userpoolclient_lambda_log_policy",
+        "PolicyName": "femabud4652576_userpoolclient_lambda_log_policy",
         "Roles": [
           {
             "Ref": "UserPoolClientRole"
@@ -533,12 +530,12 @@
         "IdentityPoolName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "femabuyoutsorgtypes4b8e7ef3_identitypool_4b8e7ef3",
+            "femabuyoutsorgtypesd4652576_identitypool_d4652576",
             {
               "Fn::Join": [
                 "",
                 [
-                  "femabuyoutsorgtypes4b8e7ef3_identitypool_4b8e7ef3__",
+                  "femabuyoutsorgtypesd4652576_identitypool_d4652576__",
                   {
                     "Ref": "env"
                   }

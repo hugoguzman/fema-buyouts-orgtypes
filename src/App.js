@@ -1,17 +1,21 @@
-import { withAuthenticator } from '@aws-amplify/ui-react';
-import Amplify from 'aws-amplify';
+import { Authenticator } from '@aws-amplify/ui-react';
+import { Amplify } from 'aws-amplify';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import awsconfig from './aws-exports';
+// import awsconfig from './aws-exports';
 // import { useQuery, gql } from '@apollo/client';
 // import { DataGrid } from '@mui/x-data-grid';
 import Layout from './Components/Layout';
 import Counties from './routes/counties';
 import County from './routes/county';
 import MyMap from './routes/usmap';
+import '@aws-amplify/ui-react/styles.css';
+import awsExports from './aws-exports';
+Amplify.configure(awsExports);
 
-Amplify.configure(awsconfig);
+
+// Amplify.configure(awsconfig);
 
 const columns = [
 	{ field: 'subgrantee_clean', headerName: 'County', width: 125 },
@@ -62,10 +66,13 @@ if (error) return <p>Error :(</p>;
 }*/
 
 function App() {
+
 	return (
+		<Authenticator>
+      {({ signOut, user }) => (
 		<div style={{ textAlign: 'center' }}>
 			<Routes>
-				<Route path='/' element={<Layout />}>
+				<Route path='/' element={<Layout signOut={signOut} />}>
 					<Route path='usmap' element={<MyMap />} />
 					<Route path='counties' element={<Counties />}>
 						<Route path=':countyId' element={<County />} />
@@ -82,6 +89,8 @@ function App() {
 				</Route>
 			</Routes>
 		</div>
+	  )}
+		</Authenticator>
 	);
 }
-export default withAuthenticator(App);
+export default App;

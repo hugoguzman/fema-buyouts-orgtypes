@@ -13,8 +13,9 @@ import { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import NavDrawer from './NavDrawer';
 import CustomSignOutButton from './SignOutButton';
+import LogoutIcon from '@mui/icons-material/Logout';
 
-export default function Layout() {
+export default function Layout(props) {
 	const [openDrawer, setOpenDrawer] = useState(true);
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -45,6 +46,7 @@ export default function Layout() {
 					<Toolbar>
 						{isMobile ? (
 							<NavDrawer
+								signOut={props.signOut}
 								openDrawer={openDrawer}
 								setOpenDrawer={setOpenDrawer}
 							/>
@@ -85,8 +87,18 @@ export default function Layout() {
 										<GitHubIcon />
 									</IconButton>
 								</Tooltip>
-
-								<CustomSignOutButton />
+								<Tooltip title='Sign Out'>
+									<IconButton
+										size='large'
+										onClick={props.signOut}
+										edge='start'
+										color='primary'
+										aria-label='Sign Out'
+										sx={{ mr: 0, ml: 3 }}
+									>
+										<LogoutIcon />
+									</IconButton>
+								</Tooltip>
 							</>
 						)}
 					</Toolbar>
