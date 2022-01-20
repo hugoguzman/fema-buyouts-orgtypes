@@ -19,7 +19,9 @@
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
-        "socialProviders": [],
+        "socialProviders": [
+          "GOOGLE"
+        ],
         "usernameAttributes": [],
         "signupAttributes": [
           "EMAIL"
@@ -40,7 +42,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify672b112cb4994-staging-173803-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypes5728cd0f-cloudformation-template.json",
         "logicalId": "authfemabuyoutsorgtypes5728cd0f"
       },
-      "lastPushTimeStamp": "2022-01-17T19:06:08.456Z",
+      "lastPushTimeStamp": "2022-01-20T17:06:25.966Z",
       "output": {
         "CreatedSNSRole": "arn:aws:iam::976807564794:role/sns5728cd0f173803-staging",
         "UserPoolId": "us-east-1_UaUahoeQW",
@@ -49,9 +51,30 @@
         "IdentityPoolId": "us-east-1:5a2ad285-2567-4c83-be44-06ce9392dc22",
         "UserPoolArn": "arn:aws:cognito-idp:us-east-1:976807564794:userpool/us-east-1_UaUahoeQW",
         "IdentityPoolName": "femabuyoutsorgtypes5728cd0f_identitypool_5728cd0f__staging",
-        "UserPoolName": "femabuyoutsorgtypes5728cd0f_userpool_5728cd0f"
+        "UserPoolName": "femabuyoutsorgtypes5728cd0f_userpool_5728cd0f",
+        "HostedUIDomain": "femabuyoutsorgtypes292d9156-292d9156-staging",
+        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://main.dclue2jnkq1ay.amplifyapp.com/\"],\"LogoutURLs\":[\"http://localhost:3000/\",\"https://main.dclue2jnkq1ay.amplifyapp.com/\"]}"
       },
-      "lastPushDirHash": "Af8qzSTxMchU5eKwTZz+5wzGFck="
+      "lastPushDirHash": "Mo56pZYDHmxHElqgeNAJ9RCNS1A="
+    }
+  },
+  "api": {
+    "countygrantsv2": {
+      "service": "AppSync",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY"
+          },
+          "additionalAuthenticationProviders": null
+        },
+        "GraphQLAPIIdOutput": "zf25sudeovbzbkxl5qm47twhdy",
+        "GraphQLAPIEndpointOutput": "https://dxaowooaxnfkdb4fnllekzf4ju.appsync-api.us-east-1.amazonaws.com/graphql",
+        "name": "countygrantsv2",
+        "region": "us-east-1",
+        "GraphQLAPIKeyOutput": "da2-zbzjk4rhrjfd3lu5lkzjgf4bxq"
+      },
+      "lastPushTimeStamp": "2022-01-17T21:13:14.321Z"
     }
   }
 }

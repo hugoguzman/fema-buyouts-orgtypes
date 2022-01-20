@@ -7,9 +7,24 @@ const awsmobile = {
     "aws_cognito_region": "us-east-1",
     "aws_user_pools_id": "us-east-1_UaUahoeQW",
     "aws_user_pools_web_client_id": "13hc7vv014of8vc2o3vrabvdf3",
-    "oauth": {},
+    "oauth": {
+        "domain": "femabuyoutsorgtypes292d9156-292d9156-staging.auth.us-east-1.amazoncognito.com",
+        "scope": [
+            "phone",
+            "email",
+            "openid",
+            "profile",
+            "aws.cognito.signin.user.admin"
+        ],
+        "redirectSignIn": "http://localhost:3000/,https://main.dclue2jnkq1ay.amplifyapp.com/",
+        "redirectSignOut": "http://localhost:3000/,https://main.dclue2jnkq1ay.amplifyapp.com/",
+        "responseType": "code"
+    },
+    "federationTarget": "COGNITO_USER_POOLS",
     "aws_cognito_username_attributes": [],
-    "aws_cognito_social_providers": [],
+    "aws_cognito_social_providers": [
+        "GOOGLE"
+    ],
     "aws_cognito_signup_attributes": [
         "EMAIL"
     ],

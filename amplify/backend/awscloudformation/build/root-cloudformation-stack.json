@@ -182,7 +182,7 @@
           "sharedId": "5728cd0f",
           "resourceName": "femabuyoutsorgtypes5728cd0f",
           "authSelections": "identityPoolAndUserPool",
-          "useDefault": "default",
+          "useDefault": "defaultSocial",
           "userPoolGroupList": "",
           "serviceName": "Cognito",
           "usernameCaseSensitive": false,
@@ -201,6 +201,13 @@
           },
           "breakCircularDependency": true,
           "dependsOn": "",
+          "hostedUI": true,
+          "hostedUIDomainName": "femabuyoutsorgtypes292d9156-292d9156",
+          "authProvidersUserPool": "Google",
+          "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+          "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://main.dclue2jnkq1ay.amplifyapp.com/\"],\"LogoutURLs\":[\"http://localhost:3000/\",\"https://main.dclue2jnkq1ay.amplifyapp.com/\"]}",
+          "authProviders": "",
+          "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"1011860473706-ft50ns0c5qs5p56io8hj4lbp0c0d13de.apps.googleusercontent.com\",\"client_secret\":\"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\"}]",
           "env": "staging"
         }
       }
