@@ -152,15 +152,15 @@
         }
       }
     },
-    "authfemabuyoutsorgtypes5728cd0f": {
+    "authfemabuyoutsorgtypese4c04012": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-amplify672b112cb4994-staging-173803-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypes5728cd0f-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplify672b112cb4994-staging-173803-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypese4c04012-cloudformation-template.json",
         "Parameters": {
-          "identityPoolName": "femabuyoutsorgtypes5728cd0f_identitypool_5728cd0f",
+          "identityPoolName": "femabuyoutsorgtypese4c04012_identitypool_e4c04012",
           "allowUnauthenticatedIdentities": false,
-          "resourceNameTruncated": "femabu5728cd0f",
-          "userPoolName": "femabuyoutsorgtypes5728cd0f_userpool_5728cd0f",
+          "resourceNameTruncated": "femabue4c04012",
+          "userPoolName": "femabuyoutsorgtypese4c04012_userpool_e4c04012",
           "autoVerifiedAttributes": "email",
           "mfaConfiguration": "OFF",
           "mfaTypes": "SMS Text Message",
@@ -177,12 +177,17 @@
           "userpoolClientRefreshTokenValidity": 30,
           "userpoolClientWriteAttributes": "email",
           "userpoolClientReadAttributes": "email",
-          "userpoolClientLambdaRole": "femabu5728cd0f_userpoolclient_lambda_role",
+          "userpoolClientLambdaRole": "femabue4c04012_userpoolclient_lambda_role",
           "userpoolClientSetAttributes": false,
-          "sharedId": "5728cd0f",
-          "resourceName": "femabuyoutsorgtypes5728cd0f",
+          "sharedId": "e4c04012",
+          "resourceName": "femabuyoutsorgtypese4c04012",
           "authSelections": "identityPoolAndUserPool",
           "useDefault": "defaultSocial",
+          "hostedUI": true,
+          "hostedUIDomainName": "femabuyoutsorgtypese4c04012-e4c04012",
+          "authProvidersUserPool": "Google",
+          "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+          "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
           "userPoolGroupList": "",
           "serviceName": "Cognito",
           "usernameCaseSensitive": false,
@@ -201,13 +206,7 @@
           },
           "breakCircularDependency": true,
           "dependsOn": "",
-          "hostedUI": true,
-          "hostedUIDomainName": "femabuyoutsorgtypes292d9156-292d9156",
-          "authProvidersUserPool": "Google",
-          "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
-          "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://main.dclue2jnkq1ay.amplifyapp.com/\"],\"LogoutURLs\":[\"http://localhost:3000/\",\"https://main.dclue2jnkq1ay.amplifyapp.com/\"]}",
-          "authProviders": "",
-          "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"1011860473706-ft50ns0c5qs5p56io8hj4lbp0c0d13de.apps.googleusercontent.com\",\"client_secret\":\"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\"}]",
+          "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"350888498148-634qt26rcfn6gkeq6m3mm4c52htct1dd.apps.googleusercontent.com\",\"client_secret\":\"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\"}]",
           "env": "staging"
         }
       }
@@ -216,7 +215,7 @@
       "DependsOn": [
         "AuthRole",
         "UnauthRole",
-        "authfemabuyoutsorgtypes5728cd0f"
+        "authfemabuyoutsorgtypese4c04012"
       ],
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -311,7 +310,7 @@
         },
         "idpId": {
           "Fn::GetAtt": [
-            "authfemabuyoutsorgtypes5728cd0f",
+            "authfemabuyoutsorgtypese4c04012",
             "Outputs.IdentityPoolId"
           ]
         },

@@ -1,12 +1,14 @@
 {
   "auth": {
-    "femabuyoutsorgtypes5728cd0f": {
+    "femabuyoutsorgtypese4c04012": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
-        "socialProviders": [],
+        "socialProviders": [
+          "GOOGLE"
+        ],
         "usernameAttributes": [],
         "signupAttributes": [
           "EMAIL"

@@ -3,12 +3,12 @@
 
 const awsmobile = {
     "aws_project_region": "us-east-1",
-    "aws_cognito_identity_pool_id": "us-east-1:5a2ad285-2567-4c83-be44-06ce9392dc22",
+    "aws_cognito_identity_pool_id": "us-east-1:937bb0a2-d6e7-4a52-987f-9fdc0f4287a3",
     "aws_cognito_region": "us-east-1",
-    "aws_user_pools_id": "us-east-1_UaUahoeQW",
-    "aws_user_pools_web_client_id": "13hc7vv014of8vc2o3vrabvdf3",
+    "aws_user_pools_id": "us-east-1_PGZ1RlBPO",
+    "aws_user_pools_web_client_id": "18an6dvce2r9gvuh90q9eoosj",
     "oauth": {
-        "domain": "femabuyoutsorgtypes292d9156-292d9156-staging.auth.us-east-1.amazoncognito.com",
+        "domain": "femabuyoutsorgtypese4c04012-e4c04012-staging.auth.us-east-1.amazoncognito.com",
         "scope": [
             "phone",
             "email",
@@ -16,8 +16,8 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "http://localhost:3000/,https://main.dclue2jnkq1ay.amplifyapp.com/",
-        "redirectSignOut": "http://localhost:3000/,https://main.dclue2jnkq1ay.amplifyapp.com/",
+        "redirectSignIn": "http://localhost:3000/",
+        "redirectSignOut": "http://localhost:3000/",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS",

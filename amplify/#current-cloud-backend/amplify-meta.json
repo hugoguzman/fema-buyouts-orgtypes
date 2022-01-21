@@ -13,7 +13,7 @@
     }
   },
   "auth": {
-    "femabuyoutsorgtypes5728cd0f": {
+    "femabuyoutsorgtypese4c04012": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -39,23 +39,23 @@
         ]
       },
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify672b112cb4994-staging-173803-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypes5728cd0f-cloudformation-template.json",
-        "logicalId": "authfemabuyoutsorgtypes5728cd0f"
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify672b112cb4994-staging-173803-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypese4c04012-cloudformation-template.json",
+        "logicalId": "authfemabuyoutsorgtypese4c04012"
       },
-      "lastPushTimeStamp": "2022-01-20T17:06:25.966Z",
+      "lastPushTimeStamp": "2022-01-21T18:20:05.209Z",
       "output": {
-        "CreatedSNSRole": "arn:aws:iam::976807564794:role/sns5728cd0f173803-staging",
-        "UserPoolId": "us-east-1_UaUahoeQW",
-        "AppClientIDWeb": "13hc7vv014of8vc2o3vrabvdf3",
-        "AppClientID": "2pfkfh5s2ovgmc1dsaka6kjldb",
-        "IdentityPoolId": "us-east-1:5a2ad285-2567-4c83-be44-06ce9392dc22",
-        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:976807564794:userpool/us-east-1_UaUahoeQW",
-        "IdentityPoolName": "femabuyoutsorgtypes5728cd0f_identitypool_5728cd0f__staging",
-        "UserPoolName": "femabuyoutsorgtypes5728cd0f_userpool_5728cd0f",
-        "HostedUIDomain": "femabuyoutsorgtypes292d9156-292d9156-staging",
-        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://main.dclue2jnkq1ay.amplifyapp.com/\"],\"LogoutURLs\":[\"http://localhost:3000/\",\"https://main.dclue2jnkq1ay.amplifyapp.com/\"]}"
+        "CreatedSNSRole": "arn:aws:iam::976807564794:role/snse4c04012173803-staging",
+        "UserPoolId": "us-east-1_PGZ1RlBPO",
+        "AppClientIDWeb": "18an6dvce2r9gvuh90q9eoosj",
+        "AppClientID": "50jar3rtatgfeggooup7bers25",
+        "HostedUIDomain": "femabuyoutsorgtypese4c04012-e4c04012-staging",
+        "IdentityPoolId": "us-east-1:937bb0a2-d6e7-4a52-987f-9fdc0f4287a3",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:976807564794:userpool/us-east-1_PGZ1RlBPO",
+        "IdentityPoolName": "femabuyoutsorgtypese4c04012_identitypool_e4c04012__staging",
+        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
+        "UserPoolName": "femabuyoutsorgtypese4c04012_userpool_e4c04012"
       },
-      "lastPushDirHash": "Mo56pZYDHmxHElqgeNAJ9RCNS1A="
+      "lastPushDirHash": "sWHoWNbqjNoU66cfkdGtP567TJ4="
     }
   },
   "api": {
