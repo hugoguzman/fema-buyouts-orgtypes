@@ -42,7 +42,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify672b112cb4994-staging-173803-deployment/amplify-cfn-templates/auth/femabuyoutsorgtypese4c04012-cloudformation-template.json",
         "logicalId": "authfemabuyoutsorgtypese4c04012"
       },
-      "lastPushTimeStamp": "2022-01-21T18:20:05.209Z",
+      "lastPushTimeStamp": "2022-01-22T06:09:09.911Z",
       "output": {
         "CreatedSNSRole": "arn:aws:iam::976807564794:role/snse4c04012173803-staging",
         "UserPoolId": "us-east-1_PGZ1RlBPO",

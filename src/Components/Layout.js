@@ -16,23 +16,35 @@ import NavDrawer from './NavDrawer';
 
 export default function Layout(props) {
 	const [openDrawer, setOpenDrawer] = useState(true);
-	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
-	const [value, setValue] = useState(0);
+	const theme = useTheme(); //mui theme
+	const isMobile = useMediaQuery(theme.breakpoints.down('sm')); //detects if user is on mobile device/sm screen
+	const location = useLocation(); //route location
+	const path = location.pathname; //url path
+	const [value, setValue] = useState(0); //state var for mui tabs
 	const handleTabChange = (event, newValue) => {
 		setValue(newValue);
-	};
-
-	const location = useLocation();
+	}; // shows highlighting for current mui nav tab
 
 	useEffect(() => {
-		let path = location.pathname;
 		if (path === '/' && value !== 0) setValue(0);
 		else if (path === '/usmap' && value !== 1) setValue(1);
 		else if (path === '/counties' && value !== 2) setValue(2);
-		// else if (path === '/counties:*' && selectedTab !== 2) setSelectedTab(2); // need to find way to set tab indicator when on indexed route i.e. counties:'countiesID'.
-	}, [value, location.pathname]);
+		// need to find way to set tab indicator when on indexed route i.e. counties:'countiesID'.
+	}, [value, path]);
+
+	function HomeView() {
+		// shows content for home page only
+		if (path === '/') {
+			return (
+				<Box component='span'>
+					{' '}
+					<Typography> HOME , {path}</Typography>
+				</Box>
+			);
+		} else {
+			return false;
+		}
+	}
 
 	return (
 		<div
@@ -103,7 +115,7 @@ export default function Layout(props) {
 					</Toolbar>
 				</AppBar>
 			</Box>
-
+			<HomeView />
 			<Outlet />
 		</div>
 	);
