@@ -1,3 +1,11 @@
+/* html, body {
+  margin: 0;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+} */
 .App {
   text-align: center;
 }
@@ -37,9 +45,65 @@
   }
 }
 
+
 .mountain-view {
-  background-color: #b7daf9;
   display: block;
-  font-size: 5em;
   text-align: center;
+  padding: 10%;
+  margin-bottom: 3rem;
+  /* border: 0.5rem solid #2196f3; */
+}
+
+[data-amplify-authenticator] [data-or-container] [data-or-line] {
+  background: var(--amplify-colors-background-primary);
+}
+
+[data-amplify-authenticator] {
+  /* --amplify-colors-background-primary: var(--amplify-colors-neutral-40);
+  --amplify-colors-background-secondary: var(--amplify-colors-neutral-60); */
+  /* --amplify-colors-background-tertiary: var(--amplify-colors-black); */
+  /* --amplify-colors-border-primary: var(--amplify-colors-neutral-20);
+  --amplify-colors-border-secondary: var(--amplify-colors-neutral-40);
+  --amplify-colors-border-tertiary: var(--amplify-colors-neutral-60);
+  --amplify-colors-brand-primary-10: var(--amplify-colors-teal-100);
+  --amplify-colors-brand-primary-20: var(--amplify-colors-teal-90);
+  --amplify-colors-brand-primary-40: var(--amplify-colors-teal-80);
+  --amplify-colors-brand-primary-60: var(--amplify-colors-teal-60);
+  --amplify-colors-brand-primary-80: var(--amplify-colors-teal-40);
+  --amplify-colors-brand-primary-90: var(--amplify-colors-teal-20);
+  --amplify-colors-brand-primary-100: var(--amplify-colors-teal-10);
+  --amplify-colors-font-interactive: var(--amplify-colors-black);
+  --amplify-components-heading-color: var(--amplify-colors-neutral-20); */
+  --amplify-components-tabs-item-active-border-color: var(
+    --amplify-colors-blue-20 );
+
+  --amplify-components-tabs-item-active-color: var(--amplify-colors-blue-40);
+  --amplify-components-tabs-item-color: var(--amplify-colors-blue-40);
+  --amplify-components-tabs-item-focus-color: var(--amplify-colors-blue-80);
+  /* --amplify-components-text-color: var(--amplify-colors-font-interactive); */
+
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  background-image: url('./images/image3.png');
+  background-color: rgba(255,255,255,0.8);
+  background-size: 300px;
+  background-repeat:repeat;
+  background-blend-mode:lighten
+}
+
+.amplify-button[data-variation='primary'] {
+  background-color:#2196f3;
+}
+.amplify-button[data-variation='primary']:hover {
+  background: #1769aa;
+}
+
+[data-amplify-container] {
+  height: 100vh;
+  
+}
+
+:root{
+  --form-color: cyan !important
 }

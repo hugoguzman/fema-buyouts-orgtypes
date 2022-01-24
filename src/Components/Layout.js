@@ -38,7 +38,7 @@ export default function Layout(props) {
 			return (
 				<Box component='span'>
 					{' '}
-					<Typography> HOME , {path}</Typography>
+					<Typography> Hello {props.user.username}</Typography>
 				</Box>
 			);
 		} else {
