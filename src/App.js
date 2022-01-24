@@ -1,5 +1,6 @@
-import { Authenticator, Image, useTheme, View } from '@aws-amplify/ui-react';
+import { Authenticator, useTheme, View } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { Amplify } from 'aws-amplify';
 import React from 'react';
@@ -7,11 +8,9 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import awsExports from './aws-exports';
 import Layout from './Components/Layout';
-import pic from './images/image1.jpg';
 import Counties from './routes/counties';
 import County from './routes/county';
 import MyMap from './routes/usmap';
-import Box from '@mui/material/Box';
 
 Amplify.configure(awsExports);
 
@@ -23,26 +22,23 @@ const components = {
 		return (
 			<View className='mountain-view'>
 				<Box
-				sx={{
-					boxShadow: 1,
-					backgroundColor: 'white',
-					mt: 0,
-					p: 3,
-					border: '2px #1769aa solid',
-				}}>
-				<Typography variant='h5' color='primary'>Welcome to AdaptationApps.com. This application provides detailed
-				information on over 2,000 U.S. communities that have implemented buyouts
-				utilizing FEMA grant funds.</Typography>
+					sx={{
+						boxShadow: 1,
+						backgroundColor: 'white',
+						mt: 0,
+						p: 3,
+						border: '2px #1769aa solid',
+					}}
+				>
+					<Typography variant='h5' color='primary'>
+						Welcome to AdaptationApps.com. This application provides detailed
+						information on over 2,000 U.S. communities that have implemented
+						buyouts utilizing FEMA grant funds.
+					</Typography>
 				</Box>
-				{/* <Image alt='placeholder pic' src={pic} /> */}
 			</View>
 		);
-	},
-	// Footer() {
-	// 	const { tokens } = useTheme();
-
-	// 	return <View className='mountain-view'>moo</View>;
-	// },
+	}
 };
 
 function App() {
